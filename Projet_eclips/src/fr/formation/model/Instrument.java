@@ -14,7 +14,5 @@ public class Instrument {
 	}
 	public void setNom(String nom) {
 		this.nom = nom;
-	}
-	
-	
+	}	
 }
