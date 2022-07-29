@@ -6,26 +6,26 @@ import java.util.Scanner;
 import javax.sound.midi.Instrument;
 
 public class Utilisateur {
-	private String mdp;
+	private String pseudo;
 	private String nom;
 	private String prenom;
-	private String pseudo;
-	private String adresse;
 	private String mail;
+	private String mdp;
+	private String adresse;
 	private String telephone;
-	private String photoprofil;
+	private Niveau niveau;
+	private Image photoprofil;
 	private int age;
-	private List<String> stylemusical;
+	private List<StyleMusical> stylemusical;
 	private List<Instrument> listeinstrument;
-	private String niveau;
-	private List<String> son; // à voir avec Jérémy
+	private List<Son> son; // à voir avec Jérémy
 
-	public String getMdp() {
-		return mdp;
+public String getPseudo() {
+		return pseudo;
 	}
 
-	public void setMdp(String mdp) {
-		this.mdp = mdp;
+	public void setPseudo(String pseudo) {
+		this.pseudo = pseudo;
 	}
 
 	public String getNom() {
@@ -44,12 +44,20 @@ public class Utilisateur {
 		this.prenom = prenom;
 	}
 
-	public String getPseudo() {
-		return pseudo;
+	public String getMail() {
+		return mail;
 	}
 
-	public void setPseudo(String pseudo) {
-		this.pseudo = pseudo;
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+
+	public String getMdp() {
+		return mdp;
+	}
+
+	public void setMdp(String mdp) {
+		this.mdp = mdp;
 	}
 
 	public String getAdresse() {
@@ -60,14 +68,6 @@ public class Utilisateur {
 		this.adresse = adresse;
 	}
 
-	public String getMail() {
-		return mail;
-	}
-
-	public void setMail(String mail) {
-		this.mail = mail;
-	}
-
 	public String getTelephone() {
 		return telephone;
 	}
@@ -76,11 +76,19 @@ public class Utilisateur {
 		this.telephone = telephone;
 	}
 
-	public String getPhotoprofil() {
+	public Niveau getNiveau() {
+		return niveau;
+	}
+
+	public void setNiveau(Niveau niveau) {
+		this.niveau = niveau;
+	}
+
+	public Image getPhotoprofil() {
 		return photoprofil;
 	}
 
-	public void setPhotoprofil(String photoprofil) {
+	public void setPhotoprofil(Image photoprofil) {
 		this.photoprofil = photoprofil;
 	}
 
@@ -92,12 +100,11 @@ public class Utilisateur {
 		this.age = age;
 	}
 
-
-	public List<String> getStylemusical() {
+	public List<StyleMusical> getStylemusical() {
 		return stylemusical;
 	}
 
-	public void setStylemusical(List<String> stylemusical) {
+	public void setStylemusical(List<StyleMusical> stylemusical) {
 		this.stylemusical = stylemusical;
 	}
 
@@ -109,31 +116,12 @@ public class Utilisateur {
 		this.listeinstrument = listeinstrument;
 	}
 
-	public String getNiveau() {
-		return niveau;
-	}
-
-	public void setNiveau(String niveau) {
-		this.niveau = niveau;
-	}
-
-	public List<String> getSon() {
+	public List<Son> getSon() {
 		return son;
 	}
 
-	public void setSon(List<String> son) {
+	public void setSon(List<Son> son) {
 		this.son = son;
 	}
 
-public String inscription () {
-	Scanner sc = new Scanner (System.in);
-	System.out.println("Veuillez rentrer un nom");
-	String nom = sc.toString ();
-	return nom;
-}
-//public String Connexion () {
-//	System.out.println("veuillez vous connecter");
-//	System.out.println("vous êtes connecté");
-//	System.out.println("vous êtes n'êtes pas connecté"); //System.err.println("vous n'êtes pas connecté");?
-//}
 }

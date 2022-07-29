@@ -1,6 +1,7 @@
 package fr.formation.model;
 
 import java.util.Date;
+import java.util.List;
 
 public class Chat {
 	protected String texte;
