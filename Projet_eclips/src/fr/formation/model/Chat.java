@@ -41,5 +41,5 @@ public class Chat {
 	public String envoyerMessagePublique(Utilisateur expe, List<Utilisateur> listDesti, String contenu) {
 		return contenu;
 	}
-	
+		
 }
