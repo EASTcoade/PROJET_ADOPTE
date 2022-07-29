@@ -124,4 +124,8 @@ public String getPseudo() {
 		this.son = son;
 	}
 
+	public boolean friendWith(Utilisateur people, SuperUtilisateur chef) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
