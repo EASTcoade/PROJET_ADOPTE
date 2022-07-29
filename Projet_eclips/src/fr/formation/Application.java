@@ -1,12 +1,15 @@
 package fr.formation;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
+import fr.formation.model.Admin;
 import fr.formation.model.Instrument;
 import fr.formation.model.Niveau;
 import fr.formation.model.Son;
 import fr.formation.model.StyleMusical;
 import fr.formation.model.Utilisateur;
+import fr.formation.model.UtilisateursInscrits;
 
 public class Application {
 
@@ -14,19 +17,20 @@ public class Application {
 		// création d'utilisateurs
 		Utilisateur bernard = new Utilisateur();
 		Utilisateur bianca = new Utilisateur();
-		
+		Admin grandchef = new Admin();
+
 		// création de styles musicaux
 		StyleMusical jazz = new StyleMusical();
 		jazz.setNom("Jazz");
 		StyleMusical pop = new StyleMusical();
 		pop.setNom("Pop");
-		
+
 		// création d'instruments
 		Instrument trompette = new Instrument();
 		trompette.setNom("Trompette");
 		Instrument guitare = new Instrument();
 		guitare.setNom("Guitare");
-		
+
 		// création de sons
 		Son demo1 = new Son();
 		demo1.setTitre("Demo1");
@@ -34,8 +38,8 @@ public class Application {
 		demo2.setTitre("Demo2");
 		Son demo3 = new Son();
 		demo3.setTitre("Demo3");
-		
-		//initialisation des utilisateurs
+
+		// initialisation des utilisateurs
 		bernard.setNom("DUPUIS");
 		bernard.setPrenom("Bernard");
 		bernard.setPseudo("Guitaristedu65");
@@ -45,6 +49,13 @@ public class Application {
 		bernard.setMdp("Beber_542");
 		bernard.setNiveau(Niveau.INTERMEDIAIRE);
 		bernard.setTelephone("0612233445");
+
+		// init Admin
+		grandchef.setNom("jeancharles");
+
+		ArrayList<Utilisateur> userlist = new ArrayList<>();
+		userlist.add(bernard);
+
 //		bernard.setPhotoprofil(null);
 		ArrayList<StyleMusical> styledebernard = new ArrayList<>();
 		styledebernard.add(jazz);
@@ -70,6 +81,40 @@ public class Application {
 		ArrayList<Son> sondebianca = new ArrayList<>();
 		sondebianca.add(demo2);
 		sondebianca.add(demo3);
+		match(bianca, bernard);
+		
+		
+		grandchef.annoncer("bienvenue");
+		
+		
+		
+		
+		
+	}
+
+	static String read() {
+		Scanner sc = new Scanner(System.in);
+		return sc.nextLine();
+	}
+
+	public static void match(Utilisateur expediteur, Utilisateur destinataire) {
+		System.out.println(expediteur.getPseudo() + "vous à envoyé une demande d'ami, acceptez vous ?");
+		System.out.println("taper oui ou non");
+		String n;
+		do {
+			n = read();
+			if (n.equals("oui")) {
+				System.out.println("vous avez matcher");
+				return;
+			} else if (n.equals("non")) {
+				System.out.println("vous n'avez pas matcher (dur)");
+				return;
+			} else {
+				System.out.println("resaisir");
+
+			}
+		} while (n != "oui" || n != "non");
+
 	}
 
 }
