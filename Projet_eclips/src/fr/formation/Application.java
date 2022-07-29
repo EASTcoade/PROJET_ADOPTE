@@ -9,7 +9,7 @@ import fr.formation.model.Niveau;
 import fr.formation.model.Son;
 import fr.formation.model.StyleMusical;
 import fr.formation.model.Utilisateur;
-import fr.formation.model.UtilisateursInscrits;
+
 
 public class Application {
 
