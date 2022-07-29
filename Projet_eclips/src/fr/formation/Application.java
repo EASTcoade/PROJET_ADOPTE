@@ -1,9 +1,49 @@
 package fr.formation;
 
+import java.util.ArrayList;
+
+import fr.formation.model.Instrument;
+import fr.formation.model.Niveau;
+import fr.formation.model.Son;
+import fr.formation.model.StyleMusical;
+import fr.formation.model.Utilisateur;
+
 public class Application {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// création d'utilisateurs
+		Utilisateur bernard = new Utilisateur();
+		Utilisateur bianca = new Utilisateur();
+		
+		// création de styles musicaux
+		StyleMusical jazz = new StyleMusical();
+		jazz.setNom("Jazz");
+		
+		// création d'instruments
+		Instrument trompette = new Instrument();
+		trompette.setNom("Trompette");
+		
+		// création de sons
+		Son demo1 = new Son();
+		demo1.setTitre("Demo1");
+		
+		//initialisation des utilisateurs
+		bernard.setNom("DUPUIS");
+		bernard.setPrenom("Bernard");
+		bernard.setPseudo("Guitaristedu65");
+		bernard.setAge(99);
+		bernard.setAdresse("33 rue des Batignoles");
+		bernard.setMail("bernard.dupuis@gmail.com");
+		bernard.setMdp("Beber_542");
+		bernard.setNiveau(Niveau.INTERMEDIAIRE);
+		bernard.setTelephone("0612233445");
+//		bernard.setPhotoprofil(null);
+		ArrayList<StyleMusical> styledebernard = new ArrayList<>();
+		styledebernard.add(jazz);
+		ArrayList<Instrument> instrumentsdebernard = new ArrayList<>();
+		instrumentsdebernard.add(trompette);
+		ArrayList<Son> sondebernard = new ArrayList<>();
+		sondebernard.add(demo1);
 
 	}
 
