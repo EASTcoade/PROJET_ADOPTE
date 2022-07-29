@@ -1,4 +1,4 @@
-package fr.formation.model2;
+package fr.formation.model;
 
 import java.util.List;
 import java.util.Scanner;
