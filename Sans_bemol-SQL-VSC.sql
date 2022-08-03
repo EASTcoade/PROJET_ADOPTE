@@ -7,7 +7,7 @@ CREATE TABLE utilisateur (
     utl_pseudo VARCHAR(100), --(UNIQUE),
     utl_dtnaissance TIME,
     utl_adresse VARCHAR(100),
-    utl_tel VARCHAR(20), --pattern Jerem
+    utl_tel VARCHAR(20), --alter table nom_table ADD CONSTRAINT -- CHECK (-- ~ '[0-9]{10}');
     utl_stylemusical VARCHAR(100),
     utl_instrument VARCHAR(100),
     utl_niveau 
