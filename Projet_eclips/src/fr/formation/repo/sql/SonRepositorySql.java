@@ -8,8 +8,9 @@ import java.util.List;
 
 import fr.formation.model.Son;
 import fr.formation.model.Utilisateur;
+import fr.formation.repo.ISonRepository;
 
-public class SonRepositorySql extends AbstractRepositorySql<Son> {
+public class SonRepositorySql extends AbstractRepositorySql<Son> implements ISonRepository{
 
 	@Override
 	protected Son map(ResultSet result) {
@@ -69,7 +70,7 @@ public class SonRepositorySql extends AbstractRepositorySql<Son> {
 		}
 		return sons;
 	}
-	public void Save(Son entity) {
+	public void save(Son entity) {
 		try {
 			PreparedStatement myStatement=null;
 			if(entity.getId()==0) {//c'est un INSERT 
@@ -101,6 +102,25 @@ public class SonRepositorySql extends AbstractRepositorySql<Son> {
 		finally {
 			this.disconnect();			
 		}	
+	}
+	
+	@Override
+	public void deleteById(Integer id) {
+		try {
+			PreparedStatement myStatement=this.prepare("DELETE from son WHERE fou_id=?");
+			
+			myStatement.setInt(1, id);
+			
+			myStatement.executeUpdate();
+							
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			this.disconnect();			
+		}
+		
 	}
 	
 }
