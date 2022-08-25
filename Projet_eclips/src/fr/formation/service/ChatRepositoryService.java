@@ -11,7 +11,7 @@ import fr.formation.repo.sql.ChatRepositorySql;
 
 public class ChatRepositoryService {
 	
-	ChatRepositorySql chatRepo = new ChatRepositorySql();
+	private ChatRepositorySql chatRepo = new ChatRepositorySql();
 	
 	public Chat findById(int id) throws IdNegativeException, ItemNotFoundException {
 		
@@ -26,6 +26,12 @@ public class ChatRepositoryService {
 		}
 		
 		return chat;
+	}
+	
+	
+	public void save(Chat chat) {
+		
+		this.chatRepo.save(chat);
 	}
 	
 	

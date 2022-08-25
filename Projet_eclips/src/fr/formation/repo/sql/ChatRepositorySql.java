@@ -12,15 +12,16 @@ import fr.formation.repo.IChatRepository;
 public class ChatRepositorySql extends AbstractRepositorySql<Chat> implements IChatRepository {
 
 	
+	UtilisateurRepositorySql utiRepo = new UtilisateurRepositorySql()  ;
+	
+	
 	@Override
 	protected Chat map(ResultSet result) {
 		try {
 			Chat chat = new Chat();
 			
-			UtilisateurRepositorySql utiRepo = new UtilisateurRepositorySql()  ;
-			
 			chat.setTexte( result.getString("chat_recu") );
-			chat.setExpediteur( utiRepo.findById( result.getInt("chat_uti_id") ) );
+			chat.setExpediteur( this.utiRepo.findById( result.getInt("chat_uti_id") ) );
 			
 			return chat;
 		}
@@ -75,9 +76,24 @@ public class ChatRepositorySql extends AbstractRepositorySql<Chat> implements IC
 	}
 	
 
-	@Override
+	@Override	
 	public void save(Chat entity) {
-		return;
+		PreparedStatement myStatement = null;
+		
+		try {
+				myStatement = this.prepare("INSERT INTO chat"
+						+ " (chat_send, chat_uti_id)"
+						+ " VALUES (?, ?)");
+			
+
+			myStatement.setString(1, entity.getTexte());
+			myStatement.setInt(2, entity.getExpediteur().getId());
+			
+			myStatement.execute();
+		
+		} catch (SQLException e) { e.printStackTrace(); }
+		
+		finally {this.disconnect();}
 	}
 		
 
