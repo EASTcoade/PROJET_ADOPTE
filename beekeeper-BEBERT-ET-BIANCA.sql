@@ -1,3 +1,5 @@
+--Attention table plus a jour: remplacer utl par uti, les inst par ins, chat par cha!!!
+
 INSERT into utilisateur (utl_mdp, utl_nom, utl_prenom, utl_pseudo, utl_dtnaissance, utl_adresse, utl_tel, utl_niveau)
 VALUES ('1234', 'Dupont', 'Bernard', 'Bebert_du_65', '1945/02/28', '6 rue des Capucins, Boulogne Billancourt', '0285904513', 'debutant');
 ;
