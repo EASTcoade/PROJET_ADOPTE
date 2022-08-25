@@ -1,11 +1,14 @@
 package fr.formation.model;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
 
 import javax.sound.midi.Instrument;
 
 public class Utilisateur {
+	private int id;
+	private LocalDate dateNaissance;
 	private String pseudo;
 	private String nom;
 	private String prenom;
@@ -19,6 +22,25 @@ public class Utilisateur {
 	private List<StyleMusical> stylemusical;
 	private List<Instrument> listeinstrument;
 	private List<Son> son; // à voir avec Jérémy
+
+	
+	
+	
+public LocalDate getDateNaissance() {
+		return dateNaissance;
+	}
+
+	public void setDateNaissance(LocalDate dateNaissance) {
+		this.dateNaissance = dateNaissance;
+	}
+
+public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 public String getPseudo() {
 		return pseudo;
