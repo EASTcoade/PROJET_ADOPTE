@@ -8,18 +8,18 @@ import java.sql.SQLException;
 
 public abstract class AbstractRepositorySql<T> {
 	protected Connection connection = null;
-	//Méthode pour se connecter
+	//Mï¿½thode pour se connecter
 	protected Connection connect( )throws SQLException {
 		this.connection= DriverManager.getConnection(
-					"jdbc:postgresql://localhost:5432/eshop","postgres","secret");		
+					"jdbc:postgresql://localhost:5432/sans_bemol","postgres","JAVAbien?");		
 		return this.connection;
 	}
 	
-	//Méthode pour éxécuter une requete SQL
+	//Mï¿½thode pour ï¿½xï¿½cuter une requete SQL
 	protected PreparedStatement prepare(String query) throws SQLException {
 		return this.connect().prepareStatement(query);
 	}
-	//Méthode pour se déconnecter
+	//Mï¿½thode pour se dï¿½connecter
 	protected void disconnect() {
 		if(this.connection !=null) {
 			try {
@@ -30,7 +30,7 @@ public abstract class AbstractRepositorySql<T> {
 			}
 		}	
 	}
-	//On créé ici la méthode map SANS LA REMPLIR pour forcer les classes filles à l'utiliser
-	//avec une généricité pour l'utiliser avec n'importe quel objet
+	//On crï¿½ï¿½ ici la mï¿½thode map SANS LA REMPLIR pour forcer les classes filles ï¿½ l'utiliser
+	//avec une gï¿½nï¿½ricitï¿½ pour l'utiliser avec n'importe quel objet
 	protected abstract T map(ResultSet result);
 }

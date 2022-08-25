@@ -5,6 +5,7 @@ import java.util.List;
 
 import fr.formation.exception.IdNegativeException;
 import fr.formation.exception.ItemNotFoundException;
+import fr.formation.exception.NotValidException;
 import fr.formation.model.Utilisateur;
 import fr.formation.repo.IUtilisateurRepository;
 import fr.formation.repo.sql.UtilisateurRepositorySql;
@@ -38,7 +39,7 @@ public class UtilisateurService {
 		return utilisateur;
 	}
 	
-	public void save(Utilisateur utilisateur) {
+	public void save(Utilisateur utilisateur) throws NotValidException {
 		if (utilisateur.getNom() == null || utilisateur.getNom().isBlank()) {
 			throw new NotValidException();
 		}

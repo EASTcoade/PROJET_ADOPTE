@@ -77,20 +77,20 @@ public  class UtilisateurRepositorySql extends AbstractRepositorySql<Utilisateur
 			PreparedStatement myStatement = null;
 			
 			if (entity.getId() == 0) { // INSERT
-				myStatement = this.prepare("INSERT INTO utilisateur (uti_mdp, uti_nom, uti_prenom, uti_pseudo, uti_date_naissance, uti_adresse, uti_tel, uti_niveau) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+				myStatement = this.prepare("INSERT INTO utilisateur (uti_mdp, uti_nom, uti_prenom, uti_pseudo, uti_date_naissance, uti_adresse, uti_tel, uti_niveau) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 			}
 			
 			else { // UPDATE
 				myStatement = this.prepare("UPDATE utilisteur SET " 
 			+ "uti_mdp = ?, " 
-			+ "uti_nom = ? " 
+			+ "uti_nom = ?, " 
 			+ "uti_prenom =?," 
 			+"uti_pseudo=?," 
 			+ "uti_date_naissance=?,"
 			+"uti_adresse=?,"
 			+"uti_tel=?,"
 			+"uti_niveau=?," 
-			+ "WHERE uti_id = ?");
+			+ "WHERE uti_id = ?,");
 
 				myStatement.setInt(9, entity.getId());
 			}
@@ -100,9 +100,9 @@ public  class UtilisateurRepositorySql extends AbstractRepositorySql<Utilisateur
 			myStatement.setString(3, entity.getPrenom());
 			myStatement.setString(4, entity.getPseudo());
 			myStatement.setDate(5, Date.valueOf(entity.getDateNaissance()));
-			myStatement.setString(6, entity.getPrenom());
-			myStatement.setString(7, entity.getPrenom());
-			myStatement.setString(8, entity.getPrenom());
+			myStatement.setString(6, entity.getAdresse());
+			myStatement.setString(7, entity.getTelephone());
+			myStatement.setInt(8, entity.getNiveau().ordinal());
 			
 			myStatement.executeUpdate();
 		}
