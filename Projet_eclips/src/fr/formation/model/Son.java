@@ -1,15 +1,31 @@
 package fr.formation.model;
 
 public class Son {
-	protected FormatSon format;
+	protected int id;
+	protected Utilisateur createur;
 	protected String titre;
+	protected byte[] contenu;
 	
-	public FormatSon getFormat() {
-		return format;
+	public Utilisateur getCreateur() {
+		return createur;
 	}
-	public void setFormat(FormatSon format) {
-		this.format = format;
+	public void setCreateur(Utilisateur createur) {
+		this.createur = createur;
 	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public byte[] getContenu() {
+		return contenu;
+	}
+	public void setContenu(byte[] contenu) {
+		this.contenu = contenu;
+	}
+	
+	
 	public String getTitre() {
 		return titre;
 	}
