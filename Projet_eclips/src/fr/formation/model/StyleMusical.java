@@ -1,6 +1,7 @@
 package fr.formation.model;
 
 public class StyleMusical {
+	private int id;
 	private String nom;
 
 	public String getNom() {
@@ -9,6 +10,14 @@ public class StyleMusical {
 
 	public void setNom(String nom) {
 		this.nom = nom;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 
