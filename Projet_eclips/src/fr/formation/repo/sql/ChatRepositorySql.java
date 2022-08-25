@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.formation.model.Chat;
-import fr.formation.model.Utilisateur;
 import fr.formation.repo.IChatRepository;
 
 public class ChatRepositorySql extends AbstractRepositorySql<Chat> implements IChatRepository {
