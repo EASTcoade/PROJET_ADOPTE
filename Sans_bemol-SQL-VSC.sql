@@ -87,6 +87,6 @@ CREATE TABLE chat(
     cha_date DATE,
     cha_uti_id INT,
 
-    CONSTRAINT fk_chat_uti_id
-    FOREIGN KEY (chat_uti_id) REFERENCES utilisateur(uti_id)
+    CONSTRAINT fk_cha_uti_id
+    FOREIGN KEY (cha_uti_id) REFERENCES utilisateur(uti_id)
 );
