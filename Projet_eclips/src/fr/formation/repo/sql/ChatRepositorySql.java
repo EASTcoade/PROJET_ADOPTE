@@ -21,7 +21,7 @@ public class ChatRepositorySql extends AbstractRepositorySql<Chat> implements IC
 			UtilisateurRepositorySql utiRepo = new UtilisateurRepositorySql()  ;
 			
 			chat.setTexte( result.getString("chat_recu") );
-			chat.setExpediteur(utiRepo.map( (ResultSet) utiRepo.findById( result.getInt("chat_utl_id") ) ) );
+			chat.setExpediteur(utiRepo.map( (ResultSet) utiRepo.findById( result.getInt("chat_uti_id") ) ) );
 			
 			return chat;
 		}
