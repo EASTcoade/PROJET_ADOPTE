@@ -8,6 +8,14 @@ public class Chat {
 	protected Utilisateur destinataire;
 	protected Utilisateur expediteur;
 	protected Date dateEnvoi;
+	protected int chat_id;
+	
+	public int getChat_id() {
+		return chat_id;
+	}
+	public void setChat_id(int chat_id) {
+		this.chat_id = chat_id;
+	}
 	public String getTexte() {
 		return texte;
 	}
