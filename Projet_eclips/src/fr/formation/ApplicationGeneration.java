@@ -9,40 +9,63 @@ import fr.formation.exception.ItemNotFoundException;
 import fr.formation.exception.NotValidException;
 import fr.formation.model.Instrument;
 import fr.formation.model.Niveau;
+import fr.formation.model.StyleMusical;
 import fr.formation.model.Utilisateur;
 import fr.formation.service.InstrumentService;
+import fr.formation.service.StyleMusicalService;
 import fr.formation.service.UtilisateurService;
 
 public class ApplicationGeneration {
 
 
 	public static void main(String[] args) throws NotValidException, IdNegativeException, ItemNotFoundException{
-		//g�n�ration utilisateur
+		//generation utilisateur
 		UtilisateurService srv = new UtilisateurService();
-		Utilisateur User1 = new Utilisateur ();
-		User1.setNom ("Bernard");
-		User1.setMdp("JAVAmal");
-		User1.setMail("Bebertdu05@gmail.com");
-		User1.setAdresse("20 rue des Mimosas");
-		User1.setPseudo("Bebert du 05");
-		User1.setAge(80);
-		User1.setDateNaissance(LocalDate.parse("1945-10-10"));
-		User1.setPrenom("Bernard");
-		User1.setNiveau(Niveau.DEBUTANT);
-		User1.setTelephone("0782137782");
+		Utilisateur user1 = new Utilisateur ();
+		user1.setNom ("Bernard");
+		user1.setMdp("JAVAmal");
+		user1.setMail("Bebertdu05@gmail.com");
+		user1.setAdresse("20 rue des Mimosas");
+		user1.setPseudo("Bebert du 05");
+		user1.setAge(80);
+		user1.setDateNaissance(LocalDate.parse("1945-10-10"));
+		user1.setPrenom("Bernard");
+		user1.setNiveau(Niveau.DEBUTANT);
+		user1.setTelephone("0782137782");
 		InstrumentService srvInstru = new InstrumentService();
-		User1.setListeinstrument(new ArrayList<>() );
-		User1.getListeinstrument().add(srvInstru. findById(1));
+		user1.setListeinstrument(new ArrayList<>() );
+		user1.getListeinstrument().add(srvInstru. findById(1));
+		StyleMusicalService srvStyle = new StyleMusicalService();
+		user1.setStylemusical(new ArrayList<>());
+		user1.getStylemusical().add(srvStyle.findById(1));
+		
 		//User1.setStylemusical(new ArrayList<>() );
 		
-		srv.save (User1);
-		System.out.println("vous êtes bien inscrit");
-	}}	
-		//g�n�ration instrument
+		srv.save (user1);
+		System.out.println("vous etes bien inscrit");
+		
+		//generation instrument
 //		InstrumentService srvInstrument = new InstrumentService();
 //		Instrument guitare = new Instrument();
 //		
 //		guitare.setNom("guitare");
 //		
 //		srvInstrument.save(guitare);
-//		System.out.println("Instrument enregistr�");
+//		System.out.println("Instrument enregistre);
+		
+//		//generation styles musicaux
+//		StyleMusicalService srvStyle = new StyleMusicalService();
+//		StyleMusical jazz = new StyleMusical();
+//		
+//		jazz.setNom("jazz");
+//		
+//		srvStyle.save(jazz);
+//		System.out.println("style musical enregistre !");
+		
+	}
+}	
+		
+
+		
+		
+		
