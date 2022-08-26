@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.formation.exception.IdNegativeException;
+import fr.formation.exception.NotValidException;
 import fr.formation.exception.SonNotFoundException;
 import fr.formation.model.Son;
+import fr.formation.model.Utilisateur;
 import fr.formation.repo.ISonRepository;  
 import fr.formation.repo.sql.SonRepositorySql;
 
@@ -35,5 +37,17 @@ public class SonService {
 			return new ArrayList<>();
 		}
 		return listeSon;
+	}
+	public void save(Son son) throws NotValidException {
+		ISonRepository repoSon=new SonRepositorySql();
+		if (son.getTitre() == null || son.getTitre().isBlank()) {
+			throw new NotValidException();
+		}
+		
+		if (son.getContenu() == null) {
+			throw new NotValidException();
+		}	
+		
+		repoSon.save(son);
 	}
 }
