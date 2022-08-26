@@ -2,9 +2,6 @@ package fr.formation.model;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Scanner;
-
-import javax.sound.midi.Instrument;
 
 public class Utilisateur {
 	private int id;
@@ -134,8 +131,8 @@ public class Utilisateur {
 		return listeinstrument;
 	}
 
-	public void setListeinstrument(List<Instrument> listeinstrument) {
-		this.listeinstrument = listeinstrument;
+	public void setListeinstrument(List<Instrument> listeinstruments) {
+		this.listeinstrument = listeinstruments;
 	}
 
 	public List<Son> getSon() {
