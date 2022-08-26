@@ -6,6 +6,7 @@ import java.util.List;
 import fr.formation.exception.IdNegativeException;
 import fr.formation.exception.ItemNotFoundException;
 import fr.formation.exception.NotValidException;
+import fr.formation.model.Instrument;
 import fr.formation.model.Utilisateur;
 import fr.formation.repo.IUtilisateurRepository;
 import fr.formation.repo.sql.UtilisateurRepositorySql;
@@ -55,6 +56,9 @@ public class UtilisateurService {
 		
 		
 		repoUtilisateur.save(utilisateur);
+		for (Instrument instru: utilisateur.getListeinstrument()) {
+			
+		}
 	}
 	
 	public void deleteById(int id) throws IdNegativeException {

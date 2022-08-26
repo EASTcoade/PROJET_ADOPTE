@@ -6,43 +6,41 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.formation.model.Son;
+import fr.formation.model.Image;
+import fr.formation.model.Image;
 import fr.formation.model.Utilisateur;
-import fr.formation.repo.ISonRepository;
+import fr.formation.repo.IImageRepository;
 
-public class SonRepositorySql extends AbstractRepositorySql<Son> implements ISonRepository{
-
+public class ImageRepositorySql extends AbstractRepositorySql<Image> implements IImageRepository{
 	@Override
-	protected Son map(ResultSet result) {
+	protected Image map(ResultSet result) {
 		try {
-			Son monSon = new Son();
+			Image monImage = new Image();
 			
-			monSon.setId(result.getInt("son_id"));
-			monSon.setTitre(result.getString("son_nom"));
+			monImage.setId(result.getInt("ima_id"));
+			monImage.setTitre(result.getString("ima_nom"));
 			
-			Utilisateur monUti = new Utilisateur();
-			monUti.setId(result.getInt("son_uti_id"));
 			
-			monSon.setContenu(result.getBytes("son_contenu"));
-			return monSon;			
+			monImage.setContenu(result.getBytes("ima_contenu"));
+			return monImage;			
 		}
 		catch(SQLException e) {
 			return null;
 		}
 	}
-	public Son findById(Integer id) {
-		Son monSon = null;
+	public Image findById(Integer id) {
+		Image monImage = null;
 		try {
-			PreparedStatement myStatement=this.prepare("SELECT * from son WHERE son_id=?");
+			PreparedStatement myStatement=this.prepare("SELECT * from image WHERE ima_id=?");
 			
 			myStatement.setInt(1, id);
 			
 			ResultSet myResult = myStatement.executeQuery();				
 			
 			if(myResult.next()) {
-				monSon = this.map(myResult);
+				monImage = this.map(myResult);
 			}
-			return monSon;	
+			return monImage;	
 		}
 		catch(SQLException e) {
 			e.printStackTrace();
@@ -50,16 +48,16 @@ public class SonRepositorySql extends AbstractRepositorySql<Son> implements ISon
 		finally {
 			this.disconnect();			
 		}
-		return monSon;
+		return monImage;
 	}
-	public List<Son> findAll(){
-		List<Son> sons = new ArrayList<>();
+	public List<Image> findAll(){
+		List<Image> images = new ArrayList<>();
 		try {
-			PreparedStatement myStatement=this.prepare("Select * from son");
+			PreparedStatement myStatement=this.prepare("Select * from image");
 			ResultSet myResult = myStatement.executeQuery();
 			
 			while(myResult.next()) {
-				sons.add(this.map(myResult));
+				images.add(this.map(myResult));
 			}
 		}
 		catch(SQLException e) {
@@ -68,30 +66,29 @@ public class SonRepositorySql extends AbstractRepositorySql<Son> implements ISon
 		finally {
 			this.disconnect();
 		}
-		return sons;
+		return images;
 	}
-	public void save(Son entity) {
+	public void save(Image entity) {
 		try {
 			PreparedStatement myStatement=null;
 			if(entity.getId()==0) {//c'est un INSERT 
-				myStatement=this.prepare("INSERT INTO son (son_nom,son_uti_id,son_contenu)"
+				myStatement=this.prepare("INSERT INTO image (ima_nom,ima_format,ima_contenu)"
 						+ "VALUES(?,?,?)");
 				myStatement.setString(1,entity.getTitre());
-				myStatement.setInt(2,entity.getCreateur().getId());
+				myStatement.setInt(2,entity.getFormat().ordinal());
 				myStatement.setBytes(3, entity.getContenu());
 				
 				myStatement.execute();
 			}else {//c'est un UPDATE
-				myStatement=this.prepare("UPDATE son "
-						+ "SET son_nom = ?,"
-						+ "son_uti_id = ?"
-						+ "son_contenu = ?"
+				myStatement=this.prepare("UPDATE image "
+						+ "SET ima_nom = ?,"
+						+ "ima_contenu = ?"
+						+ "ima_format = ?"
 						+ "WHERE son_id=?");
 						
 				myStatement.setString(1,entity.getTitre());
-				myStatement.setInt(2,entity.getCreateur().getId());
-				myStatement.setBytes(3, entity.getContenu());
-				myStatement.setInt(4,entity.getId());				
+				myStatement.setInt(2,entity.getFormat().ordinal());
+				myStatement.setBytes(3, entity.getContenu());				
 			}
 			myStatement.execute();
 			
@@ -107,7 +104,7 @@ public class SonRepositorySql extends AbstractRepositorySql<Son> implements ISon
 	@Override
 	public void deleteById(Integer id) {
 		try {
-			PreparedStatement myStatement=this.prepare("DELETE from son WHERE son_id=?");
+			PreparedStatement myStatement=this.prepare("DELETE from image WHERE ima_id=?");
 			
 			myStatement.setInt(1, id);
 			
@@ -122,5 +119,5 @@ public class SonRepositorySql extends AbstractRepositorySql<Son> implements ISon
 		}
 		
 	}
-	
+
 }
