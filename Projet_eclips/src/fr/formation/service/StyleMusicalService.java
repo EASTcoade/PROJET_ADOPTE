@@ -5,6 +5,7 @@ import java.util.List;
 
 import fr.formation.exception.IdNegativeException;
 import fr.formation.exception.ItemNotFoundException;
+import fr.formation.exception.NotValidException;
 import fr.formation.model.StyleMusical;
 import fr.formation.repo.IStyleMusicalRepository;
 import fr.formation.repo.sql.StyleMusicalRepositorySql;
@@ -43,7 +44,7 @@ public class StyleMusicalService {
 	repoStyleMusical.deleteById(id);
 	}
 	
-	public void save(StyleMusical monStyleMusical) {
+	public void save(StyleMusical monStyleMusical) throws NotValidException {
 		if (monStyleMusical.getNom() == null || monStyleMusical.getNom().isBlank()) {
 			throw new NotValidException();
 		}

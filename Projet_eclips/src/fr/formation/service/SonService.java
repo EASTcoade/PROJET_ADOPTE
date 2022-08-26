@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.formation.exception.IdNegativeException;
+import fr.formation.exception.SonNotFoundException;
 import fr.formation.model.Son;
 import fr.formation.repo.ISonRepository;  
 import fr.formation.repo.sql.SonRepositorySql;
 
 public class SonService {
-	public Son findById(int id) throws IdNegativeException {
+	public Son findById(int id) throws IdNegativeException, SonNotFoundException {
 		ISonRepository repoSon = new SonRepositorySql();
 		
 		//verif de l'ID
