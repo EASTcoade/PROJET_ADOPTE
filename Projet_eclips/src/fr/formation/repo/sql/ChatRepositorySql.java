@@ -76,26 +76,7 @@ public class ChatRepositorySql extends AbstractRepositorySql<Chat> implements IC
 	}
 	
 
-	@Override	
-	public void save(Chat entity) {
-		PreparedStatement myStatement = null;
-		
-		try {
-				myStatement = this.prepare("INSERT INTO chat"
-						+ " (chat_send, chat_uti_id)"
-						+ " VALUES (?, ?)");
-			
-
-			myStatement.setString(1, entity.getTexte());
-			myStatement.setInt(2, entity.getExpediteur().getId());
-			
-			myStatement.execute();
-		
-		} catch (SQLException e) { e.printStackTrace(); }
-		
-		finally {this.disconnect();}
-	}
-		
+	
 
 	@Override
 	public void deleteById(Integer id) {
@@ -110,19 +91,36 @@ public class ChatRepositorySql extends AbstractRepositorySql<Chat> implements IC
 		finally { this.disconnect(); }
 	}
 	
-	public void envoyerMessagebyId(String message, Integer id) {
+	
+	@Override
+	public void save(Chat chat) {
 		
-		PreparedStatement myStatement = null;
+		PreparedStatement sendStatement = null;
+		PreparedStatement receptionStatement = null;
 		
 		try {	
-			myStatement = this.prepare("INSERT INTO lien_chat_uti"
-					+ " (lien_chat_uti_msg, lien_chat_uti_id)"
-					+ " VALUES (?, ?)");
+			sendStatement = this.prepare("INSERT INTO chat"
+					+ " (cha_contenu, cha_uti_id_exp)"
+					+ " VALUES (?, ?)", true);
 			
-			myStatement.setString(1, message);
-			myStatement.setInt(2, id);
+			sendStatement.setString(1, chat.getTexte());
+			sendStatement.setInt(2, chat.getExpediteur().getId());
 			
-			myStatement.execute();
+			sendStatement.execute();
+			
+			ResultSet rsKey = sendStatement.getGeneratedKeys();
+			
+			if(rsKey.next()){
+				
+				receptionStatement = this.prepare("INSERT INTO reception"
+						+ " (rec_cha_id, rec_uti_id_dest)"
+						+ " VALUES (?, ?)");
+				
+				receptionStatement.setInt(1, (int)rsKey.getLong(1));
+				receptionStatement.setInt(2, chat.getDestinataire().getId());
+				
+				receptionStatement.execute();
+			}
 		
 		} catch (SQLException e) { e.printStackTrace(); }
 		
