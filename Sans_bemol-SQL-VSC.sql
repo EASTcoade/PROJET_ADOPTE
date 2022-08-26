@@ -126,3 +126,10 @@ CREATE TABLE notification(
 );
 
 
+CREATE TABLE image(
+
+    ima_id SERIAL PRIMARY KEY,
+    ima_nom VARCHAR(50) NOT NULL,
+    ima_contenu BYTEA, 
+   
+);
