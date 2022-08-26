@@ -1,5 +1,7 @@
 package fr.formation.repo.sql;
 
+import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -13,8 +15,8 @@ public class InstrumentRepositorySql extends AbstractRepositorySql<Instrument> i
 		try {
 			Instrument monInstrument = new Instrument();
 			
-			monInstrument.setId( myresult.getInt("ins_id"));
-			monInstrument.setNom( myresult.getString("ins_nom"));
+			monInstrument.setId(myresult.getInt("ins_id"));
+			monInstrument.setNom(myresult.getString("ins_nom"));
 			
 			//on associe toute les infos de l'instrument
 			return monInstrument;
@@ -45,8 +47,32 @@ public class InstrumentRepositorySql extends AbstractRepositorySql<Instrument> i
 
 	@Override
 	public void save(Instrument entity) {
-		// TODO Auto-generated method stub
+		try {
+			PreparedStatement myStatement = null;
+			
+			if (entity.getId() == 0) { // INSERT
+				myStatement = this.prepare("INSERT INTO instrument (ins_nom) VALUES (?)");
+			}
+			
+			else { // UPDATE
+				myStatement = this.prepare("UPDATE instrument SET "
+			+ "ins_nom = ?, "
+			+ "WHERE ins_id = ?");
+
+				myStatement.setInt(2, entity.getId());
+			}			
+			myStatement.setString(1, entity.getNom());		
+			
+			myStatement.executeUpdate();
+		}
 		
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		finally {
+			this.disconnect();
+		}
 	}
 
 	@Override

@@ -21,7 +21,7 @@ public class Instrument {
 	public String getNom() {
 		return nom;
 	}
-	public void setNom(String ins_nom) {
+	public void setNom(String nom) {
 		this.nom = nom;
 	}
 	public void setUtilisateur(Utilisateur monUtilisateur) {
