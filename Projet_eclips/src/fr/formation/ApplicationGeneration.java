@@ -14,7 +14,7 @@ import fr.formation.service.UtilisateurService;
 public class ApplicationGeneration {
 
 	public static void main(String[] args) throws NotValidException{
-		//génération utilisateur
+		//gï¿½nï¿½ration utilisateur
 //		UtilisateurService srv = new UtilisateurService();
 //		Utilisateur User1 = new Utilisateur ();
 //		User1.setNom ("Bernard");
@@ -31,13 +31,13 @@ public class ApplicationGeneration {
 //		srv.save (User1);
 //		System.out.println("vous Ãªtes bien inscrit");
 		
-		//génération instrument
+		//gï¿½nï¿½ration instrument
 		InstrumentService srvInstrument = new InstrumentService();
 		Instrument guitare = new Instrument();
 		
 		guitare.setNom("guitare");
 		
 		srvInstrument.save(guitare);
-		System.out.println("Instrument enregistré");
+		System.out.println("Instrument enregistrï¿½");
 	}
 }
