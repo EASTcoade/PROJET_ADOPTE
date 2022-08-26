@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import fr.formation.model.Instrument;
@@ -35,14 +36,51 @@ public class InstrumentRepositorySql extends AbstractRepositorySql<Instrument> i
 
 	@Override
 	public Instrument findById(Integer id) {
-		// TODO Auto-generated method stub
+		try {
+			PreparedStatement myStatement = this.prepare("SELECT * FROM instrument WHERE uti_id = ?");
+			
+			myStatement.setInt(1, id);
+			
+			ResultSet myResult = myStatement.executeQuery();
+			
+			if (myResult.next()) {
+				return this.map(myResult);
+			}
+		}
+		
+		catch (SQLException e) {
+			return null;			
+		}
+		
+		finally {
+			this.disconnect();
+		}
+		
 		return null;
 	}
 
 	@Override
 	public List<Instrument> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Instrument> instrument = new ArrayList<>();
+		
+		try {
+			PreparedStatement myStatement = this.prepare("SELECT * FROM instrument");
+			ResultSet myResult = myStatement.executeQuery();
+			
+			while (myResult.next()) {
+				instrument.add(this.map(myResult));
+			}
+		}
+		
+		catch (SQLException e) {
+			e.printStackTrace(); // On le laisse en dév | TODO : à supprimer plus tard
+		}
+		
+		finally {
+			this.disconnect();
+		}
+		
+		return instrument;
 	}
 
 	@Override
@@ -77,7 +115,19 @@ public class InstrumentRepositorySql extends AbstractRepositorySql<Instrument> i
 
 	@Override
 	public void deleteById(Integer id) {
-		// TODO Auto-generated method stub
+		try {
+			PreparedStatement myStatement = this.prepare("DELETE FROM instrument WHERE uti_id = ?");
+			
+			myStatement.setInt(1, id);
+			
+			myStatement.executeUpdate();
+		}
 		
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			this.disconnect();
+		}
 	}
 }
