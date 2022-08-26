@@ -82,25 +82,47 @@ CREATE TABLE son(
 
 
 CREATE TABLE chat(
-    cha_recu VARCHAR(1000),
-    cha_envoye VARCHAR(1000),
-    cha_date DATE,
-    cha_uti_id INT,
 
+    cha_id SERIAL PRIMARY KEY,	
+    cha_contenu VARCHAR(1000),
+    cha_date DATE,
+    cha_uti_id_exp INT,
+    
     CONSTRAINT fk_cha_uti_id
-    FOREIGN KEY (cha_uti_id) REFERENCES utilisateur(uti_id)
+    FOREIGN KEY (cha_uti_id_exp) REFERENCES utilisateur(uti_id)
 );
 
 
---CREATE TABLE lien_chat_uti(
+CREATE TABLE reception(
 
---    id SERIAL PRIMARY KEY, 
---    lien_chat_uti_msg VARCHAR(5000),
---    lien_chat_uti_id INT,
+    rec_id SERIAL PRIMARY KEY, 
+    rec_cha_id INT,
+    rec_uti_id_dest INT,
 
---    CONSTRAINT fk_lien_chat_uti_id
---    FOREIGN KEY (lien_chat_uti_id) REFERENCES  utilisateur(uti_id)
---    ON DELETE CASCADE
---    ON UPDATE CASCADE
+    CONSTRAINT fk_rec_uti_id
+    FOREIGN KEY (rec_uti_id_dest) REFERENCES  utilisateur(uti_id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
 
---);
+    CONSTRAINT fk_rec_cha_id
+    FOREIGN KEY (rec_cha_id) REFERENCES  chat(cha_id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+
+);
+
+
+CREATE TABLE notification(
+
+    not_id SERIAL PRIMARY KEY, 
+    not_msg VARCHAR(1000),
+    not_uti_id INT,
+
+    CONSTRAINT fk_not_uti_id
+    FOREIGN KEY (not_uti_id) REFERENCES  utilisateur(uti_id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+
+);
+
+
