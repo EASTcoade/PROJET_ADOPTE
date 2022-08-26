@@ -26,7 +26,7 @@ public class Utilisateur {
 	
 	
 	
-public LocalDate getDateNaissance() {
+	public LocalDate getDateNaissance() {
 		return dateNaissance;
 	}
 
@@ -34,7 +34,7 @@ public LocalDate getDateNaissance() {
 		this.dateNaissance = dateNaissance;
 	}
 
-public int getId() {
+	public int getId() {
 		return id;
 	}
 
@@ -42,7 +42,7 @@ public int getId() {
 		this.id = id;
 	}
 
-public String getPseudo() {
+	public String getPseudo() {
 		return pseudo;
 	}
 
@@ -150,4 +150,5 @@ public String getPseudo() {
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
 }
