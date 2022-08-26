@@ -108,7 +108,27 @@ public class ChatRepositorySql extends AbstractRepositorySql<Chat> implements IC
 		catch (SQLException e) { e.printStackTrace(); }
 		
 		finally { this.disconnect(); }
-	}		
+	}
+	
+	public void envoyerMessagebyId(String message, Integer id) {
+		
+		PreparedStatement myStatement = null;
+		
+		try {	
+			myStatement = this.prepare("INSERT INTO lien_chat_uti"
+					+ " (lien_chat_uti_msg, lien_chat_uti_id)"
+					+ " VALUES (?, ?)");
+			
+			myStatement.setString(1, message);
+			myStatement.setInt(2, id);
+			
+			myStatement.execute();
+		
+		} catch (SQLException e) { e.printStackTrace(); }
+		
+		finally {this.disconnect();}	
+	}
+	
 }
 
 

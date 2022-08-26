@@ -46,13 +46,17 @@ public class ChatRepositoryService {
 
 	
 
-public List<Chat> findAll() {
-	List<Chat> listChat = this.chatRepo.findAll();
+	public List<Chat> findAll() {
+		List<Chat> listChat = this.chatRepo.findAll();
 	
-	if (listChat == null) {
-		return new ArrayList<>();
-	}
+		if (listChat == null) {
+			return new ArrayList<>();
+		}
 	
-	return listChat;
+		return listChat;
 }
+	
+	public void envoyerMessage(String message, int id) {
+		this.chatRepo.envoyerMessagebyId(message, id);
+	}
 }

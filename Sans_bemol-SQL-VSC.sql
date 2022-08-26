@@ -90,3 +90,17 @@ CREATE TABLE chat(
     CONSTRAINT fk_cha_uti_id
     FOREIGN KEY (cha_uti_id) REFERENCES utilisateur(uti_id)
 );
+
+
+--CREATE TABLE lien_chat_uti(
+
+--    id SERIAL PRIMARY KEY, 
+--    lien_chat_uti_msg VARCHAR(5000),
+--    lien_chat_uti_id INT,
+
+--    CONSTRAINT fk_lien_chat_uti_id
+--    FOREIGN KEY (lien_chat_uti_id) REFERENCES  utilisateur(uti_id)
+--    ON DELETE CASCADE
+--    ON UPDATE CASCADE
+
+--);
