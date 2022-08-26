@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.formation.model.Instrument;
+import fr.formation.model.StyleMusical;
 import fr.formation.model.Utilisateur;
 
 import fr.formation.repo.IUtilisateurRepository;
@@ -73,7 +74,11 @@ public  class UtilisateurRepositorySql extends AbstractRepositorySql<Utilisateur
 			//on delete les instruments liés à l'utilisateur
 			myStatement=this.prepare("DELETE from lien_uti_ins WHERE utiins_uti_id=?");
 			myStatement.setInt(1,entity.getId());
-				
+			
+			//on delete les styles musicaux liés à l'utilisateur
+			myStatement=this.prepare("DELETE from lien_sty_uti WHERE styuti_uti_id=?");
+			myStatement.setInt(1,entity.getId());
+			
 			myStatement = null;
 			if (entity.getId() == 0) { // INSERT
 				myStatement = this.prepare("INSERT INTO utilisateur (uti_mdp, uti_nom, uti_prenom, uti_pseudo, uti_date_naissance, uti_adresse, uti_tel, uti_niveau) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
@@ -108,6 +113,12 @@ public  class UtilisateurRepositorySql extends AbstractRepositorySql<Utilisateur
 			for(Instrument instru : entity.getListeinstrument()) {
 				myStatement = this.prepare("INSERT INTO lien_uti_ins (utiins_ins_id, utiins_uti_id) VALUES (?,?)");
 				myStatement.setInt(1, instru.getId());
+				myStatement.setInt(2, entity.getId());
+			}
+			
+			for(StyleMusical style : entity.getStylemusical()) {
+				myStatement = this.prepare("INSERT INTO lien_sty_uti (styuti_sty_id, styuti_uti_id) VALUES (?,?)");
+				myStatement.setInt(1, style.getId());
 				myStatement.setInt(2, entity.getId());
 			}
 		}
