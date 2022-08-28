@@ -60,7 +60,7 @@ public class ApplicationSon {
 			leSon=srvSon.findById(3);
 			
 			byte[] bytesFromBdd = leSon.getContenu();
-			String chemin = "C:/Users/Rémi/Desktop/secondsong."+leSon.getFormat().name();
+			String chemin = "C:/Users/Rémi/Desktop/"+leSon.getTitre()+"."+leSon.getFormat().name();
 //			Path path = Path.of(chemin);
 			
 			File f = new File(chemin);

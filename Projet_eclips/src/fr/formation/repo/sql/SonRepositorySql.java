@@ -6,10 +6,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.formation.exception.IdNegativeException;
+import fr.formation.exception.ItemNotFoundException;
 import fr.formation.model.FormatSon;
 import fr.formation.model.Son;
 import fr.formation.model.Utilisateur;
 import fr.formation.repo.ISonRepository;
+import fr.formation.service.UtilisateurService;
 
 public class SonRepositorySql extends AbstractRepositorySql<Son> implements ISonRepository{
 
@@ -21,9 +24,14 @@ public class SonRepositorySql extends AbstractRepositorySql<Son> implements ISon
 			monSon.setId(result.getInt("son_id"));
 			monSon.setTitre(result.getString("son_nom"));
 			
-			Utilisateur monUti = new Utilisateur();
-			monUti.setId(result.getInt("son_uti_id"));
-			
+			UtilisateurService srvUti = new UtilisateurService();
+			try {
+				monSon.setCreateur(srvUti.findById(result.getInt("son_uti_id")));
+			} catch (IdNegativeException e) {
+				e.printStackTrace();
+			} catch (ItemNotFoundException e) {
+				e.printStackTrace();
+			}
 			monSon.setContenu(result.getBytes("son_contenu"));			
 			monSon.setFormat(FormatSon.valueOf(result.getString("son_format").toUpperCase()));
 			return monSon;			
