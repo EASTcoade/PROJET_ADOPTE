@@ -12,7 +12,7 @@ public abstract class AbstractRepositorySql<T> {
 	//M�thode pour se connecter
 	protected Connection connect( )throws SQLException {
 		this.connection= DriverManager.getConnection(
-					"jdbc:postgresql://localhost:5432/sans_bemol","postgres","password");		
+					"jdbc:postgresql://localhost:5432/sans_bemol","postgres","secret");		
 		return this.connection;
 	}
 	
@@ -21,13 +21,6 @@ public abstract class AbstractRepositorySql<T> {
 		return this.connect().prepareStatement(query);
 	}
 	
-	//M�thode pour �x�cuter une requete SQL
-	protected PreparedStatement prepare(String query, boolean generatedKeys) throws SQLException {
-		if (generatedKeys) {
-			return this.connect().prepareStatement(query, Statement.RETURN_GENERATED_KEYS);			
-		}
-						return this.prepare(query);
-		}
 	
 	//M�thode pour se d�connecter
 	protected void disconnect() {

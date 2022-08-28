@@ -54,9 +54,7 @@ public class ChatRepositoryService {
 		}
 	
 		return listChat;
-}
-	
-	public void envoyerMessage(String message, int id) {
-		this.chatRepo.envoyerMessagebyId(message, id);
 	}
+	
+	
 }

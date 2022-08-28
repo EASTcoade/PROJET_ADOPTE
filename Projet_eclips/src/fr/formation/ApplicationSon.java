@@ -5,7 +5,9 @@ import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Optional;
 
+import fr.formation.model.FormatSon;
 import fr.formation.model.Son;
 import fr.formation.model.Utilisateur;
 import fr.formation.service.SonService;
@@ -16,21 +18,34 @@ public class ApplicationSon {
 		
 		//enregistrement d'un son en BDD
 //		try {
+//			SonService srvSon = new SonService();
 //			File f = new File(
 //					"C:\\Users\\Rémi\\Downloads\\monti_cardasclassical__wpanufnik__preview.mp3");
-//		
-//			byte[] bytesFromFile = Files.readAllBytes(f.toPath());
 //			
-//			SonService srvSon = new SonService();
-//			Son leSon = new Son();
-//			
-//			leSon.setContenu(bytesFromFile);
-//			leSon.setTitre("First song");
-//			leSon.setCreateur(new Utilisateur());
-//			leSon.getCreateur().setId(1);
-//			
-//			srvSon.save(leSon);
-//			System.out.println("Son enregitsré en BDD");
+//			long fileSize = Files.size(f.toPath());
+//
+//			if(fileSize<=10000000) {
+//				if(srvSon.formatAcceptable(f.toString())){
+//					byte[] bytesFromFile = Files.readAllBytes(f.toPath());					
+//					
+//					Son leSon = new Son();
+//					
+//					leSon.setContenu(bytesFromFile);
+//					leSon.setTitre("First song");
+//					leSon.setCreateur(new Utilisateur());
+//					leSon.getCreateur().setId(1);					
+//					leSon.setFormat(srvSon.formatFichier(f.toString()));
+//					
+//					srvSon.save(leSon);
+//					System.out.println("Son enregitsré en BDD");
+//				}
+//				else {
+//					System.out.println("Choisir un fichier au format MP3 ou WAV");
+//				}
+//			}
+//			else {
+//				System.out.println("Ce fichier dépasse la limite de 10Mo");
+//			}
 //		}
 //		catch(Exception e){
 //			e.printStackTrace();
@@ -42,10 +57,10 @@ public class ApplicationSon {
 			SonService srvSon = new SonService();
 			Son leSon = new Son();
 			
-			leSon=srvSon.findById(2);
+			leSon=srvSon.findById(3);
 			
 			byte[] bytesFromBdd = leSon.getContenu();
-			String chemin = "C:/Users/Rémi/Desktop/firstsong.mp3";
+			String chemin = "C:/Users/Rémi/Desktop/secondsong."+leSon.getFormat().name();
 //			Path path = Path.of(chemin);
 			
 			File f = new File(chemin);
@@ -66,5 +81,7 @@ public class ApplicationSon {
 			e.printStackTrace();
 		}
 	}
+	
+	
 
 }

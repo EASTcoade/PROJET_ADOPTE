@@ -5,7 +5,14 @@ public class Son {
 	protected Utilisateur createur;
 	protected String titre;
 	protected byte[] contenu;
+	protected FormatSon format;
 	
+	public FormatSon getFormat() {
+		return format;
+	}
+	public void setFormat(FormatSon format) {
+		this.format = format;
+	}
 	public Utilisateur getCreateur() {
 		return createur;
 	}

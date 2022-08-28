@@ -88,9 +88,11 @@ public class ImageRepositorySql extends AbstractRepositorySql<Image> implements 
 						
 				myStatement.setString(1,entity.getTitre());
 				myStatement.setInt(2,entity.getFormat().ordinal());
-				myStatement.setBytes(3, entity.getContenu());				
+				myStatement.setBytes(3, entity.getContenu());
+				
+				myStatement.execute();
 			}
-			myStatement.execute();
+			
 			
 		}
 		catch(SQLException e) {

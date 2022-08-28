@@ -72,7 +72,7 @@ CREATE TABLE son(
     son_nom VARCHAR(50) NOT NULL,
     son_uti_id INT,
     son_contenu BYTEA, 
-    --inst_image 
+    son_format VARCHAR(4) NOT NULL, 
 
     CONSTRAINT  fk_son_uti_id
     FOREIGN KEY (son_uti_id) REFERENCES utilisateur(uti_id)

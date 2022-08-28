@@ -2,10 +2,12 @@ package fr.formation.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import fr.formation.exception.IdNegativeException;
 import fr.formation.exception.NotValidException;
 import fr.formation.exception.SonNotFoundException;
+import fr.formation.model.FormatSon;
 import fr.formation.model.Son;
 import fr.formation.model.Utilisateur;
 import fr.formation.repo.ISonRepository;  
@@ -49,5 +51,33 @@ public class SonService {
 		}	
 		
 		repoSon.save(son);
+	}
+	//analyse de l'extension du fichier
+	public Optional<String> findExtensionFichier(String chemin){
+		return Optional.ofNullable(chemin)
+			.filter(f -> f.contains("."))
+	        .map(f -> f.substring(chemin.lastIndexOf(".") + 1));
+	}
+	//determination si format acceptable
+	public boolean formatAcceptable(String chemin) {
+		String formatFichier = this.findExtensionFichier(chemin).get().toString().toUpperCase();
+		FormatSon[] formats = FormatSon.values();
+		for(FormatSon format : formats) {
+			if (formatFichier.equals(format.name())){
+				return true;
+			}
+		}
+		return false;
+	}
+	//détermination du format du fichier
+	public FormatSon formatFichier(String chemin) {
+		String formatFichier = this.findExtensionFichier(chemin).get().toString().toUpperCase();
+		FormatSon[] formats = FormatSon.values();
+		for(FormatSon format : formats) {
+			if(formatFichier.equals(format.name())) {
+				return format;
+			}
+		}
+		return null;
 	}
 }

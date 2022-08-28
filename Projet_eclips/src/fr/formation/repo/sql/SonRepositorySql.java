@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.formation.model.FormatSon;
 import fr.formation.model.Son;
 import fr.formation.model.Utilisateur;
 import fr.formation.repo.ISonRepository;
@@ -23,7 +24,8 @@ public class SonRepositorySql extends AbstractRepositorySql<Son> implements ISon
 			Utilisateur monUti = new Utilisateur();
 			monUti.setId(result.getInt("son_uti_id"));
 			
-			monSon.setContenu(result.getBytes("son_contenu"));
+			monSon.setContenu(result.getBytes("son_contenu"));			
+			monSon.setFormat(FormatSon.valueOf(result.getString("son_format").toUpperCase()));
 			return monSon;			
 		}
 		catch(SQLException e) {
@@ -74,27 +76,30 @@ public class SonRepositorySql extends AbstractRepositorySql<Son> implements ISon
 		try {
 			PreparedStatement myStatement=null;
 			if(entity.getId()==0) {//c'est un INSERT 
-				myStatement=this.prepare("INSERT INTO son (son_nom,son_uti_id,son_contenu)"
-						+ "VALUES(?,?,?)");
+				myStatement=this.prepare("INSERT INTO son (son_nom,son_uti_id,son_contenu, son_format)"
+						+ "VALUES(?,?,?,?)");
 				myStatement.setString(1,entity.getTitre());
 				myStatement.setInt(2,entity.getCreateur().getId());
 				myStatement.setBytes(3, entity.getContenu());
+				myStatement.setString(4, entity.getFormat().name());
 				
 				myStatement.execute();
 			}else {//c'est un UPDATE
 				myStatement=this.prepare("UPDATE son "
 						+ "SET son_nom = ?,"
-						+ "son_uti_id = ?"
-						+ "son_contenu = ?"
+						+ "son_uti_id = ?,"
+						+ "son_contenu = ?,"
+						+ "son_format = ?,"
 						+ "WHERE son_id=?");
 						
 				myStatement.setString(1,entity.getTitre());
 				myStatement.setInt(2,entity.getCreateur().getId());
 				myStatement.setBytes(3, entity.getContenu());
-				myStatement.setInt(4,entity.getId());				
-			}
-			myStatement.execute();
-			
+				myStatement.setString(4, entity.getFormat().name());
+				myStatement.setInt(5,entity.getId());	
+				
+				myStatement.execute();
+			}			
 		}
 		catch(SQLException e) {
 			e.printStackTrace();

@@ -19,10 +19,10 @@ public class ApplicationChat {
 		
 		UtilisateurService srv = new UtilisateurService();
 		Utilisateur user1 = new Utilisateur();
-		user1 = srv.findById(3);
+		user1 = srv.findById(1);
 		
 		Utilisateur user2 = new Utilisateur();
-		user2 = srv.findById(4);
+		user2 = srv.findById(1);
 		
 		ChatRepositoryService repoChat = new ChatRepositoryService();
 		Chat chat = new Chat();
