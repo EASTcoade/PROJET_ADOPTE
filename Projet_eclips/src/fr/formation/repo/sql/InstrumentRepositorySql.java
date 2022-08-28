@@ -37,7 +37,7 @@ public class InstrumentRepositorySql extends AbstractRepositorySql<Instrument> i
 	@Override
 	public Instrument findById(Integer id) {
 		try {
-			PreparedStatement myStatement = this.prepare("SELECT * FROM instrument WHERE uti_id = ?");
+			PreparedStatement myStatement = this.prepare("SELECT * FROM instrument WHERE ins_id = ?");
 			
 			myStatement.setInt(1, id);
 			

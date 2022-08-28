@@ -15,7 +15,32 @@ import fr.formation.model.Utilisateur;
 import fr.formation.repo.IUtilisateurRepository;
 
 public  class UtilisateurRepositorySql extends AbstractRepositorySql<Utilisateur> implements IUtilisateurRepository { 
-
+	
+	@Override
+	protected Utilisateur map(ResultSet myResult) {
+		try {
+			// Pour chaque résultat, il faudra créer un nouveau Fournisseur
+			Utilisateur monUtilisateur = new Utilisateur();
+			
+			// On associe toutes les infos du fournisseur
+			monUtilisateur.setId( myResult.getInt("uti_id") );
+			monUtilisateur.setMdp( myResult.getString("uti_mdp") );
+			monUtilisateur.setNom( myResult.getString("uti_nom") );
+			monUtilisateur.setPrenom( myResult.getString("uti_prenom") );
+			monUtilisateur.setPseudo( myResult.getString("uti_pseudo") );
+			monUtilisateur.setDateNaissance(myResult.getDate("uti_date_naissance").toLocalDate() );
+			monUtilisateur.setAdresse( myResult.getString("uti_adresse") );
+			monUtilisateur.setTelephone( myResult.getString("uti_tel") );		
+			
+			
+			return monUtilisateur;
+		}
+		
+		catch (SQLException e) {
+			return null;
+		}
+	
+	}
 	@Override
 	public List<Utilisateur> findAll() {
 		List<Utilisateur> utilisateur = new ArrayList<>();
@@ -71,6 +96,7 @@ public  class UtilisateurRepositorySql extends AbstractRepositorySql<Utilisateur
 	public void save(Utilisateur entity) {
 		try {
 			PreparedStatement myStatement = null;
+			PreparedStatement instruStatement = null;
 			//on delete les instruments li�s � l'utilisateur
 			myStatement=this.prepare("DELETE from lien_uti_ins WHERE utiins_uti_id=?");
 			myStatement.setInt(1,entity.getId());
@@ -81,7 +107,15 @@ public  class UtilisateurRepositorySql extends AbstractRepositorySql<Utilisateur
 			
 			myStatement = null;
 			if (entity.getId() == 0) { // INSERT
-				myStatement = this.prepare("INSERT INTO utilisateur (uti_mdp, uti_nom, uti_prenom, uti_pseudo, uti_date_naissance, uti_adresse, uti_tel, uti_niveau) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+				myStatement = this.prepare("INSERT INTO utilisateur "
+						+ "(uti_mdp,"
+						+ "uti_nom,"
+						+ "uti_prenom,"
+						+ "uti_pseudo,"
+						+ "uti_date_naissance,"
+						+ "uti_adresse,"
+						+ "uti_tel,"
+						+ "uti_niveau) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",true);
 			}
 			
 			else { // UPDATE
@@ -108,19 +142,30 @@ public  class UtilisateurRepositorySql extends AbstractRepositorySql<Utilisateur
 			myStatement.setString(7, entity.getTelephone());
 			myStatement.setInt(8, entity.getNiveau().ordinal());		
 			
-			myStatement.executeUpdate();
+			myStatement.execute();
 			
-			for(Instrument instru : entity.getListeinstrument()) {
-				myStatement = this.prepare("INSERT INTO lien_uti_ins (utiins_ins_id, utiins_uti_id) VALUES (?,?)");
-				myStatement.setInt(1, instru.getId());
-				myStatement.setInt(2, entity.getId());
+			ResultSet rsKey = myStatement.getGeneratedKeys();
+					
+			if(rsKey.next()) {
+				for(Instrument instru : entity.getListeinstrument()) {
+					instruStatement = this.prepare("INSERT INTO lien_uti_ins (utiins_ins_id, utiins_uti_id) VALUES (?,?)");
+					
+					instruStatement.setInt(1, instru.getId());					
+					instruStatement.setInt(2, (int)rsKey.getLong(1));
+					
+					instruStatement.executeUpdate();
+				}
+				
+				for(StyleMusical style : entity.getStylemusical()) {
+					myStatement = this.prepare("INSERT INTO lien_sty_uti (styuti_sty_id, styuti_uti_id) VALUES (?,?)");
+					myStatement.setInt(1, style.getId());
+					myStatement.setInt(2, (int)rsKey.getLong(1));
+					
+					myStatement.executeUpdate();
+				}
 			}
 			
-			for(StyleMusical style : entity.getStylemusical()) {
-				myStatement = this.prepare("INSERT INTO lien_sty_uti (styuti_sty_id, styuti_uti_id) VALUES (?,?)");
-				myStatement.setInt(1, style.getId());
-				myStatement.setInt(2, entity.getId());
-			}
+			
 		}
 		
 		catch (SQLException e) {
@@ -146,35 +191,5 @@ public  class UtilisateurRepositorySql extends AbstractRepositorySql<Utilisateur
 		catch (SQLException e) {
 			e.printStackTrace();
 		}
-	}
-		
-	
-
-	@Override
-	protected Utilisateur map(ResultSet myResult) {
-		try {
-			// Pour chaque résultat, il faudra créer un nouveau Fournisseur
-			Utilisateur monUtilisateur = new Utilisateur();
-			
-			// On associe toutes les infos du fournisseur
-			monUtilisateur.setId( myResult.getInt("uti_id") );
-			monUtilisateur.setMdp( myResult.getString("uti_mdp") );
-			monUtilisateur.setNom( myResult.getString("uti_nom") );
-			monUtilisateur.setPrenom( myResult.getString("uti_prenom") );
-			monUtilisateur.setPseudo( myResult.getString("uti_pseudo") );
-			monUtilisateur.setDateNaissance(myResult.getDate("uti_date_naissance").toLocalDate() );
-			monUtilisateur.setAdresse( myResult.getString("uti_adresse") );
-			monUtilisateur.setTelephone( myResult.getString("uti_tel") );
-			
-			
-			
-			
-			return monUtilisateur;
-		}
-		
-		catch (SQLException e) {
-			return null;
-		}
-	
-	}
+	}	
 }

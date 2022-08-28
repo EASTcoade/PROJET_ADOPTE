@@ -61,7 +61,7 @@ public class StyleMusicalRepositorySql extends AbstractRepositorySql<StyleMusica
 			PreparedStatement myStatement = null;
 			
 			if (entity.getId() == 0) { 
-				 myStatement = this.prepare("INSERT INTO stylemusical sty_nom VALUES ?");
+				 myStatement = this.prepare("INSERT INTO stylemusical (sty_nom) VALUES (?)");
 			}
 			else {
 				 myStatement = this.prepare("UPDATE stylemusical SET sty_nom = ? WHERE sty_id = " + entity.getId());
