@@ -4,6 +4,7 @@ target/
 .settings/
 .classpath
 .project
+SqlConnection.java
 
 # Compiled class file
 *.class
