@@ -12,7 +12,7 @@ public abstract class AbstractRepositorySql<T> {
 	//M�thode pour se connecter
 	protected Connection connect( )throws SQLException {
 		this.connection= DriverManager.getConnection(
-					"jdbc:postgresql://localhost:5432/sans_bemol","postgres",SqlProperties.PASSWORD);		
+					"jdbc:postgresql://localhost:5432/sans_bemol","postgres",SqlConnection.password);		
 		return this.connection;
 	}
 	
