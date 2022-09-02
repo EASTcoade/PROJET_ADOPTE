@@ -1,17 +1,26 @@
 package fr.formation.model;
-
 import java.util.ArrayList;
-
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+@Entity //Annotation obligatoire sur la classe persisté
+@Table (name = "groupe") // Optionnel, précise le nom de la table
 public class Groupe {
-	
-	protected Leader chef;
+	@Id //anotation obligatoire sur l'id
+	@GeneratedValue (strategy = GenerationType.IDENTITY) //auto increment
+	@Column (name= "GRO_ID", nullable = false) //optionnel, par défault le nom de la colonne est le nom de l'attribut
+	protected Leader leader;
+	@Column (name= "GRO_LEADER", nullable = false)
 	protected ArrayList<Utilisateur> groupe = new ArrayList<Utilisateur>();
 	
-	public Leader getChef() {
-		return chef;
+	public Leader getLeader() {
+		return leader;
 	}
-	public void setChef(Leader chef) {
-		this.chef = chef;
+	public void setChef(Leader leader) {
+		this.leader = leader;
 	}
 	public ArrayList<Utilisateur> getGroupe() {
 		return groupe;
@@ -24,14 +33,11 @@ public class Groupe {
 		
 		for (Utilisateur people : amis)
 		{
-			if (people.friendWith(people, chef)) 
+			if (people.friendWith(people, chef))
 			{
 				this.groupe.add(people);
 			}
 		}
-
 		
 	}
 }
-
-	
