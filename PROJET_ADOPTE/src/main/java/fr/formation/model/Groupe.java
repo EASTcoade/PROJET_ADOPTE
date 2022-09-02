@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 public class Groupe {
 	
-	protected SuperUtilisateur chef;
+	protected Leader chef;
 	protected ArrayList<Utilisateur> groupe = new ArrayList<Utilisateur>();
 	
-	public SuperUtilisateur getChef() {
+	public Leader getChef() {
 		return chef;
 	}
-	public void setChef(SuperUtilisateur chef) {
+	public void setChef(Leader chef) {
 		this.chef = chef;
 	}
 	public ArrayList<Utilisateur> getGroupe() {
@@ -20,7 +20,7 @@ public class Groupe {
 		this.groupe = groupe;
 	}
 	
-	public void ajouterGroupe(SuperUtilisateur chef, ArrayList<Utilisateur> amis ){
+	public void ajouterGroupe(Leader chef, ArrayList<Utilisateur> amis ){
 		
 		for (Utilisateur people : amis)
 		{

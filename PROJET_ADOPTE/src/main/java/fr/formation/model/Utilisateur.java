@@ -3,21 +3,58 @@ package fr.formation.model;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+
+@Entity
+@Table(name = "utilisateur")
 public class Utilisateur {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "uti_id")
 	private int id;
+	
+	@Column(name = "uti_date")
 	private LocalDate dateNaissance;
+	
+	@Column(name = "uti_pseudo", length = 150, nullable = false)
 	private String pseudo;
+	@Column(name = "uti_nom", length = 150, nullable = false)
 	private String nom;
+	@Column(name = "uti_prenom", length = 150, nullable = false)
 	private String prenom;
+	@Column(name = "uti_mail", length = 150, nullable = false)
 	private String mail;
+	@Column(name = "uti_mdp", length = 150, nullable = false)
 	private String mdp;
+	@Column(name = "uti_adresse", length = 150, nullable = false)
 	private String adresse;
+	@Column(name = "uti_tel", length = 20, nullable = false)
 	private String telephone;
+	
+	@ManyToOne
+	@JoinColumn(name = "uti_niveau_id", nullable = false)
 	private Niveau niveau;
+	@ManyToOne
+	@JoinColumn(name = "uti_image_id", nullable = false)
 	private Image photoprofil;
+	
+	@Column(name = "uti_age")
 	private int age;
+	
+	@OneToMany(mappedBy ="utilisateur")
 	private List<StyleMusical> stylemusical;
+	@OneToMany(mappedBy ="utilisateur")
 	private List<Instrument> listeinstrument;
+	@OneToMany(mappedBy ="utilisateur")
 	private List<Son> son; // à voir avec Jérémy
 
 	
@@ -143,7 +180,7 @@ public class Utilisateur {
 		this.son = son;
 	}
 
-	public boolean friendWith(Utilisateur people, SuperUtilisateur chef) {
+	public boolean friendWith(Utilisateur people, Leader chef) {
 		// TODO Auto-generated method stub
 		return false;
 	}
