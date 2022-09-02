@@ -7,8 +7,5 @@ public enum FormatImage {
 	@Enumerated(EnumType.ORDINAL)
 	JPEG,JPG,PNG,GIF;
 
-	int getId() {
-		// TODO Auto-generated method stub
-		return 0;
 	}
-}
+
