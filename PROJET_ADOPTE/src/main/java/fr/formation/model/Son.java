@@ -1,10 +1,36 @@
 package fr.formation.model;
 
-public class Son {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="son")
+public class Son{
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="son_id")
 	protected int id;
+	
+	@ManyToOne
+	@JoinColumn(name="son_uti_id")
 	protected Utilisateur createur;
+	
+	@Column(name="son_nom")
 	protected String titre;
+	
+	@Column(name="son_contenu")
 	protected byte[] contenu;
+	
+	@Column(name="son_format",nullable=false)
+	@Enumerated(EnumType.STRING)
 	protected FormatSon format;
 	
 	public FormatSon getFormat() {

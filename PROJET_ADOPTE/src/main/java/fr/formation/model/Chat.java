@@ -1,54 +1,69 @@
 package fr.formation.model;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
-public class Chat {
-	protected String texte;
-	protected Utilisateur destinataire;
-	protected Utilisateur expediteur;
-	protected Date dateEnvoi;
-	protected int chat_id;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="chat")
+public class Chat{
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="cha_id")
+	protected int id;
 	
-	public int getChat_id() {
-		return chat_id;
+	@Column(name="cha_contenu",length=1000)
+	protected String texte;
+	
+	@ManyToOne
+	@JoinColumn(name="cha_uti_id_exp")	
+	protected Utilisateur expediteur;
+	
+	@Column(name="cha_date")
+	protected LocalDateTime dateEnvoi;
+
+	public int getId() {
+		return id;
 	}
-	public void setChat_id(int chat_id) {
-		this.chat_id = chat_id;
+
+	public void setId(int id) {
+		this.id = id;
 	}
+
 	public String getTexte() {
 		return texte;
 	}
+
 	public void setTexte(String texte) {
 		this.texte = texte;
 	}
-	public Utilisateur getDestinataire() {
-		return destinataire;
-	}
-	public void setDestinataire(Utilisateur destinataire) {
-		this.destinataire = destinataire;
-	}
+
 	public Utilisateur getExpediteur() {
 		return expediteur;
 	}
+
 	public void setExpediteur(Utilisateur expediteur) {
 		this.expediteur = expediteur;
 	}
-	public Date getDateEnvoi() {
+
+	public LocalDateTime getDateEnvoi() {
 		return dateEnvoi;
 	}
-	public void setDateEnvoi(Date dateEnvoi) {
+
+	public void setDateEnvoi(LocalDateTime dateEnvoi) {
 		this.dateEnvoi = dateEnvoi;
 	}
 	
-	public String envoyerMessage(Utilisateur expe, Utilisateur desti, String contenu) {
-		return contenu;
-	}
-	public String recevoirMessage(Utilisateur expe, Utilisateur desti, String contenu) {
-		return contenu;
-	}
-	public String envoyerMessagePublique(Utilisateur expe, List<Utilisateur> listDesti, String contenu) {
-		return contenu;
-	}
+	
+	
 		
 }
