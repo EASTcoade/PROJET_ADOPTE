@@ -135,6 +135,7 @@ CREATE TABLE notification(
 
     not_id SERIAL PRIMARY KEY, 
     not_msg VARCHAR(1000),
+    not_date, DATE
     not_uti_id INT,
 
     CONSTRAINT fk_not_uti_id

@@ -20,9 +20,13 @@ public class Groupe {
 	@Column (name= "gro_id", nullable = false)
 	protected int id;
 	
-	@ManyToOne
-	@JoinColumn (name= "gro_leader_id", nullable = false) //optionnel, par défault le nom de la colonne est le nom de l'attribut
-	protected Leader leader;
+	
+	@ManyToMany
+	@JoinTable (name= "groupe_leader",
+	joinColumns=@JoinColumn(name="leagrp_groupe_id"),
+	inverseJoinColumns=@JoinColumn(name="leagrp_leader_id"))
+	protected List<Leader> leaders ;
+	
 	
 	@ManyToMany
 	@JoinTable (name= "utilisateur_groupe",
@@ -32,11 +36,11 @@ public class Groupe {
 	
 
 	
-	public Leader getLeader() {
-		return leader;
+	public List<Leader> getLeaders() {
+		return this.leaders;
 	}
-	public void setChef(Leader leader) {
-		this.leader = leader;
+	public void setLeaders(List<Leader> leaders) {
+		this.leaders = leaders;
 	}
 	public List<Utilisateur> getGroupe() {
 		return groupe;

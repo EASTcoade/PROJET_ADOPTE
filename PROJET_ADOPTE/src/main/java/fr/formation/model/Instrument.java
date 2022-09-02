@@ -1,8 +1,21 @@
 package fr.formation.model;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 public class Instrument {
+	
+	
 	protected Image image;
+	
+	@Column(name = "ins_nom")
 	protected String nom;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ins_id")
 	protected int id;
 	
 	public int getId() {

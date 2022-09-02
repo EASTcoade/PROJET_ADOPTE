@@ -1,10 +1,29 @@
 package fr.formation.model;
 
+import javax.persistence.Column;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 public class Image {
+	
+	@Enumerated(EnumType.ORDINAL)
 	protected FormatImage format;
+	
+	@Column(name = "ima_nom")
 	protected String titre;
+	
+	@Column(name = "ima_contenu")
 	protected byte [] contenu;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ima_id")
 	protected int id;
+	
+	
 	public int getId() {
 		return id;
 	}
