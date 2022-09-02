@@ -5,10 +5,14 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -37,12 +41,13 @@ public class Utilisateur {
 	private String mdp;
 	@Column(name = "uti_adresse", length = 150, nullable = false)
 	private String adresse;
-	@Column(name = "uti_tel", length = 20, nullable = false)
+	@Column(name = "uti_tel", length = 20)
 	private String telephone;
 	
-	@ManyToOne
-	@JoinColumn(name = "uti_niveau_id", nullable = false)
+	@Enumerated(EnumType.ORDINAL)
+	@Column(name = "uti_niveau_id", nullable = false)
 	private Niveau niveau;
+	
 	@ManyToOne
 	@JoinColumn(name = "uti_image_id", nullable = false)
 	private Image photoprofil;
@@ -50,11 +55,22 @@ public class Utilisateur {
 	@Column(name = "uti_age")
 	private int age;
 	
-	@OneToMany(mappedBy ="utilisateur")
+	
+	@ManyToMany
+	@JoinTable (name ="style_utilisateur",
+	joinColumns=@JoinColumn(name="stluti_utilisateur_id"),
+	inverseJoinColumns=@JoinColumn(name="stluti_stylemusical_id"))
 	private List<StyleMusical> stylemusical;
-	@OneToMany(mappedBy ="utilisateur")
+	
+	@ManyToMany
+	@JoinTable (name ="utilisateur_instrument",
+	joinColumns=@JoinColumn(name="utiins_utilisateur_id"),
+	inverseJoinColumns=@JoinColumn(name="utiins_instrument_id"))
 	private List<Instrument> listeinstrument;
-	@OneToMany(mappedBy ="utilisateur")
+	
+
+	
+	@OneToMany(mappedBy ="createur")
 	private List<Son> son; // à voir avec Jérémy
 
 	
