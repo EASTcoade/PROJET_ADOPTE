@@ -17,13 +17,13 @@
 		<class>fr.formation.model.Notification</class>
 		<class>fr.formation.model.Son</class>
 		<class>fr.formation.model.StyleMusical</class>
-		<class>fr.formation.model.SuperUtilisateur</class>
+		<class>fr.formation.model.Leader</class>
 		<class>fr.formation.model.Utilisateur</class>
 
 		<properties>
       		<!-- Listes des propriétés liées à l’implémentation (Hibernate, OpenJPA, ...) -->
       		
-      		<property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/eshop" />
+      		<property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/sans_bemol" />
 		    <property name="hibernate.connection.driver" value="org.postgresql.Driver" />
 		    <property name="hibernate.connection.user" value="postgres" />
 		    <property name="hibernate.connection.password" value="SqlConnection.passwprd" />
