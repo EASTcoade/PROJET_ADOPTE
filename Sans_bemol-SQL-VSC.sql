@@ -1,4 +1,23 @@
 --CREATE DATABASE Sans_bemol;
+CREATE TABLE admin(
+
+    adm_id SERIAL PRIMARY KEY,
+    adm_nom VARCHAR(50) NOT NULL,
+    adm_password VARCHAR(200) NOT NULL
+
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+);
+
+CREATE TABLE groupe(
+
+    gro_id SERIAL PRIMARY KEY,
+    gro_nom VARCHAR(50) NOT NULL,
+   
+    --FOREIGN KEY () REFERENCES () --??
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+);
 
 CREATE TABLE utilisateur (
     uti_id SERIAL PRIMARY KEY,

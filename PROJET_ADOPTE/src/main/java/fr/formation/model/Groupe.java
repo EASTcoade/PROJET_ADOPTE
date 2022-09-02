@@ -14,9 +14,9 @@ import javax.persistence.Table;
 public class Groupe {
 	@Id //anotation obligatoire sur l'id
 	@GeneratedValue (strategy = GenerationType.IDENTITY) //auto increment
-	@Column (name= "GROU_ID", nullable = false) //optionnel, par défault le nom de la colonne est le nom de l'attribut
+	@Column (name= "GRO_ID", nullable = false) //optionnel, par défault le nom de la colonne est le nom de l'attribut
 	protected LEADER leader;
-	@Column (name= "GROU_LEADER", nullable = false)
+	@Column (name= "GRO_LEADER", nullable = false)
 	protected ArrayList<Utilisateur> groupe = new ArrayList<Utilisateur>();
 	
 	public LEADER getLeader() {
