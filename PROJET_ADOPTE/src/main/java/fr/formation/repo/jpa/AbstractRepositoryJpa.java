@@ -1,11 +1,16 @@
 package fr.formation.repo.jpa;
 
 import java.lang.reflect.Field;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Properties;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+
+import fr.formation.repo.sql.SqlConnection;
 
 
 
@@ -17,7 +22,12 @@ protected static EntityManagerFactory emf = null;
 	
 	public AbstractRepositoryJpa(Class<T> clz) {
 		if (emf == null) {
-			emf = Persistence.createEntityManagerFactory("EshopUnit");
+			// On peut modifier une ou plusieurs propriétés avant de générer l'EntityManagerFactory
+			Map<String, String> props = new HashMap<>();
+			props.put("hibernate.connection.password", SqlConnection.password);
+			
+			emf = Persistence.createEntityManagerFactory("EshopUnit",props);
+			
 		}
 		
 		this.clz = clz;
