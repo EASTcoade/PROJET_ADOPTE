@@ -20,4 +20,12 @@ public class SonRepositoryTest {
 		Assertions.assertNotNull(sons);
 		Assertions.assertTrue(sons.size()>0);
 	}
+	
+	@Test
+	public void testFindById() {
+		Son son = this.repoSon.findById(2);
+		
+		Assertions.assertNotNull(son);
+		Assertions.assertTrue(son.getId()==2);
+	}
 }
