@@ -27,7 +27,6 @@ public class ApplicationGeneration {
 		user1.setMail("Bebertdu05@gmail.com");
 		user1.setAdresse("20 rue des Mimosas");
 		user1.setPseudo("Beberdo le 16");
-		user1.setAge(80);
 		user1.setDateNaissance(LocalDate.parse("1945-10-10"));
 		user1.setPrenom("Bernard");
 		user1.setNiveau(Niveau.DEBUTANT);
