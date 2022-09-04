@@ -28,13 +28,20 @@ CREATE TABLE utilisateur (
     uti_date_naissance DATE NOT NULL,
     uti_adresse VARCHAR(100) NOT NULL,
     uti_tel VARCHAR(20) NOT NULL, --alter table nom_table ADD CONSTRAINT -- CHECK (-- ~ '[0-9]{10}');
-    uti_niveau VARCHAR(20) NOT NULL
+    uti_niveau VARCHAR(20) NOT NULL,
+    uti_mail VARCHAR(100) NOT NULL,
+    uti_image_id INT,
+
+    CONSTRAINT fk_uti_ima_id
+    FOREIGN KEY (uti_ima_id) REFERENCES  image(ima_id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE, 
 );
 
 CREATE TABLE styleMusical (
 
     sty_id SERIAL PRIMARY KEY,
-    sty_nom VARCHAR(20) NOT NULL
+    sty_nom VARCHAR(150) NOT NULL
 
 );
 
