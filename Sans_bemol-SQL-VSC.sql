@@ -4,19 +4,20 @@ CREATE TABLE admin(
     adm_id SERIAL PRIMARY KEY,
     adm_nom VARCHAR(50) NOT NULL,
     adm_password VARCHAR(200) NOT NULL
-
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
 );
 
 CREATE TABLE groupe(
 
     gro_id SERIAL PRIMARY KEY,
-    gro_nom VARCHAR(50) NOT NULL,
-   
-    --FOREIGN KEY () REFERENCES () --??
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
+    gro_nom VARCHAR(50) NOT NULL
+);
+CREATE TABLE image(
+
+    ima_id SERIAL PRIMARY KEY,
+    ima_nom VARCHAR(50) NOT NULL,
+    ima_contenu BYTEA, 
+    ima_format VARCHAR(20) NOT NULL
+
 );
 
 CREATE TABLE utilisateur (
@@ -33,9 +34,9 @@ CREATE TABLE utilisateur (
     uti_image_id INT,
 
     CONSTRAINT fk_uti_ima_id
-    FOREIGN KEY (uti_ima_id) REFERENCES  image(ima_id)
+    FOREIGN KEY (uti_image_id) REFERENCES  image(ima_id)
     ON DELETE CASCADE
-    ON UPDATE CASCADE, 
+    ON UPDATE CASCADE 
 );
 
 CREATE TABLE styleMusical (
@@ -142,22 +143,23 @@ CREATE TABLE notification(
 
     not_id SERIAL PRIMARY KEY, 
     not_msg VARCHAR(1000),
-    not_date, DATE
+    not_date DATE,
     not_uti_id INT,
 
     CONSTRAINT fk_not_uti_id
     FOREIGN KEY (not_uti_id) REFERENCES  utilisateur(uti_id)
     ON DELETE CASCADE
-    ON UPDATE CASCADE,
+    ON UPDATE CASCADE
 
 );
 
 
-CREATE TABLE image(
 
-    ima_id SERIAL PRIMARY KEY,
-    ima_nom VARCHAR(50) NOT NULL,
-    ima_contenu BYTEA, 
-    ima_format VARCHAR(20) NOT NULL
 
-);
+
+
+
+
+
+
+
