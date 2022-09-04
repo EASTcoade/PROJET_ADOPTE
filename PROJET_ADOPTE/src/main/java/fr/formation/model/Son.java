@@ -23,7 +23,7 @@ public class Son{
 	@JoinColumn(name="son_uti_id")
 	protected Utilisateur createur;
 	
-	@Column(name="son_nom")
+	@Column(name="son_nom",nullable=false,length=50)
 	protected String titre;
 	
 	@Column(name="son_contenu")

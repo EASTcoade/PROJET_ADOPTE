@@ -18,9 +18,9 @@ public class Admin {
 	private int id;
 	
 	
-	@Column(name = "adm_password", length = 150, nullable = false)
+	@Column(name = "adm_password", length = 200, nullable = false)
 	protected String password;
-	@Column(name = "adm_nom", length = 150, nullable = false)
+	@Column(name = "adm_nom", length = 50, nullable = false)
 	protected String nom;
 
 	public String getPassword() {

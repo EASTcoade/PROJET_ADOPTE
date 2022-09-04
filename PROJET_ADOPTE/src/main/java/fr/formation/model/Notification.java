@@ -25,7 +25,7 @@ public class Notification {
 	@Column(name = "not_id")
 	private int id;
 	
-	@Column(name = "not_msg")
+	@Column(name = "not_msg",length=1000)
 	private String message;
 	
 	@Column(name="not_date")
@@ -35,7 +35,7 @@ public class Notification {
 	@JoinTable (name ="notification_utilisateur",
 	joinColumns=@JoinColumn(name="utinot_notification_id"),
 	inverseJoinColumns=@JoinColumn(name="utinot_utilisateur_id"))
-	private List<Utilisateur> destinataire = new ArrayList<>() ;
+	private List<Utilisateur> destinataires;
 	
 	
 	public String getMessage() {
@@ -50,11 +50,11 @@ public class Notification {
 	public void setDate(LocalDateTime date) {
 		this.date = date;
 	}
-	public List<Utilisateur> getDestinataire() {
-		return destinataire;
+	public List<Utilisateur> getDestinataires() {
+		return destinataires;
 	}
-	public void setDestinataire(List<Utilisateur> destinataire) {
-		this.destinataire = destinataire;
+	public void setDestinataires(List<Utilisateur> destinataire) {
+		this.destinataires = destinataire;
 	}
 	
 	public void notification () {

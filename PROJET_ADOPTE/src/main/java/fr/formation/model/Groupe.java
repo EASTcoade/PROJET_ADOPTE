@@ -20,6 +20,8 @@ public class Groupe {
 	@Column (name= "gro_id", nullable = false)
 	protected int id;
 	
+	@Column(name="gro_nom", length=50,nullable=false)
+	protected String nom;
 	
 	@ManyToMany
 	@JoinTable (name= "groupe_leader",

@@ -12,7 +12,7 @@ public class Instrument {
 	
 //	protected Image image;
 	
-	@Column(name = "ins_nom")
+	@Column(name = "ins_nom",nullable=false)
 	protected String nom;
 	
 	@Id

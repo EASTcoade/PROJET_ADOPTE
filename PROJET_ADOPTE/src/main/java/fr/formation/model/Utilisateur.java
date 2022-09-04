@@ -26,34 +26,35 @@ public class Utilisateur {
 	@Column(name = "uti_id")
 	private int id;
 	
-	@Column(name = "uti_date")
+	@Column(name = "uti_date_naissance",nullable=false)
 	private LocalDate dateNaissance;
 	
-	@Column(name = "uti_pseudo", length = 150, nullable = false)
+	@Column(name = "uti_pseudo", length = 100, nullable = false)
 	private String pseudo;
-	@Column(name = "uti_nom", length = 150, nullable = false)
+	@Column(name = "uti_nom", length = 100, nullable = false)
 	private String nom;
-	@Column(name = "uti_prenom", length = 150, nullable = false)
+	@Column(name = "uti_prenom", length = 100, nullable = false)
 	private String prenom;
 	@Column(name = "uti_mail", length = 150, nullable = false)
 	private String mail;
-	@Column(name = "uti_mdp", length = 150, nullable = false)
+	@Column(name = "uti_mdp", length = 100, nullable = false)
 	private String mdp;
-	@Column(name = "uti_adresse", length = 150, nullable = false)
+	@Column(name = "uti_adresse", length = 100, nullable = false)
 	private String adresse;
-	@Column(name = "uti_tel", length = 20)
+	@Column(name = "uti_tel", length = 20,nullable=false)
 	private String telephone;
 	
 	@Enumerated(EnumType.ORDINAL)
-	@Column(name = "uti_niveau_id", nullable = false)
+	@Column(name = "uti_niveau", nullable = false)
 	private Niveau niveau;
 	
 	@ManyToOne
-	@JoinColumn(name = "uti_image_id", nullable = false)
-	private Image photoprofil;
+	@JoinColumn(name = "uti_image_id")
+	private Image photoProfil;
 	
-	@Column(name = "uti_age")
-	private int age;
+	//pas besoin d'attribut âge puisqu'on a la date de naissance
+//	@Column(name = "uti_age")
+//	private int age;
 	
 	
 	@ManyToMany
@@ -157,19 +158,11 @@ public class Utilisateur {
 	}
 
 	public Image getPhotoprofil() {
-		return photoprofil;
+		return photoProfil;
 	}
 
-	public void setPhotoprofil(Image photoprofil) {
-		this.photoprofil = photoprofil;
-	}
-
-	public int getAge() {
-		return age;
-	}
-
-	public void setAge(int age) {
-		this.age = age;
+	public void setPhotoprofil(Image photoProfil) {
+		this.photoProfil = photoProfil;
 	}
 
 	public List<StyleMusical> getStylemusical() {

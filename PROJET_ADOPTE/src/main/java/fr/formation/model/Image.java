@@ -12,10 +12,11 @@ import javax.persistence.Table;
 @Table (name ="image")
 public class Image {
 	
-	@Enumerated(EnumType.ORDINAL)
+	@Column(name="ima_format")
+	@Enumerated(EnumType.STRING)
 	protected FormatImage format;
 	
-	@Column(name = "ima_nom")
+	@Column(name = "ima_nom",length=50,nullable=false)
 	protected String titre;
 	
 	@Column(name = "ima_contenu")
