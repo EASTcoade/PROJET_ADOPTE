@@ -23,6 +23,16 @@ public class Admin {
 	@Column(name = "adm_nom", length = 50, nullable = false)
 	protected String nom;
 
+	
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getPassword() {
 		return password;
 	}

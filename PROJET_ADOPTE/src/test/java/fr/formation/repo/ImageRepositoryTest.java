@@ -22,9 +22,9 @@ public class ImageRepositoryTest {
 	
 	@Test
 	public void testFindById() {
-		Image image = this.repoImage.findById(1);
+		Image image = this.repoImage.findById(2);
 		
 		Assertions.assertNotNull(image);
-		Assertions.assertTrue(image.getId()==1);
+		Assertions.assertTrue(image.getId()==2);
 	}
 }
