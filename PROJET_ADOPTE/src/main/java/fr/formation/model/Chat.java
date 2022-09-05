@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -27,6 +28,10 @@ public class Chat{
 	@ManyToOne
 	@JoinColumn(name="cha_uti_id_exp")	
 	protected Utilisateur expediteur;
+	
+
+	@OneToMany(mappedBy="destinaire")
+	protected List<Utilisateur> destinataires;
 	
 	@Column(name="cha_date")
 	protected LocalDateTime dateEnvoi;
@@ -61,6 +66,14 @@ public class Chat{
 
 	public void setDateEnvoi(LocalDateTime dateEnvoi) {
 		this.dateEnvoi = dateEnvoi;
+	}
+	
+	public List<Utilisateur> getDestinataires() {
+		return destinataires;
+	}
+
+	public void setDestinataires(List<Utilisateur> destinataires) {
+		this.destinataires = destinataires;
 	}
 	
 	
