@@ -1,17 +1,25 @@
 package fr.formation.repo;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import fr.formation.model.Chat;
+import fr.formation.model.Niveau;
+import fr.formation.model.Reception;
+import fr.formation.model.Utilisateur;
 import fr.formation.repo.jpa.ChatRepositoryJpa;
+import fr.formation.repo.jpa.UtilisateurRepositoryJpa;
 
 public class ChatRepositoryTest {
 
 	private ChatRepositoryJpa repoChat = new ChatRepositoryJpa();
+	private UtilisateurRepositoryJpa repoUtilisateur = new UtilisateurRepositoryJpa() ;
 	
 	
 	@Test
@@ -39,4 +47,41 @@ public class ChatRepositoryTest {
 		Assertions.assertNotNull(chat);
 		Assertions.assertEquals(10, chat.getId());
 	}
+	
+	@Test
+//	public void shouldAdd() {
+//		Utilisateur utilisateur = new Utilisateur();
+//		String randomName = UUID.randomUUID().toString();
+//		
+//		utilisateur.setNom(randomName);
+//		utilisateur.setId(1);
+//		utilisateur.setDateNaissance(LocalDate.now());
+//		utilisateur.setPseudo("user1");
+//		utilisateur.setPrenom("Alfred");
+//		utilisateur.setMail("Alfred@hotmail.fr");
+//		utilisateur.setMdp("123");
+//		utilisateur.setAdresse("18 rue belleville");
+//		utilisateur.setTelephone("0154234515");
+//		utilisateur.setNiveau(Niveau.DEBUTANT);
+//		
+//		this.repoUtilisateur.save(utilisateur);
+//		
+//		Reception rec = new Reception();
+//		ArrayList<Reception> receptions = new ArrayList<>();
+//		
+//		
+//		Chat chat = new Chat();
+//		chat.setExpediteur(utilisateur);
+//		
+//		
+//		rec.setChat(chat);
+//		rec.setDestinataire(utilisateur);
+//		receptions.add(rec);
+//		
+//		chat.setDestinataires(receptions);
+//	
+//
+//		Assertions.assertNotEquals(0, chat.getId());
+//		
+//}
 }
