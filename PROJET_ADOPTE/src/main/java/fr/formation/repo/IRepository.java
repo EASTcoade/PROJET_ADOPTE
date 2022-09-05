@@ -8,4 +8,5 @@ public interface IRepository<T, Id> {
 	public void save(T entity);
 	public void deleteById(Id id);
 	
+	
 }

@@ -11,7 +11,7 @@ import fr.formation.model.Son;
 import fr.formation.repo.jpa.SonRepositoryJpa;
 
 public class SonRepositoryTest {
-	private SonRepositoryJpa repoSon = new SonRepositoryJpa();
+	private SonRepositoryJpa repoSon = new SonRepositoryJpa(); //créer une variable objet pour pouvoir accéder aux méthodes Sonrepository
 
 	@Test
 	public void testFindAll() {

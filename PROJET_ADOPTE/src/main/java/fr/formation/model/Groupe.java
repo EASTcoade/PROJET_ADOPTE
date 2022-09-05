@@ -27,7 +27,7 @@ public class Groupe {
 	@JoinTable (name= "groupe_leader",
 	joinColumns=@JoinColumn(name="leagrp_groupe_id"),
 	inverseJoinColumns=@JoinColumn(name="leagrp_leader_id"))
-	protected List<Leader> leaders ;
+	protected List<Utilisateur> leaders ;
 	
 	
 	@ManyToMany
@@ -38,10 +38,10 @@ public class Groupe {
 	
 
 	
-	public List<Leader> getLeaders() {
+	public List<Utilisateur> getLeaders() {
 		return this.leaders;
 	}
-	public void setLeaders(List<Leader> leaders) {
+	public void setLeaders(List<Utilisateur> leaders) {
 		this.leaders = leaders;
 	}
 	public List<Utilisateur> getGroupe() {
@@ -51,7 +51,7 @@ public class Groupe {
 		this.groupe = groupe;
 	}
 	
-	public void ajouterGroupe(Leader chef, ArrayList<Utilisateur> amis ){
+	public void ajouterGroupe(Utilisateur chef, ArrayList<Utilisateur> amis ){
 		
 		for (Utilisateur people : amis)
 		{

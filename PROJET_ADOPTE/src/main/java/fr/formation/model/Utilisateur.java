@@ -35,7 +35,7 @@ public class Utilisateur {
 	private String nom;
 	@Column(name = "uti_prenom", length = 100, nullable = false)
 	private String prenom;
-	@Column(name = "uti_mail", length = 150, nullable = false)
+	@Column(name = "uti_mail", length = 150, nullable = true)
 	private String mail;
 	@Column(name = "uti_mdp", length = 100, nullable = false)
 	private String mdp;
@@ -48,11 +48,11 @@ public class Utilisateur {
 	@Column(name = "uti_niveau", nullable = false)
 	private Niveau niveau;
 	
-	@ManyToOne
+	@ManyToOne//(fetchtype.lazy)
 	@JoinColumn(name = "uti_image_id")
 	private Image photoProfil;
 	
-	//pas besoin d'attribut âge puisqu'on a la date de naissance
+	//pas besoin d'attribut ï¿½ge puisqu'on a la date de naissance
 //	@Column(name = "uti_age")
 //	private int age;
 	
@@ -189,7 +189,7 @@ public class Utilisateur {
 		this.son = son;
 	}
 
-	public boolean friendWith(Utilisateur people, Leader chef) {
+	public boolean friendWith(Utilisateur people, Utilisateur chef) {
 		// TODO Auto-generated method stub
 		return false;
 	}

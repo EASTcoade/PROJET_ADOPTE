@@ -28,7 +28,7 @@ public class ApplicationChat {
 		Chat chat = new Chat();
 		chat.setExpediteur(user1);
 		chat.setTexte("bonjour ");
-		chat.setDestinataire(user2);
+//		chat.setDestinataire(user2);
 		
 		repoChat.save(chat);
 	}

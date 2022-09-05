@@ -17,7 +17,7 @@
 		<class>fr.formation.model.Notification</class>
 		<class>fr.formation.model.Son</class>
 		<class>fr.formation.model.StyleMusical</class>
-		<class>fr.formation.model.Leader</class>
+		<!-- <class>fr.formation.model.Leader</class> -->
 		<class>fr.formation.model.Utilisateur</class>
 
 		<properties>

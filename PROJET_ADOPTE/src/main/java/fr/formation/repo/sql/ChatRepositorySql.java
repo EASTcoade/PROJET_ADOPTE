@@ -117,7 +117,7 @@ public class ChatRepositorySql extends AbstractRepositorySql<Chat> implements IC
 						+ " VALUES (?, ?)");
 				
 				receptionStatement.setInt(1, (int)rsKey.getLong(1));
-				receptionStatement.setInt(2, chat.getDestinataire().getId());
+//				receptionStatement.setInt(2, chat.getDestinataire().getId());
 				
 				receptionStatement.execute();
 			}

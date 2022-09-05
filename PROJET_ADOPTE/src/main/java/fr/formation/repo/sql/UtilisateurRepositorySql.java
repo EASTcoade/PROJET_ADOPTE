@@ -97,11 +97,11 @@ public  class UtilisateurRepositorySql extends AbstractRepositorySql<Utilisateur
 		try {
 			PreparedStatement myStatement = null;
 			PreparedStatement instruStatement = null;
-			//on delete les instruments liés à l'utilisateur
+			//on delete les instruments liï¿½s ï¿½ l'utilisateur
 			myStatement=this.prepare("DELETE from lien_uti_ins WHERE utiins_uti_id=?");
 			myStatement.setInt(1,entity.getId());
 			
-			//on delete les styles musicaux liés à l'utilisateur
+			//on delete les styles musicaux liï¿½s ï¿½ l'utilisateur
 			myStatement=this.prepare("DELETE from lien_sty_uti WHERE styuti_uti_id=?");
 			myStatement.setInt(1,entity.getId());
 			
@@ -191,5 +191,10 @@ public  class UtilisateurRepositorySql extends AbstractRepositorySql<Utilisateur
 		catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	@Override
+	public Utilisateur findByNom(String nom) {
+		// TODO Auto-generated method stub
+		return null;
 	}	
 }
