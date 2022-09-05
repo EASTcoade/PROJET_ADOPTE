@@ -7,11 +7,12 @@ import java.util.List;
 import fr.formation.exception.IdNegativeException;
 import fr.formation.exception.ItemNotFoundException;
 import fr.formation.model.Chat;
+import fr.formation.repo.jpa.ChatRepositoryJpa;
 import fr.formation.repo.sql.ChatRepositorySql;
 
 public class ChatRepositoryService {
 	
-	private ChatRepositorySql chatRepo = new ChatRepositorySql();
+	private ChatRepositoryJpa chatRepo = new ChatRepositoryJpa();
 	
 	public Chat findById(int id) throws IdNegativeException, ItemNotFoundException {
 		
