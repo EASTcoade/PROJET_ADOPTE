@@ -126,6 +126,7 @@ CREATE TABLE reception(
     rec_id SERIAL PRIMARY KEY, 
     rec_cha_id INT,
     rec_uti_id_dest INT,
+    rec_lu BOOLEAN,
 
     CONSTRAINT fk_rec_uti_id
     FOREIGN KEY (rec_uti_id_dest) REFERENCES  utilisateur(uti_id)
