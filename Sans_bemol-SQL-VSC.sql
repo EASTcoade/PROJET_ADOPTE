@@ -69,7 +69,8 @@ CREATE TABLE instrument(
 
     ins_id SERIAL PRIMARY KEY,
     ins_nom VARCHAR(50) NOT NULL
-    --ins_image 
+    ins_image VARCHAR(100000) NOT NULL
+    --bien verifier ins_image
 );
 
 CREATE TABLE lien_uti_ins(

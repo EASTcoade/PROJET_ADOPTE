@@ -5,12 +5,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 @Entity
 @Table (name="instrument")
 public class Instrument {
 	
-//	protected Image image;
+	@ManyToOne
+	@JoinColumn(name="ima_id",nullable=false)
+//	@Column(name = "ins_image",nullable=false)
+	protected Image image;
 	
 	@Column(name = "ins_nom",nullable=false)
 	protected String nom;
@@ -27,12 +32,13 @@ public class Instrument {
 		this.id = id;
 	}
 	
-//	public Image getImage() {
-//		return image;
-//	}
-//	public void setImage(Image image) {
-//		this.image = image;
-//	}
+	public Image getImage() {
+	return image;
+	}
+	public void setImage(Image image) {
+		this.image = image;
+	}
+
 	public String getNom() {
 		return nom;
 	}
