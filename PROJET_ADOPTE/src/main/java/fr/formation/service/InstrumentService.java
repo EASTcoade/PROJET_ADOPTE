@@ -4,15 +4,12 @@ import fr.formation.exception.IdNegativeException;
 import fr.formation.exception.ItemNotFoundException;
 import fr.formation.exception.NotValidException;
 import fr.formation.model.Instrument;
-import fr.formation.model.StyleMusical;
-import fr.formation.model.Utilisateur;
 import fr.formation.repo.IInstrumentRepository;
-import fr.formation.repo.IStyleMusicalRepository;
-import fr.formation.repo.sql.InstrumentRepositorySql;
-import fr.formation.repo.sql.StyleMusicalRepositorySql;
+import fr.formation.repo.jpa.InstrumentRepositoryJpa;
+
 
 public class InstrumentService {
-	private IInstrumentRepository repoInstrument = new InstrumentRepositorySql();
+	private IInstrumentRepository repoInstrument = new InstrumentRepositoryJpa();
 	
 	public void save(Instrument instrument) throws NotValidException {
 		if (instrument.getNom() == null || instrument.getNom().isBlank()) {
