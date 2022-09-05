@@ -1,5 +1,7 @@
 package fr.formation.repo;
 
-public interface INotificationRepository {
+import fr.formation.model.Notification;
+
+public interface INotificationRepository extends IRepository<Notification, Integer> {
 
 }
