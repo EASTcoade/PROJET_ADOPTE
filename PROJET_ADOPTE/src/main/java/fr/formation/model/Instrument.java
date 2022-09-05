@@ -5,12 +5,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 @Entity
 @Table (name="instrument")
 public class Instrument {
 	
-	@Column(name = "ins_image",nullable=false)
+	@ManyToOne
+	@JoinColumn(name="ima_id",nullable=false)
+//	@Column(name = "ins_image",nullable=false)
 	protected Image image;
 	
 	@Column(name = "ins_nom",nullable=false)
