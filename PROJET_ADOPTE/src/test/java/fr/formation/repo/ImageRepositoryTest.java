@@ -27,4 +27,9 @@ public class ImageRepositoryTest {
 		Assertions.assertNotNull(image);
 		Assertions.assertTrue(image.getId()==2);
 	}
+	@Test
+	public void testDeleteById() {
+		this.repoImage.deleteById(1);
+		Assertions.assertNull(this.repoImage.findById(1));
+}
 }

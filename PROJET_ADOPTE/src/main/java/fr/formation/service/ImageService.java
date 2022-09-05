@@ -5,15 +5,15 @@ import java.nio.file.AccessDeniedException;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-
-import fr.formation.exception.IdNegativeException;
-import fr.formation.exception.NotValidException;
-import fr.formation.exception.ImageNotFoundException;
-import fr.formation.model.Image;
-import fr.formation.repo.IImageRepository;
-import fr.formation.repo.sql.ImageRepositorySql;
+//import java.util.ArrayList;
+//import java.util.List;
+//
+//import fr.formation.exception.IdNegativeException;
+//import fr.formation.exception.NotValidException;
+//import fr.formation.exception.ImageNotFoundException;
+//import fr.formation.model.Image;
+//import fr.formation.repo.IImageRepository;
+//import fr.formation.repo.sql.ImageRepositorySql;
 
 public class ImageService {
 //	public Image findById(int id) throws IdNegativeException, ImageNotFoundException {
