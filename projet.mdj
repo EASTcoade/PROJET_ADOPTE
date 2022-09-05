@@ -972,6 +972,7 @@
 											"model": {
 												"$ref": "AAAAAAGCY7s6tluK9yQ="
 											},
+											"visible": false,
 											"font": "Arial;13;0",
 											"left": 941,
 											"top": 598,
@@ -991,10 +992,10 @@
 											},
 											"font": "Arial;13;0",
 											"left": 941,
-											"top": 613,
+											"top": 600,
 											"width": 142,
 											"height": 13,
-											"text": "+style_nom",
+											"text": "+Enum",
 											"horizontalAlignment": 0
 										}
 									],
@@ -1002,7 +1003,7 @@
 									"left": 936,
 									"top": 593,
 									"width": 152,
-									"height": 38
+									"height": 25
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -1015,7 +1016,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 936,
-									"top": 631,
+									"top": 618,
 									"width": 152,
 									"height": 10
 								},
@@ -8859,8 +8860,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGCY6ztk05PxQ8="
 							},
-							"name": "style_nom",
-							"type": ""
+							"name": "Enum"
 						}
 					]
 				},

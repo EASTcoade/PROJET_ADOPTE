@@ -158,7 +158,7 @@ public  class UtilisateurRepositorySql extends AbstractRepositorySql<Utilisateur
 				
 				for(StyleMusical style : entity.getStylemusical()) {
 					myStatement = this.prepare("INSERT INTO lien_sty_uti (styuti_sty_id, styuti_uti_id) VALUES (?,?)");
-					myStatement.setInt(1, style.getId());
+					//myStatement.setInt(1, style.getId());
 					myStatement.setInt(2, (int)rsKey.getLong(1));
 					
 					myStatement.executeUpdate();
