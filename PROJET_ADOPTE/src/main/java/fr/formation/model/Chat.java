@@ -29,9 +29,8 @@ public class Chat{
 	@JoinColumn(name="cha_uti_id_exp")	
 	protected Utilisateur expediteur;
 	
-
-	@OneToMany(mappedBy="destinaire")
-	protected List<Utilisateur> destinataires;
+	@OneToMany(mappedBy="chat")
+	protected List<Reception> destinataires;
 	
 	@Column(name="cha_date")
 	protected LocalDateTime dateEnvoi;
@@ -67,14 +66,16 @@ public class Chat{
 	public void setDateEnvoi(LocalDateTime dateEnvoi) {
 		this.dateEnvoi = dateEnvoi;
 	}
-	
-	public List<Utilisateur> getDestinataires() {
+
+	public List<Reception> getDestinataires() {
 		return destinataires;
 	}
 
-	public void setDestinataires(List<Utilisateur> destinataires) {
+	public void setDestinataires(List<Reception> destinataires) {
 		this.destinataires = destinataires;
 	}
+	
+	
 	
 	
 	

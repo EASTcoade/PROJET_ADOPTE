@@ -6,8 +6,12 @@ import java.util.List;
 
 import fr.formation.exception.IdNegativeException;
 import fr.formation.exception.ItemNotFoundException;
+import fr.formation.exception.NotValidException;
 import fr.formation.model.Chat;
+import fr.formation.model.Reception;
+import fr.formation.model.Utilisateur;
 import fr.formation.repo.jpa.ChatRepositoryJpa;
+import fr.formation.repo.jpa.ReceptionRepositoryJpa;
 import fr.formation.repo.sql.ChatRepositorySql;
 
 public class ChatRepositoryService {
@@ -30,9 +34,27 @@ public class ChatRepositoryService {
 	}
 	
 	
-	public void save(Chat chat) {
-		
+	public void save(Chat chat) throws NotValidException {
+		if(chat.getExpediteur()==null) {
+			throw new NotValidException();
+		}
+		if(chat.getDestinataires()==null||chat.getDestinataires().size()<=0) {
+			throw new NotValidException();
+		}
 		this.chatRepo.save(chat);
+		
+		int idChat = chat.getId();
+		ReceptionRepositoryJpa repoReception = new ReceptionRepositoryJpa();
+		
+		for(Reception reception : chat.getDestinataires()) {
+						
+			reception.setChat(chat);
+			reception.setLu(false);
+			reception.setDestinataire(new Utilisateur());
+			reception.getDestinataire().setId(1);
+			
+			repoReception.save(reception);
+		}		
 	}
 	
 	
