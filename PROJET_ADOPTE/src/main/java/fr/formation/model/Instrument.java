@@ -10,7 +10,8 @@ import javax.persistence.Table;
 @Table (name="instrument")
 public class Instrument {
 	
-//	protected Image image;
+	@Column(name = "ins_image",nullable=false)
+	protected Image image;
 	
 	@Column(name = "ins_nom",nullable=false)
 	protected String nom;
@@ -27,12 +28,13 @@ public class Instrument {
 		this.id = id;
 	}
 	
-//	public Image getImage() {
-//		return image;
-//	}
-//	public void setImage(Image image) {
-//		this.image = image;
-//	}
+	public Image getImage() {
+	return image;
+	}
+	public void setImage(Image image) {
+		this.image = image;
+	}
+
 	public String getNom() {
 		return nom;
 	}
