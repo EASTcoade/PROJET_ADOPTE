@@ -9,12 +9,63 @@
 		<hibernate.version>5.6.10.Final</hibernate.version>
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
+		
 		<postgres.version>42.5.0</postgres.version>
 		<junit.version>5.9.0</junit.version>
 		<mockito-junit.version>4.7.0</mockito-junit.version>
+		
+		<spring.version>5.3.22</spring.version>
+		<spring-data.version>2.7.2</spring-data.version>
+		<hikari.version>5.0.1</hikari.version>
+		<h2.version>2.1.214</h2.version>
+		
 	</properties>
 	
 	<dependencies>
+	<!-- SPRING CONTEXT -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-context</artifactId>
+		    <version>${spring.version}</version>
+		</dependency>
+		
+		<!-- SPRING ORM -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-orm</artifactId>
+		    <version>${spring.version}</version>
+		</dependency>
+		
+		<!-- SPRING DATA-JPA -->
+		<dependency>
+		    <groupId>org.springframework.data</groupId>
+		    <artifactId>spring-data-jpa</artifactId>
+		    <version>${spring-data.version}</version>
+		</dependency>
+		
+		<!-- Pool Hikari -->
+		<dependency>
+		    <groupId>com.zaxxer</groupId>
+		    <artifactId>HikariCP</artifactId>
+		    <version>${hikari.version}</version>
+		</dependency>
+		
+		<!-- SPRING TEST -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-test</artifactId>
+		    <version>${spring.version}</version>
+		    <scope>test</scope>
+		</dependency>
+		
+		<!-- Base de données embarquée (Embedded Database), en mémoire -->
+		<dependency>
+		    <groupId>com.h2database</groupId>
+		    <artifactId>h2</artifactId>
+		    <version>${h2.version}</version>
+		    <scope>test</scope>
+		</dependency>
+		
 		<!-- Connecteur PostgreSQL -->
 		<dependency>
 		    <groupId>org.postgresql</groupId>

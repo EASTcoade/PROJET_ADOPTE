@@ -1,10 +1,10 @@
 --Attention table plus a jour: remplacer utl par uti, les inst par ins, chat par cha!!!
 
-INSERT into utilisateur (utl_mdp, utl_nom, utl_prenom, utl_pseudo, utl_dtnaissance, utl_adresse, utl_tel, utl_niveau)
-VALUES ('1234', 'Dupont', 'Bernard', 'Bebert_du_65', '1945/02/28', '6 rue des Capucins, Boulogne Billancourt', '0285904513', 'debutant');
+INSERT into utilisateur (uti_mdp, uti_nom, uti_prenom, uti_pseudo, uti_datnaissance, uti_adresse, uti_tel, uti_niveau, uti_mail)
+VALUES ('1234', 'Dupont', 'Bernard', 'Bebert_du_65', '1945/02/28', '6 rue des Capucins, Boulogne Billancourt', '0285904513', 'debutant', 'beber.dupont@gmail.com');
 ;
-INSERT into utilisateur (utl_mdp, utl_nom, utl_prenom, utl_pseudo, utl_dtnaissance, utl_adresse, utl_tel, utl_niveau)
-VALUES ('1234', 'Duval', 'Bianca', 'Bibine_la_sauvageonne', '1945/10/12', '25 rue des Capucins, Boulogne Billancourt', '0285904513', 'debutant');
+INSERT into utilisateur (uti_mdp, uti_nom, uti_prenom, uti_pseudo, uti_dtnaissance, uti_adresse, uti_tel, uti_niveau, uti_mail)
+VALUES ('1234', 'Duval', 'Bianca', 'Bibine_la_sauvageonne', '1945/10/12', '25 rue des Capucins, Boulogne Billancourt', '0285904513', 'debutant', 'bibine.duval@gmail.com');
 ;
 
 SELECT * FROM utilisateur;
@@ -12,24 +12,14 @@ SELECT * FROM utilisateur;
 INSERT into stylemusical (sty_nom)
 VALUES ('rock')
 
-INSERT into son (son_nom, son_utl_id)
-VALUES ('mon premier son', 3);
+INSERT into son (son_nom, son_uti_id, son_format)
+VALUES ('mon premier son', 1,'MP3');
 
-INSERT into instrument (inst_nom)
-VALUES ('guitare');
-
-INSERT into instrument (inst_nom)
-VALUES ('chant'),
+INSERT into instrument (ins_nom)
+VALUES ('guitare'),
+('chant'),
 ('triangle');
 
-INSERT into stylemusical (sty_nom)
-VALUES ('musique de chambre')
-
-INSERT into lien_uti_instru (utlinst_instru_id, utlinst_utl_id)
-Values (1, 1);
-
-INSERT into lien_sty_uti (styutl_utl_id, styutl_sty_id)
-Values (1, 1);
 
 pg_read_file
 

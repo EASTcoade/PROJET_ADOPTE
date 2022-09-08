@@ -2,23 +2,30 @@ package fr.formation.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import fr.formation.exception.IdNegativeException;
 import fr.formation.exception.ItemNotFoundException;
+import fr.formation.exception.NotValidException;
 import fr.formation.model.Notification;
-import fr.formation.repo.jpa.NotificationRepositoryJpa;
+import fr.formation.repo.INotificationRepository;
 
+@Service
 public class NotificationRepositoryService {
 	
-	private NotificationRepositoryJpa notifRepo = new NotificationRepositoryJpa();
+	@Autowired
+	private INotificationRepository notifRepo;
 	
-	public Notification findById(int id) throws IdNegativeException, ItemNotFoundException {
+	public Optional<Notification> findById(int id) throws IdNegativeException, ItemNotFoundException {
 		
 		if (id <= 0) {
 			throw new IdNegativeException();
 		}
 		
-		Notification notif = this.notifRepo.findById(id);
+		Optional<Notification> notif = this.notifRepo.findById(id);
 
 		if (notif == null) {
 			throw new ItemNotFoundException();
@@ -28,9 +35,15 @@ public class NotificationRepositoryService {
 	}
 	
 	
-	public void save(Notification notif) {
-		
+	public void save(Notification notif) throws NotValidException {
+		if(notif.getMessage()==null) {
+			throw new NotValidException();
+		}
+		if(notif.getDestinataires()==null||notif.getDestinataires().size()==0) {
+			throw new NotValidException();
+		}
 		this.notifRepo.save(notif);
+		
 	}
 	
 	

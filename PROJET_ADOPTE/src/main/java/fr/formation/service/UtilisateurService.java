@@ -2,24 +2,23 @@ package fr.formation.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import fr.formation.exception.IdNegativeException;
-import fr.formation.exception.ItemNotFoundException;
 import fr.formation.exception.NotValidException;
 import fr.formation.exception.UtilisateurNotFoundException;
-
-import fr.formation.model.Instrument;
 import fr.formation.model.Utilisateur;
-
 import fr.formation.repo.IUtilisateurRepository;
-import fr.formation.repo.jpa.UtilisateurRepositoryJpa;
-import fr.formation.repo.sql.UtilisateurRepositorySql;
 
 
-
+@Service
 public class UtilisateurService {
-	private IUtilisateurRepository repoUtilisateur = new UtilisateurRepositoryJpa();
+	
+	@Autowired
+	private IUtilisateurRepository repoUtilisateur;
 	
 	
 	public List<Utilisateur> findAll() {
@@ -32,12 +31,12 @@ public class UtilisateurService {
 		return utilisateur;
 	}
 	
-	public Utilisateur findById(int id) throws IdNegativeException, UtilisateurNotFoundException {
+	public Optional<Utilisateur> findById(int id) throws IdNegativeException, UtilisateurNotFoundException {
 		if (id <= 0) {
 			throw new IdNegativeException();
 		}
 		
-		Utilisateur utilisateur = repoUtilisateur.findById(id);
+		Optional<Utilisateur> utilisateur = repoUtilisateur.findById(id);
 		
 		if (utilisateur == null) {
 			throw new UtilisateurNotFoundException();

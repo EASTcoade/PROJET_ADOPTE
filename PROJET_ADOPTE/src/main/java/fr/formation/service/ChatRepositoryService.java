@@ -3,6 +3,10 @@ package fr.formation.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import fr.formation.exception.IdNegativeException;
 import fr.formation.exception.ItemNotFoundException;
@@ -10,21 +14,21 @@ import fr.formation.exception.NotValidException;
 import fr.formation.model.Chat;
 import fr.formation.model.Reception;
 import fr.formation.model.Utilisateur;
-import fr.formation.repo.jpa.ChatRepositoryJpa;
-import fr.formation.repo.jpa.ReceptionRepositoryJpa;
-import fr.formation.repo.sql.ChatRepositorySql;
+import fr.formation.repo.IChatRepository;
 
+@Service
 public class ChatRepositoryService {
 	
-	private ChatRepositoryJpa chatRepo = new ChatRepositoryJpa();
+	@Autowired
+	private IChatRepository chatRepo;
 	
-	public Chat findById(int id) throws IdNegativeException, ItemNotFoundException {
+	public Optional<Chat> findById(int id) throws IdNegativeException, ItemNotFoundException {
 		
 		if (id <= 0) {
 			throw new IdNegativeException();
 		}
 		
-		Chat chat = this.chatRepo.findById(id);
+		Optional<Chat> chat = this.chatRepo.findById(id);
 
 		if (chat == null) {
 			throw new ItemNotFoundException();
@@ -41,10 +45,8 @@ public class ChatRepositoryService {
 		if(chat.getDestinataires()==null||chat.getDestinataires().size()<=0) {
 			throw new NotValidException();
 		}
-		this.chatRepo.save(chat);
 		
-		int idChat = chat.getId();
-		ReceptionRepositoryJpa repoReception = new ReceptionRepositoryJpa();
+//		int idChat = chat.getId();
 		
 		for(Reception reception : chat.getDestinataires()) {
 						
@@ -52,9 +54,9 @@ public class ChatRepositoryService {
 			reception.setLu(false);
 			reception.setDestinataire(new Utilisateur());
 			reception.getDestinataire().setId(1);
-			
-			repoReception.save(reception);
-		}		
+		
+		}
+		this.chatRepo.save(chat);
 	}
 	
 	

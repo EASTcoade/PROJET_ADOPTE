@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 @Entity //Annotation obligatoire sur la classe persisté
 @Table (name = "groupe") // Optionnel, précise le nom de la table
@@ -27,14 +26,14 @@ public class Groupe {
 	@JoinTable (name= "groupe_leader",
 	joinColumns=@JoinColumn(name="leagrp_groupe_id"),
 	inverseJoinColumns=@JoinColumn(name="leagrp_leader_id"))
-	protected List<Utilisateur> leaders ;
+	protected List<Leader> leaders ;
 	
 	
 	@ManyToMany
 	@JoinTable (name= "utilisateur_groupe",
 	joinColumns=@JoinColumn(name="utigrp_groupe_id"),
 	inverseJoinColumns=@JoinColumn(name="utigrp_utilisateur_id"))
-	protected List<Utilisateur> groupe ;
+	protected List<Utilisateur> membres ;
 	
 
 	
@@ -50,17 +49,17 @@ public class Groupe {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public List<Utilisateur> getLeaders() {
+	public List<Leader> getLeaders() {
 		return this.leaders;
 	}
-	public void setLeaders(List<Utilisateur> leaders) {
+	public void setLeaders(List<Leader> leaders) {
 		this.leaders = leaders;
 	}
-	public List<Utilisateur> getGroupe() {
-		return groupe;
+	public List<Utilisateur> getMembres() {
+		return membres;
 	}
-	public void setGroupe(ArrayList<Utilisateur> groupe) {
-		this.groupe = groupe;
+	public void setMembres(ArrayList<Utilisateur> groupe) {
+		this.membres = groupe;
 	}
 	
 	public void ajouterGroupe(Utilisateur chef, ArrayList<Utilisateur> amis ){
@@ -69,7 +68,7 @@ public class Groupe {
 		{
 			if (people.friendWith(people, chef))
 			{
-				this.groupe.add(people);
+				this.membres.add(people);
 			}
 		}
 		
