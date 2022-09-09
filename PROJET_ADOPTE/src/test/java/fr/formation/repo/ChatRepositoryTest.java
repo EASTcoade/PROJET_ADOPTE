@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
+import org.springframework.transaction.annotation.Transactional;
 
 import fr.formation.config.AppConfig;
 import fr.formation.model.Chat;
@@ -66,7 +67,21 @@ public class ChatRepositoryTest {
 		Assertions.assertNotNull(chat);
 		Assertions.assertEquals(1, chat.get().getId());
 	}
-	
+	@Test
+	public void shouldUpdate() {
+		Chat chat = this.repoChat.findById(1).get();
+		String randomText = UUID.randomUUID().toString();
+		
+		chat.setTexte(randomText);
+		
+		
+		this.repoChat.save(chat);
+		
+		chat = this.repoChat.findById(1).get();
+		
+		Assertions.assertEquals(randomText, chat.getTexte());
+	}
+
 	@Test
 	public void shouldAdd() {
 //		Utilisateur utilisateur = new Utilisateur();
@@ -83,21 +98,22 @@ public class ChatRepositoryTest {
 //		utilisateur.setTelephone("0154234515");
 //		utilisateur.setNiveau(Niveau.DEBUTANT);
 //		
-//		Reception rec = new Reception();
-//		ArrayList<Reception> receptions = new ArrayList<>();
+		Reception rec = new Reception();
+		ArrayList<Reception> receptions = new ArrayList<>();
 		
 		Chat chat = generateChat();
 
-		this.repoChat.save(chat);
-//		rec.setChat(chat);
-//		rec.setDestinataire(utilisateur);
-//		receptions.add(rec);
-//		
-//		chat.setDestinataires(receptions);
-	
-
-		Assertions.assertNotEquals(1, chat.getId());
 		
+		rec.setChat(chat);
+		rec.setDestinataire(new Utilisateur());
+		rec.getDestinataire().setId(1);
+		receptions.add(rec);
+		
+		chat.setDestinataires(receptions);
+	
+		this.repoChat.save(chat);
+		Assertions.assertNotEquals(1, chat.getId());
+		Assertions.assertFalse(chat.getDestinataires().get(0).getId()==0);
 }
 	private static Chat generateChat() {
 		Chat chat = new Chat();
@@ -146,9 +162,11 @@ public class ChatRepositoryTest {
 			}
 		}
 	}
+	@Test
 	public void shouldDelete() {
-		this.repoChat.deleteById(1);
-		Assertions.assertNull(this.repoChat.findById(1));
+		this.repoChat.deleteById(2);
+		Assertions.assertTrue(this.repoChat.findById(2).isEmpty());
+		
 
 	}
 }

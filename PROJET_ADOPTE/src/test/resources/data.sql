@@ -1,4 +1,7 @@
 -- Nettoyages
+DELETE FROM reception;
+ALTER TABLE reception ALTER COLUMN rec_id RESTART WITH 1;
+
 DELETE FROM chat;
 ALTER TABLE chat ALTER COLUMN cha_id RESTART WITH 1;
 
