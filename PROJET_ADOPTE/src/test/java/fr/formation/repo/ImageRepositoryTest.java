@@ -3,22 +3,31 @@ package fr.formation.repo;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.jdbc.Sql;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
+import fr.formation.config.AppConfig;
 import fr.formation.model.FormatImage;
 import fr.formation.model.Image;
 import fr.formation.model.Niveau;
 import fr.formation.model.Utilisateur;
-import fr.formation.repo.jpa.ImageRepositoryJpa;
-import fr.formation.repo.jpa.SonRepositoryJpa;
+import fr.formation.repo.IImageRepository;
+import fr.formation.repo.ISonRepository;
 
+@SpringJUnitConfig(AppConfig.class) // Exécuter ce test avec le contexte de SPRING chargé avec la classe de config AppConfig
+@Sql("classpath:/data-instrument.sql") // Ce script sera joué AVANT (par défaut) CHAQUE test unitaire
+@ActiveProfiles("test") // On dit à SPRING qu'on va tester avec le profile "test"
 public class ImageRepositoryTest {
-	private ImageRepositoryJpa repoImage = new ImageRepositoryJpa();
+@Autowired
+private IImageRepository repoImage;
 
 	@Test
 	public void testFindAll() {
@@ -30,10 +39,10 @@ public class ImageRepositoryTest {
 	
 	@Test
 	public void testFindById() {
-		Image image = this.repoImage.findById(2);
+		Optional<Image> image = this.repoImage.findById(2);
 		
 		Assertions.assertNotNull(image);
-		Assertions.assertTrue(image.getId()==2);
+		Assertions.assertTrue(image.isPresent());
 	}
 	@Test
 	public void testDeleteById() {
@@ -68,7 +77,7 @@ public class ImageRepositoryTest {
 	
 	@Test
 	public void shouldUpdate() {
-		Image image = this.repoImage.findById(2);
+		Image image = this.repoImage.findById(1).get();
 		
 		byte[] ancien = image.getContenu();
 		
@@ -87,10 +96,15 @@ public class ImageRepositoryTest {
 		
 		this.repoImage.save(image);
 		
-		image = this.repoImage.findById(2);
+		image = this.repoImage.findById(1).get();
 		
 		Assertions.assertNotEquals(ancien, image.getContenu());
 	}
+	@Test
+	public void shouldDelete() {
+		this.repoImage.deleteById(2);
+		
+		Assertions.assertFalse(this.repoImage.findById(2).isPresent());
 	
-	
+}
 }
