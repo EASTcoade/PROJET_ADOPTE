@@ -3,26 +3,33 @@ package fr.formation.repo;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 import java.util.UUID;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.jdbc.Sql;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
+import fr.formation.config.AppConfig;
 import fr.formation.model.Chat;
 import fr.formation.model.Reception;
 import fr.formation.model.Utilisateur;
-import fr.formation.repo.jpa.AbstractRepositoryJpa;
-import fr.formation.repo.jpa.ReceptionRepositoryJpa;
+
+
+@SpringJUnitConfig(AppConfig.class)
+@ActiveProfiles("test")
+@Sql(scripts = "classpath:/data.sql")
 
 public class ReceptionRepositoryTest {
-private ReceptionRepositoryJpa repoReception = new ReceptionRepositoryJpa();
+	@Autowired
+	private IReceptionRepository repoReception ;
 	
-	@AfterAll
-	public static void closeEmf(){
-		AbstractRepositoryJpa.close();
-	}
+
 	
 	@Test
 	public void testFindAll() {
@@ -34,10 +41,10 @@ private ReceptionRepositoryJpa repoReception = new ReceptionRepositoryJpa();
 	
 	@Test
 	public void testFindById() {
-		Reception reception = this.repoReception.findById(1);
+		Optional<Reception> reception = this.repoReception.findById(1);
 		
 		Assertions.assertNotNull(reception);
-		Assertions.assertTrue(reception.getId()==1);
+		Assertions.assertTrue(reception.isPresent());
 	}
 	
 	@Test
@@ -59,23 +66,23 @@ private ReceptionRepositoryJpa repoReception = new ReceptionRepositoryJpa();
 	}
 	@Test
 	public void shouldUpdate() {
-		Reception reception = this.repoReception.findById(1);
+		Reception reception = this.repoReception.findById(1).get();
 		Boolean recLu = reception.isLu();
 		
 		reception.setLu(!recLu);
 		
 		this.repoReception.save(reception);
 		
-		reception = this.repoReception.findById(1);
+		reception = this.repoReception.findById(1).get();
 		
 		Assertions.assertNotEquals(recLu, reception.isLu());
 	}
 	
 	@Test
 	public void shouldDelete() {
-		this.repoReception.deleteById(4);
+		this.repoReception.deleteById(1);
 		
-		Assertions.assertNull(this.repoReception.findById(4));
+		Assertions.assertNull(this.repoReception.findById(1));
 	}
 	
 	private static Reception generateReception() {

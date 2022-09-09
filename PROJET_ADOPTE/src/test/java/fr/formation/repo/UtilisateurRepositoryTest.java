@@ -2,6 +2,7 @@ package fr.formation.repo;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import javax.persistence.Column;
@@ -13,42 +14,28 @@ import javax.persistence.ManyToOne;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.jdbc.Sql;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
+import fr.formation.config.AppConfig;
 import fr.formation.model.Image;
 import fr.formation.model.Niveau;
 
 import fr.formation.model.Son;
 import fr.formation.model.Utilisateur;
 
-import fr.formation.repo.jpa.UtilisateurRepositoryJpa;
+
+@SpringJUnitConfig(AppConfig.class)
+@ActiveProfiles("test")
+@Sql(scripts = "classpath:/data.sql")
 
 public class UtilisateurRepositoryTest {
-	private UtilisateurRepositoryJpa repoUtilisateur = new UtilisateurRepositoryJpa() ;
+	@Autowired
+	private IUtilisateurRepository repoUtilisateur ;
 	
-	@BeforeAll
-	public static void setup() {
-		// On ajoute un utilisateur
-		UtilisateurRepositoryJpa repoUtilisateur = new UtilisateurRepositoryJpa() ;
-		Utilisateur utilisateur = new Utilisateur();
-		
-		
-		
-		utilisateur = new Utilisateur();
-		utilisateur.setNom(UUID.randomUUID().toString());
-		utilisateur.setId(1);
-		utilisateur.setDateNaissance(LocalDate.now());
-		utilisateur.setPseudo("user1");
-		utilisateur.setPrenom("Alfred");
-		utilisateur.setMail("Alfred@hotmail.fr");
-		utilisateur.setMdp("123");
-		utilisateur.setAdresse("18 rue belleville");
-		utilisateur.setTelephone("0154234515");
-		utilisateur.setNiveau(Niveau.DEBUTANT);
-		repoUtilisateur.save(utilisateur);
-	}
-	
-	
-	
+
 	
 	@Test
 	public void testFindAll() {
@@ -58,17 +45,17 @@ public class UtilisateurRepositoryTest {
 	}
 	@Test
 	public void testFindById() {
-		Utilisateur utilisateur = this.repoUtilisateur.findById(2);
+		Optional<Utilisateur> utilisateur = this.repoUtilisateur.findById(1);
 		
 		Assertions.assertNotNull(utilisateur);
-		Assertions.assertTrue(utilisateur.getId()==2);
+		Assertions.assertTrue(utilisateur.isPresent());
 	}
 	
 	
 	@Test
 	public void testDeleteById() {
-		this.repoUtilisateur.deleteById(2);
-		Assertions.assertNull(this.repoUtilisateur.findById(2));
+		this.repoUtilisateur.deleteById(1);
+		Assertions.assertNull(this.repoUtilisateur.findById(1));
 		
 		
 	}
@@ -97,7 +84,7 @@ public class UtilisateurRepositoryTest {
 	
 	@Test
 	public void shouldUpdate() {
-		Utilisateur utilisateur = this.repoUtilisateur.findById(2);
+		Utilisateur utilisateur = this.repoUtilisateur.findById(1).get();
 		String randomName = UUID.randomUUID().toString();
 		
 		utilisateur.setNom(randomName);
@@ -105,7 +92,7 @@ public class UtilisateurRepositoryTest {
 		
 		this.repoUtilisateur.save(utilisateur);
 		
-		utilisateur = this.repoUtilisateur.findById(2);
+		utilisateur = this.repoUtilisateur.findById(1).get();
 		
 		Assertions.assertEquals(randomName, utilisateur.getNom());
 	}
