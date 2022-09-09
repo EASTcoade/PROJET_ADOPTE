@@ -13531,7 +13531,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGDImSrO7ATaDA="
 							},
-							"name": "dem_id"
+							"name": "dem_id",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -13539,7 +13540,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGDImSrO7ATaDA="
 							},
-							"name": "dem_utilisateur_demandeur_idfk"
+							"name": "dem_utilisateur_demandeur_idfk",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -13547,7 +13549,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGDImSrO7ATaDA="
 							},
-							"name": "dem_uitlisateur_accpeteur_idfk"
+							"name": "dem_uitlisateur_accpeteur_idfk",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -13555,7 +13558,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGDImSrO7ATaDA="
 							},
-							"name": "dem_statut"
+							"name": "dem_statut",
+							"type": ""
 						}
 					]
 				}
