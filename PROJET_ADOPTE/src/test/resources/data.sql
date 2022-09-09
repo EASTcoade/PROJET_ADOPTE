@@ -15,11 +15,12 @@ ALTER TABLE son ALTER COLUMN son_id RESTART WITH 1;
 DELETE FROM instrument;
 ALTER TABLE instrument ALTER COLUMN ins_id RESTART WITH 1;
 
-DELETE FROM image;
-ALTER TABLE image ALTER COLUMN ima_id RESTART WITH 1;
 
 DELETE FROM utilisateur;
 ALTER TABLE utilisateur ALTER COLUMN uti_id RESTART WITH 1;
+
+DELETE FROM image;
+ALTER TABLE image ALTER COLUMN ima_id RESTART WITH 1;
 
 DELETE FROM stylemusical;
 ALTER TABLE stylemusical ALTER COLUMN sty_id RESTART WITH 1;
@@ -47,8 +48,9 @@ VALUES
 INSERT into stylemusical (sty_nom)
 VALUES
 ('rock'),
-('rap');
-
+('rap'),
+('RNB'),
+('jazz');
 
 INSERT into groupe (gro_nom)
 VALUES 

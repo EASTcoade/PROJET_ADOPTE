@@ -3,6 +3,7 @@ package fr.formation.model;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -16,6 +17,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 
 @Entity
@@ -57,16 +61,18 @@ public class Utilisateur {
 //	private int age;
 	
 	
-	@ManyToMany
+	@ManyToMany (cascade = CascadeType.PERSIST)
 	@JoinTable (name ="style_utilisateur",
 	joinColumns=@JoinColumn(name="stluti_utilisateur_id"),
 	inverseJoinColumns=@JoinColumn(name="stluti_stylemusical_id"))
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	private List<StyleMusical> stylemusical;
 	
-	@ManyToMany
+	@ManyToMany (cascade = CascadeType.PERSIST)
 	@JoinTable (name ="utilisateur_instrument",
 	joinColumns=@JoinColumn(name="utiins_utilisateur_id"),
 	inverseJoinColumns=@JoinColumn(name="utiins_instrument_id"))
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	private List<Instrument> listeinstrument;
 	
 

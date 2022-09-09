@@ -58,7 +58,7 @@ public class Admin {
 		System.out.println(notif.getMessage());
 	}
 
-
+//faire service admin par la suite?
 	public void supprimerutilisateur(Utilisateur utilisateur, List<Utilisateur> userlist) {
 		
 				userlist.remove(utilisateur);
