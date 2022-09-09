@@ -68,8 +68,8 @@ CREATE TABLE lien_sty_uti(
 CREATE TABLE instrument(
 
     ins_id SERIAL PRIMARY KEY,
-    ins_nom VARCHAR(50) NOT NULL
-    ins_image VARCHAR(100000) NOT NULL
+    ins_nom VARCHAR(50) NOT NULL,
+    ins_image_id INT
     --bien verifier ins_image
 );
 

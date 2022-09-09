@@ -35,15 +35,15 @@ public class NotificationRepositoryTest {
 	
 	@Test
 	public void testFindById() {
-		Optional<Notification> notif = this.notifRepo.findById(2);
+		Optional<Notification> notif = this.notifRepo.findById(1);
 		Assertions.assertNotNull(notif);
-		Assertions.assertEquals(2, notif.get().getId());
+		Assertions.assertEquals(1, notif.get().getId());
 	}
 	
 	@Test
 	public void testDeleteById() {
-		this.notifRepo.deleteById(3);
-		Assertions.assertNull(this.notifRepo.findById(3));	
+		this.notifRepo.deleteById(2);
+		Assertions.assertFalse(this.notifRepo.findById(2).isPresent());	
 	}
 	@Test
 	public void shouldAdd() {

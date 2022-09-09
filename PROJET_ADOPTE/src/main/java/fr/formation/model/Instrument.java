@@ -13,7 +13,7 @@ import javax.persistence.Table;
 public class Instrument {
 	
 	@ManyToOne
-	@JoinColumn(name="ima_id",nullable=false)
+	@JoinColumn(name="ins_image_id",nullable=false)
 //	@Column(name = "ins_image",nullable=false)
 	protected Image image;
 	

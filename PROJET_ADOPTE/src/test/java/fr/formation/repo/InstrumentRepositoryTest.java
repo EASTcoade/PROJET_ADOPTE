@@ -12,11 +12,12 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import fr.formation.config.AppConfig;
+import fr.formation.model.Image;
 //import fr.formation.config.AppConfig;
 import fr.formation.model.Instrument;
 
 @SpringJUnitConfig(AppConfig.class) // Exécuter ce test avec le contexte de SPRING chargé avec la classe de config AppConfig
-@Sql("classpath:/data-instrument.sql") // Ce script sera joué AVANT (par défaut) CHAQUE test unitaire
+@Sql("classpath:/data.sql") // Ce script sera joué AVANT (par défaut) CHAQUE test unitaire
 @ActiveProfiles("test") // On dit à SPRING qu'on va tester avec le profile "test"
 public class InstrumentRepositoryTest {
 @Autowired
@@ -44,6 +45,8 @@ private IInstrumentRepository repoInstrument;
 		String randomName = UUID.randomUUID().toString();
 		
 		instrument.setNom(randomName);
+		instrument.setImage(new Image());
+		instrument.getImage().setId(1);
 		
 		Assertions.assertEquals(0, instrument.getId());
 		

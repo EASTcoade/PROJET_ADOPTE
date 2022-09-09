@@ -35,7 +35,7 @@ public class AdminRepositoryTest {
 		
 		Assertions.assertNotNull(admin);
 		Assertions.assertTrue(admin.isPresent());
-		Assertions.assertEquals(1, admin.get().getId());
+		Assertions.assertEquals(2, admin.get().getId());
 	}
 	
 	

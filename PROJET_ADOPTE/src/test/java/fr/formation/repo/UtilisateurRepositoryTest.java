@@ -54,8 +54,9 @@ public class UtilisateurRepositoryTest {
 	
 	@Test
 	public void testDeleteById() {
-		this.repoUtilisateur.deleteById(1);
-		Assertions.assertNull(this.repoUtilisateur.findById(1));
+		this.repoUtilisateur.deleteById(2);
+		Assertions.assertNotNull(this.repoUtilisateur.findById(2));
+		Assertions.assertTrue(this.repoUtilisateur.findById(2).isEmpty());
 		
 		
 	}
@@ -65,7 +66,7 @@ public class UtilisateurRepositoryTest {
 		String randomName = UUID.randomUUID().toString();
 		
 		utilisateur.setNom(randomName);
-		utilisateur.setId(1);
+		
 		utilisateur.setDateNaissance(LocalDate.now());
 		utilisateur.setPseudo("user1");
 		utilisateur.setPrenom("Alfred");

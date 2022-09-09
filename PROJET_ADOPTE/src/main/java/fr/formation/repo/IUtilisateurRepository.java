@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import fr.formation.model.Utilisateur;
 
 public interface IUtilisateurRepository extends JpaRepository<Utilisateur, Integer>{
-	public Utilisateur findByNom(String nom);
+	//public Utilisateur findByNom(String nom);
 	
 }

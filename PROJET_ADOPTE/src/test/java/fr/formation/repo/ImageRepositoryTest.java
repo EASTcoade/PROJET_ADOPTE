@@ -23,7 +23,7 @@ import fr.formation.repo.IImageRepository;
 import fr.formation.repo.ISonRepository;
 
 @SpringJUnitConfig(AppConfig.class) // Exécuter ce test avec le contexte de SPRING chargé avec la classe de config AppConfig
-@Sql("classpath:/data-instrument.sql") // Ce script sera joué AVANT (par défaut) CHAQUE test unitaire
+@Sql("classpath:/data.sql") // Ce script sera joué AVANT (par défaut) CHAQUE test unitaire
 @ActiveProfiles("test") // On dit à SPRING qu'on va tester avec le profile "test"
 public class ImageRepositoryTest {
 @Autowired
@@ -46,8 +46,8 @@ private IImageRepository repoImage;
 	}
 	@Test
 	public void testDeleteById() {
-		this.repoImage.deleteById(1);
-		Assertions.assertNull(this.repoImage.findById(1));
+		this.repoImage.deleteById(3);
+		Assertions.assertFalse(this.repoImage.findById(3).isPresent());
 }
 	
 	@Test
@@ -100,11 +100,5 @@ private IImageRepository repoImage;
 		
 		Assertions.assertNotEquals(ancien, image.getContenu());
 	}
-	@Test
-	public void shouldDelete() {
-		this.repoImage.deleteById(2);
-		
-		Assertions.assertFalse(this.repoImage.findById(2).isPresent());
-	
-}
+
 }

@@ -35,7 +35,7 @@ public class StyleMusicalRepositoryTest {
 		
 		Assertions.assertNotNull(style);
 		Assertions.assertTrue(style.isPresent());
-		Assertions.assertEquals(1, style.get().getId());
+		Assertions.assertEquals(2, style.get().getId());
 	}
 	
 	@Test
@@ -53,7 +53,7 @@ public class StyleMusicalRepositoryTest {
 	}
 	@Test
 	public void shouldUpdate() {
-		StyleMusical style = this.repoStyleMusical.findById(1).get();
+		StyleMusical style = this.repoStyleMusical.findById(2).get();
 		String sonTitre = style.getNom();
 		
 //		style.setNom(UUID.randomUUID().toString());
@@ -61,7 +61,7 @@ public class StyleMusicalRepositoryTest {
 		
 		this.repoStyleMusical.save(style);
 		
-		style = this.repoStyleMusical.findById(1).get();
+		style = this.repoStyleMusical.findById(2).get();
 		
 		Assertions.assertNotEquals(sonTitre, style.getNom());
 	}
