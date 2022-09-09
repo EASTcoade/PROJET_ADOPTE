@@ -995,7 +995,24 @@
 											"top": 600,
 											"width": 142,
 											"height": 13,
-											"text": "+Enum",
+											"text": "+Sty_id",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAGDIjKTh+Pl+is=",
+											"_parent": {
+												"$ref": "AAAAAAGCY6ztlE5XuAc="
+											},
+											"model": {
+												"$ref": "AAAAAAGDIjKTbuPiLoY="
+											},
+											"font": "Arial;13;0",
+											"left": 941,
+											"top": 615,
+											"width": 142,
+											"height": 13,
+											"text": "+Sty_nom",
 											"horizontalAlignment": 0
 										}
 									],
@@ -1003,7 +1020,7 @@
 									"left": 936,
 									"top": 593,
 									"width": 152,
-									"height": 25
+									"height": 40
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -1016,7 +1033,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 936,
-									"top": 618,
+									"top": 633,
 									"width": 152,
 									"height": 10
 								},
@@ -9417,7 +9434,15 @@
 							"_parent": {
 								"$ref": "AAAAAAGCY6ztk05PxQ8="
 							},
-							"name": "Enum"
+							"name": "Sty_id"
+						},
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAGDIjKTbuPiLoY=",
+							"_parent": {
+								"$ref": "AAAAAAGCY6ztk05PxQ8="
+							},
+							"name": "Sty_nom"
 						}
 					]
 				},
@@ -9762,7 +9787,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGC2WZdhX7kMJI="
 							},
-							"name": "bool boi_lu"
+							"name": "bool boi_lu",
+							"type": ""
 						}
 					]
 				},
