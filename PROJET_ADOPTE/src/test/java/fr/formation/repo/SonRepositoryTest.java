@@ -3,27 +3,34 @@ package fr.formation.repo;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 import java.util.UUID;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.jdbc.Sql;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
+import fr.formation.config.AppConfig;
 import fr.formation.model.FormatSon;
 import fr.formation.model.Son;
 import fr.formation.model.Utilisateur;
-import fr.formation.repo.jpa.AbstractRepositoryJpa;
-import fr.formation.repo.jpa.SonRepositoryJpa;
 
+@SpringJUnitConfig(AppConfig.class)
+@Sql(scripts = "classpath:/data.sql")
+@ActiveProfiles("test")
 public class SonRepositoryTest {
-	private SonRepositoryJpa repoSon = new SonRepositoryJpa(); //créer une variable objet pour pouvoir accéder aux méthodes Sonrepository
-
-		
-	@AfterAll
-	public static void closeEmf(){
-		AbstractRepositoryJpa.close();
-	}
+	@Autowired
+	private ISonRepository repoSon; 
+	
+//	@AfterAll
+//	public static void closeEmf(){
+//		AbstractRepositoryJpa.close();
+//	}
 	
 	@Test
 	public void testFindAll() {
@@ -35,40 +42,50 @@ public class SonRepositoryTest {
 	
 	@Test
 	public void testFindById() {
-		Son son = this.repoSon.findById(2);
+		Optional<Son> son = this.repoSon.findById(1);
 		
 		Assertions.assertNotNull(son);
-		Assertions.assertTrue(son.getId()==2);
+		Assertions.assertTrue(son.isPresent());
+		Assertions.assertTrue(son.get().getId()==1);
 	}
 	
 	@Test
 	public void shouldAdd() {
 		Son son = generateSon();
+		String sonTitre = son.getTitre();
 		
 		Assertions.assertEquals(0, son.getId());
 		this.repoSon.save(son);
 
 		Assertions.assertNotEquals(0, son.getId());
+		
+		son = this.repoSon.findById(son.getId()).get();
+		Assertions.assertEquals(sonTitre, son.getTitre());
 	}
+	
 	@Test
 	public void shouldUpdate() {
-		Son son = this.repoSon.findById(2);
+		Son son = this.repoSon.findById(1).get();
 		String sonTitre = son.getTitre();
 		
 		son.setTitre(UUID.randomUUID().toString());
 		
 		this.repoSon.save(son);
 		
-		son = this.repoSon.findById(2);
+		son = this.repoSon.findById(1).get();
 		
 		Assertions.assertNotEquals(sonTitre, son.getTitre());
 	}
 	
 	@Test
 	public void shouldDelete() {
-		this.repoSon.deleteById(10);
+		this.repoSon.deleteById(2);
 		
-		Assertions.assertNull(this.repoSon.findById(10));
+		Optional<Son> son = this.repoSon.findById(2);
+		
+		Assertions.assertNotNull(son);
+		Assertions.assertTrue(son.isEmpty());
+		
 	}
 	
 	private static Son generateSon() {

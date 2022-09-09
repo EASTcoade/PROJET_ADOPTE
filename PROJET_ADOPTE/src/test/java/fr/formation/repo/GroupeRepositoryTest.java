@@ -3,24 +3,32 @@ package fr.formation.repo;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 import java.util.UUID;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.jdbc.Sql;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
+import fr.formation.config.AppConfig;
 import fr.formation.model.Groupe;
-import fr.formation.repo.jpa.AbstractRepositoryJpa;
-import fr.formation.repo.jpa.GroupeRepositoryJpa;
 
+@SpringJUnitConfig(AppConfig.class)
+@Sql(scripts = "classpath:/data.sql")
+@ActiveProfiles("test")
 public class GroupeRepositoryTest {
-	private GroupeRepositoryJpa repoGroupe = new GroupeRepositoryJpa();
+	@Autowired
+	private IGroupeRepository repoGroupe;;
 	
-	@AfterAll
-	public static void closeEmf(){
-		AbstractRepositoryJpa.close();
-	}
+//	@AfterAll
+//	public static void closeEmf(){
+//		AbstractRepositoryJpa.close();
+//	}
 	
 	@Test
 	public void testFindAll() {
@@ -32,40 +40,49 @@ public class GroupeRepositoryTest {
 	
 	@Test
 	public void testFindById() {
-		Groupe groupe = this.repoGroupe.findById(2);
+		Optional<Groupe> groupe = this.repoGroupe.findById(1);
 		
 		Assertions.assertNotNull(groupe);
-		Assertions.assertTrue(groupe.getId()==2);
+		Assertions.assertTrue(groupe.isPresent());
+		Assertions.assertTrue(groupe.get().getId()==1);
 	}
 	
 	@Test
 	public void shouldAdd() {
 		Groupe groupe = generateGroupe();
+		String groNom = groupe.getNom();
 		
 		Assertions.assertEquals(0, groupe.getId());
 		this.repoGroupe.save(groupe);
 
 		Assertions.assertNotEquals(0, groupe.getId());
+		
+		groupe = this.repoGroupe.findById(groupe.getId()).get();
+		Assertions.assertEquals(groNom, groupe.getNom());
 	}
 	@Test
 	public void shouldUpdate() {
-		Groupe groupe = this.repoGroupe.findById(3);
+		Groupe groupe = this.repoGroupe.findById(1).get();
 		String groNom = groupe.getNom();
 		
 		groupe.setNom(UUID.randomUUID().toString());
 		
 		this.repoGroupe.save(groupe);
 		
-		groupe = this.repoGroupe.findById(3);
+		groupe = this.repoGroupe.findById(1).get();
 		
 		Assertions.assertNotEquals(groNom, groupe.getNom());
 	}
 	
 	@Test
 	public void shouldDelete() {
-		this.repoGroupe.deleteById(4);
+		this.repoGroupe.deleteById(2);
 		
-		Assertions.assertNull(this.repoGroupe.findById(4));
+		Optional<Groupe> groupe = this.repoGroupe.findById(2);
+		
+		Assertions.assertNotNull(groupe);
+		Assertions.assertTrue(groupe.isEmpty());
+		
 	}
 	
 	private static Groupe generateGroupe() {
