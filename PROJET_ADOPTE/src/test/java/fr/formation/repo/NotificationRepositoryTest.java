@@ -1,20 +1,27 @@
 package fr.formation.repo;
 
-
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.jdbc.Sql;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
+import fr.formation.config.AppConfig;
 import fr.formation.model.Notification;
-import fr.formation.model.Notification;
-import fr.formation.repo.jpa.NotificationRepositoryJpa;
 
+
+@SpringJUnitConfig(AppConfig.class)
+@ActiveProfiles("test")
+@Sql(scripts = "classpath:/data.sql")
 public class NotificationRepositoryTest {
 	
-	private NotificationRepositoryJpa notifRepo = new NotificationRepositoryJpa();
+	@Autowired
+	private INotificationRepository notifRepo ;
 	
 		
 	@Test
@@ -28,9 +35,9 @@ public class NotificationRepositoryTest {
 	
 	@Test
 	public void testFindById() {
-		Notification notif = this.notifRepo.findById(2);
+		Optional<Notification> notif = this.notifRepo.findById(2);
 		Assertions.assertNotNull(notif);
-		Assertions.assertEquals(2, notif.getId());
+		Assertions.assertEquals(2, notif.get().getId());
 	}
 	
 	@Test
@@ -52,7 +59,7 @@ public class NotificationRepositoryTest {
 	
 	@Test
 	public void shouldUpdate() {
-		Notification notification = this.notifRepo.findById(2);
+		Notification notification = this.notifRepo.findById(2).get();
 		String ancien = notification.getMessage();
 		String randomName = UUID.randomUUID().toString();
 		
@@ -61,7 +68,7 @@ public class NotificationRepositoryTest {
 		
 		this.notifRepo.save(notification);
 		
-		notification = this.notifRepo.findById(2);
+		notification = this.notifRepo.findById(2).get();
 		
 		Assertions.assertNotEquals(ancien, notification.getMessage());
 	}

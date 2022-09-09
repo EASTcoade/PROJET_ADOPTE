@@ -1,23 +1,35 @@
 package fr.formation.repo;
 
+
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.jdbc.Sql;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
+import fr.formation.config.AppConfig;
 import fr.formation.model.Chat;
 import fr.formation.model.Niveau;
 import fr.formation.model.Reception;
 import fr.formation.model.Utilisateur;
-import fr.formation.repo.jpa.ChatRepositoryJpa;
 
+
+
+@SpringJUnitConfig(AppConfig.class)
+@ActiveProfiles("test")
+@Sql(scripts = "classpath:/data.sql")
 public class ChatRepositoryTest {
 
-	private ChatRepositoryJpa repoChat = new ChatRepositoryJpa();
+	@Autowired
+	private IChatRepository repoChat ;
 	
 	
 	@Test
@@ -30,9 +42,13 @@ public class ChatRepositoryTest {
 	
 	
 	@Test
-	public void findByPseudo() {
+	public void findAllById() {
 		
-		Optional<List<Chat>> messages = this.repoChat.findByPseudo(3);
+		Integer ids[] = {1};
+
+		Iterable<Integer> iterable = Arrays.asList(ids);
+		
+		Optional<List<Chat>> messages = Optional.ofNullable(this.repoChat.findAllById(iterable));
 
 		Assertions.assertNotNull(messages);
 		System.out.println(messages);
@@ -41,9 +57,9 @@ public class ChatRepositoryTest {
 	
 	@Test
 	public void testFindById() {
-		Chat chat = this.repoChat.findById(10);
+		Optional<Chat> chat = this.repoChat.findById(10);
 		Assertions.assertNotNull(chat);
-		Assertions.assertEquals(10, chat.getId());
+		Assertions.assertEquals(10, chat.get().getId());
 	}
 	
 	@Test
@@ -52,7 +68,7 @@ public class ChatRepositoryTest {
 		String randomName = UUID.randomUUID().toString();
 		
 		utilisateur.setNom(randomName);
-		utilisateur.setId(1);
+		utilisateur.setId(10);
 		utilisateur.setDateNaissance(LocalDate.now());
 		utilisateur.setPseudo("user1");
 		utilisateur.setPrenom("Alfred");
@@ -80,8 +96,8 @@ public class ChatRepositoryTest {
 }
 	
 	public void shouldDelete() {
-		this.repoChat.deleteById(10);
-		Assertions.assertNull(this.repoChat.findById(10));
+		this.repoChat.deleteById(1);
+		Assertions.assertNull(this.repoChat.findById(1));
 
 	}
 }
