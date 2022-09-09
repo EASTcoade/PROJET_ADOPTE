@@ -1,84 +1,95 @@
 package fr.formation.repo;
 
-import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.jdbc.Sql;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
+import fr.formation.config.AppConfig;
 import fr.formation.model.Admin;
-import fr.formation.model.Niveau;
-import fr.formation.model.Utilisateur;
-import fr.formation.repo.jpa.AdminRepositoryJpa;
-import fr.formation.repo.jpa.UtilisateurRepositoryJpa;
 
+@SpringJUnitConfig(AppConfig.class)
+@Sql(scripts = "classpath:/data.sql")
+@ActiveProfiles("test")
 public class AdminRepositoryTest {
-	private AdminRepositoryJpa repoAdmin = new AdminRepositoryJpa() ;
-	
-	@BeforeAll
-	public static void setup() {
-		// On ajoute un utilisateur
-		AdminRepositoryJpa repoAdmin = new AdminRepositoryJpa() ;
-		Admin admin = new Admin();
-
-		admin.setNom(UUID.randomUUID().toString());
-		admin.setId(1);
-		admin.setPassword("lolilol");
-		repoAdmin.save(admin);
-	}
+	@Autowired
+	private IAdminRepository repoAdmin;
 	
 	@Test
 	public void testFindAll() {
 		List<Admin> admin = this.repoAdmin.findAll();
+		
 		Assertions.assertNotNull(admin);
+		Assertions.assertTrue(admin.size() > 0);
 		
 	}
 	@Test
 	public void testFindById() {
-		Admin admin = this.repoAdmin.findById(2);
+		Optional<Admin> admin = this.repoAdmin.findById(2);
 		
 		Assertions.assertNotNull(admin);
-		Assertions.assertTrue(admin.getId()==2);
+		Assertions.assertTrue(admin.isPresent());
+		Assertions.assertEquals(1, admin.get().getId());
 	}
 	
 	
 	@Test
 	public void testDeleteById() {
-		this.repoAdmin.deleteById(2);
-		Assertions.assertNull(this.repoAdmin.findById(2));
+		this.repoAdmin.deleteById(1);
 		
-		
-	}
-	@Test
-	public void shouldAdd() {
-		Admin admin = new Admin();
-		String randomName = UUID.randomUUID().toString();
-		
-		admin.setNom(UUID.randomUUID().toString());
-		admin.setId(2);
-		admin.setPassword("ahahaha");
-		
-		
-		
-		this.repoAdmin.save(admin);
+		Optional<Admin> admin = this.repoAdmin.findById(1);
 
-		Assertions.assertNotEquals(0, admin.getId());
+		Assertions.assertNotNull(admin);
+		Assertions.assertTrue(admin.isEmpty());
+		
+		
 	}
 	
 	@Test
+	public void shouldAdd() {
+		Admin admin = generateAdmin();
+		String adminNom = admin.getNom();
+		
+		Assertions.assertEquals(0, admin.getId());
+		this.repoAdmin.save(admin);
+		Assertions.assertNotEquals(0, admin.getId());
+		
+		admin = this.repoAdmin.findById(admin.getId()).get();
+		Assertions.assertEquals(adminNom, admin.getNom());
+	}
+	
+
+	@Test
 	public void shouldUpdate() {
-		Admin admin = this.repoAdmin.findById(2);
-		String randomName = UUID.randomUUID().toString();
+		Admin admin = this.repoAdmin.findById(1).get();
+		String adminNom = admin.getNom();
 		
-		admin.setNom(randomName);
-		
+		admin.setNom("Brandnew Nom !");
 		
 		this.repoAdmin.save(admin);
 		
-		admin = this.repoAdmin.findById(2);
+		admin = this.repoAdmin.findById(1).get();
 		
-		Assertions.assertEquals(randomName, admin.getNom());
+		Assertions.assertNotEquals(adminNom, admin.getNom());
+	}
+	
+	private Admin generateAdmin() {
+		Admin admin = new Admin();
+		
+		genericDataForAdmin(admin);
+		return admin;
+	}
+
+	private void genericDataForAdmin(Admin admin) {
+		
+		admin.setNom(UUID.randomUUID().toString());
+		admin.setPassword(UUID.randomUUID().toString());
+
 	}
 }
