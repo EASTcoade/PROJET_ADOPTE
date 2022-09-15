@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page de connexion</title>
 
-    <link rel="stylesheet" href="assets/css/popup.css">
-    <script defer src="assets/js/popup.js"></script>
+    <link rel="stylesheet" href="..\css\mot-de-passe-oublie.css">
+    <script defer src="..\js\mot-de-passe-oublie.js"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,16 +24,16 @@
     </form>
     
     <div class="logo">
-        <img src="" />
+        <img src="..\html\image\logo.png" />
     </div>
 
-    <div class="image">
-        <img src="" />
+    <div class="robot">
+        <img src="..\html\image\robot.png" />
     </div>
 
-    <button class="mot-de-passe-oublié">Ouvrir la popup</button>
+    <button class="mot-de-passe-oublie">mot de passe oublié</button>
 
-    <!-- Joue le rôle de fond noir transparent -->
+    <!-- Joue le rôle de fond bleu ciel transparent -->
     <div class="popup-overlay"></div>
     
     <!-- Le conteneur de la popup, pour faciliter son centrage -->
@@ -41,11 +41,12 @@
 
         <!-- La popup avec son titre, et son contenu -->
         <div class="popup">
-            <div class="popup-header">Le titre</div>
+            <div class="popup-header">Veuillez saisir un nouveau mot de passe</div>
 
             <div class="popup-content">
-                Veuillez saisir un nouveau mot de passe
-                <input type="password" name="password" placeholder="Mot de passe" />
+                <input type="password" name="password" placeholder="Nouveau motde passe" />
+                Confirmez le nouveau mot de passe
+                <input type="password" name="password" placeholder="Nouveau motde passe" />
                 <button class="close-popup">Fermer</button>
             </div>
         </div>

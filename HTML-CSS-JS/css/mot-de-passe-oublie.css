@@ -1,0 +1,50 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.popup-overlay,
+.popup-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw; /* vw => Viewport Width */
+    height: 100vh; /* vh => Viewport Height */
+}
+
+.popup-overlay {
+    background-color: #66ffff;
+    opacity: 0.75;
+}
+
+.popup-container {
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-overlay.open {
+    display: block;
+}
+
+.popup-container.open {
+    display: flex;
+}
+
+.popup {
+    width: 600px;
+    background-color: white;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.popup .popup-header {
+    padding: 10px;
+    background-color: #0099ff;
+    color: white;
+    font-size: 18px;
+}
+
+.popup .popup-content {
+    padding: 10px;
+}
+
