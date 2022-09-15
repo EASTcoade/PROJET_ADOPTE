@@ -1,0 +1,104 @@
+#instruments-a-valider,#stats-instruments{
+    display: none;
+}
+#instruments-a-valider.open,#stats-instruments.open{
+    display: block;
+}
+
+
+body{
+    display: flex;
+    margin:0;
+    width: 100vw;
+    height: 100vh;
+    caret-color: transparent;
+
+}
+nav{
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+h1{
+    text-align: left;
+    padding-left: 30px;
+}
+h3{
+    background-color: rgba(13, 110, 253, 0.25);
+    width: 80%;
+    text-align: center;
+}
+section{
+    width: 100%;
+    border-left: 2px solid #333;
+}
+.accordion{
+    width: 100%;
+}
+
+.btn-group-vertical{
+    width: 100%;;
+}
+ul{
+    list-style-type: none;
+    width: 100%;
+}
+nav li{
+    padding: 10px;
+}
+nav li:hover{
+    cursor: pointer;
+    background-color: rgba(13, 110, 253, 0.25);
+}
+.section-content{
+    display: flex;
+    justify-content: space-between;
+}
+.instrument-validation{
+    display: flex;
+}
+.separateur{
+    width: 10px;
+    background-color: #333;
+    opacity: 80%;
+    border-radius: 5px;
+    margin: 5px;
+}
+.container-a-valider, .actuels{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+section li{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+    width: 80%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+section li:hover{
+    background-color: rgba(13, 110, 253, 0.25);
+}
+section ul{
+    width: 100%;   
+    overflow: auto; 
+    max-height: 500px;
+}
+section button{
+    font-size: 12px;
+    height: 100%;
+}
+ul p{
+    text-align: center;
+    margin: 0;
+}
+.ok-nok{
+    display: none;
+}
+.ok-nok.open{
+    display: block;
+}

@@ -50,6 +50,7 @@
 .popup-header i{
     grid-column: 2;
     grid-row: 1;
+    font-size: 18px;
 }
 .uti1,.uti2{    
     display: flex;
@@ -82,4 +83,10 @@ img{
     font-weight: bold;
     border: 1px solid black;
     background-color: red;
+}
+button,i:hover{
+    cursor:pointer;
+}
+i:hover{
+    font-size:22px;
 }
