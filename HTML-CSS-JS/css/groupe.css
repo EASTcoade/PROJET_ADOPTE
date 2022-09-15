@@ -1,0 +1,62 @@
+.logo {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    background-color: white;
+}
+
+.logo img{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.titre {
+    grid-column: 2 /spawn 2;
+    grid-row: 1;
+    background-color: white;
+    font-size: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.profil {
+    grid-column: 1 / span 2;
+    grid-row: 2;
+    background-color: violet;
+}
+
+.image {
+    grid-column-start: 3;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 2;
+    background-color: white;
+}
+
+.image img{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.pied {
+    grid-column: 1/ span 2;
+    grid-row: 3;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pied img {
+    max-width: 100%;
+    max-height: 100%;
+
+}
+
+.son {
+    grid-column: 3;
+    grid-row: 3;
+    background-color: #ffe6f7;
+}

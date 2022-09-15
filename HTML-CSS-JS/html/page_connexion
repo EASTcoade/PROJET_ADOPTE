@@ -6,20 +6,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page de connexion</title>
 
+    <link rel="stylesheet" href="..\css\page_connexion.css">
     <link rel="stylesheet" href="..\css\mot-de-passe-oublie.css">
     <script defer src="..\js\mot-de-passe-oublie.js"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin : 0;
+        }
+
+        .container {
+            width: 100vw;
+            height: 100vh;
+
+            font-family: 'Roboto', serif;
+            font-weight: bold;
+            font-size: 20px;
+
+            display: grid;
+
+        grid-template-columns: 100px 1fr 500px;
+        grid-template-rows: 100px 1fr 1fr 1fr 1fr 50px;
+
+        gap: 10px;
+        padding: 10px;
+        box-sizing: border-box;
+        
+}
+    </style>
 </head>
 
 <body>
-    <button class="suivant"><!--lien page utilisateur connecté--></button>
+    <div class="container">
 
-    <form class="login">
+    <form class="mail">
         <input type="text" name="username" placeholder="Adresse mail" />
+    </form>
+    <form class="mdp">
         <input type="password" name="password" placeholder="Mot de passe" />
+    </form>
+    <form class="connexion">
         <input type="submit" value="Se connecter" />
     </form>
     
@@ -27,27 +57,36 @@
         <img src="..\html\image\logo.png" />
     </div>
 
-    <div class="robot">
+    <div class="image">
         <img src="..\html\image\robot.png" />
     </div>
 
-    <button class="mot-de-passe-oublie">mot de passe oublié</button>
-
-    <!-- Joue le rôle de fond bleu ciel transparent -->
-    <div class="popup-overlay"></div>
+    <div class="pied">
+        <img src="..\html\image\pied-page.png" />
+    </div>
     
-    <!-- Le conteneur de la popup, pour faciliter son centrage -->
-    <div class="popup-container">
+    <div class="mdpo">
+    <button class="open-popup">mot de passe oublié</button>
+
+        <!-- Joue le rôle de fond bleu ciel transparent -->
+        <div class="popup-overlay"></div>
+    
+        <!-- Le conteneur de la popup, pour faciliter son centrage -->
+        <div class="popup-container">
 
         <!-- La popup avec son titre, et son contenu -->
         <div class="popup">
             <div class="popup-header">Veuillez saisir un nouveau mot de passe</div>
 
             <div class="popup-content">
-                <input type="password" name="password" placeholder="Nouveau motde passe" />
+                    <input type="password" name="password" placeholder="Nouveau motde passe" />
+                    <hr>
                 Confirmez le nouveau mot de passe
-                <input type="password" name="password" placeholder="Nouveau motde passe" />
-                <button class="close-popup">Fermer</button>
+                    <br>
+                    <input type="password" name="password" placeholder="Nouveau motde passe" />
+                    <hr>
+                    <button class="close-popup">Confirmer</button>
+                </div>
             </div>
         </div>
     </div>
