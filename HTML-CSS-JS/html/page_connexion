@@ -28,13 +28,15 @@
             font-size: 20px;
 
             display: grid;
-
-        grid-template-columns: 100px 1fr 500px;
+        
+            background: -webkit-linear-gradient(bottom, #0250c5, #ff9966);
+        grid-template-columns: 100px 1fr 1fr;
         grid-template-rows: 100px 1fr 1fr 1fr 1fr 50px;
 
         gap: 10px;
         padding: 10px;
         box-sizing: border-box;
+        border: none;
         
 }
     </style>
@@ -54,11 +56,11 @@
     </form>
     
     <div class="logo">
-        <img src="..\html\image\logo.png" />
+        <img src="..\html\image\logoM.png" />
     </div>
 
     <div class="image">
-        <img src="..\html\image\robot.png" />
+        <img src="..\html\image\robotM.png" />
     </div>
 
     <div class="pied">

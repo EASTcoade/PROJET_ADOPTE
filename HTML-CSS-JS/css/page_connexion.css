@@ -3,7 +3,7 @@
     grid-column-end: 2;
     grid-row-start: 1;
     grid-row-end: 2;
-    background-color: white;
+    background-color: none;
 }
 
 .logo img{
@@ -24,33 +24,45 @@
 .mail {
     grid-column: 2;
     grid-row: 2;
-    background-color: violet;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .mdp {
     grid-column: 2;
     grid-row: 3;
-    background-color: violet;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .connexion {
     grid-column: 2;
     grid-row: 4;
-    background-color: violet;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .mdpo {
     grid-column: 2;
     grid-row: 5;
-    background-color: violet;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .image {
     grid-column-start: 3;
     grid-column-end: 3;
-    grid-row-start: 2;
-    grid-row-end: 5;
-    background-color: white;
+    grid-row-start: 1;
+    grid-row-end: 6;
+    background-color: none;
 }
 
 .image img{
@@ -61,7 +73,7 @@
 .pied {
     grid-column: 1/ span 2;
     grid-row: 6;
-    background-color: white;
+    background-color: none;
     display: flex;
     align-items: center;
     justify-content: center;
