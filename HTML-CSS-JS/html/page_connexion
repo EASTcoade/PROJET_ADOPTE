@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page de connexion</title>
+
+    <link rel="stylesheet" href="assets/css/popup.css">
+    <script defer src="assets/js/popup.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <button class="suivant"><!--lien page utilisateur connecté--></button>
+
+    <form class="login">
+        <input type="text" name="username" placeholder="Adresse mail" />
+        <input type="password" name="password" placeholder="Mot de passe" />
+        <input type="submit" value="Se connecter" />
+    </form>
+    
+    <div class="logo">
+        <img src="" />
+    </div>
+
+    <div class="image">
+        <img src="" />
+    </div>
+
+    <button class="mot-de-passe-oublié">Ouvrir la popup</button>
+
+    <!-- Joue le rôle de fond noir transparent -->
+    <div class="popup-overlay"></div>
+    
+    <!-- Le conteneur de la popup, pour faciliter son centrage -->
+    <div class="popup-container">
+
+        <!-- La popup avec son titre, et son contenu -->
+        <div class="popup">
+            <div class="popup-header">Le titre</div>
+
+            <div class="popup-content">
+                Veuillez saisir un nouveau mot de passe
+                <input type="password" name="password" placeholder="Mot de passe" />
+                <button class="close-popup">Fermer</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
