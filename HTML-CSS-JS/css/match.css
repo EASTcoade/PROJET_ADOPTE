@@ -1,0 +1,85 @@
+.popup-container,.popup-overlay{
+    width:100vw;
+    height:100vh;
+    position: fixed;
+    top: 0;
+    left: 0;  
+    display:none;
+}
+.popup-overlay{
+    background-color: rgba(0,0,0,0.5);  
+}
+.popup-container{    
+    align-items: center;
+    justify-content: center;  
+}
+
+.popup-overlay.open{/*!!!pas d'espace entre les class !!!*/
+    display: block;
+}
+.popup-container.open{/*!!!pas d'espace entre les class !!!*/
+    display: flex;
+}
+
+.popup{
+    background-color: white;
+    width: 800px;
+    border-radius: 30px 4px 4px 30px;
+    overflow:hidden;
+    box-shadow: 10px 5px 5px #333;
+}
+.popup-content{
+    padding: 10px;
+    display: grid;
+    grid-template-areas: 
+    'utiA triangle utiB';
+}
+.popup-header{
+    background-color: rgb(0, 140, 255);
+    color:white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+.popup-header h1{
+    grid-column: 1;
+    grid-row: 1;    
+    font-size: 18px;
+}
+.popup-header i{
+    grid-column: 2;
+    grid-row: 1;
+}
+.uti1,.uti2{    
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    justify-content: center;
+}
+.uti1{
+    grid-area: utiA;
+}
+.triangle{
+    grid-area: triangle;
+}
+.uti2{
+    grid-area: utiB;
+}
+img{
+    width: 100%;;
+}
+.poursuivre,.profil{
+    width: 100%;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 4px;
+    background-color: rgba(255, 0, 0, 0.763);
+    color: white;
+    border-style: none;
+}
+.poursuivre:hover,.profil:hover{
+    font-weight: bold;
+    border: 1px solid black;
+    background-color: red;
+}
