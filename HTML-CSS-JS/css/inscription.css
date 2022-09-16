@@ -1,0 +1,131 @@
+.container{
+
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 80px 80px 1fr 1fr  80px  ;
+    font-family: sans-serif
+}
+
+
+
+
+.logo{
+    grid-column-start: 1;
+    grid-column-end:2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    
+    
+}
+
+.logo img{
+    max-width: 100%;
+    max-height: 100%;
+  
+
+}
+
+.image_inscription img{
+    max-width: 100%;
+    max-height: 100%;
+  
+}
+
+.header{
+    grid-column-start: 1;
+    grid-column-end:5;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    color: #052089;
+    
+    
+}
+
+.inscription-info{
+
+grid-column-start: 1;
+    grid-column-end:3;
+    grid-row-start: 3;
+    grid-row-end: 5;
+    color: white;
+    border:1px solid black;
+    border-right-style: none;
+    background:linear-gradient(90deg, #025b81ee, rgb(255, 255, 255));
+
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px
+}
+
+.image_inscription {
+
+        grid-column-start: 3;
+        grid-column-end: 5;
+        grid-row-start: 3;
+        grid-row-end: 5;
+        border:1px solid black;
+        border-left-style: none;
+        border-top-right-radius: 30px;
+        border-bottom-right-radius: 30px
+
+        }
+
+
+
+.inscription-info span {
+    width: 150px;
+    display: inline-block;
+    margin-left: 20%;
+    margin-top: 15px;
+}
+
+.inscription-info input {
+    width: 30%;
+    height: 25px;
+    background-color: beige;
+    
+}
+
+
+.inscription-info #span_nom {
+    margin-top: 60px;
+}
+
+
+.footer{
+
+        grid-column-start: 1;
+        grid-column-end: 5;
+        grid-row-start: 5;
+        grid-row-end: 6;
+        }
+
+.container .bouton_inscription {
+
+            color: white;
+            background-color:#a3611e;
+            border-color: #895017;
+            height: 30px;
+            width:100px;
+            margin-top: 30px;
+            margin-left: 50%;
+            border-radius: 6px;
+        }
+
+.container .bouton_inscription:hover {
+            background-color:rgb(212, 25, 25);
+            border-color:rgb(212, 25, 25);
+            color: white;
+          }
+
+
+    
+
