@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recherche</title>
+
+    <!-- Lien Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../css/recherche.css">
+
+    <script defer src="../js/recherche.js"></script>
+    
+    <script src="https://maps.google.com/maps/api/js?key=AIzaSyBiAmyKDEL6IhU7af_oCPzDWFDYzp0y9wg" type="text/javascript"></script>
+    <script src = ../js/maps.js></script>   
+
+</head>
+<body>
+    <!-- <img src="../html/image/ballerine.png" alt="">     -->
+    <header>
+        <img src="./image/logoM.png" alt="">
+        <h1>Trouve d'autres muzicossss !</h1>
+        <div>
+            <i class="fa-solid fa-user"></i>
+            <p>Pseudo utilisateur</p>
+        </div>            
+    </header>
+
+    <section>
+        <div class="recherche-textuelle">
+            <!-- <label for="textboc-recherche">Recherche par mot-clé :</label><br> -->
+            <input type="text" name="recherched" id="textbox-recherche" placeholder="Recherche par mot-clé...">
+              
+        </div>
+        <nav class="filtres">
+            <div class="objet-choix">
+                <p>Instruments :</p>
+                <div class="choix">
+                    <input type="checkbox" name="guitare" id="guitare">
+                    <label for="guitare">Guitare</label>                    
+                </div>
+                <div class="choix">
+                    <input type="checkbox" name="batterie" id="batterie">
+                    <label for="batterie">Batterie</label>                    
+                </div> 
+                <div class="choix">
+                    <input type="checkbox" name="cornemuse" id="cornemuse">
+                    <label for="batterie">Cornemuse</label>                    
+                </div> 
+                <div class="choix">
+                    <input type="checkbox" name="triangle" id="triangle">
+                    <label for="batterie">Triangle</label>                    
+                </div>                
+            </div>
+            <div class="objet-choix">
+                <p>Styles musicaux :</p>
+                <div class="choix">
+                    <input type="checkbox" name="jazz" id="jazz">
+                    <label for="jazz">Jazz</label>                    
+                </div>
+                <div class="choix">
+                    <input type="checkbox" name="rock" id="rock">
+                    <label for="rock">Rock</label>                    
+                </div>                
+            </div>
+            <div class="distance">
+                <div class="range">
+                    <label for="distance">Distance maxi</label><br>
+                    <div class="input-container">
+                        <input type="range" name="jazz" id="range-distance"
+                        min="0" max="200" step="10" value="100" class="slicer"> 
+                        <p id="demo"></p>
+                    </div>                    
+                </div>
+                                
+            </div>
+            <div class="age">
+                <p>Age</p>
+            </div>
+        </nav>
+        <!-- changement de "colonne" ici -->
+        <div class="resultat">
+            <h2>Résultats de votre recherche</h2>
+            <ul class="liste-resultats">
+                <li class="result">
+                    <div class="result-container">
+                        <img src="./image/beber-nrv.jpg" alt="">
+                        <div class="result-coordonnees">
+                            <h2>Pseudo de Beber</h2>
+                            <h3>Ville</h3>
+                        </div>
+                        <div class="result-instruments">
+                            <ul class="liste-result-instrument">
+                                <li class="result-info">Guitare</li>
+                                <li class="result-info">Batterie</li>
+                            </ul>
+                        </div>
+                        <div class="result-styles-musicaux">
+                            <ul class="liste-result-styles-musicaux">
+                                <li class="result-info">Jazz</li>
+                                <li class="result-info">Rock</li>
+                            </ul>
+                        </div>
+                    </div>                        
+                </li>
+                <li class="result">
+                    <div class="result-container">
+                        <img src="./image/beber-nrv.jpg" alt="">
+                        <div class="result-coordonnees">
+                            <h2>Pseudo de Beber</h2>
+                            <h3>Ville</h3>
+                        </div>
+                        <div class="result-instruments">
+                            <ul class="liste-result-instrument">
+                                <li class="result-info">Guitare</li>
+                                <li class="result-info">Batterie</li>
+                            </ul>
+                        </div>
+                        <div class="result-styles-musicaux">
+                            <ul class="liste-result-styles-musicaux">
+                                <li class="result-info">Jazz</li>
+                                <li class="result-info">Rock</li>
+                            </ul>
+                        </div>
+                    </div>                        
+                </li>
+                <li class="result">
+                    <div class="result-container">
+                        <img src="./image/beber-nrv.jpg" alt="">
+                        <div class="result-coordonnees">
+                            <h2>Pseudo de Beber</h2>
+                            <h3>Ville</h3>
+                        </div>
+                        <div class="result-instruments">
+                            <ul class="liste-result-instrument">
+                                <li class="result-info">Guitare</li>
+                                <li class="result-info">Batterie</li>
+                            </ul>
+                        </div>
+                        <div class="result-styles-musicaux">
+                            <ul class="liste-result-styles-musicaux">
+                                <li class="result-info">Jazz</li>
+                                <li class="result-info">Rock</li>
+                            </ul>
+                        </div>
+                    </div>                        
+                </li>
+            </ul>
+        </div>
+        <div class="carte" id="map">
+        </div>
+
+    </section>
+    <footer>
+        <img src="./image/pied-page-big.PNG" alt="">
+        <div class="centered">Developped by Group C - Sopra Steria Paris 2022</div>
+    </footer>
+</body>
+</html>
