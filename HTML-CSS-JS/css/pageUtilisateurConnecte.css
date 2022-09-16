@@ -1,0 +1,236 @@
+body {
+    display: grid;
+    grid-template-rows: 45vh 45vh 10vh;
+    grid-template-columns: 10vw 45vw 25vw 30vw;
+    font-family: "Roboto";
+    background: -webkit-linear-gradient(bottom, #a3a3a3, white);
+}
+
+.logo {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.logo img {
+    height: 30%;
+    width: auto;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.habillage {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.habillage img {
+    height: 60%;
+    width: auto;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.utilisateur {
+    position: relative;
+    /* display: flex;
+    align-items: center; 
+    justify-content: start; 
+    flex-direction: column; */
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.photo-paysage {
+    position: absolute;
+    width: 80%;
+    height: auto;
+    left: 10%;   
+}
+
+.photo-profil {
+    position: absolute;
+    z-index: 1;
+    width: 30%;
+    height: auto;
+    top: 40%;
+    left: 18%;
+    /* border-radius: 25px; */
+    border-bottom-left-radius: 30%;
+    border-top-right-radius: 30%;
+    border-top-left-radius: 30%;
+    border-color: red; 
+}
+
+.instrumentsImage {
+    grid-row: 1;
+    grid-column: 3;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center; 
+    display: flex;
+}
+
+.cloche i {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    min-height: 10px;  /*régler la taille de la cloqhe*/
+    max-height: 100px;
+    margin-bottom: 15px;
+}
+
+.image > img {
+    width: 70%;
+}
+
+.instrumentsImage div {
+    margin-bottom: 5px;
+}
+
+
+.instrumentsImage .image img {
+    max-width: 100%;
+    height: auto;
+}
+
+.gestion {
+    grid-row: 2;
+    grid-column: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.placement {
+    display: flex;
+    flex-direction: column;
+    justify-items: center; 
+    align-items: left;
+    font-size: 2vh;
+}
+
+.placement i {
+    margin-bottom: 10%;
+    background: rgb(192, 72, 24);
+    padding-top: 15px;
+    padding-bottom: 13px;
+    padding-left: 14px;
+    padding-right: 14px;
+}
+
+.placement a {
+    font-size: 100%;
+    background: rgb(192, 153, 24);
+    color: white;
+    text-decoration: none;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.chat {
+    grid-row: 1 /span 2;
+    grid-column: 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    border-left: 2px solid black;
+    padding-left: 10px;
+}
+
+.contact {
+    display: inline-flex;
+}
+
+.dropdown >button {
+    background-color: transparent;
+    color: black;
+    margin-right: 5px;
+}
+
+.contact > button {
+    background-color: white;
+    color: black;
+    border: 2px solid gray;
+    border-radius: 12px;
+    margin-right: 2px;
+}
+
+.messages {
+    margin-top: 10px;
+}
+
+.messages > div {
+    border: solid 1px #333;
+    padding: 10px;
+    min-height: calc(100vh - 600px);
+    max-height: calc(100vh - 200px);
+    overflow: scroll;
+    margin-right: 15px;
+}
+
+.textbox > i {
+    margin-top: 10px;
+    padding: 3px;
+
+}
+
+footer {
+    grid-row: 3;
+    grid-column: 1 /span 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.footer {
+    background: yellow;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.pUn {
+    background: cyan;
+    color: transparent;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.pDeux {
+    background: orange;
+    color: transparent;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+footer p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+
+/* Responsive avec media queries */
+@media screen and (max-width: 800px) {
+    .image {
+        display: none;
+    }
+}
+
+
+@media screen and (max-height: 500px) {
+    .gestion {
+        display: none;
+    }
+}
+
+
+
+
+
+
+
+
