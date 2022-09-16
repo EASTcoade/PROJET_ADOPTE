@@ -17,12 +17,11 @@
     <style>
         body {
             margin : 0;
+            width: 100vw;
+            height: 100vh;
         }
 
         .container {
-            width: 100vw;
-            height: 100vh;
-
             font-family: 'Roboto', serif;
             font-weight: bold;
             font-size: 20px;
@@ -31,8 +30,8 @@
 
     background: -webkit-linear-gradient(bottom, #0250C5, #FF9966);
 
-        grid-template-columns: 200px 1fr 1fr 1fr 1fr 1fr 300px;
-        grid-template-rows: 200px 50px 1fr 1fr 1fr;
+        grid-template-columns: 200px 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 200px 15px 450px 80px;
 
         gap: 10px;
         padding: 10px;
@@ -59,6 +58,11 @@
             Bernard
             <br>
             Guitariste
+            <br>
+            <br>
+            <i class="fa-solid fa-user-slash"></i>Supprimer musicien
+            <br>
+            <i class="fa-solid fa-user-graduate"></i>Nommer leader
         </div>
         <div class="profil3">
             <img src="..\html\image\bianca-omg.jpg" />
@@ -70,14 +74,19 @@
         <div class="image">
             <img src="..\html\image\chef-orchestreM.png" />
         </div>
-        <div class="pied">
-            <img src="..\html\image\pied-page.png" />
-        </div>
+        
         <div class="son">
             <i class="fa-solid fa-file-arrow-up"></i> Upload son 
             <br>
             <i class="fa-solid fa-file-arrow-down"></i> Download son
+            <br>
+            <i class="fa-solid fa-user-plus"></i> Ajouter musicien
         </div>
     </div>
+ <footer>
+    <div class="pied">
+        <img src="..\html\image\pied-page-big.png" />
+    </div>
+</footer>
 </body>
 </html>

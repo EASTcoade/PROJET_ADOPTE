@@ -52,7 +52,7 @@
     background-color: violet;
 }
 .profil3 img{
-    width: 300px;
+    max-width: 300px;
     height: 300px;
 }
 
@@ -69,7 +69,7 @@
 
 .image img{
     max-width: 100%;
-    max-height: 100%;
+    height: 100%;
 }
 
 .pied {
@@ -83,7 +83,7 @@
 
 .pied img {
     max-width: 100%;
-    max-height: 50px;
+    max-height: 100%;
 
 }
 

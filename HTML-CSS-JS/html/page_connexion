@@ -18,21 +18,24 @@
     <style>
         body {
             margin : 0;
+            width: 100vw;
+            height: 100vh;
+            background: -webkit-linear-gradient(bottom, #0250c5, #ff9966);
         }
 
         .container {
+            margin : 0;
             width: 100vw;
             height: 100vh;
-
             font-family: 'Roboto', serif;
             font-weight: bold;
             font-size: 20px;
 
             display: grid;
         
-            background: -webkit-linear-gradient(bottom, #0250c5, #ff9966);
-        grid-template-columns: 200px 1fr 1fr;
-        grid-template-rows: 200px 1fr 1fr 1fr 1fr 50px;
+
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 200px 1fr 1fr 1fr 1fr 1fr;
 
         gap: 10px;
         padding: 10px;
@@ -94,8 +97,5 @@
 
 </body>
 
-<footer class="pied">
-    <img src="..\html\image\pied-page.png" />
-</footer>
 
 </html>
