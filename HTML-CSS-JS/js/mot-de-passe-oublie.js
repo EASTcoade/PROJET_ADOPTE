@@ -1,6 +1,6 @@
 // Ouverture de la popup
 document
-.querySelector('button.open-popup')
+.querySelector('button.btn-danger')
 .addEventListener('click', () => {
     document
     .querySelector('.popup-overlay')

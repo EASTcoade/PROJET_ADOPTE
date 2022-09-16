@@ -13,6 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
     <style>
         body {
@@ -30,8 +31,8 @@
             display: grid;
         
             background: -webkit-linear-gradient(bottom, #0250c5, #ff9966);
-        grid-template-columns: 100px 1fr 1fr;
-        grid-template-rows: 100px 1fr 1fr 1fr 1fr 50px;
+        grid-template-columns: 200px 1fr 1fr;
+        grid-template-rows: 200px 1fr 1fr 1fr 1fr 50px;
 
         gap: 10px;
         padding: 10px;
@@ -46,13 +47,13 @@
     <div class="container">
 
     <form class="mail">
-        <input type="text" name="username" placeholder="Adresse mail" />
+        <input type="text" class="form-control" name="mail" placeholder="Mail" />
     </form>
     <form class="mdp">
-        <input type="password" name="password" placeholder="Mot de passe" />
+        <input type="text" class="form-control" name="modp" placeholder="Mot de passe" />
     </form>
     <form class="connexion">
-        <input type="submit" value="Se connecter" />
+        <button class="btn btn-success">SE CONNECTER</button>
     </form>
     
     <div class="logo">
@@ -63,12 +64,10 @@
         <img src="..\html\image\robotM.png" />
     </div>
 
-    <div class="pied">
-        <img src="..\html\image\pied-page.png" />
-    </div>
+    
     
     <div class="mdpo">
-    <button class="open-popup">mot de passe oublié</button>
+    <button class="btn btn-danger">MOT DE PASSE OUBLIE</button>
 
         <!-- Joue le rôle de fond bleu ciel transparent -->
         <div class="popup-overlay"></div>
@@ -94,4 +93,9 @@
     </div>
 
 </body>
+
+<footer class="pied">
+    <img src="..\html\image\pied-page.png" />
+</footer>
+
 </html>
