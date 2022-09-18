@@ -1,0 +1,90 @@
+.logo {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    background-color: none;
+}
+
+.logo img{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.nom {
+    grid-column: 2;
+    grid-row: 2;
+    background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.prenom {
+    grid-column: 2;
+    grid-row: 3;
+    background-color: blue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.email {
+    grid-column: 2;
+    grid-row: 4;
+    background-color: yellow;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pseudo {
+    grid-column: 2;
+    grid-row: 5;
+    background-color: green;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mdp {
+    grid-column: 2;
+    grid-row: 6;
+    background-color: violet;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.age {
+    grid-column: 2;
+    grid-row: 7;
+    background-color: blue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inscription {
+    grid-column: 2;
+    grid-row: 8;
+    background-color: green;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.image {
+    grid-column-start: 3;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 8;
+    background-color: black;
+}
+
+.image img{
+    max-width: 100%;
+    max-height: 100%;
+}

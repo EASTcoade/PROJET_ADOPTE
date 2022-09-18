@@ -53,7 +53,7 @@
         <input type="text" class="form-control" name="mail" placeholder="Mail" />
     </form>
     <form class="mdp">
-        <input type="text" class="form-control" name="modp" placeholder="Mot de passe" />
+        <input type="text" class="form-control" name="mdp" placeholder="Mot de passe" />
     </form>
     <form class="connexion">
         <button class="btn btn-success">SE CONNECTER</button>
