@@ -6,6 +6,8 @@ body{
     flex-direction: column;
     justify-content: space-between;
     caret-color: transparent;    
+    font-family: 'Roboto', sans-serif;
+
 }
 header{
     width: 100%;
@@ -14,6 +16,10 @@ header{
     flex-direction: row;
     justify-content: space-between;
     overflow: hidden;
+}
+h1{
+    font-family: 'Ms Madi';
+    font-size: 48px;
 }
 header div{
     display: flex;
@@ -53,8 +59,9 @@ footer img{
   }
 .objet-choix{
     max-height: 15vh;
-    overflow: auto;    
+    overflow: scroll;    
     margin-bottom: 10px;
+    scrollbar-color: blue;
 }
 .objet-choix p{    
     background: #d3d3d3;

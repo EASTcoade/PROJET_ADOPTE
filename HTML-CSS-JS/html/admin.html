@@ -13,114 +13,117 @@
     <script defer src="../js/admin.js"></script>
 </head>
 <body>
-    <nav>
-        <h1>Rubrique</h1>
-        <div class="accordion" id="menuAdmin">
-            <div class="accordion-item">
-            <h2 class="accordion-header" id="panel1-header">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panel1-collapse" aria-expanded="true" aria-controls="panel1-collapse">
-                Utilisateurs
-                </button>
-            </h2>
-            <div id="panel1-collapse" class="accordion-collapse collapse show" aria-labelledby="panel1-header">
-                <div class="accordion-body">
-                    <ul class="">
-                        <li class="">Listes des utilisateurs</li>
-                        <li class="">Statistiques</li>
-                    </ul>                    
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-3">
+                <h1>Rubrique</h1>
+                <div class="accordion" id="menuAdmin">
+                    <div class="accordion-item">
+                    <h2 class="accordion-header" id="panel1-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panel1-collapse" aria-expanded="true" aria-controls="panel1-collapse">
+                        Utilisateurs
+                        </button>
+                    </h2>
+                    <div id="panel1-collapse" class="accordion-collapse collapse show" aria-labelledby="panel1-header">
+                        <div class="accordion-body">
+                            <ul class="">
+                                <li class="">Listes des utilisateurs</li>
+                                <li class="">Statistiques</li>
+                            </ul>                    
+                        </div>
+                    </div>
+                    </div>
+                    <div class="accordion-item">
+                    <h2 class="accordion-header" id="panel2-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panel2-collapse" aria-expanded="false" aria-controls="panel2-collapse">
+                        Groupes
+                        </button>
+                    </h2>
+                    <div id="panel2-collapse" class="accordion-collapse collapse" aria-labelledby="panel2-header">
+                        <div class="accordion-body">
+                            <ul class="">
+                                <li class="">Liste des groupes</li>
+                                <li class="">Statistiques</li>
+                            </ul>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="accordion-item">
+                    <h2 class="accordion-header" id="panel3-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panel3-collapse" aria-expanded="false" aria-controls="panel3-collapse">
+                        Instruments
+                        </button>
+                    </h2>
+                    <div id="panel3-collapse" class="accordion-collapse collapse" aria-labelledby="panel3-header">
+                        <div class="accordion-body">
+                            <ul class="">
+                                <li id="voir-instru-a-valider" class="btn-rubrique">Instruments à valider</li>
+                                <li id="voir-stats-instru" class="btn-rubrique">Statistiques</li>
+                            </ul> 
+                        </div>
+                    </div>
+                    </div>
                 </div>
-            </div>
-            </div>
-            <div class="accordion-item">
-            <h2 class="accordion-header" id="panel2-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panel2-collapse" aria-expanded="false" aria-controls="panel2-collapse">
-                Groupes
-                </button>
-            </h2>
-            <div id="panel2-collapse" class="accordion-collapse collapse" aria-labelledby="panel2-header">
-                <div class="accordion-body">
-                    <ul class="">
-                        <li class="">Liste des groupes</li>
-                        <li class="">Statistiques</li>
-                    </ul>
+            </nav>
+            <section id="instruments-a-valider" class='col-md-9'><!--test-->
+                <div class="section-header">
+                    <h1>La section instruments à valider</h1>
                 </div>
-            </div>
-            </div>
-            <div class="accordion-item">
-            <h2 class="accordion-header" id="panel3-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panel3-collapse" aria-expanded="false" aria-controls="panel3-collapse">
-                Instruments
-                </button>
-            </h2>
-            <div id="panel3-collapse" class="accordion-collapse collapse" aria-labelledby="panel3-header">
-                <div class="accordion-body">
-                    <ul class="">
-                        <li id="voir-instru-a-valider" class="btn-rubrique">Instruments à valider</li>
-                        <li id="voir-stats-instru" class="btn-rubrique">Statistiques</li>
-                    </ul> 
-                </div>
-            </div>
-            </div>
-        </div>
-    </nav>
-    <section id="instruments-a-valider" class='test'>
-        <div class="section-header">
-            <h1>La section instruments à valider</h1>
-        </div>
 
-        <div class="section-content">
-            <div class="instrument-validation">
-                <div class="container-a-valider">
-                    <h3>Instruments en attente de validation</h3>
-                    <ul class="liste-a-valider">
-                        <li class="instru-a-valider">
-                            <p>Instru1</p> 
-                            <button class="ok-nok">Valider</button>
-                            <button class="ok-nok">Rejeter</button>
-                        </li>
-                            
-                        <li class="instru-a-valider">
-                            <p>Instru2</p> 
-                            <button class="ok-nok">Valider</button>
-                            <button class="ok-nok">Rejeter</button>
-                        </li>
-                    </ul> 
-                </div>
-                <div class="separateur">x</div>
-                <div class="actuels">
-                    <h3>Liste des instruments en BDD</h3>
-                    <ul class="liste-actuels">
-                        <li class="instru-actuel">Guitare</li>
-                        <li class="instru-actuel">Batterie</li>
-                        <li class="instru-actuel">...</li>
-                        <li class="instru-actuel">...</li>
-                        <li class="instru-actuel">...</li>
-                        <li class="instru-actuel">...</li>
-                        <li class="instru-actuel">...</li>
-                        <li class="instru-actuel">...</li>
-                        <li class="instru-actuel">...</li>
-                        <li class="instru-actuel">...</li>
-                        <li class="instru-actuel">...</li>
-                        <li class="instru-actuel">...</li>
-                        <li class="instru-actuel">...</li>
-                        <li class="instru-actuel">...</li>
-                        <li class="instru-actuel">...</li>
-                        <li class="instru-actuel">...</li>
-                        <li class="instru-actuel">...</li>
+                <div class="section-content">
+                    <div class="instrument-validation">
+                        <div class="container"><!---a-valider-->
+                            <h3>Instruments en attente de validation</h3>
+                            <ul class="liste-a-valider">
+                                <li class="instru-a-valider">
+                                    <p>Instru1</p> 
+                                    <button class="ok-nok">Valider</button>
+                                    <button class="ok-nok">Rejeter</button>
+                                </li>
+                                    
+                                <li class="instru-a-valider">
+                                    <p>Instru2</p> 
+                                    <button class="ok-nok">Valider</button>
+                                    <button class="ok-nok">Rejeter</button>
+                                </li>
+                            </ul> 
+                        </div>
+                        <div class="separateur">x</div>
+                        <div class="container"><!--actuels-->
+                            <h3>Liste des instruments en BDD</h3>
+                            <ul class="liste-actuels">
+                                <li class="instru-actuel">Guitare</li>
+                                <li class="instru-actuel">Batterie</li>
+                                <li class="instru-actuel">...</li>
+                                <li class="instru-actuel">...</li>
+                                <li class="instru-actuel">...</li>
+                                <li class="instru-actuel">...</li>
+                                <li class="instru-actuel">...</li>
+                                <li class="instru-actuel">...</li>
+                                <li class="instru-actuel">...</li>
+                                <li class="instru-actuel">...</li>
+                                <li class="instru-actuel">...</li>
+                                <li class="instru-actuel">...</li>
+                                <li class="instru-actuel">...</li>
+                                <li class="instru-actuel">...</li>
+                                <li class="instru-actuel">...</li>
+                                <li class="instru-actuel">...</li>
+                                <li class="instru-actuel">...</li>
 
-                    </ul> 
+                            </ul> 
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </section>
+            <section id="stats-instruments" class="col-md-9 test">
+                <div class="section-header">
+                    <h1>Statistiques à propos des instruments</h1>
+                </div>
+                <div class="section-content">
+                    <h3>Représentation de chaque instrument parmis nos utilisateurs</h3>
+                </div>
+            </section>
         </div>
-    </section>
-    <section id="stats-instruments" class="test">
-        <div class="section-header">
-            <h1>Statistiques à propos des instruments</h1>
-        </div>
-        <div class="section-content">
-            <h3>Représentation de chaque instrument parmis nos utilisateurs</h3>
-        </div>
-    </section>
-
+    </div>
 </body>
 </html>
