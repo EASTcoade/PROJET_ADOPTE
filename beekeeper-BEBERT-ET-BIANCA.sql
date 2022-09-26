@@ -1,10 +1,10 @@
 --Attention table plus a jour: remplacer utl par uti, les inst par ins, chat par cha!!!
 
-INSERT into utilisateur (uti_mdp, uti_nom, uti_prenom, uti_pseudo, uti_datnaissance, uti_adresse, uti_tel, uti_niveau, uti_mail)
-VALUES ('1234', 'Dupont', 'Bernard', 'Bebert_du_65', '1945/02/28', '6 rue des Capucins, Boulogne Billancourt', '0285904513', 'debutant', 'beber.dupont@gmail.com');
+INSERT into utilisateur (uti_mdp, uti_nom, uti_prenom, uti_pseudo, uti_date_naissance, uti_adresse, uti_tel, uti_niveau, uti_mail)
+VALUES ('1234', 'Dupont', 'Bernard', 'Bebert_du_65', '1945/02/28', '6 rue des Capucins, Boulogne Billancourt', '0285904513',1, 'beber.dupont@gmail.com');
 ;
-INSERT into utilisateur (uti_mdp, uti_nom, uti_prenom, uti_pseudo, uti_dtnaissance, uti_adresse, uti_tel, uti_niveau, uti_mail)
-VALUES ('1234', 'Duval', 'Bianca', 'Bibine_la_sauvageonne', '1945/10/12', '25 rue des Capucins, Boulogne Billancourt', '0285904513', 'debutant', 'bibine.duval@gmail.com');
+INSERT into utilisateur (uti_mdp, uti_nom, uti_prenom, uti_pseudo, uti_date_naissance, uti_adresse, uti_tel, uti_niveau, uti_mail)
+VALUES ('1234', 'Duval', 'Bianca', 'Bibine_la_sauvageonne', '1945/10/12', '25 rue des Capucins, Boulogne Billancourt', '0285904513',1, 'bibine.duval@gmail.com');
 ;
 
 SELECT * FROM utilisateur;

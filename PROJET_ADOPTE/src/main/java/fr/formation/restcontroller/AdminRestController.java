@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import fr.formation.exception.IdNegativeException;
+import fr.formation.exception.ItemNotFoundException;
 import fr.formation.exception.NotValidException;
 import fr.formation.exception.UtilisateurNotFoundException;
 import fr.formation.model.Admin;
@@ -42,7 +43,7 @@ public class AdminRestController {
 	
 	@GetMapping("/{id}")
 //	@JsonView(JsonViews.ProduitAvecFournisseur.class)
-	public Admin findById(@PathVariable("id") int id) throws IdNegativeException, UtilisateurNotFoundException {
+	public Admin findById(@PathVariable("id") int id) throws IdNegativeException, ItemNotFoundException {
 		return srvAdmin.findById(id).get();
 	}
 	
@@ -69,7 +70,7 @@ public class AdminRestController {
 	
 	@PutMapping("/{id}")
 //	@JsonView(JsonViews.ProduitAvecFournisseur.class)
-	public Admin replace(@PathVariable("id") int id,@Valid @RequestBody Admin admin, BindingResult br) throws IdNegativeException, UtilisateurNotFoundException, NotValidException {
+	public Admin replace(@PathVariable("id") int id,@Valid @RequestBody Admin admin, BindingResult br) throws IdNegativeException, ItemNotFoundException, NotValidException {
 		
 		if(br.hasErrors()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
@@ -83,7 +84,7 @@ public class AdminRestController {
 	//modification partielle
 	@PatchMapping("/{id}")
 //	@JsonView(JsonViews.ProduitAvecFournisseur.class)
-	public Admin modify(@PathVariable("id") int id,@RequestBody Map<String, Object> fields) throws IdNegativeException, UtilisateurNotFoundException, NotValidException {
+	public Admin modify(@PathVariable("id") int id,@RequestBody Map<String, Object> fields) throws IdNegativeException, ItemNotFoundException, NotValidException {
 		Admin admin = srvAdmin.findById(id).get();
 		
 		fields.forEach((key,value)->{

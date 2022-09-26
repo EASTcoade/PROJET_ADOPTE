@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.formation.exception.IdNegativeException;
+import fr.formation.exception.ItemNotFoundException;
 import fr.formation.exception.NotValidException;
-import fr.formation.exception.UtilisateurNotFoundException;
 import fr.formation.model.Admin;
 import fr.formation.repo.IAdminRepository;
 
@@ -31,7 +31,7 @@ public class AdminService {
 		return admins;
 	}
 	
-	public Optional<Admin> findById(int id) throws IdNegativeException, UtilisateurNotFoundException {
+	public Optional<Admin> findById(int id) throws IdNegativeException, ItemNotFoundException {
 		if (id <= 0) {
 			throw new IdNegativeException();
 		}
@@ -39,7 +39,7 @@ public class AdminService {
 		Optional<Admin> admin = repoAdmin.findById(id);
 		
 		if (admin == null) {
-			throw new UtilisateurNotFoundException();
+			throw new ItemNotFoundException();
 		}
 		
 		return admin;
