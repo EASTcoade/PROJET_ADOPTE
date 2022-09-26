@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 import fr.formation.exception.IdNegativeException;
 import fr.formation.exception.NotValidException;
 import fr.formation.exception.UtilisateurNotFoundException;
+import fr.formation.model.JsonViews;
 import fr.formation.model.Utilisateur;
 import fr.formation.service.UtilisateurService;
 
@@ -36,9 +38,6 @@ import fr.formation.service.UtilisateurService;
 @RestController
 @RequestMapping("/api/utilisateur")
 public class UtilisateurRestController {
-
-
-
 
 		@Autowired
 		private UtilisateurService srvUtilisateur;
@@ -50,12 +49,18 @@ public class UtilisateurRestController {
 			return srvUtilisateur.findAll();
 		}
 
-		@GetMapping("/{id}")
-		//@JsonView(JsonViews.ProduitAvecFournisseur.class)
-		public Utilisateur findById(@PathVariable("id") Integer id) throws IdNegativeException, UtilisateurNotFoundException {
-			return srvUtilisateur.findById(id).get();
-		}
+//		@GetMapping("/{id}")
+//		//@JsonView(JsonViews.ProduitAvecFournisseur.class)
+//		public Utilisateur findById(@PathVariable("id") Integer id) throws IdNegativeException, UtilisateurNotFoundException {
+//			return srvUtilisateur.findById(id).get();
+//		}
 
+		@GetMapping("/{id}")
+		@JsonView(JsonViews.UtilisateurAvecSon.class)
+		public Utilisateur findByIdFetchSon(@PathVariable("id") Integer id) throws IdNegativeException, UtilisateurNotFoundException {
+			return srvUtilisateur.findByIdFetchSon(id).get();
+		}
+		
 		@PostMapping("")
 		//@JsonView(JsonViews.ProduitAvecFournisseur.class)
 		public Utilisateur create(@Valid @RequestBody Utilisateur utilisateur, BindingResult br) throws IdNegativeException, UtilisateurNotFoundException, NotValidException {
@@ -102,21 +107,21 @@ public class UtilisateurRestController {
 //			}
 //			//a faire pour tout les champs d'un produit
 
-			//fields.forEach((key, value) -> {
-			//	if (key.equals("utilisateur")) {
-					// traitement de la modif d'un fournisseur
-			//	} else {
-					// ReflectionUtils.findField =>recuperer un attribut d'une classe
-					// reference,modele,prixAchat,prixVente,id,...
-					// Attribut du json en entree qui doit correspondre à un attribut de la classe
-					// Produit
-			//		Field field = ReflectionUtils.findField(Produit.class, key);
-					// on rend le field modifiable
-			//		ReflectionUtils.makeAccessible(field);
-					// on change la VALUE du FIELD du PRODUIT
-			//		ReflectionUtils.setField(field, produit, value);
-			//	}
-			//});
+			fields.forEach((key, value) -> {
+//				if (key.equals("utilisateur")) {
+//					 traitement de la modif d'un fournisseur
+//				} else {
+//					 ReflectionUtils.findField =>recuperer un attribut d'une classe
+//					 reference,modele,prixAchat,prixVente,id,...
+//					 Attribut du json en entree qui doit correspondre à un attribut de la classe
+//					 Produit
+					Field field = ReflectionUtils.findField(Utilisateur.class, key);
+//					 on rend le field modifiable
+					ReflectionUtils.makeAccessible(field);
+//					 on change la VALUE du FIELD du PRODUIT
+					ReflectionUtils.setField(field, utilisateur, value);
+//				}
+			});
 
 			srvUtilisateur.save(utilisateur);
 			return utilisateur;

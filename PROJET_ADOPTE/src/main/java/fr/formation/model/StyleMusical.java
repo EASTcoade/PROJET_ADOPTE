@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name="stylemusical")
@@ -18,6 +19,7 @@ public class StyleMusical {
 	private int id;
 	
 	@Column(name="sty_nom")
+	@NotBlank
 	protected String nom;
 
 	public int getId() {

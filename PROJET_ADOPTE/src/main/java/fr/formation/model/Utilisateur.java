@@ -22,6 +22,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 
 
 @Entity
@@ -30,33 +31,44 @@ public class Utilisateur {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "uti_id")
+	@JsonView(JsonViews.Common.class)
 	private int id;
 	
 	@Column(name = "uti_date_naissance",nullable=false)
+	@JsonView(JsonViews.Common.class)
 	private LocalDate dateNaissance;
 	
 	@Column(name = "uti_pseudo", length = 100, nullable = false)
+	@JsonView(JsonViews.Common.class)
 	private String pseudo;
 	@Column(name = "uti_nom", length = 100, nullable = false)
+	@JsonView(JsonViews.Common.class)
 	private String nom;
 	@Column(name = "uti_prenom", length = 100, nullable = false)
+	@JsonView(JsonViews.Common.class)
 	private String prenom;
 	@Column(name = "uti_mail", length = 150, nullable = true)
+	@JsonView(JsonViews.Common.class)
 	private String mail;
 	@Column(name = "uti_mdp", length = 100, nullable = false)
+	@JsonView(JsonViews.Common.class)
 	private String mdp;
 	@Column(name = "uti_adresse", length = 100, nullable = false)
+	@JsonView(JsonViews.Common.class)
 	private String adresse;
 	@Column(name = "uti_tel", length = 20,nullable=false)
+	@JsonView(JsonViews.Common.class)
 	private String telephone;
 	
 	@Enumerated(EnumType.ORDINAL)
 	@Column(name = "uti_niveau", nullable = false)
+	@JsonView(JsonViews.Common.class)
 	private Niveau niveau;
 	
 	@JsonIgnore
 	@ManyToOne//(fetchtype.lazy)
 	@JoinColumn(name = "uti_image_id")
+	@JsonView(JsonViews.Common.class)
 	private Image photoProfil;
 	
 	//pas besoin d'attribut �ge puisqu'on a la date de naissance
@@ -80,8 +92,9 @@ public class Utilisateur {
 	private List<Instrument> listeinstrument;
 	
 
-	@JsonIgnore
+//	@JsonIgnore
 	@OneToMany(mappedBy ="createur")
+	@JsonView(JsonViews.UtilisateurAvecSon.class)
 	private List<Son> son; // à voir avec Jérémy
 
 	

@@ -12,26 +12,35 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name="son")
 public class Son{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="son_id")
+	@JsonView(JsonViews.Common.class)
 	protected int id;
 	
+	@JsonIgnore
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="son_uti_id")
+	@JsonView(JsonViews.Son.class)
 	protected Utilisateur createur;
 	
 	@Column(name="son_nom",nullable=false,length=50)
+	@JsonView(JsonViews.Common.class)
 	protected String titre;
 	
 	@Column(name="son_contenu")
+	@JsonView(JsonViews.Common.class)
 	protected byte[] contenu;
 	
 	@Column(name="son_format",nullable=false)
 	@Enumerated(EnumType.STRING)
+	@JsonView(JsonViews.Common.class)
 	protected FormatSon format;
 	
 	public FormatSon getFormat() {
