@@ -60,6 +60,15 @@ public class SonService {
 		
 		repoSon.save(son);
 	}
+	
+	public void deleteById(int id) throws IdNegativeException {
+		
+		if (id <= 0) {
+			throw new IdNegativeException();
+		}
+		this.repoSon.deleteById(id);
+	}
+	
 	//analyse de l'extension du fichier
 	public Optional<String> findExtensionFichier(String chemin){
 		return Optional.ofNullable(chemin)

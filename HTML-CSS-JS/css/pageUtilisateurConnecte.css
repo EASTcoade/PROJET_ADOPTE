@@ -52,13 +52,13 @@ body {
     z-index: 1;
     width: 30%;
     height: auto;
-    top: 40%;
-    left: 18%;
+    top: 50%;
+    left: 15%;
     /* border-radius: 25px; */
     border-bottom-left-radius: 30%;
     border-top-right-radius: 30%;
     border-top-left-radius: 30%;
-    border-color: red; 
+    border: 5px;
 }
 
 .instrumentsImage {
