@@ -15,7 +15,7 @@ public class Instrument {
 	@ManyToOne
 	@JoinColumn(name="ins_image_id",nullable=false)
 //	@Column(name = "ins_image",nullable=false)
-	protected Image image;
+	protected reception image;
 	
 	@Column(name = "ins_nom",nullable=false)
 	protected String nom;
@@ -32,10 +32,10 @@ public class Instrument {
 		this.id = id;
 	}
 	
-	public Image getImage() {
+	public reception getImage() {
 	return image;
 	}
-	public void setImage(Image image) {
+	public void setImage(reception image) {
 		this.image = image;
 	}
 

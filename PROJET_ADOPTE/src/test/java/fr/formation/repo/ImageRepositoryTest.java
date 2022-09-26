@@ -16,7 +16,7 @@ import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import fr.formation.config.AppConfig;
 import fr.formation.model.FormatImage;
-import fr.formation.model.Image;
+import fr.formation.model.reception;
 import fr.formation.model.Niveau;
 import fr.formation.model.Utilisateur;
 import fr.formation.repo.IImageRepository;
@@ -31,7 +31,7 @@ private IImageRepository repoImage;
 
 	@Test
 	public void testFindAll() {
-		List<Image> Images = this.repoImage.findAll();
+		List<reception> Images = this.repoImage.findAll();
 		
 		Assertions.assertNotNull(Images);
 		Assertions.assertTrue(Images.size()>0);
@@ -39,7 +39,7 @@ private IImageRepository repoImage;
 	
 	@Test
 	public void testFindById() {
-		Optional<Image> image = this.repoImage.findById(2);
+		Optional<reception> image = this.repoImage.findById(2);
 		
 		Assertions.assertNotNull(image);
 		Assertions.assertTrue(image.isPresent());
@@ -52,7 +52,7 @@ private IImageRepository repoImage;
 	
 	@Test
 	public void shouldAdd() {
-		Image image = new Image();
+		reception image = new reception();
 	
 		File f = new File("D:\\coding\\guitare.jpg");
 	
@@ -77,7 +77,7 @@ private IImageRepository repoImage;
 	
 	@Test
 	public void shouldUpdate() {
-		Image image = this.repoImage.findById(1).get();
+		reception image = this.repoImage.findById(1).get();
 		
 		byte[] ancien = image.getContenu();
 		

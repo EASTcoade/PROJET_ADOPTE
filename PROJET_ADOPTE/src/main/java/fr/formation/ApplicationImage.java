@@ -6,7 +6,7 @@ import java.io.OutputStream;
 import java.nio.file.Files;
 
 import fr.formation.model.FormatImage;
-import fr.formation.model.Image;
+import fr.formation.model.reception;
 import fr.formation.model.Son;
 import fr.formation.service.ImageService;
 import fr.formation.service.SonService;
@@ -40,7 +40,7 @@ public static void main(String[] args) {
 		
 		try {
 			ImageService srvImage = new ImageService();
-			Image limage = new Image();
+			reception limage = new reception();
 			
 			limage=srvImage.findById(1);
 			

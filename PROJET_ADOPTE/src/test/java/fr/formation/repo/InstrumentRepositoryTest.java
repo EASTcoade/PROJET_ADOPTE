@@ -12,7 +12,7 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import fr.formation.config.AppConfig;
-import fr.formation.model.Image;
+import fr.formation.model.reception;
 //import fr.formation.config.AppConfig;
 import fr.formation.model.Instrument;
 
@@ -45,7 +45,7 @@ private IInstrumentRepository repoInstrument;
 		String randomName = UUID.randomUUID().toString();
 		
 		instrument.setNom(randomName);
-		instrument.setImage(new Image());
+		instrument.setImage(new reception());
 		instrument.getImage().setId(1);
 		
 		Assertions.assertEquals(0, instrument.getId());

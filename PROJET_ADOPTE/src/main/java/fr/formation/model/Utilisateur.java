@@ -57,7 +57,7 @@ public class Utilisateur {
 	@JsonIgnore
 	@ManyToOne//(fetchtype.lazy)
 	@JoinColumn(name = "uti_image_id")
-	private Image photoProfil;
+	private reception photoProfil;
 	
 	//pas besoin d'attribut �ge puisqu'on a la date de naissance
 //	@Column(name = "uti_age")
@@ -167,11 +167,11 @@ public class Utilisateur {
 		this.niveau = niveau;
 	}
 
-	public Image getPhotoprofil() {
+	public reception getPhotoprofil() {
 		return photoProfil;
 	}
 
-	public void setPhotoprofil(Image photoProfil) {
+	public void setPhotoprofil(reception photoProfil) {
 		this.photoProfil = photoProfil;
 	}
 

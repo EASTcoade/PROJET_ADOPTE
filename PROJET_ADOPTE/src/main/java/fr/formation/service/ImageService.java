@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 import fr.formation.exception.IdNegativeException;
 import fr.formation.exception.ImageNotFoundException;
 import fr.formation.exception.NotValidException;
-import fr.formation.model.Image;
+import fr.formation.model.reception;
 import fr.formation.repo.IImageRepository;
 
 @Service
@@ -24,7 +24,7 @@ public class ImageService {
 	@Autowired
 	IImageRepository repoImage;
 	
-	public Optional<Image> findById(int id) throws IdNegativeException, ImageNotFoundException {
+	public Optional<reception> findById(int id) throws IdNegativeException, ImageNotFoundException {
 		
 		//verif de l'ID
 		if(id<=0) {
@@ -32,7 +32,7 @@ public class ImageService {
 		}
 		
 		//V�rif du son
-		Optional<Image> lImage = repoImage.findById(id);
+		Optional<reception> lImage = repoImage.findById(id);
 		if(lImage==null) {
 			throw new ImageNotFoundException();
 		}
@@ -40,15 +40,15 @@ public class ImageService {
 		//on retourne le son trouv�
 		return lImage;
 	}
-	public List<Image> findAll(){
+	public List<reception> findAll(){
 		
-		List<Image> listeImage =repoImage.findAll();
+		List<reception> listeImage =repoImage.findAll();
 		if(listeImage==null) {
 			return new ArrayList<>();
 		}
 		return listeImage;
 	}
-	public void save(Image image) throws NotValidException {
+	public void save(reception image) throws NotValidException {
 		if (image.getTitre() == null || image.getTitre().isBlank()) {
 			throw new NotValidException();
 		}

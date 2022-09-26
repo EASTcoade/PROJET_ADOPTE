@@ -17,7 +17,7 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import fr.formation.config.AppConfig;
-import fr.formation.model.Image;
+import fr.formation.model.reception;
 import fr.formation.model.Niveau;
 import fr.formation.model.StyleMusical;
 import fr.formation.model.Utilisateur;
@@ -133,8 +133,8 @@ public class UtilisateurRepositoryTest {
 					if(types[0].isAssignableFrom(LocalDate.class)) {				
 						m.invoke(utilisateur, LocalDate.now());
 					}
-					if(types[0].isAssignableFrom(Image.class)) {				
-						utilisateur.setPhotoprofil(new Image());
+					if(types[0].isAssignableFrom(reception.class)) {				
+						utilisateur.setPhotoprofil(new reception());
 						utilisateur.getPhotoprofil().setId(1);
 					}
 					
