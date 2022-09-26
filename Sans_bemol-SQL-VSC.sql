@@ -46,24 +46,24 @@ CREATE TABLE styleMusical (
 
 );
 
-CREATE TABLE lien_sty_uti(
+-- CREATE TABLE lien_sty_uti(
 
-    styuti_id SERIAL PRIMARY KEY, 
-    styuti_uti_id INT,
-    styuti_sty_id INT,
+--     styuti_id SERIAL PRIMARY KEY, 
+--     styuti_uti_id INT,
+--     styuti_sty_id INT,
 
-    CONSTRAINT fk_styuti_uti_id
-    FOREIGN KEY (styuti_uti_id) REFERENCES  utilisateur(uti_id)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE, 
+--     CONSTRAINT fk_styuti_uti_id
+--     FOREIGN KEY (styuti_uti_id) REFERENCES  utilisateur(uti_id)
+--     ON DELETE CASCADE
+--     ON UPDATE CASCADE, 
 
 
-    CONSTRAINT fk_styuti_sty_id
-    FOREIGN KEY (styuti_sty_id) REFERENCES  stylemusical(sty_id)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
+--     CONSTRAINT fk_styuti_sty_id
+--     FOREIGN KEY (styuti_sty_id) REFERENCES  stylemusical(sty_id)
+--     ON DELETE CASCADE
+--     ON UPDATE CASCADE
 
-);
+-- );
 
 CREATE TABLE instrument(
 
@@ -73,24 +73,24 @@ CREATE TABLE instrument(
     --bien verifier ins_image
 );
 
-CREATE TABLE lien_uti_ins(
+-- CREATE TABLE lien_uti_ins(
 
-    utiins_id SERIAL PRIMARY KEY, 
-    utiins_ins_id INT,
-    utiins_uti_id INT,
+--     utiins_id SERIAL PRIMARY KEY, 
+--     utiins_ins_id INT,
+--     utiins_uti_id INT,
 
-    CONSTRAINT fk_utiins_uti_id
-    FOREIGN KEY (utiins_uti_id) REFERENCES  utilisateur(uti_id)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE, 
+--     CONSTRAINT fk_utiins_uti_id
+--     FOREIGN KEY (utiins_uti_id) REFERENCES  utilisateur(uti_id)
+--     ON DELETE CASCADE
+--     ON UPDATE CASCADE, 
 
 
-    CONSTRAINT  fk_utiins_ins_id
-    FOREIGN KEY (utiins_ins_id) REFERENCES  instrument(ins_id)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
+--     CONSTRAINT  fk_utiins_ins_id
+--     FOREIGN KEY (utiins_ins_id) REFERENCES  instrument(ins_id)
+--     ON DELETE CASCADE
+--     ON UPDATE CASCADE
 
-);
+-- );
 
 
 

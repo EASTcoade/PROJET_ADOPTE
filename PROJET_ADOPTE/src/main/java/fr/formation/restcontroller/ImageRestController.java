@@ -29,7 +29,7 @@ public class ImageRestController {
 		
 		@GetMapping("")
 		public String list(Model model) {
-			model.addAttribute("image", imageService.findAll());
+			model.addAttribute("image", imageService.findAll()Reception);
 			return "image/list";
 		}
 		

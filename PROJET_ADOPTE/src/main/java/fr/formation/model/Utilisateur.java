@@ -2,6 +2,7 @@ package fr.formation.model;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -22,6 +23,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 
 
 @Entity
@@ -30,46 +32,62 @@ public class Utilisateur {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "uti_id")
+	@JsonView(JsonViews.Common.class)
 	private int id;
 	
 	@Column(name = "uti_date_naissance",nullable=false)
+	@JsonView(JsonViews.Common.class)
 	private LocalDate dateNaissance;
 	
 	@Column(name = "uti_pseudo", length = 100, nullable = false)
+	@JsonView(JsonViews.Common.class)
 	private String pseudo;
 	@Column(name = "uti_nom", length = 100, nullable = false)
+	@JsonView(JsonViews.Common.class)
 	private String nom;
 	@Column(name = "uti_prenom", length = 100, nullable = false)
+	@JsonView(JsonViews.Common.class)
 	private String prenom;
 	@Column(name = "uti_mail", length = 150, nullable = true)
+	@JsonView(JsonViews.Common.class)
 	private String mail;
 	@Column(name = "uti_mdp", length = 100, nullable = false)
+	@JsonView(JsonViews.Common.class)
 	private String mdp;
 	@Column(name = "uti_adresse", length = 100, nullable = false)
+	@JsonView(JsonViews.Common.class)
 	private String adresse;
 	@Column(name = "uti_tel", length = 20,nullable=false)
+	@JsonView(JsonViews.Common.class)
 	private String telephone;
 	
 	@Enumerated(EnumType.ORDINAL)
 	@Column(name = "uti_niveau", nullable = false)
+	@JsonView(JsonViews.Common.class)
 	private Niveau niveau;
 	
 	@JsonIgnore
 	@ManyToOne//(fetchtype.lazy)
 	@JoinColumn(name = "uti_image_id")
+<<<<<<< HEAD
 	private reception photoProfil;
+=======
+	@JsonView(JsonViews.Common.class)
+	private Image photoProfil;
+>>>>>>> b2b4cd2fb478f38049367895a932d4466f456ccf
 	
 	//pas besoin d'attribut �ge puisqu'on a la date de naissance
 //	@Column(name = "uti_age")
 //	private int age;
 	
-	@JsonIgnore
+//	@JsonIgnore
 	@ManyToMany (cascade = CascadeType.PERSIST)
 	@JoinTable (name ="style_utilisateur",
-	joinColumns=@JoinColumn(name="stluti_utilisateur_id"),
-	inverseJoinColumns=@JoinColumn(name="stluti_stylemusical_id"))
+	joinColumns=@JoinColumn(name="styuti_utilisateur_id"),
+	inverseJoinColumns=@JoinColumn(name="styuti_stylemusical_id"))
 	@OnDelete(action = OnDeleteAction.CASCADE)
-	private List<StyleMusical> stylemusical;
+	@JsonView(JsonViews.UtilisateurAvecStyle.class)
+	private Set<StyleMusical> stylemusical;
 	
 	@JsonIgnore
 	@ManyToMany (cascade = CascadeType.PERSIST)
@@ -80,8 +98,9 @@ public class Utilisateur {
 	private List<Instrument> listeinstrument;
 	
 
-	@JsonIgnore
+//	@JsonIgnore
 	@OneToMany(mappedBy ="createur")
+	@JsonView(JsonViews.UtilisateurAvecSon.class)
 	private List<Son> son; // à voir avec Jérémy
 
 	
@@ -175,11 +194,11 @@ public class Utilisateur {
 		this.photoProfil = photoProfil;
 	}
 
-	public List<StyleMusical> getStylemusical() {
+	public Set<StyleMusical> getStylemusical() {
 		return stylemusical;
 	}
 
-	public void setStylemusical(List<StyleMusical> stylemusical) {
+	public void setStylemusical(Set<StyleMusical> stylemusical) {
 		this.stylemusical = stylemusical;
 	}
 

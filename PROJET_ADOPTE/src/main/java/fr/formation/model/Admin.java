@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 @Entity
 @Table(name = "admin")
 public class Admin {
@@ -19,8 +20,11 @@ public class Admin {
 	
 	
 	@Column(name = "adm_password", length = 200, nullable = false)
+	@NotBlank
 	protected String password;
+	
 	@Column(name = "adm_nom", length = 50, nullable = false)
+	@NotBlank
 	protected String nom;
 
 	
