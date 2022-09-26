@@ -69,12 +69,8 @@ public class Utilisateur {
 	@JsonIgnore
 	@ManyToOne//(fetchtype.lazy)
 	@JoinColumn(name = "uti_image_id")
-<<<<<<< HEAD
-	private reception photoProfil;
-=======
 	@JsonView(JsonViews.Common.class)
 	private Image photoProfil;
->>>>>>> b2b4cd2fb478f38049367895a932d4466f456ccf
 	
 	//pas besoin d'attribut �ge puisqu'on a la date de naissance
 //	@Column(name = "uti_age")
@@ -89,12 +85,13 @@ public class Utilisateur {
 	@JsonView(JsonViews.UtilisateurAvecStyle.class)
 	private Set<StyleMusical> stylemusical;
 	
-	@JsonIgnore
+//	@JsonIgnore
 	@ManyToMany (cascade = CascadeType.PERSIST)
 	@JoinTable (name ="utilisateur_instrument",
 	joinColumns=@JoinColumn(name="utiins_utilisateur_id"),
 	inverseJoinColumns=@JoinColumn(name="utiins_instrument_id"))
 	@OnDelete(action = OnDeleteAction.CASCADE)
+	@JsonView(JsonViews.UtilisateurAvecInstrument.class)
 	private List<Instrument> listeinstrument;
 	
 
@@ -186,11 +183,11 @@ public class Utilisateur {
 		this.niveau = niveau;
 	}
 
-	public reception getPhotoprofil() {
+	public Image getPhotoprofil() {
 		return photoProfil;
 	}
 
-	public void setPhotoprofil(reception photoProfil) {
+	public void setPhotoprofil(Image photoProfil) {
 		this.photoProfil = photoProfil;
 	}
 

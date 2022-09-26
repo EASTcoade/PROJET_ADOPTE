@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonView;
 @Entity
 @Table (name="instrument")
 public class Instrument {
@@ -15,14 +17,17 @@ public class Instrument {
 	@ManyToOne
 	@JoinColumn(name="ins_image_id",nullable=false)
 //	@Column(name = "ins_image",nullable=false)
-	protected reception image;
+	@JsonView(JsonViews.Common.class)
+	protected Image image;
 	
 	@Column(name = "ins_nom",nullable=false)
+	@JsonView(JsonViews.Common.class)
 	protected String nom;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ins_id")
+	@JsonView(JsonViews.Common.class)
 	protected int id;
 	
 	public int getId() {
@@ -32,10 +37,10 @@ public class Instrument {
 		this.id = id;
 	}
 	
-	public reception getImage() {
+	public Image getImage() {
 	return image;
 	}
-	public void setImage(reception image) {
+	public void setImage(Image image) {
 		this.image = image;
 	}
 
