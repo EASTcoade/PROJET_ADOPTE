@@ -23,18 +23,23 @@ public class UtilisateurService {
 	public Optional<Utilisateur> findByIdFetchSon(int id) throws IdNegativeException, UtilisateurNotFoundException{
 		if (id <= 0) {
 			throw new IdNegativeException();
-		}
-		
-		Optional<Utilisateur> utilisateur = repoUtilisateur.findByIdFetchSon(id);
-		
+		}		
+		Optional<Utilisateur> utilisateur = repoUtilisateur.findByIdFetchSon(id);		
 		if (utilisateur == null) {
 			throw new UtilisateurNotFoundException();
-		}
-		
-		return utilisateur;
-		
+		}		
+		return utilisateur;		
 	}
-	
+	public Optional<Utilisateur> findByIdFetchStyle(int id) throws IdNegativeException, UtilisateurNotFoundException{
+		if (id <= 0) {
+			throw new IdNegativeException();
+		}		
+		Optional<Utilisateur> utilisateur = repoUtilisateur.findByIdFetchStyle(id);		
+		if (utilisateur == null) {
+			throw new UtilisateurNotFoundException();
+		}		
+		return utilisateur;		
+	}
 	public List<Utilisateur> findAll() {
 		List<Utilisateur> utilisateur = repoUtilisateur.findAll();
 		

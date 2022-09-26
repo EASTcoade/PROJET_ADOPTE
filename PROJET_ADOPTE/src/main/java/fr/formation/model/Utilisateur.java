@@ -2,6 +2,7 @@ package fr.formation.model;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -75,13 +76,14 @@ public class Utilisateur {
 //	@Column(name = "uti_age")
 //	private int age;
 	
-	@JsonIgnore
+//	@JsonIgnore
 	@ManyToMany (cascade = CascadeType.PERSIST)
 	@JoinTable (name ="style_utilisateur",
-	joinColumns=@JoinColumn(name="stluti_utilisateur_id"),
-	inverseJoinColumns=@JoinColumn(name="stluti_stylemusical_id"))
+	joinColumns=@JoinColumn(name="styuti_utilisateur_id"),
+	inverseJoinColumns=@JoinColumn(name="styuti_stylemusical_id"))
 	@OnDelete(action = OnDeleteAction.CASCADE)
-	private List<StyleMusical> stylemusical;
+	@JsonView(JsonViews.UtilisateurAvecStyle.class)
+	private Set<StyleMusical> stylemusical;
 	
 	@JsonIgnore
 	@ManyToMany (cascade = CascadeType.PERSIST)
@@ -188,11 +190,11 @@ public class Utilisateur {
 		this.photoProfil = photoProfil;
 	}
 
-	public List<StyleMusical> getStylemusical() {
+	public Set<StyleMusical> getStylemusical() {
 		return stylemusical;
 	}
 
-	public void setStylemusical(List<StyleMusical> stylemusical) {
+	public void setStylemusical(Set<StyleMusical> stylemusical) {
 		this.stylemusical = stylemusical;
 	}
 

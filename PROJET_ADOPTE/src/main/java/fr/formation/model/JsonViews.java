@@ -10,4 +10,7 @@ public class JsonViews {
 		public static class UtilisateurAvecSon extends Common{
 			
 		}
+		public static class UtilisateurAvecStyle extends Common{
+			
+		}
 }

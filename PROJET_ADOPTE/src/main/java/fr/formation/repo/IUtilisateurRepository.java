@@ -12,4 +12,7 @@ public interface IUtilisateurRepository extends JpaRepository<Utilisateur, Integ
 	@Query("select u from Utilisateur u left join fetch u.son where u.id=:id")
 	public Optional<Utilisateur> findByIdFetchSon(@Param("id") int id);
 	
+	@Query("select u from Utilisateur u left join fetch u.stylemusical where u.id=:id")
+	public Optional<Utilisateur> findByIdFetchStyle(@Param("id") int id);
+	
 }

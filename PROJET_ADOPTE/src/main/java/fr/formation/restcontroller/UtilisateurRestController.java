@@ -34,7 +34,6 @@ import fr.formation.model.Utilisateur;
 import fr.formation.service.UtilisateurService;
 
 
-
 @RestController
 @RequestMapping("/api/utilisateur")
 public class UtilisateurRestController {
@@ -49,16 +48,22 @@ public class UtilisateurRestController {
 			return srvUtilisateur.findAll();
 		}
 
-//		@GetMapping("/{id}")
-//		//@JsonView(JsonViews.ProduitAvecFournisseur.class)
-//		public Utilisateur findById(@PathVariable("id") Integer id) throws IdNegativeException, UtilisateurNotFoundException {
-//			return srvUtilisateur.findById(id).get();
-//		}
-
 		@GetMapping("/{id}")
+		//@JsonView(JsonViews.ProduitAvecFournisseur.class)
+		public Utilisateur findById(@PathVariable("id") Integer id) throws IdNegativeException, UtilisateurNotFoundException {
+			return srvUtilisateur.findById(id).get();
+		}
+
+		@GetMapping("/{id}/son")
 		@JsonView(JsonViews.UtilisateurAvecSon.class)
 		public Utilisateur findByIdFetchSon(@PathVariable("id") Integer id) throws IdNegativeException, UtilisateurNotFoundException {
 			return srvUtilisateur.findByIdFetchSon(id).get();
+		}
+		
+		@GetMapping("/{id}/style")
+		@JsonView(JsonViews.UtilisateurAvecStyle.class)
+		public Utilisateur findByIdFetchStyle(@PathVariable("id") Integer id) throws IdNegativeException, UtilisateurNotFoundException {
+			return srvUtilisateur.findByIdFetchStyle(id).get();
 		}
 		
 		@PostMapping("")
