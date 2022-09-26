@@ -58,4 +58,9 @@ public class ReceptionService {
 	
 		return receptions;
 	}
+
+	public boolean existsById(Integer id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

@@ -69,9 +69,11 @@ public class Utilisateur {
 	@JsonIgnore
 	@ManyToOne//(fetchtype.lazy)
 	@JoinColumn(name = "uti_image_id")
+
+
 	@JsonView(JsonViews.Common.class)
 	private Image photoProfil;
-	
+
 	//pas besoin d'attribut �ge puisqu'on a la date de naissance
 //	@Column(name = "uti_age")
 //	private int age;

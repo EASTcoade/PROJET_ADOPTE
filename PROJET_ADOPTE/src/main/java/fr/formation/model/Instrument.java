@@ -17,6 +17,7 @@ public class Instrument {
 	@ManyToOne
 	@JoinColumn(name="ins_image_id",nullable=false)
 //	@Column(name = "ins_image",nullable=false)
+
 	@JsonView(JsonViews.Common.class)
 	protected Image image;
 	

@@ -15,16 +15,16 @@ import org.springframework.stereotype.Service;
 import fr.formation.exception.IdNegativeException;
 import fr.formation.exception.ImageNotFoundException;
 import fr.formation.exception.NotValidException;
-import fr.formation.model.reception;
+import fr.formation.model.Image;
 import fr.formation.repo.IImageRepository;
 
 @Service
 public class ImageService {
 	
 	@Autowired
-	IImageRepository repoImage;
+	private IImageRepository repoImage;
 	
-	public Optional<reception> findById(int id) throws IdNegativeException, ImageNotFoundException {
+	public Optional<Image> findById(int id) throws IdNegativeException, ImageNotFoundException {
 		
 		//verif de l'ID
 		if(id<=0) {
@@ -32,7 +32,7 @@ public class ImageService {
 		}
 		
 		//V�rif du son
-		Optional<reception> lImage = repoImage.findById(id);
+		Optional<Image> lImage = repoImage.findById(id);
 		if(lImage==null) {
 			throw new ImageNotFoundException();
 		}
@@ -40,15 +40,15 @@ public class ImageService {
 		//on retourne le son trouv�
 		return lImage;
 	}
-	public List<reception> findAll(){
+	public List<Image> findAll(){
 		
-		List<reception> listeImage =repoImage.findAll();
+		List<Image> listeImage =repoImage.findAll();
 		if(listeImage==null) {
 			return new ArrayList<>();
 		}
 		return listeImage;
 	}
-	public void save(reception image) throws NotValidException {
+	public void save(Image image) throws NotValidException {
 		if (image.getTitre() == null || image.getTitre().isBlank()) {
 			throw new NotValidException();
 		}
@@ -87,6 +87,10 @@ public class ImageService {
 		}
 		
 		repoImage.deleteById(id);
+	}
+	public boolean existsById(Integer id) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }
 
