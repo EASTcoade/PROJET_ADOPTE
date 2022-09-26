@@ -3,6 +3,7 @@
 	<groupId>fr.formation</groupId>
 	<artifactId>PROJET_ADOPTE</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
 <!-- bien penser à mettre les properties et faire le maven update --> 	
 	
 	<properties>
@@ -42,7 +43,25 @@
 		    <artifactId>spring-data-jpa</artifactId>
 		    <version>${spring-data.version}</version>
 		</dependency>
-		
+				<!-- Transformation en JSON -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.13.3</version>
+		</dependency>
+				<!-- Api validation pour recuperer les annotations-->
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>2.0.1.Final</version>
+		</dependency>
+		<!-- Implementation de l'api de validation'-->
+		<dependency>
+			<groupId>org.hibernate.validator</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>6.2.0.Final</version>
+		</dependency>
+
 		<!-- Pool Hikari -->
 		<dependency>
 		    <groupId>com.zaxxer</groupId>
@@ -89,10 +108,26 @@
 		</dependency>
 		
 		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		
+		<dependency>
 		    <groupId>org.mockito</groupId>
 		    <artifactId>mockito-junit-jupiter</artifactId>
 		    <version>${mockito-junit.version}</version>
 		    <scope>test</scope>
 		</dependency>
 	</dependencies>
+		<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.3.2</version>
+			</plugin>
+		</plugins>
+		<finalName>adopte</finalName>
+	</build>
 </project>
