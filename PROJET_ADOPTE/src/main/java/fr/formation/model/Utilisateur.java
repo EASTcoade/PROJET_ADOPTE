@@ -21,6 +21,8 @@ import javax.persistence.Table;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table(name = "utilisateur")
@@ -52,6 +54,7 @@ public class Utilisateur {
 	@Column(name = "uti_niveau", nullable = false)
 	private Niveau niveau;
 	
+	@JsonIgnore
 	@ManyToOne//(fetchtype.lazy)
 	@JoinColumn(name = "uti_image_id")
 	private Image photoProfil;
@@ -60,7 +63,7 @@ public class Utilisateur {
 //	@Column(name = "uti_age")
 //	private int age;
 	
-	
+	@JsonIgnore
 	@ManyToMany (cascade = CascadeType.PERSIST)
 	@JoinTable (name ="style_utilisateur",
 	joinColumns=@JoinColumn(name="stluti_utilisateur_id"),
@@ -68,6 +71,7 @@ public class Utilisateur {
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private List<StyleMusical> stylemusical;
 	
+	@JsonIgnore
 	@ManyToMany (cascade = CascadeType.PERSIST)
 	@JoinTable (name ="utilisateur_instrument",
 	joinColumns=@JoinColumn(name="utiins_utilisateur_id"),
@@ -76,7 +80,7 @@ public class Utilisateur {
 	private List<Instrument> listeinstrument;
 	
 
-	
+	@JsonIgnore
 	@OneToMany(mappedBy ="createur")
 	private List<Son> son; // à voir avec Jérémy
 

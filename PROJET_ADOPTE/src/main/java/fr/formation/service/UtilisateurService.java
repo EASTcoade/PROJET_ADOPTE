@@ -89,6 +89,11 @@ public class UtilisateurService {
 			throw new NotValidException();
 		}
 	}
+
+	public boolean existsById(Integer id) {
+		return repoUtilisateur.existsById(id);
+		
+	}
 	
 }
 
