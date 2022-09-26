@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="chat")
 public class Chat{
@@ -26,10 +28,12 @@ public class Chat{
 	@Column(name="cha_contenu",length=1000)
 	protected String texte;
 	
+	@JsonIgnore
 	@ManyToOne 
 	@JoinColumn(name="cha_uti_id_exp")	
 	protected Utilisateur expediteur;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="chat", cascade = CascadeType.PERSIST)
 	protected List<Reception> destinataires;
 	
