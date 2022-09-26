@@ -81,5 +81,12 @@ public class ImageService {
 			return "Autre erreur de lecture / écriture";
 		}
 	}
+	public void deleteById(int id) throws IdNegativeException {
+		if (id <= 0) {
+			throw new IdNegativeException();
+		}
+		
+		repoImage.deleteById(id);
+	}
 }
 
