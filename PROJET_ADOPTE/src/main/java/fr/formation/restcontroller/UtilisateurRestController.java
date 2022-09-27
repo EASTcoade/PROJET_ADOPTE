@@ -41,18 +41,17 @@ public class UtilisateurRestController {
 		@Autowired
 		private UtilisateurService srvUtilisateur;
 
-		// projection à utiliser pour la transformation en json
 		//@JsonView(JsonViews.ProduitAvecFournisseur.class)
 		@GetMapping("")
 		public List<Utilisateur> findAll() {
 			return srvUtilisateur.findAll();
 		}
 
-		@GetMapping("/{id}")
-		//@JsonView(JsonViews.ProduitAvecFournisseur.class)
-		public Utilisateur findById(@PathVariable("id") Integer id) throws IdNegativeException, UtilisateurNotFoundException {
-			return srvUtilisateur.findById(id).get();
-		}
+//		@GetMapping("/{id}")
+//		//@JsonView(JsonViews.ProduitAvecFournisseur.class)
+//		public Utilisateur findById(@PathVariable("id") Integer id) throws IdNegativeException, UtilisateurNotFoundException {
+//			return srvUtilisateur.findById(id).get();
+//		}
 
 		@GetMapping("/{id}/son")
 		@JsonView(JsonViews.UtilisateurAvecSon.class)
@@ -66,14 +65,25 @@ public class UtilisateurRestController {
 			return srvUtilisateur.findByIdFetchStyle(id).get();
 		}
 		
+		@GetMapping("/{id}/instrument")
+		@JsonView(JsonViews.UtilisateurAvecInstrument.class)
+		public Utilisateur findByIdFetchInstrument(@PathVariable("id") Integer id) throws IdNegativeException, UtilisateurNotFoundException {
+			return srvUtilisateur.findByIdFetchInstrument(id).get();
+		}
+		
+		@GetMapping("/{id}")
+		@JsonView(JsonViews.UtilisateurAvecTout.class)
+		public Utilisateur findByIdFetchAll(@PathVariable("id") Integer id) throws IdNegativeException, UtilisateurNotFoundException {
+			return srvUtilisateur.findByIdFetchAll(id).get();
+		}
 		@PostMapping("")
-		//@JsonView(JsonViews.ProduitAvecFournisseur.class)
+		@JsonView(JsonViews.UtilisateurAvecTout.class)
 		public Utilisateur create(@Valid @RequestBody Utilisateur utilisateur, BindingResult br) throws IdNegativeException, UtilisateurNotFoundException, NotValidException {
 			if (br.hasErrors()) {
 				throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 			}
 			srvUtilisateur.save(utilisateur);
-			return srvUtilisateur.findById(utilisateur.getId()).get();
+			return srvUtilisateur.findByIdFetchAll(utilisateur.getId()).get();
 		}
 
 		@DeleteMapping("/{id}")
@@ -97,10 +107,10 @@ public class UtilisateurRestController {
 			return utilisateur;
 		}
 
-		//@JsonView(JsonViews.ProduitAvecFournisseur.class)
+		@JsonView(JsonViews.UtilisateurAvecTout.class)
 		@PatchMapping("/{id}")
 		public Utilisateur partialEdit(@RequestBody Map<String, Object> fields, @PathVariable Integer id) throws IdNegativeException, UtilisateurNotFoundException, NotValidException {
-			Utilisateur utilisateur = srvUtilisateur.findById(id).get();
+			Utilisateur utilisateur = srvUtilisateur.findByIdFetchAll(id).get();
 //			if(fields.get("reference")!=null) {
 //				produit.setReference(fields.get("reference").toString());
 //			}

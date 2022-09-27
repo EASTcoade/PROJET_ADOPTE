@@ -84,7 +84,8 @@ public class Utilisateur {
 	joinColumns=@JoinColumn(name="styuti_utilisateur_id"),
 	inverseJoinColumns=@JoinColumn(name="styuti_stylemusical_id"))
 	@OnDelete(action = OnDeleteAction.CASCADE)
-	@JsonView(JsonViews.UtilisateurAvecStyle.class)
+	@JsonView({JsonViews.UtilisateurAvecStyle.class,
+		JsonViews.UtilisateurAvecTout.class})
 	private Set<StyleMusical> stylemusical;
 	
 //	@JsonIgnore
@@ -93,13 +94,15 @@ public class Utilisateur {
 	joinColumns=@JoinColumn(name="utiins_utilisateur_id"),
 	inverseJoinColumns=@JoinColumn(name="utiins_instrument_id"))
 	@OnDelete(action = OnDeleteAction.CASCADE)
-	@JsonView(JsonViews.UtilisateurAvecInstrument.class)
-	private List<Instrument> listeinstrument;
+	@JsonView({JsonViews.UtilisateurAvecInstrument.class,
+			JsonViews.UtilisateurAvecTout.class})
+	private Set<Instrument> listeinstrument;
 	
 
 //	@JsonIgnore
 	@OneToMany(mappedBy ="createur")
-	@JsonView(JsonViews.UtilisateurAvecSon.class)
+	@JsonView({JsonViews.UtilisateurAvecSon.class,
+			JsonViews.UtilisateurAvecTout.class})
 	private List<Son> son; // à voir avec Jérémy
 
 	
@@ -201,11 +204,11 @@ public class Utilisateur {
 		this.stylemusical = stylemusical;
 	}
 
-	public List<Instrument> getListeinstrument() {
+	public Set<Instrument> getListeinstrument() {
 		return listeinstrument;
 	}
 
-	public void setListeinstrument(List<Instrument> listeinstruments) {
+	public void setListeinstrument(Set<Instrument> listeinstruments) {
 		this.listeinstrument = listeinstruments;
 	}
 

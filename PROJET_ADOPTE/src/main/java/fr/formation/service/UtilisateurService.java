@@ -40,6 +40,28 @@ public class UtilisateurService {
 		}		
 		return utilisateur;		
 	}
+	
+	public Optional<Utilisateur> findByIdFetchInstrument(int id) throws IdNegativeException, UtilisateurNotFoundException{
+		if (id <= 0) {
+			throw new IdNegativeException();
+		}		
+		Optional<Utilisateur> utilisateur = repoUtilisateur.findByIdFetchInstrument(id);		
+		if (utilisateur == null) {
+			throw new UtilisateurNotFoundException();
+		}		
+		return utilisateur;		
+	}
+	
+	public Optional<Utilisateur> findByIdFetchAll(int id) throws IdNegativeException, UtilisateurNotFoundException{
+		if (id <= 0) {
+			throw new IdNegativeException();
+		}		
+		Optional<Utilisateur> utilisateur = repoUtilisateur.findByIdFetchAll(id);		
+		if (utilisateur == null) {
+			throw new UtilisateurNotFoundException();
+		}		
+		return utilisateur;		
+	}
 	public List<Utilisateur> findAll() {
 		List<Utilisateur> utilisateur = repoUtilisateur.findAll();
 		

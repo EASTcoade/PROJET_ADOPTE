@@ -16,4 +16,7 @@ public class JsonViews {
 		public static class UtilisateurAvecInstrument extends Common{
 			
 		}
+		public static class UtilisateurAvecTout extends Common{
+			
+		}
 }
