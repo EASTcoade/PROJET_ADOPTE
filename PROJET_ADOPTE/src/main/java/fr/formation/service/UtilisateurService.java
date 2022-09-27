@@ -115,6 +115,9 @@ public class UtilisateurService {
 		repoUtilisateur.save(utilisateur);
 	}
 	
+	public void linkStyleUtilisateur(int uti_id,int sty_id) {
+		repoUtilisateur.linkStyleUtilisateur(uti_id, sty_id);
+	}
 	
 	public void deleteById(int id) throws IdNegativeException {
 		if (id <= 0) {

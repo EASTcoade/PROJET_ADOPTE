@@ -83,6 +83,7 @@ public class UtilisateurRestController {
 				throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 			}
 			srvUtilisateur.save(utilisateur);
+			srvUtilisateur.linkStyleUtilisateur(utilisateur.getId(), 1);
 			return srvUtilisateur.findByIdFetchAll(utilisateur.getId()).get();
 		}
 
