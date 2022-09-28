@@ -6,7 +6,7 @@ target/
 .project
 SqlConnection.java
 datasource.properties
-application.properties
+application.yml
 
 # Compiled class file
 *.class

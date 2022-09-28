@@ -1,4 +1,4 @@
-package fr.formation.ADOPTE_SPRINGBOOT;
+package fr.formation;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
