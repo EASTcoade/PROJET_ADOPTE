@@ -46,9 +46,8 @@ public class AdminService {
 	}
 	
 	public void save(Admin admin) throws NotValidException {
-		if (admin.getNom() == null || admin.getNom().isBlank()) {
-			throw new NotValidException();
-		}
+	
+		
 		if (admin.getPassword() == null || admin.getPassword().isBlank()) {
 			throw new NotValidException();
 		}		

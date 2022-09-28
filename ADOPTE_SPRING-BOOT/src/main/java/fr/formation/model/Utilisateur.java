@@ -1,11 +1,14 @@
 package fr.formation.model;
 
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -21,14 +24,18 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 
 
+
+
 @Entity
-@Table(name = "utilisateur")
-public class Utilisateur {
+@DiscriminatorValue("user")
+public class Utilisateur extends Maman {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "uti_id")
@@ -39,9 +46,7 @@ public class Utilisateur {
 	@JsonView(JsonViews.Common.class)
 	private LocalDate dateNaissance;
 	
-	@Column(name = "uti_pseudo", length = 100, nullable = false)
-	@JsonView(JsonViews.Common.class)
-	private String pseudo;
+
 	@Column(name = "uti_nom", length = 100, nullable = false)
 	@JsonView(JsonViews.Common.class)
 	private String nom;
@@ -51,9 +56,7 @@ public class Utilisateur {
 	@Column(name = "uti_mail", length = 150, nullable = true)
 	@JsonView(JsonViews.Common.class)
 	private String mail;
-	@Column(name = "uti_mdp", length = 100, nullable = false)
-	@JsonView(JsonViews.Common.class)
-	private String mdp;
+
 	@Column(name = "uti_adresse", length = 100, nullable = false)
 	@JsonView(JsonViews.Common.class)
 	private String adresse;
@@ -116,22 +119,9 @@ public class Utilisateur {
 		this.dateNaissance = dateNaissance;
 	}
 
-	public int getId() {
-		return id;
-	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
 
-	public String getPseudo() {
-		return pseudo;
-	}
-
-	public void setPseudo(String pseudo) {
-		this.pseudo = pseudo;
-	}
-
+	
 	public String getNom() {
 		return nom;
 	}
@@ -139,6 +129,11 @@ public class Utilisateur {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
+
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
+	}
+
 
 	public String getPrenom() {
 		return prenom;
@@ -156,13 +151,7 @@ public class Utilisateur {
 		this.mail = mail;
 	}
 
-	public String getMdp() {
-		return mdp;
-	}
 
-	public void setMdp(String mdp) {
-		this.mdp = mdp;
-	}
 
 	public String getAdresse() {
 		return adresse;

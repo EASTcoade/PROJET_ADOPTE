@@ -90,9 +90,7 @@ public class UtilisateurService {
 		if (utilisateur.getNom() == null || utilisateur.getNom().isBlank()) {
 			throw new NotValidException();
 		}
-		if (utilisateur.getPseudo() == null || utilisateur.getPseudo().isBlank()) {
-			throw new NotValidException();
-		}
+		
 		if (utilisateur.getPrenom() == null || utilisateur.getPrenom().isBlank()) {
 			throw new NotValidException();
 		}
