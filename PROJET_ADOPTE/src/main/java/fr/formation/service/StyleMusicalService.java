@@ -55,4 +55,8 @@ public class StyleMusicalService {
 	
 		return stylesMusicaux;
 	}
+	public boolean existsById(Integer id) {
+		return repoStyleMusical.existsById(id);
+		
+	}
 }

@@ -31,6 +31,7 @@ import fr.formation.exception.NotValidException;
 import fr.formation.exception.UtilisateurNotFoundException;
 import fr.formation.model.JsonViews;
 import fr.formation.model.Utilisateur;
+import fr.formation.service.StyleMusicalService;
 import fr.formation.service.UtilisateurService;
 
 
@@ -40,6 +41,8 @@ public class UtilisateurRestController {
 
 		@Autowired
 		private UtilisateurService srvUtilisateur;
+		@Autowired
+		private StyleMusicalService srvStyleMusical;
 
 		//@JsonView(JsonViews.ProduitAvecFournisseur.class)
 		@GetMapping("")
@@ -83,10 +86,26 @@ public class UtilisateurRestController {
 				throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 			}
 			srvUtilisateur.save(utilisateur);
-			srvUtilisateur.linkStyleUtilisateur(utilisateur.getId(), 1);
 			return srvUtilisateur.findByIdFetchAll(utilisateur.getId()).get();
 		}
-
+		@PostMapping("/{uti_id}/{sty_id}")
+		@JsonView(JsonViews.UtilisateurAvecTout.class)
+		public Utilisateur createLinkStyleUtilisateur(@PathVariable("uti_id") Integer uti_id,@PathVariable("sty_id") Integer sty_id) throws IdNegativeException, UtilisateurNotFoundException{
+			if(!srvUtilisateur.existsById(uti_id)||!srvStyleMusical.existsById(sty_id)) {
+				throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+			}
+			srvUtilisateur.createLinkStyleUtilisateur(uti_id, sty_id);
+			return srvUtilisateur.findByIdFetchAll(uti_id).get();
+		}
+		@DeleteMapping("/{uti_id}/{sty_id}")
+		@JsonView(JsonViews.UtilisateurAvecTout.class)
+		public Utilisateur deleteLinkStyleUtilisateur(@PathVariable("uti_id") Integer uti_id,@PathVariable("sty_id") Integer sty_id) throws IdNegativeException, UtilisateurNotFoundException{
+			if(!srvUtilisateur.existsById(uti_id)||!srvStyleMusical.existsById(sty_id)) {
+				throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+			}
+			srvUtilisateur.deleteLinkStyleUtilisateur(uti_id, sty_id);
+			return srvUtilisateur.findByIdFetchAll(uti_id).get();
+		}
 		@DeleteMapping("/{id}")
 		@ResponseStatus(code = HttpStatus.NO_CONTENT)
 		public void deleteById(@PathVariable("id") Integer id) {
@@ -124,8 +143,8 @@ public class UtilisateurRestController {
 //			//a faire pour tout les champs d'un produit
 
 			fields.forEach((key, value) -> {
-//				if (key.equals("utilisateur")) {
-//					 traitement de la modif d'un fournisseur
+//				if (key.equals("stylemusical")) {
+//				
 //				} else {
 //					 ReflectionUtils.findField =>recuperer un attribut d'une classe
 //					 reference,modele,prixAchat,prixVente,id,...
