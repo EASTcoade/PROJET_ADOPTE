@@ -21,7 +21,7 @@ public class SecurityWebServiceConfig {
 				   .and()
 				   .authorizeRequests()
 				   		//.antMatchers(HttpMethod.OPTIONS).permitAll()
-				   		.antMatchers(HttpMethod.GET,"/api/fournisseur/**").permitAll()
+				   		.antMatchers(HttpMethod.GET,"/api/utilisateur/**").permitAll()
 				   		.anyRequest().authenticated()
 				   .and()
 				   		.httpBasic()

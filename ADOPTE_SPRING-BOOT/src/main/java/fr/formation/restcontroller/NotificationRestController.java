@@ -57,7 +57,7 @@ public class NotificationRestController {
 	
 	
 	@ResponseStatus(code=HttpStatus.NO_CONTENT)
-	@DeleteMapping("{/id}")
+	@DeleteMapping("/{id}")
 	public void deleteById(@PathVariable("id") Integer id) {
 		try {
 			this.notifRepo.deleteById(id);

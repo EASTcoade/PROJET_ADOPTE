@@ -56,7 +56,7 @@ public class ChatRestController {
 	
 	
 	@ResponseStatus(code=HttpStatus.NO_CONTENT)
-	@DeleteMapping("{/id}")
+	@DeleteMapping("/{id}")
 	public void deleteById(@PathVariable("id") Integer id) {
 		try {
 			this.chatRepo.deleteById(id);
