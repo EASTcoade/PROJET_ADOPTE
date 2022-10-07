@@ -1,4 +1,4 @@
-import { Maman } from './../model/maman';
+import { Compte } from '../model/compte';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -7,18 +7,19 @@ import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root',
 })
+
 export class AuthService {
   constructor(private router: Router, private httpClient: HttpClient) {}
 
   public authentification(
     username: string,
     password: string
-  ): Observable<Maman> {
+  ): Observable<Compte> {
     let monHeader = new HttpHeaders({
       Authorization: 'Basic ' + btoa(`${username}:${password}`),
       // Buffer.from(`${username}:${password}`).toString('base64'),
     });
-    return this.httpClient.get<Maman>(
+    return this.httpClient.get<Compte>(
       'http://localhost:8080/adopte/api/auth/utilisateur',
       {
         headers: monHeader,

@@ -1,4 +1,4 @@
-export class Maman {
+export class Compte {
   public get password(): string | undefined {
     return this._password;
   }
