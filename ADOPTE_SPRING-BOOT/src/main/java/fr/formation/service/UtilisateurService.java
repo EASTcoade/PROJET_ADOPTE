@@ -100,9 +100,9 @@ public class UtilisateurService {
 		if (utilisateur.getTelephone() == null || utilisateur.getTelephone().isBlank()) {
 			throw new NotValidException();
 		}
-		if (utilisateur.getMdp() == null || utilisateur.getMdp().isBlank()) {
-			throw new NotValidException();
-		}
+//		if (utilisateur.getMdp() == null || utilisateur.getMdp().isBlank()) {
+//			throw new NotValidException();
+//		}
 		if (utilisateur.getAdresse() == null || utilisateur.getAdresse().isBlank()) {
 			throw new NotValidException();
 		}

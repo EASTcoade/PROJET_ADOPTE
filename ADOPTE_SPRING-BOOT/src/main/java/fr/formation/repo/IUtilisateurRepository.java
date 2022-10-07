@@ -11,6 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 import fr.formation.model.Utilisateur;
 
 public interface IUtilisateurRepository extends JpaRepository<Utilisateur, Integer>{
+	
+	public Optional<Utilisateur> findByUsername(String username);
+	
 	@Query("select u from Utilisateur u left join fetch u.son where u.id=:id")
 	public Optional<Utilisateur> findByIdFetchSon(@Param("id") int id);
 	

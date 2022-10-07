@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 
 @Entity
-@DiscriminatorValue("user")
+@Table(name="utilisateur")
 public class Utilisateur extends Maman {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,7 +45,9 @@ public class Utilisateur extends Maman {
 	@Column(name = "uti_date_naissance",nullable=false)
 	@JsonView(JsonViews.Common.class)
 	private LocalDate dateNaissance;
-	
+//	@Column(name = "uti_pseudo", length = 100, nullable = false)
+//	@JsonView(JsonViews.Common.class)
+//	private String pseudo;
 
 	@Column(name = "uti_nom", length = 100, nullable = false)
 	@JsonView(JsonViews.Common.class)
@@ -76,6 +78,21 @@ public class Utilisateur extends Maman {
 
 	@JsonView(JsonViews.Common.class)
 	private Image photoProfil;
+	
+	public Utilisateur(String username, String password, String nom, String prenom, 
+			String mail, String adresse, String telephone, Niveau niveau,LocalDate dateNaissance) {
+		super(username,password);
+		this.nom=nom;
+		this.prenom=prenom;
+		this.mail=mail;
+		this.adresse=adresse;
+		this.telephone=telephone;
+		this.niveau=niveau;
+		this.dateNaissance=dateNaissance;		
+	}
+	public Utilisateur() {
+		
+	}
 
 	//pas besoin d'attribut �ge puisqu'on a la date de naissance
 //	@Column(name = "uti_age")
@@ -111,6 +128,14 @@ public class Utilisateur extends Maman {
 	
 	
 	
+//	public String getPseudo() {
+//		return pseudo;
+//	}
+//
+//	public void setPseudo(String pseudo) {
+//		this.pseudo = pseudo;
+//	}
+
 	public LocalDate getDateNaissance() {
 		return dateNaissance;
 	}
@@ -207,6 +232,14 @@ public class Utilisateur extends Maman {
 
 	public void setSon(List<Son> son) {
 		this.son = son;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public boolean friendWith(Utilisateur people, Utilisateur chef) {

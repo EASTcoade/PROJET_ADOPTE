@@ -6,21 +6,30 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import fr.formation.repo.IAdminRepository;
+import fr.formation.repo.IUtilisateurRepository;
 
-import fr.formation.repo.IMamanRepository;
+
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService{
 
 	@Autowired
-	private IMamanRepository mamanRepo;
+	private IAdminRepository repoAdmin;
+	
+	@Autowired
+	private IUtilisateurRepository repoUtilisateur;
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		return mamanRepo.findByUsername(username).orElseThrow(()->{
-			throw new UsernameNotFoundException("utilisateur inconnu");
-		});
+		if(repoUtilisateur.findByUsername(username).isPresent()) {
+			return repoUtilisateur.findByUsername(username).get();
+		}else {
+			if(repoAdmin.findByUsername(username).isPresent()) {
+				return repoAdmin.findByUsername(username).get();
+			}else {
+				throw new UsernameNotFoundException("pas trouvé");
+			}			
+		}
 	}
-	
-	
 }

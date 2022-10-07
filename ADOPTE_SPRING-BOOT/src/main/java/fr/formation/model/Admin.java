@@ -15,10 +15,32 @@ import javax.validation.constraints.NotBlank;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-@Entity
-@DiscriminatorValue("admin")
-public class Admin extends Maman {
 
+import com.fasterxml.jackson.annotation.JsonView;
+@Entity
+@Table(name="admin")
+public class Admin extends Maman {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="adm_id")
+	@JsonView(JsonViews.Common.class)
+	private int id;
+	
+	public Admin() {
+		
+	}
+	public Admin(String username, String password) {
+		super(username,password);
+		
+	}
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public void bannir() {
 		
 	}

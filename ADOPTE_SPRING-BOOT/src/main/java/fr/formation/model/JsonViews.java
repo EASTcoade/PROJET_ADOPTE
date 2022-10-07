@@ -7,6 +7,9 @@ public class JsonViews {
 		public static class Son extends Common{
 			 
 		}
+		public static class Maman extends Common{
+			 
+		}
 		public static class UtilisateurAvecSon extends Common{
 			
 		}
