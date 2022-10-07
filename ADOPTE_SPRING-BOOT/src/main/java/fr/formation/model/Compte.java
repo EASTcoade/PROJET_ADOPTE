@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 //@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 //	@DiscriminatorColumn(name = "type", discriminatorType = DiscriminatorType.STRING, length = 5)
 @MappedSuperclass
-public abstract class Maman implements UserDetails {
+public abstract class Compte implements UserDetails {
 
 //	@Id
 //	@GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -41,11 +41,11 @@ public abstract class Maman implements UserDetails {
 	@Pattern(message = "il faut une majuscule, une minuscule, un chiffre et un caractere special(*.?!@#+=)", regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[*.?!@#+=]).{4,20}$")
 	private String mdp;
 
-	public Maman() {
+	public Compte() {
 
 	}
 
-	public Maman(String username, String password) {
+	public Compte(String username, String password) {
 		super();
 		this.username = username;
 		this.password = password;

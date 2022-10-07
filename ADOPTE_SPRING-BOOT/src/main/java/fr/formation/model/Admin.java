@@ -19,7 +19,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import com.fasterxml.jackson.annotation.JsonView;
 @Entity
 @Table(name="admin")
-public class Admin extends Maman {
+public class Admin extends Compte {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

@@ -29,25 +29,25 @@ class AdopteSpringBootApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-//	@Test
-//	@Transactional
-//	@Commit
-//	void initAdmin() throws NotValidException {
-//		Admin superman=new Admin("superman",passwordEncoder.encode("mdp3"));
-//		srvAdmin.save(superman);
-//		Admin batman=new Admin("batman",passwordEncoder.encode("mdp4"));
-//		srvAdmin.save(batman);
-//	}
-	
 	@Test
 	@Transactional
 	@Commit
-	void initUtilisateur() throws NotValidException {
-		Utilisateur uti1=new Utilisateur("uti1",passwordEncoder.encode("mdp3"),"leNom","lePrenom","test@gmail.com","2 rue inconnue",
-				"0987987876",Niveau.DEBUTANT,LocalDate.of(1996, 2, 1));
-		srvUtilisateur.save(uti1);
-		Utilisateur uti2=new Utilisateur("uti2",passwordEncoder.encode("mdp4"),"leNom2","lePrenom","test@gmail.com","2 rue inconnue",
-				"0987987876",Niveau.DEBUTANT,LocalDate.of(1996, 2, 1));
-		srvUtilisateur.save(uti2);
-	}	
+	void initAdmin() throws NotValidException {
+		Admin superman=new Admin("superman",passwordEncoder.encode("mdp3"));
+		srvAdmin.save(superman);
+		Admin batman=new Admin("batman",passwordEncoder.encode("mdp4"));
+		srvAdmin.save(batman);
+	}
+	
+//	@Test
+//	@Transactional
+//	@Commit
+//	void initUtilisateur() throws NotValidException {
+//		Utilisateur uti1=new Utilisateur("uti1",passwordEncoder.encode("mdp3"),"leNom","lePrenom","test@gmail.com","2 rue inconnue",
+//				"0987987876",Niveau.DEBUTANT,LocalDate.of(1996, 2, 1));
+//		srvUtilisateur.save(uti1);
+//		Utilisateur uti2=new Utilisateur("uti2",passwordEncoder.encode("mdp4"),"leNom2","lePrenom","test@gmail.com","2 rue inconnue",
+//				"0987987876",Niveau.DEBUTANT,LocalDate.of(1996, 2, 1));
+//		srvUtilisateur.save(uti2);
+//	}	
 }

@@ -1,17 +1,17 @@
-
-import { AuthService } from './../../service/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthAdminService } from 'src/app/service/auth-admin.service';
+
 
 @Component({
-  selector: 'app-connexion',
-  templateUrl: './connexion.component.html',
-  styleUrls: ['./connexion.component.css'],
+  selector: 'app-connexion-admin',
+  templateUrl: './connexion-admin.component.html',
+  styleUrls: ['./connexion-admin.component.css']
 })
-export class ConnexionComponent implements OnInit {
+export class ConnexionAdminComponent implements OnInit {
   username: string = '';
   password: string = '';
-  constructor(private srvAuth: AuthService, private router: Router) {}
+  constructor(private srvAuth: AuthAdminService, private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -23,7 +23,7 @@ export class ConnexionComponent implements OnInit {
           'token',
           'BASIC ' + btoa(this.username + ':' + this.password)
         );
-        this.router.navigateByUrl('/utilisateur');
+        this.router.navigateByUrl('/admin');
       },
       error: (err: any) => {
         console.log(err);

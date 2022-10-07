@@ -8,5 +8,5 @@ import fr.formation.model.Admin;
 import fr.formation.model.Utilisateur;
 
 public interface IAdminRepository extends JpaRepository<Admin, Integer> {
-	public Optional<Utilisateur> findByUsername(String pseudo);
+	public Optional<Admin> findByUsername(String pseudo);
 }

@@ -35,7 +35,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
 @Table(name="utilisateur")
-public class Utilisateur extends Maman {
+public class Utilisateur extends Compte {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "uti_id")
