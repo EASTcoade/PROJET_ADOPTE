@@ -2,11 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthAdminService } from 'src/app/service/auth-admin.service';
 
-
 @Component({
   selector: 'app-connexion-admin',
   templateUrl: './connexion-admin.component.html',
-  styleUrls: ['./connexion-admin.component.css']
+  styleUrls: ['./connexion-admin.component.css'],
 })
 export class ConnexionAdminComponent implements OnInit {
   username: string = '';
@@ -23,6 +22,7 @@ export class ConnexionAdminComponent implements OnInit {
           'token',
           'BASIC ' + btoa(this.username + ':' + this.password)
         );
+        sessionStorage.setItem('role', 'ROLE_ADMIN');
         this.router.navigateByUrl('/admin');
       },
       error: (err: any) => {

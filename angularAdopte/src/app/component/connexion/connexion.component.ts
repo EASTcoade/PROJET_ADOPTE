@@ -1,4 +1,3 @@
-
 import { AuthService } from './../../service/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -23,6 +22,7 @@ export class ConnexionComponent implements OnInit {
           'token',
           'BASIC ' + btoa(this.username + ':' + this.password)
         );
+        sessionStorage.setItem('role', 'ROLE_USER');
         this.router.navigateByUrl('/utilisateur');
       },
       error: (err: any) => {

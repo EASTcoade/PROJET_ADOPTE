@@ -12,9 +12,10 @@ import { RouterModule } from '@angular/router';
 import { ConnexionAdminComponent } from './component/connexion-admin/connexion-admin.component';
 import { AdminConnecteComponent } from './component/admin-connecte/admin-connecte.component';
 import { UploadSonComponent } from './component/upload-son/upload-son.component';
+import { RefusComponent } from './component/refus/refus.component';
 
 @NgModule({
-  declarations: [AppComponent, ConnexionComponent, UtilisateurConnecteComponent, ConnexionAdminComponent, AdminConnecteComponent, UploadSonComponent],
+  declarations: [AppComponent, ConnexionComponent, UtilisateurConnecteComponent, ConnexionAdminComponent, AdminConnecteComponent, UploadSonComponent, RefusComponent],
   imports: [BrowserModule, HttpClientModule, FormsModule,RouterModule.forRoot(routes) ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
