@@ -31,11 +31,12 @@ export class UploadSonComponent {
       let son = {
         titre: file.name,
         contenu: x,
-
-        createur: JSON.parse(sessionStorage.getItem('compte')!).id,
         format: file.name.split('.')[1],
       };
-      this.srvSon.create(son as Son).subscribe(() => {
+      Object.assign(son, {
+        createur: { id: JSON.parse(sessionStorage.getItem('compte')!).id },
+      });
+      this.srvSon.create(son).subscribe(() => {
         console.log('son enregistré !');
       });
     });

@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,15 +19,18 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.fasterxml.jackson.annotation.JsonView;
 
 import fr.formation.exception.IdNegativeException;
 import fr.formation.exception.NotValidException;
 import fr.formation.exception.SonNotFoundException;
+import fr.formation.model.JsonViews;
 import fr.formation.model.Son;
 import fr.formation.service.SonService;
 
 @RestController
 @RequestMapping("/api/son")
+@CrossOrigin(origins="*")
 public class SonRestController {
 	
 	@Autowired
@@ -46,7 +50,7 @@ public class SonRestController {
 	
 	@PostMapping("")
 	@ResponseStatus(code = HttpStatus.CREATED)
-	//@JsonView(JsonViews.Son.class)
+	@JsonView(JsonViews.Son.class)
 	public Son create(@Valid @RequestBody Son son,BindingResult br) throws NotValidException {
 		if(br.hasErrors()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);

@@ -22,8 +22,10 @@ export class SonService {
     return this.httpClient.get<Son>(`${SonService.URL}/${id}`);
   }
 
-  public create(son: Son): Observable<Son> {
-    return this.httpClient.post<Son>(SonService.URL, this.sonToJson(son));
+  public create(son: any): Observable<Son> {
+    console.log('passe par le create du service');
+    console.log(son.createur);
+    return this.httpClient.post<Son>(SonService.URL, son);
   }
 
   public sonToJson(son: Son): any {
@@ -31,10 +33,12 @@ export class SonService {
       id: son.id,
       titre: son.titre,
       contenu: son.contenu,
-      createur: { id: son.createur?.id },
     };
+    console.log(son.id);
+    console.log(son.titre);
+    console.log(son.format);
     if (son.createur) {
-      Object.assign(obj, { Utilisateur: { id: son.createur?.id } });
+      Object.assign(obj, { createur: { id: son.createur?.id } });
       return obj;
     }
   }
