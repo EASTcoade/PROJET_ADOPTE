@@ -47,12 +47,12 @@ public class InstrumentService {
 	}
 	
 	public List<Instrument> findAll() {
-		List<Instrument> listChat = this.repoInstrument.findAll();
+		List<Instrument> liste = this.repoInstrument.findAll();
 	
-		if (listChat == null) {
+		if (liste == null) {
 			return new ArrayList<>();
 		}
 	
-		return listChat;
+		return liste;
 	}
 }

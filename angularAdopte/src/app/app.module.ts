@@ -14,9 +14,11 @@ import { AdminConnecteComponent } from './component/admin-connecte/admin-connect
 import { UploadSonComponent } from './component/upload-son/upload-son.component';
 import { RefusComponent } from './component/refus/refus.component';
 import { MenuAdminComponent } from './component/menu-admin/menu-admin.component';
+import { ListeInstrumentComponent } from './component/liste-instrument/liste-instrument.component';
+import { ContenuAdminComponent } from './component/contenu-admin/contenu-admin.component';
 
 @NgModule({
-  declarations: [AppComponent, ConnexionComponent, UtilisateurConnecteComponent, ConnexionAdminComponent, AdminConnecteComponent, UploadSonComponent, RefusComponent, MenuAdminComponent],
+  declarations: [AppComponent, ConnexionComponent, UtilisateurConnecteComponent, ConnexionAdminComponent, AdminConnecteComponent, UploadSonComponent, RefusComponent, MenuAdminComponent, ListeInstrumentComponent, ContenuAdminComponent],
   imports: [BrowserModule, HttpClientModule, FormsModule,RouterModule.forRoot(routes) ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

@@ -1,3 +1,6 @@
+import { ContenuAdminComponent } from './component/contenu-admin/contenu-admin.component';
+import { ListeInstrumentComponent } from './component/liste-instrument/liste-instrument.component';
+import { Component } from '@angular/core';
 import { RefusComponent } from './component/refus/refus.component';
 import { AnonymousGuardService } from './service/guard/anonymous-guard.service';
 import { UserGuardService } from './service/guard/user-guard.service';
@@ -38,6 +41,15 @@ export const routes: Routes = [
   {
     path: 'refus',
     component: RefusComponent,
+  },
+  {
+    path: 'instrument',
+    component: ListeInstrumentComponent,
+  },
+  {
+    path: 'contenu',
+    component: ContenuAdminComponent,
+    outlet: 'pageAdminContenu',
   },
   {
     path: '',

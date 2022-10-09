@@ -22,4 +22,7 @@ public class JsonViews {
 		public static class UtilisateurAvecTout extends Common{
 			
 		}
+		public static class Instrument extends Common{
+			 
+		}
 }

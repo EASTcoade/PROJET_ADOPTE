@@ -80,6 +80,18 @@
               <li id="voir-instru-a-valider" class="btn-rubrique">
                 Instruments à valider
               </li>
+              <a
+                [routerLink]="[
+                  '/',
+                  {
+                    outlets: {
+                      primary: ['instrument'],
+                      pageAdminContenu: ['contenu']
+                    }
+                  }
+                ]"
+                >Liste</a
+              >
               <li id="voir-stats-instru" class="btn-rubrique">Statistiques</li>
             </ul>
           </div>
@@ -116,25 +128,6 @@
         <div class="container">
           <!--actuels-->
           <h3>Liste des instruments en BDD</h3>
-          <ul class="liste-actuels">
-            <li class="instru-actuel">Guitare</li>
-            <li class="instru-actuel">Batterie</li>
-            <li class="instru-actuel">...</li>
-            <li class="instru-actuel">...</li>
-            <li class="instru-actuel">...</li>
-            <li class="instru-actuel">...</li>
-            <li class="instru-actuel">...</li>
-            <li class="instru-actuel">...</li>
-            <li class="instru-actuel">...</li>
-            <li class="instru-actuel">...</li>
-            <li class="instru-actuel">...</li>
-            <li class="instru-actuel">...</li>
-            <li class="instru-actuel">...</li>
-            <li class="instru-actuel">...</li>
-            <li class="instru-actuel">...</li>
-            <li class="instru-actuel">...</li>
-            <li class="instru-actuel">...</li>
-          </ul>
         </div>
       </div>
     </div>
