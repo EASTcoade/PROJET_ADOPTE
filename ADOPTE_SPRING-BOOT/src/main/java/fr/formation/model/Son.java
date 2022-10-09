@@ -24,10 +24,10 @@ public class Son{
 	@JsonView(JsonViews.Common.class)
 	protected int id;
 	
-	@JsonIgnore
-	@ManyToOne(fetch=FetchType.LAZY)
+//	@JsonIgnore
+	@ManyToOne
 	@JoinColumn(name="son_uti_id")
-	@JsonView(JsonViews.Son.class)
+//	@JsonView(JsonViews.Son.class)
 	protected Utilisateur createur;
 	
 	@Column(name="son_nom",nullable=false,length=50)
