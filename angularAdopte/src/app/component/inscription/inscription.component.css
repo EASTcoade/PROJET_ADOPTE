@@ -1,0 +1,16 @@
+.container{
+  width: 40%;
+  background: linear-gradient(#e66465, #9198e5);
+  border-radius: 2%;
+  text-align: center
+}
+
+.form-group{
+  font-family:  sans-serif;
+  color: white;
+
+}
+
+html, body{
+  background-color: rgb(127, 212, 212);
+}

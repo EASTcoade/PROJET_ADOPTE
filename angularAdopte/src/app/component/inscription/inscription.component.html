@@ -1,0 +1,72 @@
+<html>
+
+<body>
+<p> inscription works !</p>
+
+  <div class="container">
+    <form name="form" (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+      <label for="nom">Nom</label>
+      <input type="text" class="form-control" name="nom" [(ngModel)]="form.nom" required minlength="3" maxlength="20" [ngModelOptions]="{standalone: true}" />
+    </div>
+
+    <div class="form-group">
+      <label for="prenom">Prenom</label>
+      <input type="text" class="form-control" name="Prenom" [(ngModel)]="form.prenom" required minlength="3" maxlength="20" [ngModelOptions]="{standalone: true}" />
+    </div>
+
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" name="mail" [(ngModel)]="form.mail" required  [ngModelOptions]="{standalone: true}"/>
+      </div>
+
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" name="username" [(ngModel)]="form.username" required minlength="3" maxlength="20" [ngModelOptions]="{standalone: true}"/>
+      </div>
+
+        <div class="form-group">
+          <label for="dateNaissance">Date de Naissance</label>
+          <input type="date" class="form-control" name="dateNaissance" [(ngModel)]="form.dateNaissance" required [ngModelOptions]="{standalone: true}"/>
+        </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" name="password" [(ngModel)]="form.password" required [ngModelOptions]="{standalone: true}"/>
+      </div>
+
+      <div class="form-group">
+        <label for="adresse">Adresse</label>
+        <input type="text" class="form-control" name="adresse" [(ngModel)]="form.adresse" required [ngModelOptions]="{standalone: true}"/>
+      </div>
+
+      <div class="form-group">
+        <label for="telephone">Telephone</label>
+        <input type="text" class="form-control" name="telephone" [(ngModel)]="form.telephone" required [ngModelOptions]="{standalone: true}"/>
+      </div>
+
+      <div class="form-group">
+        <label for="Niveau">Niveau</label>
+        <select [(ngModel)]="form.niveau" required [ngModelOptions]="{standalone: true}">
+          <option value="DEBUTANT">Debutant</option>
+          <option value="INTERMEDIAIRE">Intermediaire</option>
+          <option value="AVANCE">Avancé</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <button  class="btn btn-primary btn-block">S'inscrire</button>
+      </div>
+
+
+
+    </form>
+
+    </div>
+
+  </body>
+
+    </html>
+

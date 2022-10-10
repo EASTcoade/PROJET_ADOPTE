@@ -16,9 +16,11 @@ import { RefusComponent } from './component/refus/refus.component';
 import { MenuAdminComponent } from './component/menu-admin/menu-admin.component';
 import { ListeInstrumentComponent } from './component/liste-instrument/liste-instrument.component';
 import { ContenuAdminComponent } from './component/contenu-admin/contenu-admin.component';
+import { InscriptionComponent } from './component/inscription/inscription.component';
+import { HomeComponent } from './component/home/home.component';
 
 @NgModule({
-  declarations: [AppComponent, ConnexionComponent, UtilisateurConnecteComponent, ConnexionAdminComponent, AdminConnecteComponent, UploadSonComponent, RefusComponent, MenuAdminComponent, ListeInstrumentComponent, ContenuAdminComponent],
+  declarations: [AppComponent, ConnexionComponent, UtilisateurConnecteComponent, ConnexionAdminComponent, AdminConnecteComponent, UploadSonComponent, RefusComponent, MenuAdminComponent, ListeInstrumentComponent, ContenuAdminComponent, InscriptionComponent, HomeComponent],
   imports: [BrowserModule, HttpClientModule, FormsModule,RouterModule.forRoot(routes) ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

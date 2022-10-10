@@ -1,3 +1,4 @@
+import { HomeComponent } from './component/home/home.component';
 import { ContenuAdminComponent } from './component/contenu-admin/contenu-admin.component';
 import { ListeInstrumentComponent } from './component/liste-instrument/liste-instrument.component';
 import { Component } from '@angular/core';
@@ -11,11 +12,22 @@ import { AdminConnecteComponent } from './component/admin-connecte/admin-connect
 import { UtilisateurConnecteComponent } from './component/utilisateur-connecte/utilisateur-connecte.component';
 import { ConnexionComponent } from './component/connexion/connexion.component';
 import { Routes } from '@angular/router';
+import { InscriptionComponent } from './component/inscription/inscription.component';
 
 export const routes: Routes = [
   {
     path: 'connexion',
     component: ConnexionComponent,
+    canActivate: [AnonymousGuardService],
+  },
+  {
+    path: 'inscription',
+    component: InscriptionComponent,
+    canActivate: [AnonymousGuardService],
+  },
+  {
+    path: 'home',
+    component: HomeComponent,
     canActivate: [AnonymousGuardService],
   },
   {

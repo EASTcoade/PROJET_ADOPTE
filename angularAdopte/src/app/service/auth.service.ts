@@ -1,14 +1,21 @@
+import { Utilisateur } from './../model/utilisateur';
 import { Compte } from '../model/compte';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 
+
+
+
+
+
 @Injectable({
   providedIn: 'root',
 })
 
 export class AuthService {
+
   constructor(private router: Router, private httpClient: HttpClient) {}
 
   public authentification(
@@ -25,6 +32,11 @@ export class AuthService {
         headers: monHeader,
       }
     );
+  }
+
+  public register(form: any): Observable<any>{
+    console.log(form);
+    return this.httpClient.post<any>('http://localhost:8080/adopte/api/utilisateur',form);
   }
 
   public isAuthenticated(): boolean {

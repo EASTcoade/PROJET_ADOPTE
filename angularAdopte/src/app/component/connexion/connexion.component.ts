@@ -23,7 +23,7 @@ export class ConnexionComponent implements OnInit {
           'BASIC ' + btoa(this.username + ':' + this.password)
         );
         sessionStorage.setItem('role', 'ROLE_USER');
-        this.router.navigateByUrl('/utilisateur');
+        this.router.navigateByUrl('/home');
       },
       error: (err: any) => {
         console.log(err);

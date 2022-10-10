@@ -1,4 +1,6 @@
-export class Utilisateur {
+import { Compte } from './compte';
+
+export class Utilisateur extends Compte {
   public get dateNaissance(): string | undefined {
     return this._dateNaissance;
   }
@@ -41,18 +43,11 @@ export class Utilisateur {
   public set nom(value: string| undefined ) {
     this._nom = value;
   }
-  public get id(): number| undefined  {
-    return this._id;
-  }
-  public set id(value: number| undefined ) {
-    this._id = value;
-  }
-
 
 
 
   constructor(
-    private _id?: number,
+    _id: number, _username: string, _password: string,
     private _nom?: string,
     private _prenom?: string,
     private _mail?: string,
@@ -60,5 +55,7 @@ export class Utilisateur {
     private _niveau?: string,
     private _adresse?: string,
     private _dateNaissance?: string,
-  ) {}
+  ) {
+    super(_id,_username, _password);
+  }
 }

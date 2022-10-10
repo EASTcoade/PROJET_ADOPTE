@@ -10,6 +10,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -45,6 +46,10 @@ public class UtilisateurRestController {
 		private UtilisateurService srvUtilisateur;
 		@Autowired
 		private StyleMusicalService srvStyleMusical;
+		
+		@Autowired
+		private PasswordEncoder passwordEncoder;
+
 
 		//@JsonView(JsonViews.ProduitAvecFournisseur.class)
 		@GetMapping("")
@@ -87,9 +92,14 @@ public class UtilisateurRestController {
 			if (br.hasErrors()) {
 				throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 			}
+			utilisateur.setPassword((passwordEncoder.encode(utilisateur.getPassword())));
+			
+			//System.out.println("!!!! MDP:  "+utilisateur.getPassword());
 			srvUtilisateur.save(utilisateur);
 			return srvUtilisateur.findByIdFetchAll(utilisateur.getId()).get();
 		}
+		
+		
 		@PostMapping("/{uti_id}/{sty_id}")
 		@JsonView(JsonViews.UtilisateurAvecTout.class)
 		public Utilisateur createLinkStyleUtilisateur(@PathVariable("uti_id") Integer uti_id,@PathVariable("sty_id") Integer sty_id) throws IdNegativeException, UtilisateurNotFoundException{
@@ -99,6 +109,8 @@ public class UtilisateurRestController {
 			srvUtilisateur.createLinkStyleUtilisateur(uti_id, sty_id);
 			return srvUtilisateur.findByIdFetchAll(uti_id).get();
 		}
+		
+		
 		@DeleteMapping("/{uti_id}/{sty_id}")
 		@JsonView(JsonViews.UtilisateurAvecTout.class)
 		public Utilisateur deleteLinkStyleUtilisateur(@PathVariable("uti_id") Integer uti_id,@PathVariable("sty_id") Integer sty_id) throws IdNegativeException, UtilisateurNotFoundException{
@@ -108,6 +120,8 @@ public class UtilisateurRestController {
 			srvUtilisateur.deleteLinkStyleUtilisateur(uti_id, sty_id);
 			return srvUtilisateur.findByIdFetchAll(uti_id).get();
 		}
+		
+		
 		@DeleteMapping("/{id}")
 		@ResponseStatus(code = HttpStatus.NO_CONTENT)
 		public void deleteById(@PathVariable("id") Integer id) {

@@ -21,6 +21,7 @@ public class SecurityWebServiceConfig {
 				   .and()
 				   .authorizeRequests()
 				   		.antMatchers(HttpMethod.OPTIONS).permitAll()
+				   		.antMatchers(HttpMethod.POST,"/api/utilisateur").permitAll()
 //				   		.antMatchers(HttpMethod.GET,"/api/utilisateur/**").permitAll()
 		//		   		.antMatchers(HttpMethod.GET).permitAll()
 				   		.anyRequest().authenticated()

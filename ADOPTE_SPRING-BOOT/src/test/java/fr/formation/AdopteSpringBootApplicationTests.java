@@ -39,7 +39,7 @@ class AdopteSpringBootApplicationTests {
 //	void initAdmin() throws NotValidException {
 //		Admin superman=new Admin("superman",passwordEncoder.encode("mdp3"));
 //		srvAdmin.save(superman);
-//		Admin batman=new Admin("batman",passwordEncoder.encode("mdp4"));
+//		Admin batman=new Admin("batman",C("mdp4"));
 //		srvAdmin.save(batman);
 //	}
 	
