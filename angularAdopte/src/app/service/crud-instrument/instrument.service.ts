@@ -14,4 +14,9 @@ export class InstrumentService {
   public getAll(): Observable<Instrument[]> {
     return this.httpClient.get<Instrument[]>(InstrumentService.URL);
   }
+  public getAllFetchJoueurs(): Observable<Instrument[]> {
+    return this.httpClient.get<Instrument[]>(
+      InstrumentService.URL + '/utilisateurs'
+    );
+  }
 }
