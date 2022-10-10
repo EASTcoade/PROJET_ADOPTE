@@ -61,7 +61,6 @@ export const routes: Routes = [
   {
     path: 'contenu',
     component: ContenuAdminComponent,
-    outlet: 'pageAdminContenu',
   },
   {
     path: '',

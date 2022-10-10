@@ -1,5 +1,7 @@
 package fr.formation.restcontroller;
 
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -27,8 +29,10 @@ import com.fasterxml.jackson.annotation.JsonView;
 import fr.formation.exception.IdNegativeException;
 import fr.formation.exception.NotValidException;
 import fr.formation.exception.SonNotFoundException;
+import fr.formation.model.FormatSon;
 import fr.formation.model.JsonViews;
 import fr.formation.model.Son;
+import fr.formation.model.Utilisateur;
 import fr.formation.service.SonService;
 
 @RestController
@@ -61,8 +65,28 @@ public class SonRestController {
 //		srvSon.save(son);
 //		return son;
 //	}
-	public void create(@RequestParam("file") MultipartFile file) {
-		System.out.println("son passé par là");;
+	public void create(@RequestParam("file") MultipartFile file, @RequestParam("titre") String titre
+		,@RequestParam("createur") int idCreateur,@RequestParam("format") String format) throws IOException {
+		System.out.println("son passé par là");
+		Son son = new Son();
+		son.setTitre(titre);
+		son.setCreateur(new Utilisateur());
+		son.getCreateur().setId(idCreateur);		
+//		son.setFormat(FormatSon.MP3);
+		FormatSon[] formats=FormatSon.values();
+		for(FormatSon f : formats) {
+			if(format.equals(f.name())) {
+				son.setFormat(f);
+			}
+		}
+		byte[] bytesFromFile=file.getBytes();
+		son.setContenu(bytesFromFile);
+		try {
+			srvSon.save(son);
+		} catch (NotValidException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}					
 	}
 	
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
