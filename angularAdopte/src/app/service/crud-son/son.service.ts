@@ -21,7 +21,9 @@ export class SonService {
   public getById(id: number): Observable<Son> {
     return this.httpClient.get<Son>(`${SonService.URL}/${id}`);
   }
-
+  public getByIdToRead(id: number): Observable<any> {
+    return this.httpClient.get<Son>(`${SonService.URL}/${id}/` + 'read');
+  }
   public create(son: any): Observable<Son> {
     console.log('passe par le create du service');
     console.log(son.createur);

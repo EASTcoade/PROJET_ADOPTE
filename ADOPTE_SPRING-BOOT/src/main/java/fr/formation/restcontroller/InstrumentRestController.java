@@ -1,16 +1,17 @@
 package fr.formation.restcontroller;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,6 +24,7 @@ import fr.formation.exception.ItemNotFoundException;
 import fr.formation.exception.NotValidException;
 import fr.formation.model.Instrument;
 import fr.formation.model.JsonViews;
+import fr.formation.model.Utilisateur;
 import fr.formation.service.InstrumentService;
 
 @RestController
@@ -38,12 +40,24 @@ public class InstrumentRestController {
 		public List<Instrument> findAll() {
 			return instrumentService.findAll();
 		}
+		@GetMapping("/{id}")
+		@JsonView(JsonViews.Instrument.class)
+		public Optional<Instrument> findById(@PathVariable("id") Integer id) throws IdNegativeException, ItemNotFoundException {
+			System.out.println(id);
+			return instrumentService.findById(id);
+		}
 		
 		@GetMapping("/utilisateurs")
 		@JsonView(JsonViews.Instrument.class)
 		public List<Instrument> findAllFetchJoueurs() {
 			return instrumentService.findAllFetchJoueurs();
 		}
+		
+//		@GetMapping("/{id}/utilisateurs")
+////		@JsonView(JsonViews.Utilisateur.class)
+//		public List<Utilisateur> findAllUtilisateurByInstrument(@PathVariable("id") Integer id) throws IdNegativeException, ItemNotFoundException{
+//			return instrumentService.findAllUtilisateurByInstrument(id);
+//		}
 		
 		@GetMapping("/ajouter")
 		public String ajouter(Model model) {
