@@ -9,6 +9,7 @@ export class WebsocketService {
   webSocket!: WebSocket;
   chatMessages: Chat[] = [];
 
+
   constructor() { }
 
   public openWebSocket(){
