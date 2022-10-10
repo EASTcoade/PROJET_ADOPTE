@@ -1,0 +1,147 @@
+body {
+  margin: 0;
+  background-image: url("../../../assets/images/background.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 50vh;
+
+}
+  .container {
+  display: grid;
+
+  font-family:'Quicksand',sans-serif;
+  font-weight:bold;
+
+
+  grid-template-rows: 1 fr 1 fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  gap : 20px;
+  padding : 10px;
+  }
+
+  .background{
+  background-image: url("../../../assets/images/image1.png");
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  background-repeat: no-repeat;
+
+  }
+
+  .header{
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      grid-column-start:1;
+      grid-column-end:2;
+      grid-row-start: 1;
+      grid-row-end: 2;
+      align-items: center;
+      justify-content: center;
+
+  }
+
+  .header h1{
+      color: #7c2bc7;
+      margin-bottom: 60px;
+      text-align:left;
+      font-size:50px ;
+      font-weight: bold;
+  }
+
+  .header img{
+      width: 300px;
+  }
+
+  ul{
+      list-style-type: none;
+  }
+  .link{
+      position: absolute;
+      left : 50%;
+
+      grid-column-start: 2;
+      grid-column-end: 3;
+      grid-row-start: 1;
+      grid-row-end: 2;
+      max-width:100%;
+      max-height: 100%;
+      margin-top: 100px;
+
+
+
+  }
+  a:link{
+      text-decoration: none;
+      display: flex;
+      width: 100%;
+      font-size: 18px;
+      line-height: 50px;
+      border-radius: 0px;
+      margin-block: 5px;
+
+      outline: none;
+      border: none;
+      box-sizing: border-box;
+      font-weight: bold;
+      padding: 0 25px;
+      background: #bd0969;
+      color: white;
+      text-transform: uppercase;
+      transition: all 0.4s;
+      cursor: pointer;
+
+
+  }
+
+
+  .text{
+      position: absolute;
+      top :40%;
+      left : 10%;
+      grid-column-start: 1;
+      grid-column-end: 2;
+      grid-row-start: 2;
+      grid-row-end: 3;
+      max-width:100%;
+      max-height: 100%;
+
+      text-align :center;
+      line-height :1em;
+      margin-top: 100;
+
+  }
+
+  .image2{
+      grid-column-start: 2;
+      grid-column-end: 3;
+      grid-row-start: 2;
+      grid-row-end: 3;
+      text-align:left;
+      margin-bottom: 100px;
+      margin-left : 10px ;
+
+  }
+
+  .image2 img {
+      width:500px;
+      float:center;
+
+
+  }
+
+  footer{
+      position: absolute;
+      top : 75%;
+      left : 45%;
+      margin-top: 100px;
+      display:flex;
+      justify-content: center;
+
+
+  }
+  footer img{
+
+      width:450px;
+
+  }
