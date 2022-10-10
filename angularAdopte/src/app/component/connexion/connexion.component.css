@@ -1,94 +1,38 @@
-.logo {
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 1;
-  grid-row-end: 2;
-  background-color: none;
-}
-
 .logo img{
-  max-width: 20px;
-  max-height: 20px;
+  max-width: 100px;
+  max-height: 100px;
 }
 
-.titre {
-  grid-column: 2 /spawn 2;
-  grid-row: 1;
-  background-color: none;
-  font-size: 70px;
-  display: flex;
-  align-items: center;
-  justify-content: left;
+.image img {
+  position: absolute;
+  width: 20%;
+  height: auto;
+  top: 10%;
+  left: 60%;
+  /* border-radius: 25px; */
+  border-bottom-left-radius: 30%;
+  border-top-right-radius: 30%;
+  border-top-left-radius: 30%;
+  z-index: -1;
 }
 
 .mail {
-  grid-column: 2;
-  grid-row: 2;
-  background-color: none;
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1;
 }
 
 .mdp {
-  grid-column: 2;
-  grid-row: 3;
-  background-color: none;
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1;
 }
 
-.connexion {
-  grid-column: 2;
-  grid-row: 4;
-  background-color: none;
+.boutton {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.mdpo {
-  grid-column: 2;
-  grid-row: 5;
-  background-color: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.image {
-  grid-column-start: 3;
-  grid-column-end: 3;
-  grid-row-start: 1;
-  grid-row-end: 5;
-  background-color: none;
-}
-
-.image img{
-  max-width: 100%;
-  max-height: 100%;
-}
-
-.pied {
-  grid-column-start: 1;
-  grid-column-end: 4;
-  grid-row-start: 6;
-  grid-row-end: 6;
-  background-color: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.pied img {
-  max-width: 100%;
-  max-height: 100%;
-
-}
-
-.son {
-  grid-column: 3;
-  grid-row: 3;
-  background-color: #ffe6f7;
+  z-index: 1;
 }
