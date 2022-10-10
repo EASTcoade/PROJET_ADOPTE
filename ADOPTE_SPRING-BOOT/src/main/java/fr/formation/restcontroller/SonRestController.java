@@ -54,16 +54,16 @@ public class SonRestController {
 	@PostMapping("")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	@JsonView(JsonViews.Son.class)
-	public Son create(@Valid @RequestBody Son son,BindingResult br) throws NotValidException {
-		if(br.hasErrors()) {
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
-		}
-		srvSon.save(son);
-		return son;
-	}
-//	public void create(@RequestParam("file") MultipartFile file) {
-//		System.out.println("son passé par là");;
+//	public Son create(@Valid @RequestBody Son son,BindingResult br) throws NotValidException {
+//		if(br.hasErrors()) {
+//			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+//		}
+//		srvSon.save(son);
+//		return son;
 //	}
+	public void create(@RequestParam("file") MultipartFile file) {
+		System.out.println("son passé par là");;
+	}
 	
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	@DeleteMapping("/{id}")
