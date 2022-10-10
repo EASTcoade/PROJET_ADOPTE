@@ -39,6 +39,12 @@ public class InstrumentRestController {
 			return instrumentService.findAll();
 		}
 		
+		@GetMapping("/utilisateurs")
+		@JsonView(JsonViews.Instrument.class)
+		public List<Instrument> findAllFetchJoueurs() {
+			return instrumentService.findAllFetchJoueurs();
+		}
+		
 		@GetMapping("/ajouter")
 		public String ajouter(Model model) {
 			return goEdit(new Instrument(), model);

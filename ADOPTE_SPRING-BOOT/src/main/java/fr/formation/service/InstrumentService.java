@@ -55,4 +55,11 @@ public class InstrumentService {
 	
 		return liste;
 	}
+	public List<Instrument> findAllFetchJoueurs(){
+		List<Instrument> liste = this.repoInstrument.findAllFetchJoueurs();		
+		if (liste == null) {
+			return new ArrayList<>();
+		}	
+		return liste;
+	}
 }

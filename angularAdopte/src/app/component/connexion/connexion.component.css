@@ -1,0 +1,38 @@
+.logo img{
+  max-width: 100px;
+  max-height: 100px;
+}
+
+.image img {
+  position: absolute;
+  width: 20%;
+  height: auto;
+  top: 10%;
+  left: 60%;
+  /* border-radius: 25px; */
+  border-bottom-left-radius: 30%;
+  border-top-right-radius: 30%;
+  border-top-left-radius: 30%;
+  z-index: -1;
+}
+
+.mail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.mdp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.boutton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
