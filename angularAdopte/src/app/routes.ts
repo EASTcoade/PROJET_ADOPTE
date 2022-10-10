@@ -1,3 +1,5 @@
+import { ChatComponent } from './component/chat/chat.component';
+import { Chat } from 'src/app/model/chat';
 import { HomeComponent } from './component/home/home.component';
 import { ContenuAdminComponent } from './component/contenu-admin/contenu-admin.component';
 import { ListeInstrumentComponent } from './component/liste-instrument/liste-instrument.component';
@@ -36,6 +38,11 @@ export const routes: Routes = [
     path: 'home',
     component: HomeComponent,
     canActivate: [AnonymousGuardService],
+  },
+  {
+    path: 'chat',
+    component: ChatComponent,
+
   },
   {
     path: 'connexion/admin',
