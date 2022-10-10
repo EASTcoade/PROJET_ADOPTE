@@ -13,8 +13,15 @@ import { UtilisateurConnecteComponent } from './component/utilisateur-connecte/u
 import { ConnexionComponent } from './component/connexion/connexion.component';
 import { Routes } from '@angular/router';
 import { InscriptionComponent } from './component/inscription/inscription.component';
+import { StyleMusicauxComponent } from './component/style-musicaux/style-musicaux.component';
 
 export const routes: Routes = [
+  {
+    path: 'style-musicaux',
+    component:StyleMusicauxComponent,
+    canActivate:[UserGuardService],
+  },
+
   {
     path: 'connexion',
     component: ConnexionComponent,
@@ -61,6 +68,7 @@ export const routes: Routes = [
   {
     path: 'contenu',
     component: ContenuAdminComponent,
+    outlet: 'pageAdminContenu',
   },
   {
     path: '',

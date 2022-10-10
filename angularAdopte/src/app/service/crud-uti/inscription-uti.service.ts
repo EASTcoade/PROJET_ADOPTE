@@ -18,4 +18,9 @@ export class InscriptionUtiService {
   public getAll(): Observable<Utilisateur[]> {
     return this.httpClient.get<Utilisateur[]>(`${this.baseUrl}`);
   }
+
+  public insertStyleMusical(styleMusical: any): Observable<any> {
+    console.log(styleMusical);
+    return this.httpClient.post<any>(`${this.baseUrl}`+ "/"+styleMusical.styuti_utilisateur_id  + '/' + styleMusical.styuti_stylemusical_id , styleMusical);
+  }
 }
