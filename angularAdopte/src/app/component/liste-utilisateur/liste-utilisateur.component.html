@@ -1,0 +1,19 @@
+<p>liste-utilisateur works!</p>
+<table class="table table-striped">
+  <thead>
+    <th>ID</th>
+    <th>Pseudo</th>
+    <th>Nom</th>
+    <th>Prénom</th>
+    <th>Actions</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let u of utilisateurs">
+      <td>{{ u.id }}</td>
+      <td>{{ u.username }}</td>
+      <td>{{ u.nom }}</td>
+      <td>{{ u.prenom }}</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
