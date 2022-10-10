@@ -1,7 +1,8 @@
 body {
     display: grid;
     grid-template-rows: 45vh 45vh 10vh;
-    grid-template-columns: 10vw 45vw 25vw 30vw;
+    grid-template-columns: 10vw 35vw 35vw 20vw;
+    margin: 0;
     font-family: "Roboto";
     background: -webkit-linear-gradient(bottom, #a3a3a3, white);
 }
@@ -19,8 +20,13 @@ body {
 }
 
 .habillage {
-    grid-column: 2;
-    grid-row: 2;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .habillage img {
@@ -32,19 +38,21 @@ body {
 
 .utilisateur {
     position: relative;
-    /* display: flex;
+    display: flex;
     align-items: center; 
     justify-content: start; 
-    flex-direction: column; */
+    flex-direction: column; 
     grid-column: 2;
     grid-row: 1;
+    z-index: 2;
 }
 
 .photo-paysage {
     position: absolute;
     width: 80%;
     height: auto;
-    left: 10%;   
+    left: 10%;
+    z-index: -1;   /* z index négatif pour que l'image soit en arrière fond par rapport phot profil et pseudos avec z index positif */
 }
 
 .photo-profil {
@@ -187,29 +195,38 @@ footer {
 
 .footer {
     background: yellow;
-    padding-left: 20px;
-    padding-right: 20px;
+  width: 100vw;
     padding-top: 10px;
     padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .pUn {
     background: cyan;
     color: transparent;
-    padding-left: 20px;
-    padding-right: 20px;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .pDeux {
     background: orange;
     color: transparent;
-    padding-left: 20px;
-    padding-right: 20px;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 footer p {
     margin-top: 0;
     margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
