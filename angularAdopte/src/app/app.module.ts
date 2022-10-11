@@ -21,6 +21,7 @@ import { HomeComponent } from './component/home/home.component';
 import { LectureSonComponent } from './component/lecture-son/lecture-son.component';
 import { ListeUtilisateurComponent } from './component/liste-utilisateur/liste-utilisateur.component';
 import { ChatComponent } from './component/chat/chat.component';
+import { LeaderGroupeComponent } from './component/match/leader-groupe/leader-groupe.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { ChatComponent } from './component/chat/chat.component';
     LectureSonComponent,
     ListeUtilisateurComponent,
     ChatComponent,
+    LeaderGroupeComponent,
   ],
   imports: [
     BrowserModule,
