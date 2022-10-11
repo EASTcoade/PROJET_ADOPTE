@@ -19,4 +19,26 @@ export class InstrumentService {
       InstrumentService.URL + '/utilisateurs'
     );
   }
+
+  public getById(id: number): Observable<Instrument> {
+    return this.httpClient.get<Instrument>(InstrumentService.URL + '/' + id);
+  }
+
+  public create(instru: Instrument): Observable<Instrument> {
+    return this.httpClient.post<Instrument>(
+      InstrumentService.URL,
+      this.instrumentToJson(instru)
+    );
+  }
+
+  public instrumentToJson(instru: Instrument): any {
+    let obj = {
+      id: instru.id,
+      nom: instru.nom,
+    };
+    if (instru.image) {
+      Object.assign(obj, { image: { id: instru.image.id } });
+    }
+    return obj;
+  }
 }

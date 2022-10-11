@@ -1,6 +1,12 @@
 <div class="row">
   <nav class="col-md-3">
-    <h1>Rubrique</h1>
+    <div class="row">
+      {{ infoCompte }}
+    </div>
+    <div>
+      <button (click)="logout()" class="btn btn-nav-link">logout</button>
+    </div>
+    <!-- <h1>Rubrique</h1> -->
     <div class="accordion" id="menuAdmin">
       <div class="accordion-item">
         <h2 class="accordion-header" id="panel1-header">

@@ -1,2 +1,6 @@
-<app-menu-admin *ngIf="getRole()"></app-menu-admin>
-<router-outlet></router-outlet>
+<body>
+  <div id="grille">
+    <app-menu-admin *ngIf="getRole()" id="menuadmin"></app-menu-admin>
+    <router-outlet id="oulet"></router-outlet>
+  </div>
+</body>

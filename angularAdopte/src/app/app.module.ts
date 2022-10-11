@@ -27,6 +27,8 @@ import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 // import { LeaderGroupeComponent } from './component/match/leader-groupe/leader-groupe.component';
 import { ChoixInstrumentComponent } from './component/choix-instrument/choix-instrument.component';
+import { EditInstrumentComponent } from './component/edit-instrument/edit-instrument.component';
+import { AffichageImageComponent } from './component/affichage-image/affichage-image.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { ChoixInstrumentComponent } from './component/choix-instrument/choix-ins
     ListeUtilisateurComponent,
     ChatComponent,
     ChatAppComponent,
-    ChoixInstrumentComponent
+    ChoixInstrumentComponent,
+    EditInstrumentComponent,
+    AffichageImageComponent,
   ],
   imports: [
     BrowserModule,

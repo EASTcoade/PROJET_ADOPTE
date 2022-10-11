@@ -19,10 +19,9 @@ import com.fasterxml.jackson.annotation.JsonView;
 public class Instrument {
 	
 	@ManyToOne
-	@JoinColumn(name="ins_image_id",nullable=false)
+	@JoinColumn(name="ins_image_id")
 //	@Column(name = "ins_image",nullable=false)
-
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.Instrument.class)
 	protected Image image;
 	
 	@Column(name = "ins_nom",nullable=false)
@@ -36,7 +35,7 @@ public class Instrument {
 	protected int id;
 	
 	@ManyToMany(mappedBy = "listeinstrument")
-	@JsonView(JsonViews.Instrument.class)
+	@JsonView(JsonViews.InstrumentAvecJoueurs.class)
 	protected List<Utilisateur> listeJoueurs;
 	
 	public int getId() {

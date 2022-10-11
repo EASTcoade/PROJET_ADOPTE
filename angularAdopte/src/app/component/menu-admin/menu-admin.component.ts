@@ -1,3 +1,4 @@
+import { AuthAdminService } from 'src/app/service/auth-admin.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,8 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu-admin.component.css'],
 })
 export class MenuAdminComponent implements OnInit {
+  infoCompte: string = '';
   roleAdmin = false;
-  constructor() {}
+  constructor(private authAdminService: AuthAdminService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    let compte = JSON.parse(sessionStorage.getItem('compte')!);
+    if (compte.username) {
+      this.infoCompte =
+        'Bienvenue admin id #' + compte.id + ' : ' + compte.username;
+    }
+  }
+  logout() {
+    this.authAdminService.logout();
+  }
 }

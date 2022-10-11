@@ -1,5 +1,7 @@
 import { ChatAppComponent } from './component/chat-app/chat-app.component';
 import { ChatComponent } from './component/chat/chat.component';
+import { AffichageImageComponent } from './component/affichage-image/affichage-image.component';
+import { EditInstrumentComponent } from './component/edit-instrument/edit-instrument.component';
 import { ListeUtilisateurComponent } from './component/liste-utilisateur/liste-utilisateur.component';
 // import { LectureSonComponent } from './component/lecture-son/lecture-son.component';
 
@@ -20,25 +22,24 @@ import { ConnexionComponent } from './component/connexion/connexion.component';
 import { Routes } from '@angular/router';
 import { InscriptionComponent } from './component/inscription/inscription.component';
 import { StyleMusicauxComponent } from './component/style-musicaux/style-musicaux.component';
+import { LectureSonComponent } from './component/lecture-son/lecture-son.component';
 
 export const routes: Routes = [
   {
     path: 'choix-instrument',
-    component:ChoixInstrumentComponent,
-    canActivate:[UserGuardService],
+    component: ChoixInstrumentComponent,
+    canActivate: [UserGuardService],
   },
   {
     path: 'style-musicaux',
-    component:StyleMusicauxComponent,
-    canActivate:[UserGuardService],
+    component: StyleMusicauxComponent,
+    canActivate: [UserGuardService],
   },
 
   {
     path: 'chat',
     component: ChatAppComponent,
   },
-
-
 
   {
     path: 'connexion',
@@ -88,13 +89,21 @@ export const routes: Routes = [
     path: 'contenu',
     component: ContenuAdminComponent,
   },
-  // {
-  //   path: 'lecture-son',
-  //   component: LectureSonComponent,
-  // },
+  {
+    path: 'lecture-son',
+    component: LectureSonComponent,
+  },
   {
     path: 'utilisateurs',
     component: ListeUtilisateurComponent,
+  },
+  {
+    path: 'affichage-image',
+    component: AffichageImageComponent,
+  },
+  {
+    path: 'instrument/add',
+    component: EditInstrumentComponent,
   },
   {
     path: '',

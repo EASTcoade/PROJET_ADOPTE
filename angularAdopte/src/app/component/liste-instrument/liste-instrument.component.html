@@ -1,14 +1,21 @@
-<table>
-  <thead>
-    <th>Id</th>
-    <th>Nom</th>
-    <th>Image</th>
-  </thead>
-  <tbody>
-    <tr *ngFor="let i of instruments | async">
-      <td>{{ i.id }}</td>
-      <td>{{ i.nom }}</td>
-      <!-- <td>{{ i.image.id }}</td> -->
-    </tr>
-  </tbody>
-</table>
+<div class="container">
+  <table>
+    <thead>
+      <th>Id</th>
+      <th>Nom</th>
+      <th>Image</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let i of instruments | async">
+        <td>{{ i.id }}</td>
+        <td>{{ i.nom }}</td>
+        <td>
+          <img
+            *ngIf="i.image"
+            src="data:image/jpeg;base64,{{ i.image.contenu }}"
+          />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,30 @@
+<p>edit-instrument works!</p>
+<div class="container">
+  <div class="form-group">
+    <label for="id">id:</label>
+    <input
+      id="id"
+      [(ngModel)]="instrument.id"
+      class="form-control"
+      readonly
+      placeholder="generation automatique"
+    />
+  </div>
+  <div class="form-group">
+    <label for="nom">nom:</label>
+    <input id="nom" [(ngModel)]="instrument.nom" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label for="responsable">Image:</label>
+    <input type="file" (change)="onFileSelected($event)" class="file-input" />
+    <button (click)="EnregistrerImage()" class="btn btn-outline-primary">
+      Valider
+    </button>
+  </div>
+  <div>
+    <button class="btn btn-outline-primary" (click)="save()">
+      enregistrer
+    </button>
+    <a routerLink="/instrument" class="btn btn-outline-warning">annuler</a>
+  </div>
+</div>

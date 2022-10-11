@@ -1,8 +1,9 @@
+import { Observable } from 'rxjs';
 export class Image {
-  public get contenu(): string | undefined {
+  public get contenu(): Uint8Array | undefined {
     return this._contenu;
   }
-  public set contenu(value: string | undefined) {
+  public set contenu(value: Uint8Array | undefined) {
     this._contenu = value;
   }
   public get format(): string | undefined {
@@ -27,6 +28,6 @@ export class Image {
     private _id?: number,
     private _titre?: string,
     private _format?: string,
-    private _contenu?: string
+    private _contenu?: Uint8Array
   ) {}
 }

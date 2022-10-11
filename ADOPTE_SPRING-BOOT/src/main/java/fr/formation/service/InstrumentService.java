@@ -27,12 +27,12 @@ public class InstrumentService {
 		repoInstrument.save(instrument);
 	}
 
-	public Optional<Instrument> findById(int id) throws IdNegativeException, ItemNotFoundException {
+	public Instrument findById(int id) throws IdNegativeException, ItemNotFoundException {
 		if (id <= 0) {
 			throw new IdNegativeException();
 		}
 
-		Optional<Instrument> monInstrument = repoInstrument.findById(id);
+		Instrument monInstrument = repoInstrument.findById(id).get();
 		if (monInstrument == null) {
 			throw new ItemNotFoundException();
 		}
@@ -63,15 +63,15 @@ public class InstrumentService {
 		}	
 		return liste;
 	}
-//	public List<Utilisateur> findAllUtilisateurByInstrument(Integer id) throws IdNegativeException, ItemNotFoundException{
-//		System.out.println("ça passe");
-//		Instrument ins = this.findById(id).get();
-//		
-//		List<Utilisateur> liste = this.repoInstrument.findAllUtilisateurByInstrument(ins);
-//		if (liste == null) {
-//			return new ArrayList<>();
-//		}	
-//		return liste;
-//	}
+	public List<Utilisateur> findAllUtilisateurByInstrument(Integer id) throws IdNegativeException, ItemNotFoundException{
+		System.out.println("ça passe");
+		Instrument ins = this.findById(id);
+		
+		List<Utilisateur> liste = this.repoInstrument.findAllUtilisateurByInstrument(ins);
+		if (liste == null) {
+			return new ArrayList<>();
+		}	
+		return liste;
+	}
 	
 }

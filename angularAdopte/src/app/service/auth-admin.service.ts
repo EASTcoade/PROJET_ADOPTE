@@ -32,6 +32,7 @@ export class AuthAdminService {
   public logout() {
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('compte');
-    this.router.navigateByUrl('/connexion');
+    sessionStorage.removeItem('role');
+    this.router.navigateByUrl('/connexion/admin');
   }
 }

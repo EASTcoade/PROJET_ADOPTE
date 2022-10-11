@@ -25,4 +25,10 @@ public class JsonViews {
 		public static class Instrument extends Common{
 			 
 		}
+		public static class InstrumentAvecJoueurs extends Common{
+			
+		}
+		public static class Image extends Common{
+			 
+		}
 }
