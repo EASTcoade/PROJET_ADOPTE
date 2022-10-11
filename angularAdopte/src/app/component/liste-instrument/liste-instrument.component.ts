@@ -13,7 +13,8 @@ import { Image } from 'src/app/model/image';
 export class ListeInstrumentComponent implements OnInit {
   instruments!: Observable<Instrument[]>;
   contenu!: Observable<any>;
-
+  voirImage = false;
+  imageAAfficher!: Image;
   constructor(
     private srvInstrument: InstrumentService,
     private srvImage: ImageService
@@ -32,5 +33,9 @@ export class ListeInstrumentComponent implements OnInit {
     return this.contenu;
     // this.contenu = this.srvImage.getByIdToRead(id);
     // return this.contenu;
+  }
+  public afficheImage(image: Image) {
+    this.voirImage = true;
+    return (this.imageAAfficher = image);
   }
 }

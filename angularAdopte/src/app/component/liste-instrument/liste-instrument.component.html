@@ -1,5 +1,5 @@
 <div class="container">
-  <table>
+  <table cellspacing="0" cellpadding="0">
     <thead>
       <th>Id</th>
       <th>Nom</th>
@@ -10,12 +10,15 @@
         <td>{{ i.id }}</td>
         <td>{{ i.nom }}</td>
         <td>
-          <img
-            *ngIf="i.image"
-            src="data:image/jpeg;base64,{{ i.image.contenu }}"
-          />
+          <button *ngIf="i.image" (click)="afficheImage(i.image!)">
+            Voir image
+          </button>
         </td>
       </tr>
     </tbody>
   </table>
+  <div *ngIf="voirImage" class="divImage">
+    <button (click)="voirImage = false">❌ Fermer</button>
+    <img src="data:image/jpeg;base64,{{ imageAAfficher.contenu }}" />
+  </div>
 </div>

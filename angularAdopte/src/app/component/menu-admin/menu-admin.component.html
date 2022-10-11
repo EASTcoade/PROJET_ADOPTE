@@ -1,10 +1,12 @@
 <div class="row">
   <nav class="col-md-3">
-    <div class="row">
-      {{ infoCompte }}
-    </div>
-    <div>
-      <button (click)="logout()" class="btn btn-nav-link">logout</button>
+    <div class="enTeteMenu">
+      <div class="row">
+        {{ infoCompte }}
+      </div>
+      <div>
+        <button (click)="logout()" class="btn btn-danger">logout</button>
+      </div>
     </div>
     <!-- <h1>Rubrique</h1> -->
     <div class="accordion" id="menuAdmin">
@@ -28,13 +30,9 @@
         >
           <div class="accordion-body">
             <ul class="">
-              <li>
-                <a routerLink="/test" class="nav-link">TEST</a>
-              </li>
               <li class="btn-rubrique">
                 <a routerLink="/utilisateurs">Liste des utilisateurs</a>
               </li>
-              <li class="">Statistiques</li>
             </ul>
           </div>
         </div>
@@ -85,14 +83,12 @@
         >
           <div class="accordion-body">
             <ul class="">
-              <li id="voir-instru-a-valider" class="btn-rubrique">
-                Instruments à valider
+              <li id="voir-instru-a-valider">
+                <a routerLink="/instrument/add">Formulaire nouvel instrument</a>
               </li>
               <li class="btn-rubrique">
                 <a routerLink="/instrument">Liste</a>
               </li>
-
-              <li id="voir-stats-instru" class="btn-rubrique">Statistiques</li>
             </ul>
           </div>
         </div>

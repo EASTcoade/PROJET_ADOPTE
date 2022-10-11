@@ -1,24 +1,44 @@
 .container {
+  display: flex;
+  flex-direction: row;
   height: 100vh;
   width: 50vw;
+  justify-content: left;
+  align-items: center;
 }
 table {
   height: 100%;
-  width: 100%;
+  width: 50%;
 }
 thead {
   font-size: large;
   text-transform: uppercase;
 }
-
+tr {
+  line-height: 20px;
+}
 th,
 td {
   text-align: center;
-  height: 40px;
-  width: 40px;
-  padding: 2px;
+  padding: 5px;
+  border-bottom: 1px solid black;
 }
-table img {
-  max-height: 40px;
-  object-fit: cover;
+tr:hover {
+  background-color: coral;
+}
+td {
+  max-height: 20px;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+.divImage {
+  max-width: 50%;
+  display: flex;
+  align-items: right;
+  flex-direction: column;
+}
+.divImage button {
+  max-width: 100px;
 }
