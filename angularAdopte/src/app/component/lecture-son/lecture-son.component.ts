@@ -1,7 +1,7 @@
-// import { Observable } from 'rxjs';
-// import { SonService } from './../../service/crud-son/son.service';
-// import { Component, OnInit } from '@angular/core';
-// import { Son } from 'src/app/model/son';
+import { Observable } from 'rxjs';
+import { SonService } from './../../service/crud-son/son.service';
+import { Component, OnInit } from '@angular/core';
+import { Son } from 'src/app/model/son';
 
 @Component({
   selector: 'app-lecture-son',

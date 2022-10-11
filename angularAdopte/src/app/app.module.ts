@@ -21,6 +21,10 @@ import { HomeComponent } from './component/home/home.component';
 import { LectureSonComponent } from './component/lecture-son/lecture-son.component';
 import { ListeUtilisateurComponent } from './component/liste-utilisateur/liste-utilisateur.component';
 import { ChatComponent } from './component/chat/chat.component';
+import { ChatAppComponent } from './component/chat-app/chat-app.component';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+
+const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
 @NgModule({
   declarations: [
@@ -39,11 +43,13 @@ import { ChatComponent } from './component/chat/chat.component';
     LectureSonComponent,
     ListeUtilisateurComponent,
     ChatComponent,
+    ChatAppComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    SocketIoModule.forRoot(config),
     RouterModule.forRoot(routes),
   ],
   providers: [

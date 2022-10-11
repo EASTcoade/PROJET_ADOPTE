@@ -1,3 +1,4 @@
+import { ChatAppComponent } from './component/chat-app/chat-app.component';
 import { ChatComponent } from './component/chat/chat.component';
 import { ListeUtilisateurComponent } from './component/liste-utilisateur/liste-utilisateur.component';
 // import { LectureSonComponent } from './component/lecture-son/lecture-son.component';
@@ -27,9 +28,10 @@ export const routes: Routes = [
   },
   {
     path: 'chat',
-    component: ChatComponent,
-
+    component: ChatAppComponent,
   },
+
+
 
   {
     path: 'connexion',
