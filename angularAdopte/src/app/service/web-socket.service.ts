@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Chat } from 'src/app/model/chat';
+import { ChatMessageDto } from '../model/chat-message-dto';
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class WebsocketService {
+export class WebSocketService {
 
   webSocket!: WebSocket;
-  chatMessages: Chat[] = [];
-
+  chatMessages: ChatMessageDto[] = [];
 
   constructor() { }
 
@@ -29,7 +29,7 @@ export class WebsocketService {
     };
   }
 
-  public sendMessage(chatMessageDto: Chat){
+  public sendMessage(chatMessageDto: ChatMessageDto){
     this.webSocket.send(JSON.stringify(chatMessageDto));
   }
 
@@ -37,4 +37,3 @@ export class WebsocketService {
     this.webSocket.close();
   }
 }
-

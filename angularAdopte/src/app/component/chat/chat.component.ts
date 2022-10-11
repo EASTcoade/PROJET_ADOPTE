@@ -1,19 +1,17 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Chat } from 'src/app/model/chat';
-import { WebsocketService } from 'src/app/service/websocket/websocket.service';
+import { ChatMessageDto } from 'src/app/model/chat-message-dto';
+import { WebSocketService } from 'src/app/service/web-socket.service';
+
 
 @Component({
-  selector: 'app-chat',
+  selector: 'cf-chat',
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.css']
-
 })
 export class ChatComponent implements OnInit, OnDestroy {
 
-
-
-  constructor(public webSocketService: WebsocketService) { }
+  constructor(public webSocketService: WebSocketService) { }
 
   ngOnInit(): void {
     this.webSocketService.openWebSocket();
@@ -24,7 +22,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
 
   sendMessage(sendForm: NgForm) {
-    const chatMessageDto = new Chat(sendForm.value.user, sendForm.value.message);
+    const chatMessageDto = new ChatMessageDto(sendForm.value.user, sendForm.value.message);
     this.webSocketService.sendMessage(chatMessageDto);
     sendForm.controls['message'].reset();
   }

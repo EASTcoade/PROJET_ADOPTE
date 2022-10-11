@@ -1,16 +1,16 @@
 package fr.formation.handler;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ChatWebSocketHandler extends TextWebSocketHandler {
 
-	private final List<WebSocketSession> webSocketSessions = new ArrayList<>();
+    private final List<WebSocketSession> webSocketSessions = new ArrayList<>();
 
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {

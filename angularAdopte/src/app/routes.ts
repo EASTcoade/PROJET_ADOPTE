@@ -1,7 +1,7 @@
-import { ListeUtilisateurComponent } from './component/liste-utilisateur/liste-utilisateur.component';
-import { LectureSonComponent } from './component/lecture-son/lecture-son.component';
 import { ChatComponent } from './component/chat/chat.component';
-import { Chat } from 'src/app/model/chat';
+import { ListeUtilisateurComponent } from './component/liste-utilisateur/liste-utilisateur.component';
+// import { LectureSonComponent } from './component/lecture-son/lecture-son.component';
+
 import { HomeComponent } from './component/home/home.component';
 import { ContenuAdminComponent } from './component/contenu-admin/contenu-admin.component';
 import { ListeInstrumentComponent } from './component/liste-instrument/liste-instrument.component';
@@ -25,6 +25,11 @@ export const routes: Routes = [
     component: StyleMusicauxComponent,
     canActivate: [UserGuardService],
   },
+  {
+    path: 'chat',
+    component: ChatComponent,
+
+  },
 
   {
     path: 'connexion',
@@ -41,10 +46,7 @@ export const routes: Routes = [
     component: HomeComponent,
     canActivate: [AnonymousGuardService],
   },
-  {
-    path: 'chat',
-    component: ChatComponent,
-  },
+
   {
     path: 'connexion/admin',
     component: ConnexionAdminComponent,
@@ -77,10 +79,10 @@ export const routes: Routes = [
     path: 'contenu',
     component: ContenuAdminComponent,
   },
-  {
-    path: 'lecture-son',
-    component: LectureSonComponent,
-  },
+  // {
+  //   path: 'lecture-son',
+  //   component: LectureSonComponent,
+  // },
   {
     path: 'utilisateurs',
     component: ListeUtilisateurComponent,
