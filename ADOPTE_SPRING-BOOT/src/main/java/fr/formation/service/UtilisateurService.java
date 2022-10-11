@@ -112,7 +112,12 @@ public class UtilisateurService {
 		
 		repoUtilisateur.save(utilisateur);
 	}
-	
+	public void createLinkInstrumentUtilisateur(int uti_id,int ins_id) throws IdNegativeException {
+		if (uti_id <= 0 || ins_id<=0) {
+			throw new IdNegativeException();
+		}		
+		repoUtilisateur.createLinkInstrumentUtilisateur(uti_id, ins_id);
+	}
 	public void createLinkStyleUtilisateur(int uti_id,int sty_id) throws IdNegativeException {
 		if (uti_id <= 0 || sty_id<=0) {
 			throw new IdNegativeException();

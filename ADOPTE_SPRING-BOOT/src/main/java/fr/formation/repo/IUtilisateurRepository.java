@@ -30,6 +30,12 @@ public interface IUtilisateurRepository extends JpaRepository<Utilisateur, Integ
 	public Optional<Utilisateur> findByIdFetchAll(@Param("id") int id);	
 	
 	@Modifying
+	@Query(value="insert into utilisateur_instrument(utiins_utilisateur_id,utiins_instrument_id)"
+			+ "values(:uti_id,:ins_id)",nativeQuery = true)
+	@Transactional
+	public void createLinkInstrumentUtilisateur(@Param("uti_id")int uti_id,@Param("ins_id") int ins_id);
+
+	@Modifying
 	@Query(value="insert into style_utilisateur(styuti_utilisateur_id,styuti_stylemusical_id)"
 			+ "values(:uti_id,:sty_id)",nativeQuery = true)
 	@Transactional

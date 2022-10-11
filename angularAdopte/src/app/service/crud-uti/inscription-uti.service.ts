@@ -21,10 +21,24 @@ export class InscriptionUtiService {
 
   public insertStyleMusical(styleMusical: any): Observable<any> {
     console.log(styleMusical);
-    return this.httpClient.post<any>(`${this.baseUrl}`+ "/"+styleMusical.styuti_utilisateur_id  + '/' + styleMusical.styuti_stylemusical_id , styleMusical);
+    return this.httpClient.post<any>(
+      `${this.baseUrl}` +
+        '/' +
+        styleMusical.styuti_utilisateur_id +
+        '/' +
+        styleMusical.styuti_stylemusical_id,
+      styleMusical
+    );
   }
-  public insertInstrument(choixInstrument:any):Observable<any>{
+  public insertInstrument(choixInstrument: any): Observable<any> {
     console.log(choixInstrument);
-    return this.httpClient.post<any>(`${this.baseUrl}`+ "/"+choixInstrument.utiins_utilisateur_id  + '/' + choixInstrument.utiins_instrument_id , choixInstrument);
-}
+    return this.httpClient.post<any>(
+      `${this.baseUrl}` +
+        '/instrument/' +
+        choixInstrument.utiins_utilisateur_id +
+        '/' +
+        choixInstrument.utiins_instrument_id,
+      choixInstrument
+    );
+  }
 }

@@ -31,6 +31,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 import fr.formation.exception.IdNegativeException;
 import fr.formation.exception.NotValidException;
 import fr.formation.exception.UtilisateurNotFoundException;
+import fr.formation.model.Instrument;
 import fr.formation.model.JsonViews;
 import fr.formation.model.Utilisateur;
 import fr.formation.service.StyleMusicalService;
@@ -98,7 +99,15 @@ public class UtilisateurRestController {
 			srvUtilisateur.save(utilisateur);
 			return srvUtilisateur.findByIdFetchAll(utilisateur.getId()).get();
 		}
-		
+		@PostMapping("/instrument/{uti_id}/{ins_id}")
+		@JsonView(JsonViews.UtilisateurAvecTout.class)
+		public Utilisateur createLinkInstrumentUtilisateur(@PathVariable("uti_id") Integer uti_id,@PathVariable("ins_id") Integer ins_id) throws IdNegativeException, UtilisateurNotFoundException{
+			if(!srvUtilisateur.existsById(uti_id)){//||!srvInstrument.existsById(sty_id)) {
+				throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+			}
+			srvUtilisateur.createLinkInstrumentUtilisateur(uti_id, ins_id);
+			return srvUtilisateur.findByIdFetchAll(uti_id).get();
+		}
 		
 		@PostMapping("/{uti_id}/{sty_id}")
 		@JsonView(JsonViews.UtilisateurAvecTout.class)

@@ -1,37 +1,32 @@
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Instruments</title>
-
-
 </head>
 
 <body>
-
   <div class="container">
+    <div class="header">
+      <img src="../assets/images/logoM.png" />
 
-      <div class="header">
-          <img src="../assets/images/logoM.png">
+      <h2><span>Adopte un musicien</span></h2>
+    </div>
 
-          <h2><span>Adopte un musicien</span></h2>
-      </div>
+    <div class="titre">
+      <h1>Que pratiquez vous ?</h1>
+    </div>
 
-      <div class="titre">
-          <h1 >Que pratiquez vous ?</h1>
-      </div>
+    <div class="content">
+      <div class="liste_instruments">
+        <div class="instrument" *ngFor="let i of instruments | async">
+          <span>{{ i.nom }}</span
+          ><br />
+          <img src="data:image/jpeg;base64,{{ i.image?.contenu }}" /><br />
+          <button (click)="send(i.id!)" type="submit">Ajouter</button>
+        </div>
 
-      <div class="content">
-          <div class="liste_instruments">
-
-              <div class="instrument">
-                  <span>Guitare</span><br>
-                  <img src = "../assets/images/guitare.png"><br>
-                  <button (click)="send()" type="submit">Ajouter</button>
-              </div>
-
-
-              <div class="instrument">
+        <!-- <div class="instrument">
                   <span>Piano</span><br>
                   <img src = "../assets/images/piano.png"><br>
                   <button (click)="send()" type="submit">Ajouter</button>
@@ -65,29 +60,20 @@
                   <span>Batterie</span><br>
                   <img src = "../assets/images/batterie.png"><br>
                   <button (click)="send()" type="submit">Ajouter</button>
-              </div>
-
-          </div>
-
+              </div> -->
       </div>
+    </div>
 
+    <div class="finish">
+      <button type="button">SUIVANT</button>
+    </div>
 
-      <div class="finish">
-          <button  type="button">SUIVANT</button>
+    <div class="footer">
+      <div class="blue"></div>
+      <div class="yellow">
+        <span>Developped by Groupe C</span>
       </div>
-
-      <div class="footer">
-          <div class="blue"></div>
-          <div class="yellow">
-              <span>Developped by Groupe C</span>
-          </div>
-          <div class="orange"></div>
-      </div>
-
-
+      <div class="orange"></div>
+    </div>
   </div>
-
-
-
-
 </body>
