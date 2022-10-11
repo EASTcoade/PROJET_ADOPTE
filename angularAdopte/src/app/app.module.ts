@@ -26,6 +26,7 @@ import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 // import { LeaderGroupeComponent } from './component/match/leader-groupe/leader-groupe.component';
+import { ChoixInstrumentComponent } from './component/choix-instrument/choix-instrument.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     LectureSonComponent,
     ListeUtilisateurComponent,
     ChatComponent,
-    ChatAppComponent
+    ChatAppComponent,
+    ChoixInstrumentComponent
   ],
   imports: [
     BrowserModule,

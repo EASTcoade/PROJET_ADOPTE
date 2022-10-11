@@ -1,14 +1,24 @@
-
 body{
-  height: 100vh;
+
   background-color: rgb(250, 245, 245);
   font-family: sans-serif
 }
 
 *{
-  margin:0;
-  padding:0
+  margin:100;
+  padding:100
 }
+
+h2{
+  color:white;
+  font-size:30px;
+  text-align:center;
+  display:inline-block;
+  position:relative;
+  width:100%; /*Add this*/
+  margin-top: 30px;
+  margin-right: 150px;
+ }
 
 
 .header{
@@ -35,66 +45,64 @@ body{
   margin-bottom: 40px
 }
 
-.liste_style{
+.titre{
+  text-align: center;
+}
 
-  display: inline-flex;
+.liste_instruments{
+display: inline-flex;
 flex-wrap: wrap;
 gap: 30px
 
 
 }
 
-.content{
-  margin-left: 17%;
-  margin-right: 15%;
+.liste_instruments .instrument{
 
-}
-
-
-
-.liste_style .style{
   background-color: rgb(155, 191, 191);
   padding: 1em;
   border-radius: 10px;
-  width: 150px;
-  height: 50px;
+  width: 200px;
+  height: 200px;
   text-align: center;
+  display: inline-block;
+
+}
+
+.liste_instruments span{
+  color:white;
 
 
 }
 
-.liste_style span{
-  color:white;
+
+.content{
+  margin-left: 10%;
+  margin-right: 5%;
+
+
 }
 
-h2{
-  color:white;
-  font-size:30px;
-  text-align:center;
-  display:inline-block;
-  position:relative;
-  width:100%; /*Add this*/
-  margin-top: 30px;
-  margin-right: 150px;
- }
+.liste_instruments img{
+  width: 60%;
+  height: 60%;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  border-radius: 10px;
 
-h1{text-align:center;}
+}
 
-
-
-
-.liste_style button{
+.liste_instruments button{
 
   background-color: rgb(60, 85, 211);
-  width:100%;
-  height: 150%;
   color: white;
-  margin-top: 10px;
-  border-radius: 5cm;
+  border-radius: 10px;
+  width:80px;
+  height: 30px;
 
 }
 
-.liste_style button:hover {
+.liste_instruments button:hover {
   background-color:rgb(212, 25, 25);
   border-color:rgb(212, 25, 25);
   color: white;
@@ -137,8 +145,7 @@ h1{text-align:center;}
   background-color: yellow;
 }
 
-
-.liste_style .style {
-background: linear-gradient(rgb(207, 65, 65),rgb(67, 67, 206))
-}
+.liste_instruments .instrument {
+  background: linear-gradient(rgb(207, 65, 65),rgb(67, 67, 206))
+  }
 

@@ -3,6 +3,7 @@ import { ChatComponent } from './component/chat/chat.component';
 import { ListeUtilisateurComponent } from './component/liste-utilisateur/liste-utilisateur.component';
 // import { LectureSonComponent } from './component/lecture-son/lecture-son.component';
 
+import { ChoixInstrumentComponent } from './component/choix-instrument/choix-instrument.component';
 import { HomeComponent } from './component/home/home.component';
 import { ContenuAdminComponent } from './component/contenu-admin/contenu-admin.component';
 import { ListeInstrumentComponent } from './component/liste-instrument/liste-instrument.component';
@@ -22,10 +23,16 @@ import { StyleMusicauxComponent } from './component/style-musicaux/style-musicau
 
 export const routes: Routes = [
   {
-    path: 'style-musicaux',
-    component: StyleMusicauxComponent,
-    canActivate: [UserGuardService],
+    path: 'choix-instrument',
+    component:ChoixInstrumentComponent,
+    canActivate:[UserGuardService],
   },
+  {
+    path: 'style-musicaux',
+    component:StyleMusicauxComponent,
+    canActivate:[UserGuardService],
+  },
+
   {
     path: 'chat',
     component: ChatAppComponent,
