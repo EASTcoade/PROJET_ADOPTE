@@ -1,0 +1,194 @@
+body{
+  margin: auto;
+  width: 95vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  caret-color: transparent;
+  font-family: 'Roboto', sans-serif;
+
+}
+header{
+  width: 100%;
+  height: 20vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  overflow: hidden;
+}
+h1{
+  font-family: 'Ms Madi';
+  font-size: 48px;
+}
+header div{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+header img{
+  object-fit: cover;
+}
+header i{
+  margin: 10px;
+  font-size: 22px;
+}
+p{
+  margin: 0;
+}
+footer{
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+  color: black;
+}
+footer img{
+  width: 100vw;
+}
+/* Centered text */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 25px;
+  font-weight: bold;
+}
+.objet-choix{
+  max-height: 15vh;
+  overflow: scroll;
+  margin-bottom: 10px;
+  scrollbar-color: blue;
+}
+.objet-choix p{
+  background: #d3d3d3;
+}
+.choix{
+  padding: 3px;
+}
+.choix:hover{
+  background-color: rgba(13, 110, 253, 0.25);
+  cursor: pointer;
+}
+.choix label:hover{
+  cursor: pointer;
+}
+
+section{
+  height: 80vh;
+  width: 100%;
+  display: grid;
+  grid-template-areas:
+  'recherche-textuelle resultat carte carte'
+  'nav resultat carte carte';
+}
+.resultat ul{
+  list-style-type: none;
+  overflow: auto;
+  max-height: 60vh;
+  padding-left: 0;
+}
+.result img{
+  object-fit: cover;
+}
+.recherche-textuelle,.filtres{
+  width: 90%;
+  /* border: 1px solid black; */
+}
+.recherche-textuelle{
+  grid-area: recherche-textuelle;
+  height: 50px;
+  caret-color: #333;
+}
+.filtres{
+  height: 50vh;
+  font-size: 16px;
+
+}
+nav{
+  grid-area: nav;
+}
+
+.resultat{
+  width:90%;
+  grid-area: resultat;
+  /* border:1px solid blue; */
+  background-size: 75%;
+  background-repeat: no-repeat;
+  background-image: url('../html/image/ballerine-opacity35pourcent.png');
+  background-position: right;
+}
+.result-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 30vh;
+}
+.result{
+  /* border: 1px solid #333; */
+  padding: 5px;
+}
+.carte{
+  width: 100%;
+  grid-area: carte;
+  border: 1px solid green;
+  height: 400px;
+}
+.range{
+  width: 100%;
+}
+.input-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#textbox-recherche{
+  width: 100%;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-image: url('../html/image/icons8-search-30.png');
+  background-position: 6px 7px;
+  background-repeat: no-repeat;
+  background-color: white;
+  padding: 12px 20px 12px 40px;
+}
+.slicer{
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 100%; /* Full-width */
+  height: 8px; /* Specified height */
+  background: #d3d3d3; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+  border-radius: 15px;
+
+}
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #04AA6D; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #04AA6D; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+

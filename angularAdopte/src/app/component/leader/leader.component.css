@@ -1,0 +1,94 @@
+.logo {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 1;
+  background-color: none;
+}
+
+.logo img{
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.titre {
+  grid-column: 2 /spawn 6;
+  grid-row: 1;
+  background-color: none;
+  font-size: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+.couronne {
+  grid-column-start: 3;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.couronne img {
+  width: 100px;
+  height: 100px;
+}
+
+.profil2 {
+  grid-column: 2 / span 1;
+  grid-row: 3;
+  background-color: violet;
+}
+.profil2 img{
+  width: 300px;
+  height: 300px;
+}
+
+.profil3 {
+  grid-column: 3 / span 1;
+  grid-row: 3;
+  background-color: violet;
+}
+.profil3 img{
+  max-width: 300px;
+  height: 300px;
+}
+
+.image {
+  grid-column-start:7;
+  grid-column-end: 7;
+  grid-row-start: 2;
+  grid-row-end: 4;
+  background-color: none;
+  display: flex;
+  align-items: left;
+  justify-content: left;
+}
+
+.image img{
+  max-width: 100%;
+  height: 100%;
+}
+
+.pied {
+  grid-column: 1/ span 7;
+  grid-row: 5;
+  background-color: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pied img {
+  max-width: 100%;
+  max-height: 100%;
+
+}
+
+.son {
+  grid-column: 7;
+  grid-row: 4;
+  background-color: #ffe6f7;
+}

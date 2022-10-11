@@ -1,0 +1,29 @@
+.triangle{
+  grid-area: triangle;
+}
+.uti2{
+  grid-area: utiB;
+}
+img{
+  width: 100%;;
+}
+.poursuivre,.profil{
+  width: 100%;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 4px;
+  background-color: rgba(255, 0, 0, 0.763);
+  color: white;
+  border-style: none;
+}
+.poursuivre:hover,.profil:hover{
+  font-weight: bold;
+  border: 1px solid black;
+  background-color: red;
+}
+button,i:hover{
+  cursor:pointer;
+}
+i:hover{
+  font-size:22px;
+}
