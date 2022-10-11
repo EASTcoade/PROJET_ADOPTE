@@ -11,6 +11,7 @@ import fr.formation.exception.IdNegativeException;
 import fr.formation.exception.ItemNotFoundException;
 import fr.formation.exception.NotValidException;
 import fr.formation.model.Instrument;
+import fr.formation.model.Utilisateur;
 import fr.formation.repo.IInstrumentRepository;
 
 @Service
@@ -47,7 +48,7 @@ public class InstrumentService {
 	}
 	
 	public List<Instrument> findAll() {
-		List<Instrument> liste = this.repoInstrument.findAll();
+		List<Instrument> liste = repoInstrument.findAll();
 	
 		if (liste == null) {
 			return new ArrayList<>();
@@ -62,4 +63,15 @@ public class InstrumentService {
 		}	
 		return liste;
 	}
+//	public List<Utilisateur> findAllUtilisateurByInstrument(Integer id) throws IdNegativeException, ItemNotFoundException{
+//		System.out.println("ça passe");
+//		Instrument ins = this.findById(id).get();
+//		
+//		List<Utilisateur> liste = this.repoInstrument.findAllUtilisateurByInstrument(ins);
+//		if (liste == null) {
+//			return new ArrayList<>();
+//		}	
+//		return liste;
+//	}
+	
 }

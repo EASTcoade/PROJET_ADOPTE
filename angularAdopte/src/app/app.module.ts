@@ -18,11 +18,34 @@ import { ListeInstrumentComponent } from './component/liste-instrument/liste-ins
 import { ContenuAdminComponent } from './component/contenu-admin/contenu-admin.component';
 import { InscriptionComponent } from './component/inscription/inscription.component';
 import { HomeComponent } from './component/home/home.component';
+import { LectureSonComponent } from './component/lecture-son/lecture-son.component';
+import { ListeUtilisateurComponent } from './component/liste-utilisateur/liste-utilisateur.component';
 import { ChatComponent } from './component/chat/chat.component';
 
 @NgModule({
-  declarations: [AppComponent, ConnexionComponent, UtilisateurConnecteComponent, ConnexionAdminComponent, AdminConnecteComponent, UploadSonComponent, RefusComponent, MenuAdminComponent, ListeInstrumentComponent, ContenuAdminComponent, InscriptionComponent, HomeComponent, ChatComponent],
-  imports: [BrowserModule, HttpClientModule, FormsModule,RouterModule.forRoot(routes) ],
+  declarations: [
+    AppComponent,
+    ConnexionComponent,
+    UtilisateurConnecteComponent,
+    ConnexionAdminComponent,
+    AdminConnecteComponent,
+    UploadSonComponent,
+    RefusComponent,
+    MenuAdminComponent,
+    ListeInstrumentComponent,
+    ContenuAdminComponent,
+    InscriptionComponent,
+    HomeComponent,
+    LectureSonComponent,
+    ListeUtilisateurComponent,
+    ChatComponent,
+  ],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    FormsModule,
+    RouterModule.forRoot(routes),
+  ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],

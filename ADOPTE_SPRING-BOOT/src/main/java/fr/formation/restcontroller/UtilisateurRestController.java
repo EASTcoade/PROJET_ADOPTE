@@ -51,7 +51,7 @@ public class UtilisateurRestController {
 		private PasswordEncoder passwordEncoder;
 
 
-		//@JsonView(JsonViews.ProduitAvecFournisseur.class)
+		@JsonView(JsonViews.UtilisateurAvecSon.class)
 		@GetMapping("")
 		public List<Utilisateur> findAll() {
 			return srvUtilisateur.findAll();

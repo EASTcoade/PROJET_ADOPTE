@@ -1,6 +1,9 @@
 package fr.formation.restcontroller;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.nio.file.Files;
 import java.util.List;
 
@@ -49,10 +52,18 @@ public class SonRestController {
 		return srvSon.findAll();
 	}
 
-	@GetMapping("/{id}/son")
-	//@JsonView(JsonViews.Son.class)
+	@GetMapping("/{id}")
+	@JsonView(JsonViews.Son.class)
 	public Son findById(@PathVariable("id") Integer id) throws IdNegativeException, SonNotFoundException {
 		return srvSon.findById(id).get();
+	}
+	@GetMapping("/{id}/read")
+	@JsonView(JsonViews.Son.class)
+	public Son findByIdToRead(@PathVariable("id") Integer id) throws IdNegativeException, SonNotFoundException {
+		Son son = new Son();
+		son=srvSon.findById(id).get();
+		byte[] bytes = son.getContenu();
+		return son;
 	}
 	
 	@PostMapping("")
