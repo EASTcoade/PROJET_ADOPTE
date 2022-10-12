@@ -54,4 +54,5 @@ public interface IUtilisateurRepository extends JpaRepository<Utilisateur, Integ
 	@Transactional
 	public void deleteLinkStyleUtilisateur(@Param("uti_id")int uti_id,@Param("sty_id") int sty_id);
 
+	
 }

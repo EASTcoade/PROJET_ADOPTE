@@ -5,11 +5,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import fr.formation.exception.IdNegativeException;
 import fr.formation.exception.NotValidException;
 import fr.formation.exception.UtilisateurNotFoundException;
+import fr.formation.model.Image;
 import fr.formation.model.Utilisateur;
 import fr.formation.repo.IUtilisateurRepository;
 
@@ -157,6 +159,12 @@ public class UtilisateurService {
 		return repoUtilisateur.existsById(id);
 		
 	}
+	
+	public void putImage(Image image, Utilisateur utilisateur) throws NotValidException{
+		utilisateur.setPhotoprofil(image);
+		 repoUtilisateur.save(utilisateur);
+		}
+
 	
 }
 

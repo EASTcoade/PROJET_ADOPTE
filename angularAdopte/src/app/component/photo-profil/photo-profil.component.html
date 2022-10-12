@@ -9,7 +9,10 @@
 
   <div class="cadre_photo">
       <div class="photo"></div><br>
-      <button>Selectionner une photo</button>
+      <input type="file" (change)="onFileSelected($event)" class="file-input" />
+      <button (click)="EnregistrerImage()" class="btn btn-primary">
+        Enregistrer
+      </button>
   </div>
 
   <div class="terminer">

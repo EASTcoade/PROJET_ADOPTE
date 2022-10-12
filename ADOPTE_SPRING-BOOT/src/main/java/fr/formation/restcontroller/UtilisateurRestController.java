@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.util.ReflectionUtils;
@@ -29,11 +30,13 @@ import org.springframework.web.server.ResponseStatusException;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import fr.formation.exception.IdNegativeException;
+import fr.formation.exception.ImageNotFoundException;
 import fr.formation.exception.NotValidException;
 import fr.formation.exception.UtilisateurNotFoundException;
 import fr.formation.model.Instrument;
 import fr.formation.model.JsonViews;
 import fr.formation.model.Utilisateur;
+import fr.formation.service.ImageService;
 import fr.formation.service.StyleMusicalService;
 import fr.formation.service.UtilisateurService;
 
@@ -47,6 +50,9 @@ public class UtilisateurRestController {
 		private UtilisateurService srvUtilisateur;
 		@Autowired
 		private StyleMusicalService srvStyleMusical;
+		
+		@Autowired
+		private ImageService srvImage;
 		
 		@Autowired
 		private PasswordEncoder passwordEncoder;
@@ -136,6 +142,9 @@ public class UtilisateurRestController {
 		}
 		
 		
+		
+		
+		
 		@DeleteMapping("/{id}")
 		@ResponseStatus(code = HttpStatus.NO_CONTENT)
 		public void deleteById(@PathVariable("id") Integer id) {
@@ -190,6 +199,18 @@ public class UtilisateurRestController {
 
 			srvUtilisateur.save(utilisateur);
 			return utilisateur;
+		}
+		
+		
+		@PostMapping("/photo/{utilisateur_id}/{image_id}")
+		@JsonView(JsonViews.UtilisateurAvecTout.class)
+		public void  putImage(@PathVariable("image_id")int image_id,@PathVariable("utilisateur_id") int utilisateur_id) throws  Exception{
+			if(!srvUtilisateur.existsById(utilisateur_id)){
+				throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+			}
+			
+			
+			srvUtilisateur.putImage(srvImage.findById(image_id).get(), srvUtilisateur.findById(utilisateur_id).get());
 		}
 	}
 

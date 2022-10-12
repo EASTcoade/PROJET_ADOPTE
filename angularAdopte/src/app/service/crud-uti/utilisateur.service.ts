@@ -22,4 +22,8 @@ export class UtilisateurService {
   public getAllFetchAll(): Observable<Utilisateur[]> {
     return this.httpClient.get<Utilisateur[]>(this.baseUrl + '/all');
   }
+
+  public putImage(uti_id:number, image_id:number): Observable<any> {
+    return this.httpClient.post<any>(`${this.baseUrl}` + '/photo/' + uti_id + '/'+image_id,{});
+  }
 }
