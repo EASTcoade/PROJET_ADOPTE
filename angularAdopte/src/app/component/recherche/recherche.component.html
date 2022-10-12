@@ -18,13 +18,19 @@
   <div class="resultats">
     <h2>Résultats de votre recherche</h2>
     <div class="resultat" *ngFor="let u of utilisateurs">
+      <div class="photoProfil">
+        <img
+          *ngIf="u.photoProfil"
+          src="data:image/jpeg;base64,{{ u.photoProfil.contenu }}"
+        />
+      </div>
       <div class="coordonnes">
         <h3>{{ u.username }}</h3>
         <h3>{{ u.adresse }}</h3>
       </div>
+
       <div class="instruments">
         <div class="instrument" *ngFor="let i of u.listeinstrument">
-          <!-- <h4>{{ i.nom }}</h4> -->
           <img
             *ngIf="i.image"
             src="data:image/jpeg;base64,{{ i.image.contenu }}"

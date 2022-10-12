@@ -31,4 +31,8 @@ public class JsonViews {
 		public static class Image extends Common{
 			 
 		}
+		public static class UtilisateurAvecPhoto extends Common{
+			
+		}
+		
 }

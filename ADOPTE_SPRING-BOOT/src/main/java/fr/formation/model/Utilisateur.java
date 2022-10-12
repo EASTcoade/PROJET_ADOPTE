@@ -71,12 +71,10 @@ public class Utilisateur extends Compte {
 	@JsonView(JsonViews.Common.class)
 	private Niveau niveau;
 	
-	@JsonIgnore
-	@ManyToOne//(fetchtype.lazy)
+//	@JsonIgnore
+	@ManyToOne
 	@JoinColumn(name = "uti_image_id")
-
-
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.UtilisateurAvecTout.class)
 	private Image photoProfil;
 	
 	public Utilisateur(String username, String password, String nom, String prenom, 

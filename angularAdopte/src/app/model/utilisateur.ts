@@ -1,7 +1,14 @@
 import { Instrument } from './instrument';
 import { Compte } from './compte';
+import { Image } from './image';
 
 export class Utilisateur extends Compte {
+  public get photoProfil(): Image | undefined {
+    return this._photoProfil;
+  }
+  public set photoProfil(value: Image | undefined) {
+    this._photoProfil = value;
+  }
   public get listeinstrument(): Instrument[] | undefined {
     return this._listeinstrument;
   }
@@ -62,7 +69,8 @@ export class Utilisateur extends Compte {
     private _niveau?: string,
     private _adresse?: string,
     private _dateNaissance?: string,
-    private _listeinstrument?: Instrument[]
+    private _listeinstrument?: Instrument[],
+    private _photoProfil?: Image
   ) {
     super(_id, _username, _password);
   }
