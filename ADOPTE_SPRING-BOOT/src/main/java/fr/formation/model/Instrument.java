@@ -21,7 +21,7 @@ public class Instrument {
 	@ManyToOne
 	@JoinColumn(name="ins_image_id")
 //	@Column(name = "ins_image",nullable=false)
-	@JsonView(JsonViews.Instrument.class)
+	@JsonView({JsonViews.Instrument.class,JsonViews.UtilisateurAvecTout.class})
 	protected Image image;
 	
 	@Column(name = "ins_nom",nullable=false)

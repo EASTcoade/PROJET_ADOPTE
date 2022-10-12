@@ -1,3 +1,4 @@
+import { RechercheComponent } from './component/recherche/recherche.component';
 import { routes } from './routes';
 import { AuthInterceptor } from './interceptor/auth.interceptor';
 import { NgModule } from '@angular/core';
@@ -53,6 +54,7 @@ import { DetailUtilisateurComponent } from './component/detail-utilisateur/detai
     EditInstrumentComponent,
     AffichageImageComponent,
     DetailUtilisateurComponent,
+    RechercheComponent,
   ],
   imports: [
     BrowserModule,

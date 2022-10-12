@@ -1,5 +1,6 @@
 package fr.formation.repo;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -11,6 +12,12 @@ import org.springframework.transaction.annotation.Transactional;
 import fr.formation.model.Utilisateur;
 
 public interface IUtilisateurRepository extends JpaRepository<Utilisateur, Integer>{
+	
+	@Query("select distinct u from Utilisateur u "
+			+ "left join fetch u.son "
+			+ "left join fetch u.stylemusical "
+			+ "left join fetch u.listeinstrument")
+	public List<Utilisateur> findAllFetchAll();
 	
 	public Optional<Utilisateur> findByUsername(String username);
 	

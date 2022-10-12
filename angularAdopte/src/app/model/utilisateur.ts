@@ -2,11 +2,11 @@ import { Instrument } from './instrument';
 import { Compte } from './compte';
 
 export class Utilisateur extends Compte {
-  public get instruments(): Instrument[] | undefined {
-    return this._instruments;
+  public get listeinstrument(): Instrument[] | undefined {
+    return this._listeinstrument;
   }
-  public set instruments(value: Instrument[] | undefined) {
-    this._instruments = value;
+  public set listeinstrument(value: Instrument[] | undefined) {
+    this._listeinstrument = value;
   }
   public get dateNaissance(): string | undefined {
     return this._dateNaissance;
@@ -62,7 +62,7 @@ export class Utilisateur extends Compte {
     private _niveau?: string,
     private _adresse?: string,
     private _dateNaissance?: string,
-    private _instruments?: Instrument[]
+    private _listeinstrument?: Instrument[]
   ) {
     super(_id, _username, _password);
   }

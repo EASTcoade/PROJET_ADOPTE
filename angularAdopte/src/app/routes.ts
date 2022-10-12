@@ -1,3 +1,4 @@
+import { RechercheComponent } from './component/recherche/recherche.component';
 import { DetailUtilisateurComponent } from './component/detail-utilisateur/detail-utilisateur.component';
 import { ChatAppComponent } from './component/chat-app/chat-app.component';
 import { ChatComponent } from './component/chat/chat.component';
@@ -109,6 +110,10 @@ export const routes: Routes = [
   {
     path: 'detail-utilisateur/:id',
     component: DetailUtilisateurComponent,
+  },
+  {
+    path: 'recherche',
+    component: RechercheComponent,
   },
   {
     path: '',

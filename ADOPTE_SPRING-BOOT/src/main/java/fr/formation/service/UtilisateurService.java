@@ -20,6 +20,14 @@ public class UtilisateurService {
 	@Autowired
 	private IUtilisateurRepository repoUtilisateur;
 	
+	public List<Utilisateur> findAllFetchAll(){
+		List<Utilisateur> utilisateurs = repoUtilisateur.findAllFetchAll();		
+		if (utilisateurs == null) {
+			return new ArrayList<>();
+		}		
+		return utilisateurs;
+	}
+	
 	public Optional<Utilisateur> findByIdFetchSon(int id) throws IdNegativeException, UtilisateurNotFoundException{
 		if (id <= 0) {
 			throw new IdNegativeException();

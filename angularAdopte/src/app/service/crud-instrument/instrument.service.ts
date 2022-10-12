@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Utilisateur } from 'src/app/model/utilisateur';
 
 @Injectable({
   providedIn: 'root',
@@ -17,6 +18,11 @@ export class InstrumentService {
   public getAllFetchJoueurs(): Observable<Instrument[]> {
     return this.httpClient.get<Instrument[]>(
       InstrumentService.URL + '/utilisateurs'
+    );
+  }
+  public getAllUtilisateurByInstrument(id: number): Observable<Utilisateur[]> {
+    return this.httpClient.get<Utilisateur[]>(
+      InstrumentService.URL + '/' + id + '/utilisateurs'
     );
   }
 

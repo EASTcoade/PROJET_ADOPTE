@@ -57,7 +57,12 @@ public class UtilisateurRestController {
 		public List<Utilisateur> findAll() {
 			return srvUtilisateur.findAll();
 		}
-
+		
+		@JsonView(JsonViews.UtilisateurAvecTout.class)
+		@GetMapping("/all")
+		public List<Utilisateur> findAllFetchAll(){
+			return srvUtilisateur.findAllFetchAll();
+		}
 //		@GetMapping("/{id}")
 //		//@JsonView(JsonViews.ProduitAvecFournisseur.class)
 //		public Utilisateur findById(@PathVariable("id") Integer id) throws IdNegativeException, UtilisateurNotFoundException {

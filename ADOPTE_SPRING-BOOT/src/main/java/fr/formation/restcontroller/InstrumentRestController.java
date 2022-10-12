@@ -57,7 +57,7 @@ public class InstrumentRestController {
 		}
 		
 		@GetMapping("/{id}/utilisateurs")
-		@JsonView(UtilisateurAvecStyle.class)
+		@JsonView(JsonViews.UtilisateurAvecTout.class)
 		public List<Utilisateur> findAllUtilisateurByInstrument(@PathVariable("id") Integer id) throws IdNegativeException, ItemNotFoundException{
 			return instrumentService.findAllUtilisateurByInstrument(id);
 		}

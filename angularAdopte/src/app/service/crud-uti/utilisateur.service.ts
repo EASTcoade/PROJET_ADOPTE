@@ -18,4 +18,8 @@ export class UtilisateurService {
   public getByIdFetchAll(id: number): Observable<Utilisateur> {
     return this.httpClient.get<Utilisateur>(`${this.baseUrl}` + '/' + id);
   }
+
+  public getAllFetchAll(): Observable<Utilisateur[]> {
+    return this.httpClient.get<Utilisateur[]>(this.baseUrl + '/all');
+  }
 }
