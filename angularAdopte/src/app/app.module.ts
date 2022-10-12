@@ -1,4 +1,7 @@
+import { DetailUtilisateurComponent } from './component/detail-utilisateur/detail-utilisateur.component';
+import { PhotoProfilComponent } from './component/photo-profil/photo-profil.component';
 import { RechercheComponent } from './component/recherche/recherche.component';
+import { StyleMusicauxComponent } from './component/style-musicaux/style-musicaux.component';
 import { routes } from './routes';
 import { AuthInterceptor } from './interceptor/auth.interceptor';
 import { NgModule } from '@angular/core';
@@ -30,11 +33,11 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 import { ChoixInstrumentComponent } from './component/choix-instrument/choix-instrument.component';
 import { EditInstrumentComponent } from './component/edit-instrument/edit-instrument.component';
 import { AffichageImageComponent } from './component/affichage-image/affichage-image.component';
-import { DetailUtilisateurComponent } from './component/detail-utilisateur/detail-utilisateur.component';
-import { PhotoProfilComponent } from './component/photo-profil/photo-profil.component';
+
 
 @NgModule({
   declarations: [
+    StyleMusicauxComponent,
     AppComponent,
     ConnexionComponent,
     UtilisateurConnecteComponent,

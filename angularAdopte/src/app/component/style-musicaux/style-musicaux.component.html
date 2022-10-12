@@ -20,13 +20,13 @@
         <div class="content">
             <div class="liste_style">
 
-                <div class="style">
-                    <span>Pop</span>
+                <div class="style"*ngFor="let i of styleMusicaux| async">
+                    <span>{{i.nom}}</span>
                     <br>
-                    <button (click)="send()" type="submit">Ajouter</button>
+                    <button (click)="send(i.id!)" type="submit">Ajouter</button>
                 </div>
 
-                <div class="style">
+                <!-- <div class="style">
                     <span>Jazz</span>
                     <br>
                     <button (click)="send()" type="submit">Ajouter</button>
@@ -109,7 +109,7 @@
                     <span>Métal</span>
                     <br>
                     <button (click)="send()" type="submit">Ajouter</button>
-                </div>
+                </div> -->
 
             </div>
         </div>

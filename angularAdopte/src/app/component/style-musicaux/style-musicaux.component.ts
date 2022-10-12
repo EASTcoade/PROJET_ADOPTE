@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { first } from 'rxjs';
+import { first, Observable } from 'rxjs';
+import { StyleMusical } from 'src/app/model/style-musical';
+import { StyleMusicalService } from 'src/app/service/crud-style-musical/style-musical.service';
 import { InscriptionUtiService } from 'src/app/service/crud-uti/inscription-uti.service';
 import { AuthService } from './../../service/auth.service';
 
@@ -10,21 +12,26 @@ import { AuthService } from './../../service/auth.service';
   styleUrls: ['./style-musicaux.component.css']
 })
 export class StyleMusicauxComponent implements OnInit {
-  id=1;
-  style_id=3;
+  styleMusicaux!: Observable<StyleMusical[]>;
 
-  constructor(private srvInscri: InscriptionUtiService, private router: Router) { }
+  constructor(private srvInscri: InscriptionUtiService, private router: Router,private srvStyleMusicaux: StyleMusicalService) { }
 
   ngOnInit(): void {
+    this.styleMusicaux = this.srvStyleMusicaux.getAll();
   }
-send(){
+send(idStyle:number){
 
-  this.srvInscri.insertStyleMusical({styuti_utilisateur_id:this.id, styuti_stylemusical_id:this.style_id}).pipe(first()).subscribe(
-    data =>{
+  this.srvInscri.insertStyleMusical({
+    stluti_utilisateur_id: JSON.parse(sessionStorage.getItem('compte')!).id,
+    stluti_stylemusical_id: idStyle,
+    })
+    .subscribe({next:
+
+    (data) =>{
     console.log(data);
    // this.router.navigate(['home'])
-  },
-  error => console.log(error));;
-
+  },error:
+  error => {console.log(error);}
+    })
 }
 }
