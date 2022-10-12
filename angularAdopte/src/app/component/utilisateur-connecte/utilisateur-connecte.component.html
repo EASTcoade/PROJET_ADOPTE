@@ -1,114 +1,76 @@
-<p>utilisateur connecte works</p>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PageUtilisateurConnecte</title>
 
-    <link rel="stylesheet" href="utilisateur-connecte.component.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-
-    <script src="https://kit.fontawesome.com/6d214a9f1e.js" crossorigin="anonymous"></script>
-    <script defer src="../js/pageUtilisateurConnecte.js"></script>
-
-    <!-- JavaScript Bundle with Popper -->
-    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-
-</head>
 <body>
-    <div class="logo">
-        <img src="../../../assets/images/logoM.png" alt="">
-    </div>
-    <div class="habillage">
-        <img src="../../../assets/images/kiss-opacite60.png" alt="">
+
+
+    <div class="header">
+      <img src="../../../assets/images/logoM.png">
+      <h1>Adopte un musicien</h1>
+      <button>Deconnexion</button>
     </div>
 
-    <div class="instrumentsImage">
-        <div class="cloche">
-            <i class="fa-solid fa-bell"></i>
-        </div>
-        <div class="image">
-            <div>
-                <img src="https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyMDUzMDJ8MHwxfHNlYXJjaHw0fHxwaWFub3xlbnwxfHx8fDE2NjMyMzAzNDE&ixlib=rb-1.2.1&q=80&w=200" alt="">
+    <div class="content">
+        <div class="profil_reglage">
+
+          <div class="profil">
+              <img src="../../../assets/images/bianca-omg.jpg"><br>
+              <h2>Bianca D.<br><span> @MiniBibi</span></h2>
+
+
+            <!-- details  -->
+            <div class="composant">
+
+              <div class="description"><span>Hi,  Everyone !</span></div>
+
+              <!-- instruments  -->
+              <div class="liste_instrument">
+                <p><strong>Instrument(s):</strong></p>
+                <div class="instrument">Voix</div>
+                <div class="instrument">Guitare</div>
+              </div>
+
+              <!-- style musicaux  -->
+              <div class="style_musicaux">
+                <p><strong>Style(s):</strong></p>
+                <div class="style">Pop</div>
+                <div class="style">Blues</div>
+                <div class="style">Jazz</div>
+              </div>
+
+
             </div>
-            <div>
-                <img src="https://images.unsplash.com/photo-1556449895-a33c9dba33dd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyMDUzMDJ8MHwxfHNlYXJjaHw3fHxndWl0YXJ8ZW58MXx8fHwxNjYzMjMwMzE2&ixlib=rb-1.2.1&q=80&w=200" alt="">
-            </div>
+
+          </div>
+
+
+
+          <div class="reglages">
+            <button>Musiciens à proximité</button><br>
+            <button>Upload Son</button><br>
+            <button>Mes Infos</button><br>
+            <button>Mes groupes</button>
+          </div>
+
         </div>
-    </div>
 
-    <div class="utilisateur">
-        <img class="photo-paysage" src="https://vistapointe.net/images/band-wallpaper-13.jpg" alt="">
-        <img class="photo-profil" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyMDUzMDJ8MHwxfHNlYXJjaHwzfHxQZW9wbGV8ZW58MXx8fHwxNjYzMDk0MjA5&ixlib=rb-1.2.1&q=80&w=200" alt="">
-
-        <p class="pseudo">MON PSEUDO</p>
-    </div>
-
-    <div class="chat">
-        <div class="titrechat">
-            <p>Chat</p>
-        </div>
-        <div class="contact">
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <i class="fa-solid fa-list"></i>
-                </button>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Contact1</a></li>
-                  <li><a class="dropdown-item" href="#">Contact2</a></li>
-                  <li><a class="dropdown-item" href="#">Contact3</a></li>
+        <div class="chat">
+          <div class="title_chat">Chat</div>
+            <div class="zone_chat">
+                <ul id="listOfMessages">
+                  <li class="singleMessage" *ngFor="let message of messageList">
+                    {{message}}
+                </li>
                 </ul>
             </div>
-            <button>Contact1</button>
-            <button>Contact2</button>
-            <button>Contact3</button>
-        </div>
-        <div class="messages">
-            <div>
-            </div>
-        </div>
-        <div class="textbox">
-            <input type="text" name="text" class="text" placeholder="Texte">
-            <i class="fa-solid fa-paper-plane envoyer"></i>
-        </div>
-    </div>
 
-    <div class="gestion">
-        <div class="placement">
-            <div class="un">
-                <a href="" class="musicien">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                Musicien à proximité</a>
-            </div>
-            <div class="deux">
-                <a href="" class="upload">
-                    <i class="fa-solid fa-file-arrow-up"></i>
-                Upload son</a>
-            </div>
-            <div class="trois">
-                <a href="" class="infos">
-                    <i class="fa-solid fa-circle-info"></i>
-                Mes infos</a>
-            </div>
-            <div class="quatre">
-                <a href="" class="groupes">
-                    <i class="fa-solid fa-users-rectangle"></i>
-                Mes groupes</a>
-            </div>
+            <div class="envoyer">
+              <input  class="form-control input" type="text" autocomplete="off" required  [(ngModel)]="model.msg" name="msg"/>
+              <button (click)="onSubmit()"
+              type="submit" class="btn btn-outline-secondary button-css" >Send Message</button>
+          </div>
         </div>
 
     </div>
 
-    <footer>
-        <p class="pUn">Developed by Group C - Sopra Paris 2022</p>
-        <p class="footer"> Developed by Group C - Sopra Paris 2022</p>
-        <p class="pDeux">Developed by Group C - Sopra Paris 2022</p>
-    </footer>
-</body>
-</html>
+
+
+  </body>

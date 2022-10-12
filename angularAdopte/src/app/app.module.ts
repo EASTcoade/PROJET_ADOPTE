@@ -31,6 +31,7 @@ import { ChoixInstrumentComponent } from './component/choix-instrument/choix-ins
 import { EditInstrumentComponent } from './component/edit-instrument/edit-instrument.component';
 import { AffichageImageComponent } from './component/affichage-image/affichage-image.component';
 import { DetailUtilisateurComponent } from './component/detail-utilisateur/detail-utilisateur.component';
+import { PhotoProfilComponent } from './component/photo-profil/photo-profil.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { DetailUtilisateurComponent } from './component/detail-utilisateur/detai
     AffichageImageComponent,
     DetailUtilisateurComponent,
     RechercheComponent,
+    PhotoProfilComponent,
   ],
   imports: [
     BrowserModule,
