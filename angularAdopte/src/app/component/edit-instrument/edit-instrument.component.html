@@ -1,30 +1,36 @@
-<p>edit-instrument works!</p>
-<div class="container">
-  <div class="form-group">
-    <label for="id">id:</label>
-    <input
-      id="id"
-      [(ngModel)]="instrument.id"
-      class="form-control"
-      readonly
-      placeholder="generation automatique"
-    />
+<body>
+  <div class="divMessage">
+    <span *ngIf="voirMsgImage">{{ msgImageSaved }}</span>
+    <span *ngIf="voirMsgInstrument">{{ msgInstrumentSaved }}</span>
   </div>
-  <div class="form-group">
-    <label for="nom">nom:</label>
-    <input id="nom" [(ngModel)]="instrument.nom" class="form-control" />
+
+  <div class="container">
+    <h2>Edition d'instrument</h2>
+
+    <div class="form-group">
+      <label for="id">ID</label>
+      <input
+        id="id"
+        [(ngModel)]="instrument.id"
+        class="form-control"
+        readonly
+        placeholder="généré automatiquement"
+      />
+    </div>
+    <div class="form-group">
+      <label for="nom">NOM</label>
+      <input id="nom" [(ngModel)]="instrument.nom" class="form-control" />
+    </div>
+    <div class="form-group">
+      <label for="responsable">IMAGE</label><br />
+      <input type="file" (change)="onFileSelected($event)" class="file-input" />
+      <button (click)="EnregistrerImage()" class="btn btn-primary">
+        Valider
+      </button>
+    </div>
+    <div class="divBouton">
+      <button class="btn btn-primary" (click)="save()">enregistrer</button>
+      <a routerLink="/instrument" class="btn btn-warning">annuler</a>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="responsable">Image:</label>
-    <input type="file" (change)="onFileSelected($event)" class="file-input" />
-    <button (click)="EnregistrerImage()" class="btn btn-outline-primary">
-      Valider
-    </button>
-  </div>
-  <div>
-    <button class="btn btn-outline-primary" (click)="save()">
-      enregistrer
-    </button>
-    <a routerLink="/instrument" class="btn btn-outline-warning">annuler</a>
-  </div>
-</div>
+</body>

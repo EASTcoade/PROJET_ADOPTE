@@ -29,6 +29,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 import { ChoixInstrumentComponent } from './component/choix-instrument/choix-instrument.component';
 import { EditInstrumentComponent } from './component/edit-instrument/edit-instrument.component';
 import { AffichageImageComponent } from './component/affichage-image/affichage-image.component';
+import { DetailUtilisateurComponent } from './component/detail-utilisateur/detail-utilisateur.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { AffichageImageComponent } from './component/affichage-image/affichage-i
     ChoixInstrumentComponent,
     EditInstrumentComponent,
     AffichageImageComponent,
+    DetailUtilisateurComponent,
   ],
   imports: [
     BrowserModule,

@@ -14,7 +14,12 @@ import { Image } from 'src/app/model/image';
 export class EditInstrumentComponent implements OnInit {
   instrument: Instrument = new Instrument();
   monFormData = new FormData();
-  theImage!: Image;
+  // theImage!: Image;
+  msgImageSaved: string = 'Image enregistrée !';
+  msgInstrumentSaved: string = 'Instrument sauvegardé !';
+  voirMsgImage = false;
+  voirMsgInstrument = false;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private srvInstrument: InstrumentService,
@@ -39,6 +44,9 @@ export class EditInstrumentComponent implements OnInit {
     } else {
       this.srvInstrument.create(this.instrument).subscribe((data) => {
         console.log('instrument créé !');
+        this.voirMsgImage = false;
+        this.voirMsgInstrument = true;
+        this.router.navigateByUrl('/instrument');
       });
     }
   }
@@ -52,16 +60,10 @@ export class EditInstrumentComponent implements OnInit {
   }
   public EnregistrerImage() {
     console.log(this.monFormData.get('titre'));
-    // const upload$ = this.httpClient.post(
-    //   'http://localhost:8080/adopte/api/image',
-    //   this.monFormData
-    // );
     const laConst = this.srvImage.create(this.monFormData);
     laConst.subscribe((data) => {
       this.instrument.image = data;
+      this.voirMsgImage = true;
     });
-    // upload$.subscribe((data) => {
-    //   this.imageID=data.id;
-    // });
   }
 }

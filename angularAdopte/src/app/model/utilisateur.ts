@@ -1,53 +1,60 @@
+import { Instrument } from './instrument';
 import { Compte } from './compte';
 
 export class Utilisateur extends Compte {
+  public get instruments(): Instrument[] | undefined {
+    return this._instruments;
+  }
+  public set instruments(value: Instrument[] | undefined) {
+    this._instruments = value;
+  }
   public get dateNaissance(): string | undefined {
     return this._dateNaissance;
   }
-  public set dateNaissance(value: string| undefined )  {
+  public set dateNaissance(value: string | undefined) {
     this._dateNaissance = value;
   }
   public get adresse(): string | undefined {
     return this._adresse;
   }
-  public set adresse(value: string| undefined ) {
+  public set adresse(value: string | undefined) {
     this._adresse = value;
   }
-  public get niveau(): string| undefined  {
+  public get niveau(): string | undefined {
     return this._niveau;
   }
-  public set niveau(value: string| undefined ) {
+  public set niveau(value: string | undefined) {
     this._niveau = value;
   }
   public get telephone(): number | undefined {
     return this._telephone;
   }
-  public set telephone(value: number| undefined ) {
+  public set telephone(value: number | undefined) {
     this._telephone = value;
   }
   public get mail(): string | undefined {
     return this._mail;
   }
-  public set mail(value: string| undefined ) {
+  public set mail(value: string | undefined) {
     this._mail = value;
   }
   public get prenom(): string | undefined {
     return this._prenom;
   }
-  public set prenom(value: string| undefined ) {
+  public set prenom(value: string | undefined) {
     this._prenom = value;
   }
-  public get nom(): string| undefined  {
+  public get nom(): string | undefined {
     return this._nom;
   }
-  public set nom(value: string| undefined ) {
+  public set nom(value: string | undefined) {
     this._nom = value;
   }
 
-
-
   constructor(
-    _id: number, _username: string, _password: string,
+    _id: number,
+    _username: string,
+    _password: string,
     private _nom?: string,
     private _prenom?: string,
     private _mail?: string,
@@ -55,7 +62,8 @@ export class Utilisateur extends Compte {
     private _niveau?: string,
     private _adresse?: string,
     private _dateNaissance?: string,
+    private _instruments?: Instrument[]
   ) {
-    super(_id,_username, _password);
+    super(_id, _username, _password);
   }
 }

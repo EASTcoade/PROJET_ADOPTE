@@ -1,4 +1,4 @@
-<p>liste-utilisateur works!</p>
+<h2>Liste de nos musiciens</h2>
 <table class="table table-striped">
   <thead>
     <th>ID</th>
@@ -14,7 +14,9 @@
       <td>{{ u.nom }}</td>
       <td>{{ u.prenom }}</td>
       <td>
-        <a routerLink="" class="tbn btn-link">Voir détails</a>
+        <a routerLink="/detail-utilisateur/{{ u.id }}" class="tbn btn-link"
+          >Voir détails</a
+        >
       </td>
       <td>
         <a routerlink="" class="tbn btn-link">Contacter</a>

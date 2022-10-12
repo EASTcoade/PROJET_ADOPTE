@@ -1,3 +1,4 @@
+import { DetailUtilisateurComponent } from './component/detail-utilisateur/detail-utilisateur.component';
 import { ChatAppComponent } from './component/chat-app/chat-app.component';
 import { ChatComponent } from './component/chat/chat.component';
 import { AffichageImageComponent } from './component/affichage-image/affichage-image.component';
@@ -104,6 +105,10 @@ export const routes: Routes = [
   {
     path: 'instrument/add',
     component: EditInstrumentComponent,
+  },
+  {
+    path: 'detail-utilisateur/:id',
+    component: DetailUtilisateurComponent,
   },
   {
     path: '',

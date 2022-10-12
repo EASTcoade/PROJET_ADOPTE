@@ -1,0 +1,97 @@
+<body>
+  <div class="container">
+    <h2>Détails d'utilisateur : {{ utilisateur.id }}</h2>
+
+    <div class="form-group">
+      <label for="id">ID</label>
+      <input
+        id="id"
+        [(ngModel)]="utilisateur.id"
+        class="form-control"
+        readonly
+        placeholder="généré automatiquement"
+      />
+    </div>
+    <div class="form-group">
+      <label for="pseudo">PSEUDO</label>
+      <input
+        id="pseudo"
+        [(ngModel)]="utilisateur.username"
+        class="form-control"
+        readonly
+      />
+    </div>
+    <div class="form-group">
+      <label for="nom">NOM</label>
+      <input id="nom" [(ngModel)]="utilisateur.nom" class="form-control" />
+      readonly
+    </div>
+    <div class="form-group">
+      <label for="prenom">NOM</label>
+      <input
+        id="prenom"
+        [(ngModel)]="utilisateur.prenom"
+        class="form-control"
+        readonly
+      />
+    </div>
+    <div class="form-group">
+      <label for="dateNaissance">DATE DE NAISSANCE</label>
+      <input
+        type="date"
+        id="dateNaissance"
+        [(ngModel)]="utilisateur.dateNaissance"
+        class="form-control"
+        readonly
+      />
+    </div>
+    <div class="form-group">
+      <label for="adresse">ADRESSE</label>
+      <input
+        id="adresse"
+        [(ngModel)]="utilisateur.adresse"
+        class="form-control"
+        readonly
+      />
+    </div>
+    <div class="form-group">
+      <label for="niveau">NIVEAU</label>
+      <input
+        id="niveau"
+        [(ngModel)]="utilisateur.niveau"
+        class="form-control"
+        readonly
+      />
+    </div>
+    <div class="form-group">
+      <label for="mail">MAIL</label>
+      <input
+        id="mail"
+        [(ngModel)]="utilisateur.mail"
+        class="form-control"
+        readonly
+      />
+    </div>
+    <div class="form-group">
+      <label for="tel">TELEPHONE</label>
+      <input
+        id="tel"
+        [(ngModel)]="utilisateur.telephone"
+        class="form-control"
+        readonly
+      />
+    </div>
+    <div class="divBouton">
+      <!-- <button class="btn btn-primary" (click)="save()">enregistrer</button> -->
+      <a routerLink="/utilisateurs" class="btn btn-warning"
+        >Revenir à la liste</a
+      >
+    </div>
+  </div>
+  <!-- <div class="container-listes">
+    <label>INSTRUMENTS</label>
+    <div *ngFor="let i of utilisateur.instruments">
+      <h4>i.nom</h4>
+    </div>
+  </div> -->
+</body>
