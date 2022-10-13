@@ -11,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditStyleComponent implements OnInit {
   style: StyleMusical = new StyleMusical();
-
+  placeNom = false;
   constructor(
     private activatedRoute: ActivatedRoute,
     private srvStyle: StyleMusicalService,
@@ -33,10 +33,13 @@ export class EditStyleComponent implements OnInit {
     if (this.style.id) {
       //update
     } else {
-      this.srvStyle.create(this.style).subscribe((data) => {
-        console.log('style créé !');
-        this.router.navigateByUrl('/styles');
-      });
+      if (!this.style.nom || this.style.nom == '') {
+        this.placeNom = true;
+      } else {
+        this.srvStyle.create(this.style).subscribe((data) => {
+          this.router.navigateByUrl('/styles');
+        });
+      }
     }
   }
 }

@@ -11,6 +11,8 @@ import { Component, OnInit } from '@angular/core';
 export class UploadSonComponent {
   fileName = '';
   monFormData = new FormData();
+  msgReussite = 'Son enregistré !';
+  afficheMsg = false;
   constructor(private httpClient: HttpClient, private srvSon: SonService) {}
 
   onFileSelected(event: any) {
@@ -43,6 +45,8 @@ export class UploadSonComponent {
       'http://localhost:8080/adopte/api/son',
       this.monFormData
     );
-    upload$.subscribe();
+    upload$.subscribe(() => {
+      this.afficheMsg = true;
+    });
   }
 }

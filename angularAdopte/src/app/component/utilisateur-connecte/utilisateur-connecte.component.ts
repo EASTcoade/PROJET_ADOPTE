@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { UtilisateurService } from 'src/app/service/crud-uti/utilisateur.service';
 import { Component, OnInit } from '@angular/core';
@@ -15,7 +16,8 @@ export class UtilisateurConnecteComponent implements OnInit {
   constructor(
     private messageService: MessagesService,
     private srvUtilisateur: UtilisateurService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {}
   utilisateur!: Utilisateur;
   id!: number;
@@ -49,5 +51,9 @@ export class UtilisateurConnecteComponent implements OnInit {
 
   logout() {
     this.authService.logout();
+  }
+
+  changerImage() {
+    this.router.navigateByUrl('/choix-photo');
   }
 }

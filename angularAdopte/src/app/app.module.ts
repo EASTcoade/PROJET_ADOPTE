@@ -33,6 +33,7 @@ import { EditInstrumentComponent } from './component/edit-instrument/edit-instru
 import { AffichageImageComponent } from './component/affichage-image/affichage-image.component';
 import { ListeStyleComponent } from './component/liste-style/liste-style.component';
 import { EditStyleComponent } from './component/edit-style/edit-style.component';
+import { SonsComponent } from './component/sons/sons.component';
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 @NgModule({
@@ -61,6 +62,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     PhotoProfilComponent,
     ListeStyleComponent,
     EditStyleComponent,
+    SonsComponent,
   ],
   imports: [
     BrowserModule,

@@ -19,7 +19,12 @@
     </div>
     <div class="form-group">
       <label for="nom">NOM</label>
-      <input id="nom" [(ngModel)]="style.nom" class="form-control" />
+      <input
+        id="nom"
+        [(ngModel)]="style.nom"
+        class="form-control"
+        [placeholder]="placeNom ? 'Saisir un nom' : ''"
+      />
     </div>
     <div class="divBouton">
       <button class="btn btn-primary" (click)="save()">enregistrer</button>

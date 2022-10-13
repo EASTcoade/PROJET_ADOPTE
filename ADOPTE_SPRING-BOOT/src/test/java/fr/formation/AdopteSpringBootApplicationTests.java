@@ -33,15 +33,15 @@ class AdopteSpringBootApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-//	@Test
-//	@Transactional
-//	@Commit
-//	void initAdmin() throws NotValidException {
-//		Admin superman=new Admin("superman",passwordEncoder.encode("mdp3"));
-//		srvAdmin.save(superman);
-//		Admin batman=new Admin("batman",C("mdp4"));
-//		srvAdmin.save(batman);
-//	}
+	@Test
+	@Transactional
+	@Commit
+	void initAdmin() throws NotValidException {
+		Admin superman=new Admin("admin3",passwordEncoder.encode("mdp3"));
+		srvAdmin.save(superman);
+		Admin batman=new Admin("admin4",passwordEncoder.encode("mdp4"));
+		srvAdmin.save(batman);
+	}
 	
 //	@Test
 //	@Transactional
@@ -55,16 +55,16 @@ class AdopteSpringBootApplicationTests {
 //		srvUtilisateur.save(uti2);
 //	}
 	
-	@Test
-	@Transactional
-	@Commit
-	void initInstrument() throws NotValidException {
-		Instrument guitare=new Instrument();
-		guitare.setNom("guitare");
-		srvInstrument.save(guitare);
-		Instrument piano=new Instrument();
-		piano.setNom("piano");
-		srvInstrument.save(piano);
-	}
+//	@Test
+//	@Transactional
+//	@Commit
+//	void initInstrument() throws NotValidException {
+//		Instrument guitare=new Instrument();
+//		guitare.setNom("guitare");
+//		srvInstrument.save(guitare);
+//		Instrument piano=new Instrument();
+//		piano.setNom("piano");
+//		srvInstrument.save(piano);
+//	}
 	
 }

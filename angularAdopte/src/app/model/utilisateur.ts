@@ -1,9 +1,16 @@
+import { Son } from './son';
 import { StyleMusical } from './style-musical';
 import { Instrument } from './instrument';
 import { Compte } from './compte';
 import { Image } from './image';
 
 export class Utilisateur extends Compte {
+  public get son(): Son[] | undefined {
+    return this._son;
+  }
+  public set son(value: Son[] | undefined) {
+    this._son = value;
+  }
   public get stylemusical(): StyleMusical[] | undefined {
     return this._stylemusical;
   }
@@ -78,7 +85,8 @@ export class Utilisateur extends Compte {
     private _dateNaissance?: string,
     private _listeinstrument?: Instrument[],
     private _photoProfil?: Image,
-    private _stylemusical?: StyleMusical[]
+    private _stylemusical?: StyleMusical[],
+    private _son?: Son[]
   ) {
     super(_id, _username, _password);
   }

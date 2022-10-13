@@ -20,6 +20,10 @@ body {
 input {
   margin-bottom: 10px;
 }
+label {
+  text-transform: uppercase;
+  font-weight: bold;
+}
 .divBouton {
   display: flex;
   flex-direction: row;
@@ -43,4 +47,12 @@ span {
   font-weight: bold;
   padding-top: 5px;
   margin-bottom: 20px;
+}
+#id::placeholder {
+  color: black;
+  font-weight: lighter;
+}
+input::placeholder {
+  color: red;
+  font-weight: bold;
 }

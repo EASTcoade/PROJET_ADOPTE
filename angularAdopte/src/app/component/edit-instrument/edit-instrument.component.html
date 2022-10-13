@@ -19,13 +19,28 @@
     </div>
     <div class="form-group">
       <label for="nom">NOM</label>
-      <input id="nom" [(ngModel)]="instrument.nom" class="form-control" />
+      <input
+        id="nom"
+        [(ngModel)]="instrument.nom"
+        class="form-control"
+        [placeholder]="placeNom ? 'Saisir un nom' : ''"
+      />
     </div>
     <div class="form-group">
       <label for="responsable">IMAGE</label><br />
-      <input type="file" (change)="onFileSelected($event)" class="file-input" />
-      <button (click)="EnregistrerImage()" class="btn btn-primary">
-        Valider
+      <label for="file-input" class="btn btn-link">{{ labelInput }}</label>
+      <input
+        type="file"
+        (change)="onFileSelected($event)"
+        class="file-input"
+        id="file-input"
+      />
+      <button
+        (click)="EnregistrerImage()"
+        class="btn btn-success"
+        *ngIf="monFormData.get('file')"
+      >
+        Valider l'image
       </button>
     </div>
     <div class="divBouton">

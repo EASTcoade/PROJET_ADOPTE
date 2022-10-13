@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class ConnexionComponent implements OnInit {
   username: string = '';
   password: string = '';
+  place = false;
   constructor(private srvAuth: AuthService, private router: Router) {}
 
   ngOnInit(): void {}
@@ -23,12 +24,13 @@ export class ConnexionComponent implements OnInit {
           'BASIC ' + btoa(this.username + ':' + this.password)
         );
         sessionStorage.setItem('role', 'ROLE_USER');
-        this.router.navigateByUrl('/home');
+        this.router.navigateByUrl('/utilisateur');
       },
       error: (err: any) => {
-        console.log(err);
-        // this.msg = 'Informations incorrectes !';
-        // this.afficheMsg = true;
+        // console.log(err);
+        this.place = true;
+        this.username = '';
+        this.password = '';
       },
     });
   }

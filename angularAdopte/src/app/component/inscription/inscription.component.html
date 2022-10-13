@@ -1,85 +1,148 @@
 <body>
-
-
   <div class="content">
     <div class="header">
-      <img src="../../../assets/images/logoM.png"  />
+      <img src="../../../assets/images/logoM.png" />
     </div>
 
     <div class="inscription_image">
       <div class="inscription">
         <div class="blocInscription">
-
           <div class="titre"><h2>Inscription</h2></div>
 
           <div class="form-group">
             <label for="nom">Nom</label>
-            <input type="text" class="form-control" name="nom" [(ngModel)]="form.nom" required minlength="3" maxlength="20" [ngModelOptions]="{standalone: true}" />
+            <input
+              type="text"
+              class="form-control"
+              name="nom"
+              [(ngModel)]="form.nom"
+              required
+              minlength="3"
+              maxlength="20"
+              [ngModelOptions]="{ standalone: true }"
+              [placeholder]="placeNom ? 'Saisir un nom' : ''"
+            />
           </div>
 
           <div class="form-group">
             <label for="prenom">Prenom</label>
-            <input type="text" class="form-control" name="Prenom" [(ngModel)]="form.prenom" required minlength="3" maxlength="20" [ngModelOptions]="{standalone: true}" />
+            <input
+              type="text"
+              class="form-control"
+              name="Prenom"
+              [(ngModel)]="form.prenom"
+              required
+              minlength="3"
+              maxlength="20"
+              [ngModelOptions]="{ standalone: true }"
+              [placeholder]="placePrenom ? 'Saisir un prenom' : ''"
+            />
           </div>
 
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              name="mail"
+              [(ngModel)]="form.mail"
+              required
+              [ngModelOptions]="{ standalone: true }"
+              [placeholder]="placeMail ? 'Saisir un mail' : ''"
+            />
+          </div>
 
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" class="form-control" name="mail" [(ngModel)]="form.mail" required  [ngModelOptions]="{standalone: true}"/>
-            </div>
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input
+              type="text"
+              class="form-control"
+              name="username"
+              [(ngModel)]="form.username"
+              required
+              minlength="3"
+              maxlength="20"
+              [ngModelOptions]="{ standalone: true }"
+              [placeholder]="placeUsername ? 'Saisir un username' : ''"
+            />
+          </div>
 
-            <div class="form-group">
-              <label for="username">Username</label>
-              <input type="text" class="form-control" name="username" [(ngModel)]="form.username" required minlength="3" maxlength="20" [ngModelOptions]="{standalone: true}"/>
-            </div>
+          <div class="form-group">
+            <label for="dateNaissance">Date de Naissance</label>
+            <input
+              type="date"
+              class="form-control"
+              name="dateNaissance"
+              [(ngModel)]="form.dateNaissance"
+              required
+              [ngModelOptions]="{ standalone: true }"
+              [placeholder]="placeDateNaissance ? 'Saisir une date' : ''"
+            />
+          </div>
 
-              <div class="form-group">
-                <label for="dateNaissance">Date de Naissance</label>
-                <input type="date" class="form-control" name="dateNaissance" [(ngModel)]="form.dateNaissance" required [ngModelOptions]="{standalone: true}"/>
-              </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              name="password"
+              [(ngModel)]="form.password"
+              required
+              [ngModelOptions]="{ standalone: true }"
+              [placeholder]="placePassword ? 'Saisir un mot de passe' : ''"
+            />
+          </div>
 
-            <div class="form-group">
-              <label for="password">Password</label>
-              <input type="password" class="form-control" name="password" [(ngModel)]="form.password" required [ngModelOptions]="{standalone: true}"/>
-            </div>
+          <div class="form-group">
+            <label for="adresse">Adresse</label>
+            <input
+              type="text"
+              class="form-control"
+              name="adresse"
+              [(ngModel)]="form.adresse"
+              required
+              [ngModelOptions]="{ standalone: true }"
+              [placeholder]="placeAdresse ? 'Saisir une adresse' : ''"
+            />
+          </div>
 
-            <div class="form-group">
-              <label for="adresse">Adresse</label>
-              <input type="text" class="form-control" name="adresse" [(ngModel)]="form.adresse" required [ngModelOptions]="{standalone: true}"/>
-            </div>
+          <div class="form-group">
+            <label for="telephone">Telephone</label>
+            <input
+              type="text"
+              class="form-control"
+              name="telephone"
+              [(ngModel)]="form.telephone"
+              required
+              [ngModelOptions]="{ standalone: true }"
+              [placeholder]="placeTelephone ? 'Saisir un n° de téléphone' : ''"
+            />
+          </div>
 
-            <div class="form-group">
-              <label for="telephone">Telephone</label>
-              <input type="text" class="form-control" name="telephone" [(ngModel)]="form.telephone" required [ngModelOptions]="{standalone: true}"/>
-            </div>
+          <div class="form-group">
+            <label for="Niveau">Niveau</label>
+            <select
+              [(ngModel)]="form.niveau"
+              required
+              [ngModelOptions]="{ standalone: true }"
+            >
+              <option value="DEBUTANT">Debutant</option>
+              <option value="INTERMEDIAIRE">Intermediaire</option>
+              <option value="AVANCE">Avancé</option>
+            </select>
+          </div>
 
-            <div class="form-group">
-              <label for="Niveau">Niveau</label>
-              <select [(ngModel)]="form.niveau" required [ngModelOptions]="{standalone: true}">
-                <option value="DEBUTANT">Debutant</option>
-                <option value="INTERMEDIAIRE">Intermediaire</option>
-                <option value="AVANCE">Avancé</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <button (click)="onSubmit()" class="btn btn-primary btn-block">S'inscrire</button>
-            </div>
-
-
-
-
+          <div class="form-group">
+            <button (click)="onSubmit()" class="btn btn-primary btn-block">
+              S'inscrire
+            </button>
+          </div>
         </div>
-
       </div>
 
-      <div class ='image'>
-         <img src="../../../assets/images/dj-hipsterM.png" />
+      <div class="image">
+        <img src="../../../assets/images/dj-hipsterM.png" />
       </div>
-
     </div>
-
-
-
   </div>
 </body>

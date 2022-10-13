@@ -1,42 +1,42 @@
 <body>
-
-
   <div class="content">
     <div class="header">
-      <img src="../../../assets/images/logoM.png"  />
+      <img src="../../../assets/images/logoM.png" />
     </div>
 
     <div class="inscription_robot">
       <div class="inscription">
         <div class="blocConnexion">
-
           <div class="lemail">
-            <div class='nom'><h2>Username</h2></div>
-            <div class='entreeNom'><input [(ngModel)]="username" /></div>
+            <div class="nom"><h2>Username</h2></div>
+            <div class="entreeNom">
+              <input
+                [(ngModel)]="username"
+                [placeholder]="place ? 'Saisir votre username !' : ''"
+              />
+            </div>
           </div>
 
           <div class="leMdp">
-            <div class='mdp'><h3>Mot de passe</h3></div>
-            <div class='entreeMdp'><input type="password" [(ngModel)]="password" /></div>
+            <div class="mdp"><h3>Mot de passe</h3></div>
+            <div class="entreeMdp">
+              <input
+                type="password"
+                [(ngModel)]="password"
+                [placeholder]="place ? 'Saisir votre mot de passe !' : ''"
+              />
+            </div>
           </div>
 
           <div class="boutton">
             <button (click)="send()">Se connecter</button>
           </div>
         </div>
-
       </div>
 
-      <div class ='robot'>
-         <img src="../../../assets/images/robotM.png" />
+      <div class="robot">
+        <img src="../../../assets/images/robotM.png" />
       </div>
-
     </div>
-
-
-
-
   </div>
-
 </body>
-

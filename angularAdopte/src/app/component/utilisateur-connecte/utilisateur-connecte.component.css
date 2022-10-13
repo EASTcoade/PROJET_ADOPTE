@@ -51,7 +51,7 @@ h1 {
   background-image: url("src\assets\images\kiss-opacite60.png");
   background-size: 25%;
   background-repeat: no-repeat;
-  background-position: 50vw;
+  background-position-x: 42vw;
   /* background-color: red; */
   height: 90%;
   width: 100%;
@@ -93,7 +93,9 @@ h1 {
   margin-left: 20%;
   top: -30px;
 }
-
+.profil:hover {
+  cursor: pointer;
+}
 .reglages {
   width: 60%;
   /* height: 20%; */

@@ -1,0 +1,9 @@
+td {
+  padding: 15px;
+}
+th {
+  text-align: center;
+  text-transform: uppercase;
+  background-color: grey;
+  color: white;
+}

@@ -19,6 +19,8 @@ export class EditInstrumentComponent implements OnInit {
   msgInstrumentSaved: string = 'Instrument sauvegardé !';
   voirMsgImage = false;
   voirMsgInstrument = false;
+  placeNom = false;
+  labelInput = 'Choisir une image';
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -42,12 +44,19 @@ export class EditInstrumentComponent implements OnInit {
     if (this.instrument.id) {
       //update
     } else {
-      this.srvInstrument.create(this.instrument).subscribe((data) => {
-        console.log('instrument créé !');
-        this.voirMsgImage = false;
-        this.voirMsgInstrument = true;
-        this.router.navigateByUrl('/instrument');
-      });
+      if (!this.instrument.nom || this.instrument.nom == '') {
+        this.placeNom = true;
+      }
+      if (!this.monFormData.get('file')) {
+        this.labelInput = 'IMAGE OBLIGATOIRE !';
+      } else {
+        this.srvInstrument.create(this.instrument).subscribe((data) => {
+          console.log('instrument créé !');
+          this.voirMsgImage = false;
+          this.voirMsgInstrument = true;
+          this.router.navigateByUrl('/instrument');
+        });
+      }
     }
   }
   public onFileSelected(event: any) {
@@ -56,6 +65,7 @@ export class EditInstrumentComponent implements OnInit {
       this.monFormData.append('file', file);
       this.monFormData.append('titre', file.name.split('.')[0]);
       this.monFormData.append('format', file.name.split('.')[1].toUpperCase());
+      this.labelInput = file.name;
     }
   }
   public EnregistrerImage() {

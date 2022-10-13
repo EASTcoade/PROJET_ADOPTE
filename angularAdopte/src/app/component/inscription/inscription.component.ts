@@ -10,6 +10,16 @@ import { first } from 'rxjs';
   styleUrls: ['./inscription.component.css'],
 })
 export class InscriptionComponent implements OnInit {
+  placeNom = false;
+  placePrenom = false;
+  placeMail = false;
+  placeUsername = false;
+  placeDateNaissance = false;
+  placePassword = false;
+  placeAdresse = false;
+  placeTelephone = false;
+  placeNiveau = false;
+
   form: any = {
     username: null,
     password: null,
@@ -31,6 +41,47 @@ export class InscriptionComponent implements OnInit {
   }
 
   onSubmit() {
+    if (!this.form.nom || this.form.nom == '') {
+      this.placeNom = true;
+      return;
+    }
+    if (!this.form.prenom || this.form.prenom == '') {
+      this.placePrenom = true;
+      return;
+    }
+    if (!this.form.mail || this.form.mail == '') {
+      this.placeMail = true;
+      return;
+    }
+    if (!this.form.username || this.form.username == '') {
+      this.placeUsername = true;
+      return;
+    }
+    if (
+      !this.form.dateNaissance ||
+      this.form.dateNaissance == '' ||
+      this.form.dateNaissance >= new Date()
+    ) {
+      this.placeDateNaissance = true;
+      return;
+    }
+    if (!this.form.password || this.form.password == '') {
+      this.placePassword = true;
+      return;
+    }
+    if (!this.form.adresse || this.form.adresse == '') {
+      this.placeAdresse = true;
+      return;
+    }
+    if (!this.form.telephone || this.form.telephone == '') {
+      this.placeTelephone = true;
+      return;
+    }
+    if (!this.form.niveau || this.form.niveau == '') {
+      this.placeNiveau = true;
+      return;
+    }
+    console.log('ça passe');
     this.srvAuth
       .register(this.form)
       .pipe(first())
@@ -59,6 +110,5 @@ export class InscriptionComponent implements OnInit {
         },
         error: (error) => console.log(error),
       });
-    // this.router.navigate(['choix-photo']);
   }
 }

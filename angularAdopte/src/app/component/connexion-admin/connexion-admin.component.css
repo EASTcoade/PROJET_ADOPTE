@@ -68,3 +68,13 @@ span {
 button {
   border: 1px;
 }
+.msgErreur p {
+  background-color: red;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+input::placeholder {
+  color: red;
+  font-weight: bold;
+}

@@ -18,12 +18,19 @@ export class UtilisateurService {
   public getByIdFetchAll(id: number): Observable<Utilisateur> {
     return this.httpClient.get<Utilisateur>(`${this.baseUrl}` + '/' + id);
   }
-
+  public getByIdFetchSon(id: number): Observable<Utilisateur> {
+    return this.httpClient.get<Utilisateur>(
+      `${this.baseUrl}` + '/' + id + '/son'
+    );
+  }
   public getAllFetchAll(): Observable<Utilisateur[]> {
     return this.httpClient.get<Utilisateur[]>(this.baseUrl + '/all');
   }
 
-  public putImage(uti_id:number, image_id:number): Observable<any> {
-    return this.httpClient.post<any>(`${this.baseUrl}` + '/photo/' + uti_id + '/'+image_id,{});
+  public putImage(uti_id: number, image_id: number): Observable<any> {
+    return this.httpClient.post<any>(
+      `${this.baseUrl}` + '/photo/' + uti_id + '/' + image_id,
+      {}
+    );
   }
 }

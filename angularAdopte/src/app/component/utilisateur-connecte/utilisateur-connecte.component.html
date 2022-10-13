@@ -9,6 +9,7 @@
     <div class="profil_reglage">
       <div class="profil">
         <img
+          (click)="changerImage()"
           src="data:image/jpeg;base64,{{ utilisateur.photoProfil?.contenu }}"
         /><br />
         <h2>{{ utilisateur.username }}<br /><span></span></h2>
@@ -42,8 +43,10 @@
         <button>
           <a routerLink="/recherche" class="btn-link">Rechercher</a></button
         ><br />
-        <button>Mes Infos</button><br />
-        <button>Mes groupes</button>
+        <button>
+          <a routerLink="/sons/{{ id }}" class="btn-link">Mes sons</a></button
+        ><br />
+        <!-- <button>Mes groupes</button> -->
       </div>
     </div>
 
@@ -71,7 +74,7 @@
           type="submit"
           class="btn btn-outline-secondary button-css"
         >
-          Send Message
+          Envoyer
         </button>
       </div>
     </div>

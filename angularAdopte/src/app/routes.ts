@@ -1,3 +1,4 @@
+import { SonsComponent } from './component/sons/sons.component';
 import { EditStyleComponent } from './component/edit-style/edit-style.component';
 import { ListeStyleComponent } from './component/liste-style/liste-style.component';
 import { RechercheComponent } from './component/recherche/recherche.component';
@@ -48,6 +49,7 @@ export const routes: Routes = [
   {
     path: 'chat',
     component: ChatAppComponent,
+    canActivate: [UserGuardService],
   },
 
   {
@@ -85,6 +87,7 @@ export const routes: Routes = [
   {
     path: 'upload-son',
     component: UploadSonComponent,
+    canActivate: [UserGuardService],
   },
   {
     path: 'refus',
@@ -93,6 +96,7 @@ export const routes: Routes = [
   {
     path: 'instrument',
     component: ListeInstrumentComponent,
+    canActivate: [AdminGuardService],
   },
   {
     path: 'contenu',
@@ -105,6 +109,7 @@ export const routes: Routes = [
   {
     path: 'utilisateurs',
     component: ListeUtilisateurComponent,
+    canActivate: [AdminGuardService],
   },
   {
     path: 'affichage-image',
@@ -113,10 +118,12 @@ export const routes: Routes = [
   {
     path: 'instrument/add',
     component: EditInstrumentComponent,
+    canActivate: [AdminGuardService],
   },
   {
     path: 'detail-utilisateur/:id',
     component: DetailUtilisateurComponent,
+    canActivate: [AdminGuardService],
   },
   {
     path: 'recherche',
@@ -134,8 +141,13 @@ export const routes: Routes = [
     canActivate: [AdminGuardService],
   },
   {
+    path: 'sons/:id',
+    component: SonsComponent,
+    canActivate: [UserGuardService],
+  },
+  {
     path: '',
-    redirectTo: 'connexion',
+    redirectTo: 'home',
     pathMatch: 'full',
   },
 ];

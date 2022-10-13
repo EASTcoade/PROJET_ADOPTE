@@ -44,3 +44,23 @@ span {
   padding-top: 5px;
   margin-bottom: 20px;
 }
+label {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+#id::placeholder {
+  color: black;
+  font-weight: lighter;
+}
+input::placeholder {
+  color: red;
+  font-weight: bold;
+}
+.file-input {
+  display: none;
+}
+.btn-link {
+  text-decoration: none;
+  font-weight: normal;
+  border: 1px solid blue;
+}

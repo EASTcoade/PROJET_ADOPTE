@@ -10,6 +10,8 @@ import { AuthAdminService } from 'src/app/service/auth-admin.service';
 export class ConnexionAdminComponent implements OnInit {
   username: string = '';
   password: string = '';
+  afficheMsg = false;
+  place = false;
   constructor(private srvAuth: AuthAdminService, private router: Router) {}
 
   ngOnInit(): void {}
@@ -26,9 +28,11 @@ export class ConnexionAdminComponent implements OnInit {
         this.router.navigateByUrl('/admin');
       },
       error: (err: any) => {
-        console.log(err);
-        // this.msg = 'Informations incorrectes !';
-        // this.afficheMsg = true;
+        // console.log(err);
+        this.place = true;
+        this.afficheMsg = true;
+        this.username = '';
+        this.password = '';
       },
     });
   }
