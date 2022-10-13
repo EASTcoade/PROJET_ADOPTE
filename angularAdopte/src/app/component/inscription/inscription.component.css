@@ -1,7 +1,7 @@
 body {
   margin : 0;
   width: 100vw;
-  height: 150vh;
+  height: 100vh;
   background:linear-gradient(rgb(207, 65, 65),rgb(67, 67, 206))
 }
 
@@ -14,7 +14,7 @@ body {
 
 .header{
   width: 100%;
-  height: 10%;
+  height: 20%;
   /* background-color: blue; */
 }
 
@@ -54,44 +54,51 @@ body {
 }
 
 .blocInscription {
-  width: 60%;
-  height: 80%;
+  width: 70%;
+  height: 90%;
   background: linear-gradient(90deg, rgba(24,122,172,1) 0%, rgba(10,147,235,1) 35%, rgba(33,177,177,1) 100%);;
-  margin-left: 40%;
+  margin-left: 20%;
   border-radius: 5%;
   text-align: center;
   position: relative;
   justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 20px;
 
 }
 
 
 .form-group{
-  width: 60%;
-  margin-left: 20%;
-  margin-top: 2%;
+
+  /* margin-left: 20%; */
+  margin-top: -10%;
   color: white;
+  height: 50px;
 }
 
-.form-group-nom-prenom{
-  display: flex;
-  width: 90%;
+.form-group input{
+  width: 100%;
+  height: 60%
+}
+
+.form-group select{
   margin-top: 5%;
-  color: white;
-  column-gap: 20px;
-}
-
-.form-group-mail-username{
-  display: flex;
-  width: 90%;
-  margin-top: 5%;
-  color: white;
-  column-gap: 20px;
 }
 
 
+.titre{
+  width:100%;
+  height: 10%;
+  background-color: rgb(21, 220, 21);
+  color:white;
+  text-align: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
 
-
+h2{margin-top: 5px;
+font-size: 25px;}
 
 
 
