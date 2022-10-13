@@ -1,42 +1,49 @@
 <body>
-  <div class="filtres">
-    <fieldset>
-      <legend>Selectionner un instrument</legend>
-      <div class="filtreInstrument">
-        <div *ngFor="let i of instruments" class="radio">
-          <input
-            type="radio"
-            name="instrument"
-            id="{{ i.nom }}"
-            (click)="filtrerParInstrument(i.id!)"
-          />
-          <label for="{{ i.nom }}">{{ i.nom }}</label>
+  <div class="container">
+    <div class="filtres">
+      <fieldset>
+        <legend>Selectionner un instrument</legend>
+        <div class="filtreInstrument">
+          <div *ngFor="let i of instruments" class="radio">
+            <input
+              type="radio"
+              name="instrument"
+              id="{{ i.nom }}"
+              (click)="filtrerParInstrument(i.id!)"
+            />
+            <label for="{{ i.nom }}">{{ i.nom }}</label>
+          </div>
         </div>
-      </div>
-    </fieldset>
-  </div>
-  <div class="resultats">
-    <h2>Résultats de votre recherche</h2>
-    <div class="resultat" *ngFor="let u of utilisateurs">
-      <div class="photoProfil">
-        <img
-          *ngIf="u.photoProfil"
-          src="data:image/jpeg;base64,{{ u.photoProfil.contenu }}"
-        />
-      </div>
-      <div class="coordonnes">
-        <h3>{{ u.username }}</h3>
-        <h3>{{ u.adresse }}</h3>
-      </div>
-
-      <div class="instruments">
-        <div class="instrument" *ngFor="let i of u.listeinstrument">
+      </fieldset>
+    </div>
+    <div class="resultats">
+      <h2>Résultats de votre recherche</h2>
+      <div class="resultat" *ngFor="let u of utilisateurs">
+        <div class="photoProfil">
           <img
-            *ngIf="i.image"
-            src="data:image/jpeg;base64,{{ i.image.contenu }}"
+            *ngIf="u.photoProfil"
+            src="data:image/jpeg;base64,{{ u.photoProfil.contenu }}"
           />
+        </div>
+        <div class="detail-resultat">
+          <div class="coordonnes">
+            <h3>{{ u.username }}</h3>
+            <h4>{{ u.adresse }}</h4>
+          </div>
+          <div class="instruments">
+            <div class="instrument" *ngFor="let i of u.listeinstrument">
+              <img
+                *ngIf="i.image"
+                src="data:image/jpeg;base64,{{ i.image.contenu }}"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
+  <footer>
+    <!-- <img src="src\assets\images\pied-page-big.png" alt="" /> -->
+    <div class="centered">Developped by Group C - Sopra Steria Paris 2022</div>
+  </footer>
 </body>

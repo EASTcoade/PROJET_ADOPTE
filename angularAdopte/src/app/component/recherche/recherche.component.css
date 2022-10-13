@@ -1,6 +1,15 @@
 body {
+  background-size: 75%;
+  background-repeat: no-repeat;
+  background-image: url("src\assets\images\ballerine-opacity35pourcent.png");
+  background-position: right;
+  height: 100vh;
+  width: 100vw;
+}
+.container {
   display: flex;
   flex-direction: row;
+  padding: 10px;
 }
 .radio {
   display: flex;
@@ -9,16 +18,26 @@ body {
 .filtres {
   width: 20vw;
 }
+fieldset {
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-right: 10px;
+}
 .resultats {
-  width: 80vw;
+  width: 60vw;
 }
 .resultat {
   display: flex;
   flex-direction: row;
+  border-bottom: 2px solid purple;
+}
+.detail-resultat {
+  display: flex;
+  flex-direction: column;
 }
 .coordonnes {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 .instruments {
   display: flex;
@@ -29,19 +48,25 @@ body {
   max-width: 100px;
   max-height: 100px;
   overflow: hidden;
+  margin-right: 10px;
+  margin-bottom: 5px;
 }
 .instrument img {
   width: 100%;
   object-fit: cover;
+  border-radius: 5px;
 }
 .photoProfil {
   max-width: 200px;
   max-height: 200px;
   overflow: hidden;
+  margin: 5px;
 }
 .photoProfil img {
   width: 100%;
   object-fit: cover;
+  border-radius: 5px;
+  border: 2px solid yellow;
 }
 .filtreInstrument {
   display: flex;
@@ -49,4 +74,17 @@ body {
 }
 input {
   margin: 0.4rem;
+}
+footer {
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  text-align: center;
+  color: black;
+  background-image: url("src\assets\images\pied-page-big.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  bottom: 0px;
 }
