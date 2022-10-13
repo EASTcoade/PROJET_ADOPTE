@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/service/auth.service';
 import { Observable } from 'rxjs';
 import { UtilisateurService } from './../../service/crud-uti/utilisateur.service';
 import { Instrument } from './../../model/instrument';
@@ -15,7 +16,8 @@ export class RechercheComponent implements OnInit {
   utilisateurs!: Utilisateur[];
   constructor(
     private srvInstrument: InstrumentService,
-    private srvUtilisateur: UtilisateurService
+    private srvUtilisateur: UtilisateurService,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -34,5 +36,8 @@ export class RechercheComponent implements OnInit {
         this.utilisateurs = data;
         console.log(this.utilisateurs[0]);
       });
+  }
+  logout() {
+    this.authService.logout();
   }
 }

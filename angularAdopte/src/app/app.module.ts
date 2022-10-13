@@ -24,17 +24,17 @@ import { InscriptionComponent } from './component/inscription/inscription.compon
 import { HomeComponent } from './component/home/home.component';
 import { LectureSonComponent } from './component/lecture-son/lecture-son.component';
 import { ListeUtilisateurComponent } from './component/liste-utilisateur/liste-utilisateur.component';
-import { ChatComponent } from './component/chat/chat.component';
 import { ChatAppComponent } from './component/chat-app/chat-app.component';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
-const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 // import { LeaderGroupeComponent } from './component/match/leader-groupe/leader-groupe.component';
 import { ChoixInstrumentComponent } from './component/choix-instrument/choix-instrument.component';
 import { EditInstrumentComponent } from './component/edit-instrument/edit-instrument.component';
 import { AffichageImageComponent } from './component/affichage-image/affichage-image.component';
+import { ListeStyleComponent } from './component/liste-style/liste-style.component';
+import { EditStyleComponent } from './component/edit-style/edit-style.component';
 
-
+const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 @NgModule({
   declarations: [
     StyleMusicauxComponent,
@@ -52,7 +52,6 @@ import { AffichageImageComponent } from './component/affichage-image/affichage-i
     HomeComponent,
     LectureSonComponent,
     ListeUtilisateurComponent,
-    ChatComponent,
     ChatAppComponent,
     ChoixInstrumentComponent,
     EditInstrumentComponent,
@@ -60,6 +59,8 @@ import { AffichageImageComponent } from './component/affichage-image/affichage-i
     DetailUtilisateurComponent,
     RechercheComponent,
     PhotoProfilComponent,
+    ListeStyleComponent,
+    EditStyleComponent,
   ],
   imports: [
     BrowserModule,

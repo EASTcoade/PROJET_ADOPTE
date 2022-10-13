@@ -1,0 +1,13 @@
+<h2>Liste des styles musicaux pratiqués</h2>
+<table class="table table-striped">
+  <thead>
+    <th>ID</th>
+    <th>Nom</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let s of styles | async">
+      <td>{{ s.id }}</td>
+      <td>{{ s.nom }}</td>
+    </tr>
+  </tbody>
+</table>

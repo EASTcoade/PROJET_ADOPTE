@@ -9,29 +9,40 @@ import { AuthService } from './../../service/auth.service';
 @Component({
   selector: 'app-style-musicaux',
   templateUrl: './style-musicaux.component.html',
-  styleUrls: ['./style-musicaux.component.css']
+  styleUrls: ['./style-musicaux.component.css'],
 })
 export class StyleMusicauxComponent implements OnInit {
   styleMusicaux!: Observable<StyleMusical[]>;
-
-  constructor(private srvInscri: InscriptionUtiService, private router: Router,private srvStyleMusicaux: StyleMusicalService) { }
+  afficheMsgStyleOk = false;
+  constructor(
+    private srvInscri: InscriptionUtiService,
+    private router: Router,
+    private srvStyleMusicaux: StyleMusicalService
+  ) {}
 
   ngOnInit(): void {
     this.styleMusicaux = this.srvStyleMusicaux.getAll();
   }
-send(idStyle:number){
-
-  this.srvInscri.insertStyleMusical({
-    stluti_utilisateur_id: JSON.parse(sessionStorage.getItem('compte')!).id,
-    stluti_stylemusical_id: idStyle,
-    })
-    .subscribe({next:
-
-    (data) =>{
-    console.log(data);
-   // this.router.navigate(['home'])
-  },error:
-  error => {console.log(error);}
-    })
-}
+  send(idStyle: number) {
+    console.log(JSON.parse(sessionStorage.getItem('compte')!).id);
+    console.log(idStyle);
+    this.srvInscri
+      .insertStyleMusical({
+        styuti_utilisateur_id: JSON.parse(sessionStorage.getItem('compte')!).id,
+        styuti_stylemusical_id: idStyle,
+      })
+      .subscribe({
+        next: (data) => {
+          // console.log(data);
+          // this.router.navigate(['utilisateur']);
+          this.afficheMsgStyleOk = true;
+        },
+        error: (error) => {
+          console.log(error);
+        },
+      });
+  }
+  suivant() {
+    this.router.navigateByUrl('/choix-instrument');
+  }
 }

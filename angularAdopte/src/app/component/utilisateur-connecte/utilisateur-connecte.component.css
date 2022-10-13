@@ -1,151 +1,153 @@
-
-
-body{
+body {
   width: 100vw;
-  height: 150vh;
+  height: 100vh;
   padding: 0;
   margin: 0;
-  background-color:rgb(235, 229, 229);
+  background-color: rgb(235, 229, 229);
   overflow-x: hidden;
   overflow-y: scroll;
-
 }
 
-.header{
+.header {
   min-width: 100%;
-  height: 8%;
+  height: auto;
   align-items: center;
-  border:1px solid black;
+  border: 1px solid black;
   display: flex;
   justify-content: space-between;
-  background:linear-gradient(90deg,  rgb(255, 255, 255), #025b81ee);
+  background: linear-gradient(90deg, rgb(255, 255, 255), #025b81ee);
 }
 
-
-h1{
-  color:white;
-  font-size:25px;
-  text-align:center;
-  display:inline-block;
-  position:relative;
+h1 {
+  color: white;
+  font-size: 25px;
+  text-align: center;
+  display: inline-block;
+  position: relative;
   margin-top: 10px;
- }
+}
 
-
- .header img{
+.header img {
   max-height: 100%;
-  width: 140px;
+  width: 5%;
   margin-top: 15px;
   margin-left: 15px;
 }
 
-
-.header button{
-  color:white;
+.header button {
+  color: white;
   font-size: 15px;
   background-color: rgb(209, 36, 36);
   height: 35px;
   border-radius: 5px;
-  text-align:center;
-  display:inline-block;
+  text-align: center;
+  display: inline-block;
   margin-top: 15px;
   margin-bottom: 15px;
   margin-right: 15px;
- }
+}
 
- .content{
-  background-color:red;
+.content {
+  background-image: url("src\assets\images\kiss-opacite60.png");
+  background-size: 25%;
+  background-repeat: no-repeat;
+  background-position: 50vw;
+  /* background-color: red; */
   height: 90%;
   width: 100%;
-  display:inline-block;
- }
+  display: inline-block;
+}
 
- .profil_reglage {
+.profil_reglage {
   width: 50%;
   height: 90%;
   margin-left: 5%;
-  margin-top:5%;
+  margin-top: 15px;
   float: left;
-  background-color: orange;
- }
+  /* background-color: orange; */
+}
 
- .profil{
+.profil {
   border-radius: 5%;
   width: 60%;
   height: 60%;
   margin-left: 20%;
-  margin-top:5%;
+  margin-top: 5%;
   float: left;
-  background: linear-gradient(90deg, rgba(15,108,103,1) 0%, rgba(9,113,121,1) 35%, rgba(33,177,177,1) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(15, 108, 103, 1) 0%,
+    rgba(9, 113, 121, 1) 35%,
+    rgba(33, 177, 177, 1) 100%
+  );
 
   position: relative;
- }
+}
 
- .profil img{
+.profil img {
   border-radius: 20%;
   border: solid black;
   width: 60%;
-  height: 40%;
+  height: 60%;
   position: absolute;
   margin-left: 20%;
   top: -30px;
+}
 
- }
-
-
- .reglages{
+.reglages {
   width: 60%;
-  height: 20%;
+  /* height: 20%; */
   margin-left: 20%;
-  margin-top:5%;
+  /* margin-top: 5%; */
   float: left;
   background-color: rgb(76, 76, 120);
- }
+  padding: 20px;
+}
 
- .reglages button{
+.reglages button {
   width: 50%;
   margin-top: 5px;
   margin-left: 25%;
   border-radius: 10px;
 }
 
-
-
- h2{
-  color:white;
-  margin-top: 37%;
+h2 {
+  color: white;
+  /* margin-top: 37%; */
+  margin-top: 40%;
   margin-left: 35%;
-  font-size:25px;
- }
+  font-size: 25px;
+}
 
- .profil h2 span{
+.profil h2 span {
   color: black;
-  font-size:15px;
+  font-size: 15px;
   margin-left: 5%;
- }
+}
 
- span{
-  color:black;
-  font-size:10px;
- }
+span {
+  color: black;
+  font-size: 10px;
+}
 
- .composant{
+.composant {
   margin-top: 10%;
   background-color: black;
   width: 100%;
-  height: 40%;
- }
+  /* height: 40%;
+  opacity: 100%; */
+}
 
- .description span{
+.description span {
   color: white;
- }
+}
 
- .description {
+.description {
   text-align: center;
   height: 30%;
- }
+}
 
- .liste_instrument{
+.liste_instrument {
   font-size: 10px;
   display: flex;
   width: 100%;
@@ -153,15 +155,15 @@ h1{
   border-top: solid black;
   background-color: green;
   column-gap: 10px;
-  height: 20%;
- }
+  height: 40px;
+}
 
- .liste_instrument p{
+.liste_instrument p {
   margin-top: 10px;
-  margin-left: 10px
- }
+  margin-left: 10px;
+}
 
- .instrument{
+.instrument {
   margin-top: 5px;
   color: white;
   background-color: gray;
@@ -169,9 +171,9 @@ h1{
   width: 40px;
   text-align: center;
   height: 60%;
- }
+}
 
- .style_musicaux{
+.style_musicaux {
   font-size: 10px;
   display: flex;
   width: 100%;
@@ -179,15 +181,15 @@ h1{
   border-top: solid black;
   background-color: purple;
   column-gap: 10px;
-  height: 20%;
- }
+  height: 40px;
+}
 
- .style_musicaux p{
+.style_musicaux p {
   margin-top: 10px;
-  margin-left: 10px
- }
+  margin-left: 10px;
+}
 
- .style{
+.style {
   margin-top: 5px;
   color: white;
   background-color: gray;
@@ -195,46 +197,69 @@ h1{
   width: 40px;
   text-align: center;
   height: 60%;
- }
+}
 
-
- .chat{
-  float:right;
+.chat {
+  float: right;
   margin-top: 5%;
   margin-right: 2%;
   width: 35%;
   height: 450px;
   background-color: yellow;
   border: solid black;
-  display: block;}
+  display: block;
+}
 
- .title_chat{
+.title_chat {
   border: solid black;
   text-align: center;
   height: 30px;
   color: white;
-  background-color: rgb(36, 124, 168)
- }
+  background-color: rgb(36, 124, 168);
+}
 
- .zone_chat{
+.zone_chat {
   height: 300px;
   width: 100%;
   background-color: gray;
   float: bottom;
- }
+}
 
- .envoyer {
+.envoyer {
   text-align: center;
- }
+}
 
- .envoyer input{
+.envoyer input {
   width: 70%;
   margin-left: 15%;
- }
+}
 
- #listOfMessages { list-style-type: none; margin: 0; padding: 0; }
-li:nth-child { padding: 0.5rem 1rem; }
-li:nth-child(odd) { background: #efefef; }
+#listOfMessages {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+li:nth-child {
+  padding: 0.5rem 1rem;
+}
+li:nth-child(odd) {
+  background: #efefef;
+}
 
-
-
+a {
+  text-decoration: none;
+  color: black;
+}
+footer {
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  text-align: center;
+  color: black;
+  background-image: url("src\assets\images\pied-page-big.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  bottom: 0px;
+}

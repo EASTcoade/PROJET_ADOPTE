@@ -12,7 +12,6 @@ import { InstrumentService } from 'src/app/service/crud-instrument/instrument.se
   styleUrls: ['./choix-instrument.component.css'],
 })
 export class ChoixInstrumentComponent implements OnInit {
-
   instruments!: Observable<Instrument[]>;
   constructor(
     private srvInscri: InscriptionUtiService,
@@ -34,10 +33,13 @@ export class ChoixInstrumentComponent implements OnInit {
       .pipe(first())
       .subscribe(
         (data) => {
-      console.log(data);
-     // this.router.navigate(['home'])
-    },
+          console.log(data);
+          // this.router.navigate(['home'])
+        },
         (error) => console.log(error)
       );
+  }
+  suivant() {
+    this.router.navigateByUrl('/utilisateur');
   }
 }

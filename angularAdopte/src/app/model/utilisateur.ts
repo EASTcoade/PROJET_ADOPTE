@@ -1,8 +1,15 @@
+import { StyleMusical } from './style-musical';
 import { Instrument } from './instrument';
 import { Compte } from './compte';
 import { Image } from './image';
 
 export class Utilisateur extends Compte {
+  public get stylemusical(): StyleMusical[] | undefined {
+    return this._stylemusical;
+  }
+  public set stylemusical(value: StyleMusical[] | undefined) {
+    this._stylemusical = value;
+  }
   public get photoProfil(): Image | undefined {
     return this._photoProfil;
   }
@@ -70,7 +77,8 @@ export class Utilisateur extends Compte {
     private _adresse?: string,
     private _dateNaissance?: string,
     private _listeinstrument?: Instrument[],
-    private _photoProfil?: Image
+    private _photoProfil?: Image,
+    private _stylemusical?: StyleMusical[]
   ) {
     super(_id, _username, _password);
   }

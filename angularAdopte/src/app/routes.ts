@@ -1,8 +1,9 @@
+import { EditStyleComponent } from './component/edit-style/edit-style.component';
+import { ListeStyleComponent } from './component/liste-style/liste-style.component';
 import { RechercheComponent } from './component/recherche/recherche.component';
 import { DetailUtilisateurComponent } from './component/detail-utilisateur/detail-utilisateur.component';
 import { PhotoProfilComponent } from './component/photo-profil/photo-profil.component';
 import { ChatAppComponent } from './component/chat-app/chat-app.component';
-import { ChatComponent } from './component/chat/chat.component';
 import { AffichageImageComponent } from './component/affichage-image/affichage-image.component';
 import { EditInstrumentComponent } from './component/edit-instrument/edit-instrument.component';
 import { ListeUtilisateurComponent } from './component/liste-utilisateur/liste-utilisateur.component';
@@ -41,6 +42,7 @@ export const routes: Routes = [
   {
     path: 'choix-photo',
     component: PhotoProfilComponent,
+    canActivate: [UserGuardService],
   },
 
   {
@@ -119,6 +121,17 @@ export const routes: Routes = [
   {
     path: 'recherche',
     component: RechercheComponent,
+    canActivate: [UserGuardService],
+  },
+  {
+    path: 'styles',
+    component: ListeStyleComponent,
+    canActivate: [AdminGuardService],
+  },
+  {
+    path: 'style/add',
+    component: EditStyleComponent,
+    canActivate: [AdminGuardService],
   },
   {
     path: '',

@@ -1,76 +1,82 @@
-
 <body>
+  <div class="header">
+    <img src="../../../assets/images/logoM.png" />
+    <h1>Adopte un musicien</h1>
+    <button (click)="logout()">Deconnexion</button>
+  </div>
 
+  <div class="content">
+    <div class="profil_reglage">
+      <div class="profil">
+        <img
+          src="data:image/jpeg;base64,{{ utilisateur.photoProfil?.contenu }}"
+        /><br />
+        <h2>{{ utilisateur.username }}<br /><span></span></h2>
 
-    <div class="header">
-      <img src="../../../assets/images/logoM.png">
-      <h1>Adopte un musicien</h1>
-      <button>Deconnexion</button>
-    </div>
+        <!-- details  -->
+        <!-- <div class="composant"> -->
+        <!-- <div class="description">
+            <span>Hi, Everyone !</span>
+          </div> -->
 
-    <div class="content">
-        <div class="profil_reglage">
-
-          <div class="profil">
-              <img src="../../../assets/images/bianca-omg.jpg"><br>
-              <h2>Bianca D.<br><span> @MiniBibi</span></h2>
-
-
-            <!-- details  -->
-            <div class="composant">
-
-              <div class="description"><span>Hi,  Everyone !</span></div>
-
-              <!-- instruments  -->
-              <div class="liste_instrument">
-                <p><strong>Instrument(s):</strong></p>
-                <div class="instrument">Voix</div>
-                <div class="instrument">Guitare</div>
-              </div>
-
-              <!-- style musicaux  -->
-              <div class="style_musicaux">
-                <p><strong>Style(s):</strong></p>
-                <div class="style">Pop</div>
-                <div class="style">Blues</div>
-                <div class="style">Jazz</div>
-              </div>
-
-
-            </div>
-
-          </div>
-
-
-
-          <div class="reglages">
-            <button>Musiciens à proximité</button><br>
-            <button>Upload Son</button><br>
-            <button>Mes Infos</button><br>
-            <button>Mes groupes</button>
-          </div>
-
-        </div>
-
-        <div class="chat">
-          <div class="title_chat">Chat</div>
-            <div class="zone_chat">
-                <ul id="listOfMessages">
-                  <li class="singleMessage" *ngFor="let message of messageList">
-                    {{message}}
-                </li>
-                </ul>
-            </div>
-
-            <div class="envoyer">
-              <input  class="form-control input" type="text" autocomplete="off" required  [(ngModel)]="model.msg" name="msg"/>
-              <button (click)="onSubmit()"
-              type="submit" class="btn btn-outline-secondary button-css" >Send Message</button>
+        <!-- instruments  -->
+        <div class="liste_instrument">
+          <p><strong>Instrument(s):</strong></p>
+          <div class="instrument" *ngFor="let i of utilisateur.listeinstrument">
+            {{ i.nom }}
           </div>
         </div>
 
+        <!-- style musicaux  -->
+        <div class="style_musicaux">
+          <p><strong>Style(s):</strong></p>
+          <div class="style" *ngFor="let s of utilisateur.stylemusical">
+            {{ s.nom }}
+          </div>
+        </div>
+        <!-- </div> -->
+      </div>
+
+      <div class="reglages">
+        <!-- <button>Musiciens à proximité</button><br /> -->
+        <button>
+          <a routerLink="/recherche" class="btn-link">Rechercher</a></button
+        ><br />
+        <button>Mes Infos</button><br />
+        <button>Mes groupes</button>
+      </div>
     </div>
 
+    <div class="chat">
+      <div class="title_chat">Chat</div>
+      <div class="zone_chat">
+        <ul id="listOfMessages">
+          <li class="singleMessage" *ngFor="let message of messageList">
+            {{ message }}
+          </li>
+        </ul>
+      </div>
 
-
-  </body>
+      <div class="envoyer">
+        <input
+          class="form-control input"
+          type="text"
+          autocomplete="off"
+          required
+          [(ngModel)]="model.msg"
+          name="msg"
+        />
+        <button
+          (click)="onSubmit()"
+          type="submit"
+          class="btn btn-outline-secondary button-css"
+        >
+          Send Message
+        </button>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="centered">Developped by Group C - Sopra Steria Paris 2022</div>
+  </footer>
+</body>

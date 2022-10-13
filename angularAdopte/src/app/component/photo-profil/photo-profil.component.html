@@ -1,24 +1,27 @@
 <body>
-
   <div class="header">
-    <img src="../../../assets/images/logoM.png">
+    <img src="../../../assets/images/logoM.png" />
     <h1>Adopte un musicien</h1>
   </div>
 
   <h2>Avec une photo c'est toujours mieux</h2>
 
   <div class="cadre_photo">
-      <div class="photo"></div><br>
-      <input type="file" (change)="onFileSelected($event)" class="file-input" />
-      <button (click)="EnregistrerImage()" class="btn btn-primary">
-        Enregistrer
-      </button>
+    <div class="photo" *ngIf="imageAAfficher">
+      <img src="data:image/jpeg;base64,{{ imageAAfficher.contenu }}" />
+    </div>
+    <br />
+    <input type="file" (change)="onFileSelected($event)" class="file-input" />
+    <button (click)="EnregistrerImage()" class="btn btn-primary">
+      Enregistrer
+    </button>
   </div>
 
   <div class="terminer">
-    <button>Suivant</button>
+    <button (click)="suivant()">Suivant</button>
   </div>
 
-
-
+  <div *ngIf="afficheMsgErreur">
+    {{ msgErreur }}
+  </div>
 </body>
