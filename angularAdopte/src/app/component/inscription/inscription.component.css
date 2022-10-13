@@ -1,21 +1,97 @@
-.container{
-  width: 40%;
-  background: linear-gradient(#e66465, #9198e5);
-  border-radius: 2%;
-  text-align: center;
+body {
+  margin : 0;
+  width: 100vw;
+  height: 150vh;
+  background:linear-gradient(rgb(207, 65, 65),rgb(67, 67, 206))
 }
 
-body{
-  width: 100vw;
-  height: 100vh;
+.content{
+  width: 100%;
+  height: 100%;
+  /* background-color: red; */
+  float: right;
 }
+
+.header{
+  width: 100%;
+  height: 10%;
+  /* background-color: blue; */
+}
+
+
+.header img{
+  width: 8%;
+  margin-left: 1%;
+  margin-top: 1%;
+  height: 100%;
+  float:left
+}
+
+.inscription_image{
+  width: 100%;
+  height: 75%;
+  /* background-color: green; */
+  display: flex;
+
+}
+
+.inscription{
+  width: 60%;
+  height: 100%;
+  /* background-color: yellow; */
+}
+
+.image{
+  width: 30%;
+  height: 80%;
+  /* background-color: purple; */
+  margin-right: 10%;
+}
+
+.image img{
+  width: 100%;
+  height: 100%;
+}
+
+.blocInscription {
+  width: 60%;
+  height: 80%;
+  background: linear-gradient(90deg, rgba(24,122,172,1) 0%, rgba(10,147,235,1) 35%, rgba(33,177,177,1) 100%);;
+  margin-left: 40%;
+  border-radius: 5%;
+  text-align: center;
+  position: relative;
+  justify-content: center;
+
+}
+
 
 .form-group{
-  font-family:  sans-serif;
+  width: 60%;
+  margin-left: 20%;
+  margin-top: 2%;
   color: white;
-
 }
 
-html, body{
-  background-color: rgb(127, 212, 212);
+.form-group-nom-prenom{
+  display: flex;
+  width: 90%;
+  margin-top: 5%;
+  color: white;
+  column-gap: 20px;
 }
+
+.form-group-mail-username{
+  display: flex;
+  width: 90%;
+  margin-top: 5%;
+  color: white;
+  column-gap: 20px;
+}
+
+
+
+
+
+
+
