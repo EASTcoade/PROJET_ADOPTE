@@ -59,7 +59,7 @@ margin-top: 20%;
 color:white}
 
 .leMdp{
-  color: white
+  color: white;
 }
 
 .blocConnexion {
@@ -102,6 +102,6 @@ color:white}
 }
 
 
-
+  h2, h3{font-size: 20px;color: rgb(236, 236, 102);}
 
 

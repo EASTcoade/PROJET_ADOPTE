@@ -1,4 +1,4 @@
-body {
+/* body {
   margin: 0;
   background-image: url("../../../assets/images/background.png");
   background-size: cover;
@@ -144,4 +144,132 @@ body {
 
       width:450px;
 
+  } */
+
+
+  body {
+    margin : 0;
+    width: 100vw;
+    height: 100vh;
+    background:linear-gradient(rgb(207, 65, 65),rgb(67, 67, 206))
   }
+
+  .content{
+    width: 100%;
+    height: 100%;
+    /* background-color: red; */
+    float: right;
+  }
+
+  .header{
+    width: 100%;
+    height: 15%;
+    /* background-color: blue; */
+  }
+
+
+  .header img{
+    width: 8%;
+    margin-left: 1%;
+    margin-top: 1%;
+    height: 100%;
+    float:left
+  }
+
+  .connexion-inscription{
+    width: 100%;
+    height: 80%;
+    /* background-color: yellowgreen; */
+    display: flex;
+  }
+
+  .inscription{
+    width: 40%;
+    height: 70%;
+    /* background-color: blue; */
+    margin-left: 7%;
+    margin-top: 2%;
+    border-radius: 5%;
+    position: relative;
+    z-index: 1;
+  }
+
+  .inscription::after{
+    margin-top: -3%;
+    margin-left: -105%;
+    content: "";
+    position: absolute;
+    height: 110%;
+    width: 110%;
+    background: linear-gradient(rgb(233, 233, 137),rgb(233, 233, 137));
+    z-index: -9;
+    filter: blur(30px);
+    top: -1px;
+  }
+
+  .inscription img, .connexion img{
+    width: 100%;
+    height: 100%;
+    border-radius: 5%;
+
+
+  }
+
+
+  .inscription button {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: red;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  .connexion{
+    width: 40%;
+    height: 70%;
+    /* background-color: purple; */
+    margin-right: 5%;
+    margin-left: 7%;
+    margin-top: 2%;
+    border-radius: 5%;
+    position:relative;
+    z-index:1
+
+  }
+
+  .connexion::after{
+    margin-top: -3%;
+    margin-left: -105%;
+    content: "";
+    position: absolute;
+    height: 110%;
+    width: 110%;
+    background: linear-gradient(rgb(79, 190, 220),rgb(79, 190, 220));
+    z-index: -9;
+    filter: blur(30px);
+    top: -1px;
+  }
+
+  .connexion button {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: rgb(16, 135, 16);
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+
