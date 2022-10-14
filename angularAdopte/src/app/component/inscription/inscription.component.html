@@ -72,6 +72,7 @@
             <input
               type="date"
               class="form-control"
+              [class]="placeDateNaissance ? 'red' : ''"
               name="dateNaissance"
               [(ngModel)]="form.dateNaissance"
               required
@@ -125,6 +126,7 @@
               [(ngModel)]="form.niveau"
               required
               [ngModelOptions]="{ standalone: true }"
+              [class]="placeNiveau ? 'red' : ''"
             >
               <option value="DEBUTANT">Debutant</option>
               <option value="INTERMEDIAIRE">Intermediaire</option>

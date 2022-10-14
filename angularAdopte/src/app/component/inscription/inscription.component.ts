@@ -41,6 +41,8 @@ export class InscriptionComponent implements OnInit {
   }
 
   onSubmit() {
+    this.placeDateNaissance = false;
+    this.placeNiveau = false;
     if (!this.form.nom || this.form.nom == '') {
       this.placeNom = true;
       return;
@@ -57,10 +59,13 @@ export class InscriptionComponent implements OnInit {
       this.placeUsername = true;
       return;
     }
+    let date = new Date();
+    // console.log(date.toISOString());
+    // console.log(this.form.dateNaissance >= date.toISOString());
     if (
       !this.form.dateNaissance ||
       this.form.dateNaissance == '' ||
-      this.form.dateNaissance >= new Date()
+      this.form.dateNaissance >= date.toISOString()
     ) {
       this.placeDateNaissance = true;
       return;

@@ -61,17 +61,18 @@ h2 {
 }
 
 .photo {
-  border-radius: 20%;
-  border: solid black;
   width: 60%;
-  background-color: white;
+  /* background-color: white; */
   height: 50%;
   position: absolute;
   margin-left: 20%;
   top: -30px;
+  overflow: hidden;
 }
 .photo img {
-  height: 100%;
+  border-radius: 20%;
+  border: 2px solid black;
+  width: 100%;
   object-fit: cover;
 }
 .cadre_photo button {
